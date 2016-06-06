@@ -1,0 +1,689 @@
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog" style="width:600px;height:513px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="guifan-link" style="text-align: center; background: whitesmoke; margin-bottom: 15px; color: black; border-radius: 3px; padding: 5px;">上传成功后请保持在线，请先阅读<span></span>上传规范(<a href="#" style="text-decoration: underline;" onclick='event.preventDefault(); window.open("http://www.friendsbt.com/guifan.html#", "_blank");'>开始阅读</a>)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="btn-group">
+                                    <button style="width: 140%;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><strong>上传文件</strong> <span class="caret"></span><span class="glyphicon glyphicon-ok" id="upload_flag"></span></button>
+                                    <ul class="dropdown-menu" style="-webkit-transition: 0;margin-top: 0 !important;">
+                                      <li style="cursor:pointer"><a data="1" onclick="fileSelChange(this)">上传文件</a></li>
+                                      <!-- <li style="cursor:pointer"><a data="2" onclick="fileSelChange(this)">批量上传</a></li> -->
+                                      <li style="cursor:pointer"><a data="3" onclick="fileSelChange(this)">上传文件夹</a></li>
+                                    </ul>
+                                </div>
+                                <input type="file" class="button fileInput" id="resourceDir" onchange="fileChange()" style="display:none" nwdirectory>
+                                <input type="file" class="button fileInput" id="resourceFile" onchange="fileChange()" style="display:none">
+                            </div>
+                            <div class="col-xs-4">
+                                <select style="cursor:pointer" class="form-control" id="resourceMainType" onchange="typeChange()"
+                                value="-1">
+                                    <option value="-1">
+                                        请选择类别
+                                    </option>
+                                    <option value="0">
+                                        电影
+                                    </option>
+                                    <option value="1">
+                                        剧集
+                                    </option>
+                                    <option value="2">
+                                        学习
+                                    </option>
+                                    <option value="3">
+                                        音乐
+                                    </option>
+                                    <option value="4">
+                                        动漫
+                                    </option>
+                                    <option value="5">
+                                        游戏
+                                    </option>
+                                    <option value="6">
+                                        综艺
+                                    </option>
+                                    <option value="7">
+                                        体育
+                                    </option>
+                                    <option value="8">
+                                        软件
+                                    </option>
+                                    <option value="9">
+                                        其他
+                                    </option>
+                                </select>
+                                <span class="glyphicon glyphicon-chevron-down" style="
+                                    float: right;
+                                    position: relative;
+                                    top: -26px;
+                                    right: 11px;
+                                    font-size: 13px;
+                                "></span>
+                            </div>
+                            <div class="col-xs-4" id="upload_subType">
+                                <select style="cursor:pointer" class="form-control" id="resourceSubType" value="0">
+                                    <option value="0">
+                                        标清(默认)
+                                    </option>
+                                    <option value="1">
+                                        高清
+                                    </option>
+                                    <option value="2">
+                                        超高清
+                                    </option>
+                                </select>
+                                <span class="glyphicon glyphicon-chevron-down" style="
+                                    float: right;
+                                    position: relative;
+                                    top: -26px;
+                                    right: 11px;
+                                    font-size: 13px;
+                                "></span>
+                            </div>
+                        </div>
+                        <div class="row" id="upload_panel">
+                            
+                        </div>
+                        <div class="row" id="label_tags" style="margin-left: 5px;"></div>
+                        <select style="cursor:pointer" id="resourceLabel" class="form-control" onchange="tagChange()">
+                            <!-- <option value="喜剧">
+                                喜剧
+                            </option>
+                            <option value="古装">
+                                古装
+                            </option>
+                            <option value="伦理">
+                                伦理
+                            </option>
+                            <option value="纪录片">
+                                纪录片
+                            </option>
+                            <option value="爱情">
+                                爱情
+                            </option>
+                            <option value="恐怖">
+                                恐怖
+                            </option>
+                            <option value="动作">
+                                动作
+                            </option>
+                            <option value="科幻">
+                                科幻
+                            </option>
+                            <option value="武侠">
+                                武侠
+                            </option>
+                            <option value="战争">
+                                战争
+                            </option>
+                            <option value="犯罪">
+                                犯罪
+                            </option>
+                            <option value="惊悚">
+                                惊悚
+                            </option>
+                            <option value="剧情">
+                                剧情
+                            </option>
+                            <option value="玄幻">
+                                玄幻
+                            </option>
+                            <option value="冒险">
+                                冒险
+                            </option>
+                            <option value="动画">
+                                动画
+                            </option> -->
+                        </select>
+                        <span class="glyphicon glyphicon-chevron-down" style="
+                            float: right;
+                            position: relative;
+                            top: -26px;
+                            right: 11px;
+                            font-size: 13px;
+                        "></span>
+                        <textarea id="resourceComment" rows="4" class="myTextArea" placeholder="为了让更多的人来下载该资源，请简要介绍下该资源？200字以内:-)" style="resize: none;margin-top: 5px;" data-role="none">
+                        </textarea>
+                        <center>
+                            <div id="err_tips" style="color: red">
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-2 nPLR">
+                        <p>
+                            我来打分:
+                        </p>
+                    </div>
+                    <div class="col-xs-3 nPLR star" id="star">
+                    </div>
+                    <div id="text_my_socre" style="display:none">
+                        -1
+                    </div>
+                    <div class="col-xs-1" id="result"></div>
+                    <div class="col-xs-3">
+                      <label class="checkbox" for="checkbox_is_public">
+                        <input id="checkbox_is_public" type="checkbox" value=""  data-toggle="checkbox">
+                        仅好友可见
+                      </label>
+                      </div>
+                    <button style="position: relative;right: 17px;" type="button" class="btn btn-large btn-primary" onclick="fileUpload()">
+                        发 布
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="settingModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 116%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="padding-bottom: 0;">
+                <div class="row">
+                    <!-- <div class="row">
+                        <h4>
+                            &emsp;常规设置
+                        </h4>
+                        <div class="col-xs-4">
+                            <label class="checkbox" for="checkbox1">
+                                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+                                开机时自动登录
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="checkbox" for="checkbox2">
+                                <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox">
+                                退出时最小化到托盘
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="checkbox" for="checkbox3">
+                                <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox">
+                                不接受陌生人消息
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>
+                            &emsp;消息设置
+                        </h4>
+                        <div class="col-xs-4">
+                            <label class="checkbox" for="checkbox4">
+                                <input type="checkbox" value="" id="checkbox4" data-toggle="checkbox">
+                                开启免打扰模式
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="checkbox" for="checkbox5">
+                                <input type="checkbox" value="" id="checkbox5" data-toggle="checkbox">
+                                开启后台加速模式
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="checkbox" for="checkbox6">
+                                <input type="checkbox" value="" id="checkbox6" data-toggle="checkbox">
+                                下载完成后提醒
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <h4>
+                            &emsp;常规设置
+                        </h4>
+                        <div class="col-xs-4" style="margin-left: 15px;">
+                            <label id="auto_login" class="checkbox" for="checkbox1">
+                                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+                                开机启动
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label id="exit_tray" class="checkbox" for="checkbox2">
+                                <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox">
+                                关闭时最小化到托盘
+                            </label>
+                        </div>
+                        <div class="col-xs-4" style="margin-left: 15px;">
+                            <label id="auto_log" class="checkbox" for="checkbox2">
+                                <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox">
+                                自动登录
+                            </label>
+                        </div>
+                        <!-- <div class="col-xs-4">
+                            <label id="allow_v4_download" class="checkbox" for="checkbox2">
+                                <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox">
+                                允许通过v4下载
+                            </label>
+                        </div> -->
+                        <div class="col-xs-4">
+                            <label id="voice" class="checkbox" for="checkbox2">
+                                <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox">
+                                下载完毕提示音
+                            </label>
+                        </div>
+                        <div class="col-xs-4"  style="margin-left: 15px;">
+                            <label id="chat_robot" class="checkbox" for="checkbox1">
+                                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+                                启用FBT小兔
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label id="allow_bg" class="checkbox" for="checkbox1">
+                                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+                                启用背景
+                            </label>
+                        </div>
+                        <div class="col-xs-4"  style="margin-left: 15px;">
+                            <label id="friends_online_inform" class="checkbox" for="checkbox1">
+                                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+                                好友上下线提醒
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>
+                            &emsp;上传设置
+                        </h4>
+                        <div class="col-xs-3" style="padding-right: 0;padding-top: 6px;margin-left: 15px;">
+                            资源索引生成速度:
+                        </div>
+                        <div class="col-xs-8" style="padding: 0;">
+                            <input id="set_upload_speed" style="width: 50%;display: inline-block;margin-right: 5px;"/>m/s
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>
+                            &emsp;下载设置
+                        </h4>
+                        <!-- <div class="col-xs-4">
+                        <label class="checkbox" for="checkbox7">
+                        <input type="checkbox" value="" id="checkbox7" data-toggle="checkbox">
+                        只在空闲时下载
+                        </label>
+                        </div>
+                        -->
+                        <div class="col-xs-4">
+                            <button style="margin-left: 15px;" class="btn btn-large btn-block btn-primary" id="button_download_path">选择目录</button> 
+                            <input type="file"  id="editbox_download_path" nwdirectory onchange="settingChange()" style="display:none">
+                            <!-- nwdirectory for open directory -->
+                        </div>
+                        <div class="col-xs-2">
+                            下载至:
+                        </div>
+                        <div class="col-xs-8" style="word-break: break-all;padding-right: 30px;">
+                            <p id="text_download_path">
+                            </p>
+                            <!-- load from json -->
+                        </div>
+                    </div>
+                    <div style="color: #48c9b0;margin-left: 15px;">注意：如果分享的文件位于移动存储设备中，打开软件前请确保移动设备接入电脑。</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="resetSettings()">
+                    恢复默认
+                </button>
+                <button type="button" class="btn btn-primary" id="btn_save_setting" onclick="saveSettings()">
+                    保存设置
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+                        新版本已经下载完毕，点击确定，软件将关闭并自动开始新版本的安装，点击取消，
+                        您可以稍后到所设置下载目录中自行更新。(更新客户端无需卸载，为保证软件正常运行，请勿删除.fbt文件夹)
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="update(1)">
+                    确定
+                </button>
+                <button type="button" class="btn btn-primary" onclick="update(0)">
+                    取消
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+                        <span id="addModalNick" style="color:#16a085"></span>想加你为好友,是否同意
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="addModalOk" type="button" class="btn btn-primary" onclick="handleFriend(1)">
+                    同意
+                </button>
+                <button id="addModalNo" type="button" class="btn btn-primary" onclick="handleFriend(0)">
+                    不同意
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="folderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width:750px;max-height:650px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="row">
+          <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+            <img src="images/fbtLogo2.png" class="img-responsive" />
+          </div>
+          <h5>文件夹下载</h5>
+        </div>
+      </div>
+      <div class="modal-body" style="padding-top: 0;">
+        <!-- <div class="row" style="border-bottom: 1px solid #E5E5E5; padding: 10px;">
+          <button type="button" class="btn btn-xs" id="btn-select-all" style="background: #4edec1; color: white;">全选</button>
+          <button type="button" class="btn btn-xs" id="btn-deselect-all" style="background: #4edec1; color: white;">全不选</button>
+        </div> -->
+        <div class="row">
+          <div id="folder-explorer" style="overflow-y: auto; overflow-x: hidden; max-height: 280px; font-size: 13px;">
+              <table id="treetable">
+                <colgroup>
+                <col width="30px"></col>
+                <col width="450px"></col>
+                <col width="80px"></col>
+                <col width="90px"></col>
+                <col width="90px"></col>
+                </colgroup>
+                <thead>
+                    <tr> <th></th> <th>文件名</th> <th>大小</th> <th>下载总数</th><th>在线/总数</th> </tr>
+                </thead>
+                <tbody>
+                    <tr> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+                </tbody>
+            </table>
+            <div id="folder-loading" style="text-align: center;display:none"><img src="images/loading2.gif" style="display:inline-block;margin: auto;"></div>
+            <div style="text-align: center;color: red;display:none" id="folder-error"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="btn-cancel-download">取消下载</button>
+        <button type="button" class="btn btn-primary" id="btn-download-selected-files">下载(0/0)</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="folderViewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width:630px;overflow-y:scroll;max-height:590px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="row">
+          <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+            <img src="images/fbtLogo2.png" class="img-responsive" />
+          </div>
+          <h5>文件夹下载</h5>
+        </div>
+      </div>
+      <div class="modal-body" style="padding-top: 0;">
+        <div class="row">
+          <div id="folder-view-explorer" style="overflow-y: auto; overflow-x: hidden; max-height: 280px; font-size: 13px;">
+            <table id="treetable-view">
+                <colgroup>
+                <col width="450px"></col>
+                <col width="80px"></col>
+                <col width="90px"></col>
+                </colgroup>
+                <thead>
+                    <tr> <th>文件名</th> <th>大小</th> <th>下载进度</th></tr>
+                </thead>
+                <tbody>
+                    <tr> <td></td> <td></td> <td></td> </tr>
+                </tbody>
+            </table>
+            <div id="folder-view-loading" style="text-align: center;display:none"><img src="images/loading2.gif" style="display:inline-block;margin: auto;"></div>
+            <div style="text-align: center;color: red;display:none" id="folder-view-error"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="row" style="word-break: break-all;margin: auto;">
+                    <img src="images/loginPic3.png">
+                    <h5>
+                        FBT: 快乐源于分享
+                    </h5>
+                    <p>版本号：1.9.1</p>
+                    <p>Copyright © 2014-2015 www.friendsbt.com all rights reserved​</p>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="uploadCancelModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+                        确定要取消上传吗？
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="uploadCancel" type="button" class="btn btn-primary" onclick="cancelUpload(1)">
+                    是
+                </button>
+                <button type="button" class="btn btn-primary" onclick="cancelUpload(0)">
+                    否
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="delFriendModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+                        你确定要跟该好友说再见吗？
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmDelFriend" type="button" class="btn btn-primary" onclick="confirmDelFriend(1)">
+                    是
+                </button>
+                <button type="button" class="btn btn-primary" onclick="confirmDelFriend(0)">
+                    否
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="fbRuleModal" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 787px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="fbTime" style="float:right">10</span>
+                <div class="row">
+                    <div class="col-xs-1" style="position: relative;top: 13px;left: 6px;">
+                        <img src="images/fbtLogo2.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>
+                            FBT: 快乐源于分享
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="padding:0;padding-left: 20px;">
+                <div class="row">
+                    <div class="row" style="word-break: break-all;margin-left: 10px;margin-right: 12px;">
+                        <div style='clear: both;font: 18px/60px "Microsoft YaHei","黑体";text-align: left;color: #1abc9c;font-weight: bold;'>积分规则(详情见官网friendsbt.com)</div>
+                        <p style="font-weight: bold; color: #1abc9c;">收入：</p>
+                        <p>1. 注册成功，第一次登陆FBT送200个F币
+                        </p><p>2. 上传和下载私有圈资源（仅好友可见），无需F币</p>
+                        <p>3. 积分大于200的用户，每在线1小时，送10个F币</p>
+                        <p>4. 平台首发优质资源，下载超过100次时，奖励首发用户200F；下载超过500次时，再奖励500F</p>
+                        <p>5. 上传或下载资源并保持在线，每被他人成功下载一次，送1F币（资源总数小于20的送5F/次）。</p>
+                        <p>6. 关注我们微博和微信，或加入我们的QQ群，送200个F币</p>
+                        <p>7. 成功推荐身边同学注册FBT(注册时填写推荐人昵称或姓名)，奖励推荐人100F币，无上限。</p>
+                        <p>8. 周排行前十名每人奖励一个8G的U盘腕带，10-15名奖励1000F。15-20奖励500F。月排行榜第一名奖励1T的硬盘一个；2-10名每人奖励富德V189无线鼠标一个。</p>
+                        <p>9. 举报非法、劣质或者标题和内容不符的资源请发截图发邮件到fbt_copyright@163.com，核实后奖励第一个举报人500F</p>
+                        <p style="font-weight: bold; color: #1abc9c;">支出：</p>
+                        <p>1. 最新上传的资源，前十人下载免积分，之后的人下载扣的积分=1F*资源总数，50封顶。</p>
+                        <p>2. 上传的资源标题和内容不符或传错类别，扣除500个F币</p>
+                        <p>3. 上传非法（色情、反动等）公共资源扣除500个F币，情节严重者封号处理!</p>
+                        <p>4. 恶意刷分者，一旦查实，封IP处理!</p>
+                        <p>5. 上传质量差的视频资源又没标明的用户，罚500F。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

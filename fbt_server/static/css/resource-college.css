@@ -1,0 +1,100 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #35a0ed
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+/* for Angular-ui */
+.resource-college .nav,.resource-college .pagination,.resource-college .carousel,.resource-college .panel-title a { cursor: pointer; }
+
+.pagination_div {
+  width: 100%;
+  text-align: center;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: #35a0ed;
+    border-color: #35a0ed;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: #35a0ed;
+}
+
+.resource-college .tabs {
+  text-align: right;
+}
+.resource-college .tabs > div{
+  display: inline-block;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+
+.resource-college .tabs > span{
+  color: lightgrey;
+  font-size: 18px;
+}
+
+/*
+.resource-college > :nth-child(4) {
+  height: 460px;
+  overflow-y: auto;
+}
+*/
+
+.resource-college .group {
+  border: 1px solid #eee;
+  padding: 10px 10px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.resource-college .group:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.resource-college .group .logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.resource-college .group > .title {
+  /*
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+  */
+  display: inline-block;
+  max-width:  50%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.resource-college .group .title > span {
+  display: inline-block;
+  font-size: 12px;
+  color: grey;
+  font-weight: normal;
+}
+
+.resource-college .group .title > span:nth-of-type(2) {
+  margin-left: 10px;
+}

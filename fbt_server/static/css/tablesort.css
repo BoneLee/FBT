@@ -1,0 +1,92 @@
+th.tablesort-sortable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+table .tablesort-sortable:after{
+    content:"";
+    float:right;
+    margin-top:7px;
+    visibility:hidden;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+
+    border-top:none;
+    border-bottom:4px solid #000;
+}
+
+table .tablesort-desc:after{
+    border-top:4px solid #000;
+    border-bottom:none;
+}
+
+table .tablesort-asc,table .tablesort-desc{
+    background-color:rgba(141, 192, 219, 0.25);
+}
+
+table .tablesort-sortable:hover:after, table .tablesort-asc:after, table .tablesort-desc:after {
+    visibility:visible;
+}
+
+/*
+ * Styling for the table row shown in empty tables
+ */
+
+/* The row is always added as the first row in a table
+   Hide it by default */
+.showIfLast {
+    display: none;
+}
+
+/* Only show it if it is also the last row of the table. */
+.showIfLast:last-child {
+    display: table-row;
+}
+
+#courses_table {
+    width: 100%;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+#courses_table .type_icon {
+    height: 32px;
+    width: 32px;
+}
+
+#courses_table tbody tr:hover {
+    background-color:lightgrey;
+}
+
+#courses_table .download .btn {
+    padding: 2px 4px;
+}
+
+#courses_table .download .btn.default {
+    background: none repeat scroll 0% 0% #FFF;
+    color: #808080;
+    border: 1px solid #D3D3D3;
+    font-size: 14px;
+}
+
+#courses_table span.ellipsis {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.showIfLast td {
+    text-align: center;
+}
+
+.showIfLast td:after {
+    content: "抱歉，未能搜索到符合条件的结果。赶紧去发布悬赏让小伙伴们帮你搜罗想要的资源吧！";
+}

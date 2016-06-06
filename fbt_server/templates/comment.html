@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+<body>
+    <form action="/resource/comment/post" method="post" onsubmit="return true">
+      {% module xsrf_form_html() %}
+      <input type="text" name="content" placeholder="雁过留痕，说点什么" required/>
+      <input type="hidden" name="file_id" value="{{file_id}}"/>
+      <input type="submit" value="Post"/>
+    </form>
+</body>
+</html>

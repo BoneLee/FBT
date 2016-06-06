@@ -1,0 +1,95 @@
+#selector-container > .modal-dialog {
+  width: 680px;
+}
+
+#selector-container > .modal-header span {
+  color: #505254;
+  margin-left: 20px;
+}
+
+#selector-container .groups > span {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#selector-container .groups > span:hover {
+  color: #1abc9c;
+}
+
+#selector-container .choosed {
+  color: #1abc9c;
+}
+
+#selector-container .entities {
+  text-align: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 120px;
+}
+
+#selector-container .entities > span {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#selector-container .entities > span:hover {
+  color: #1abc9c;
+}
+
+#scselector-container > .modal-dialog {
+  width: 850px;
+}
+
+#scselector-container > .modal-header span {
+  color: #505254;
+  margin-left: 20px;
+}
+
+#scselector-container .groups > span {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#scselector-container .groups > span:hover {
+  color: #1abc9c;
+}
+
+#scselector-container .choosed {
+  color: #1abc9c;
+}
+
+#scselector-container .entities {
+  text-align: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100px;
+}
+
+#scselector-container .entities > span {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#scselector-container .entities > span:hover {
+  color: #1abc9c;
+}
+
+/*
+#scselector-container  .modal-footer button {
+  background-color: #1abc9c;
+  color: white;
+  padding: 3px 6px;
+}
+*/

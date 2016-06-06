@@ -1,0 +1,18 @@
+.myLogin{
+	border-radius: 6px;
+	padding: 20px 20px 20px 20px;
+}
+
+.footerText{
+		color: #fff;
+	font-size: 16px;
+	line-height: 26px;
+	text-align: right;
+}
+
+.footer{  
+	font-family: "Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+  position:fixed;  
+  bottom:0;  
+  width:100%;  
+ } 

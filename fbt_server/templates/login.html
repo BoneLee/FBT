@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>校园星空</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+    <div id="main">
+        <div id="header">
+            <h1>
+                你“正在进行的操作需要登录”校园星空
+            </h1>
+        </div>
+        <div id="form">
+            <form method="post" action="/login">
+                <input type="hidden" name="action" value={{action}}>
+                <div>帐号（登录邮箱）：</div>
+                <input name="user" autofocus="true" type="text">
+                <div>密 码(TODO 底层md5)：</div>
+                <input name="passwd" type="text">
+                <button type="submit" >登录</button>
+            </form>
+        </div>
+
+        <div class="fixed"></div>
+        <div id="footer">
+            <a href="http://www.study.friendsbt.com" title="校园星空">校园星空，发现闪光的你！</a>
+        </div>
+    </div>
+    </body>
+</html>

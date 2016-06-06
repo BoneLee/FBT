@@ -1,0 +1,225 @@
+.topcontrol(title="回到顶部",style="position: fixed; bottom: 165px; right: 25px; cursor: pointer; display: none;")
+  img(src="/images/gotop.gif",onclick="window.scrollTo(0,0);return false;",style="width:31px; height:31px;")
+ul.nav.nav-tabs.navbar-fixed-top
+  .collapse.navbar-collapse
+    ul.nav.navbar-nav.fb_nav
+      li.active
+        a#fbTab3.clickable(href='#fbMall', data-toggle='tab',style="border-bottom: 3px solid #1abc9c")
+          | 积分商城
+      li
+        a#fbTab0.clickable(href='#fbWeek', data-toggle='tab')
+          | 周排行
+      li
+        a#fbTab1.clickable(href='#fbMonth', data-toggle='tab')
+          | 月排行
+      li
+        a#fbTab2.clickable(href='#fbAll', data-toggle='tab')
+          | F币富豪榜
+    //- .navbar-left
+    //-   a#jifen(style="cursor:pointer;font-size: 16px;padding: 10px 21px;line-height: 15px;font-weight: 700;") 积分规则
+    ul.nav.navbar-nav.navbar-right(style="margin-right: -5px;")
+      // <li><a href="/myInfo">{{ current_user }}</a></li>
+      li
+        a(href='/index',style="font-size: 14px;") FBT
+      li
+        a(href='/mySpace',title="个人中心")
+          span.glyphicon.glyphicon-user
+      li
+        a(href='#', data-toggle='modal', data-target='#settingModal',title="设置")
+          span.glyphicon.glyphicon-cog
+      //- li
+      //-   a(href='#', onclick='quit()',title="退出") 
+      //-     span.glyphicon.glyphicon-log-out
+.tab-content
+  #fbMall.tab-pane.fade.in.active(style="padding-top:36px;")
+  #fbWeek.tab-pane.fade(style="padding-top:36px;")
+    table.table.week-list(style="margin-left: 50px;margin-right: 50px;width:72%;")
+      tr
+        th(style="text-align: center;")排名
+        th(style="text-align: center;")用户昵称
+        th(style="text-align: center;")用户积分
+        th(style="text-align: center;")本周获得的积分
+  #fbMonth.tab-pane.fade(style="padding-top:36px;")
+    table.table.month-list(style="margin-left: 50px;margin-right: 50px;width:72%;")
+      tr
+        th(style="text-align: center;")排名
+        th(style="text-align: center;")用户昵称
+        th(style="text-align: center;")用户积分
+        th(style="text-align: center;")本月获得的积分
+  #fbAll.tab-pane.fade(style="padding-top:36px;")
+    table.table.F-list(style="margin-left: 50px;margin-right: 50px;width:72%;")
+      tr
+        th(style="text-align: center;")排名
+        th(style="text-align: center;")用户昵称
+        th(style="text-align: center;")用户积分
+  img#fbLoadingGif.img-responsive(src='images/loading2.gif', style='display:inline-block;margin-top:10px') 
+script(type='text/javascript').
+  function fillData(type,data){
+    switch(type){
+      case 1:
+        for(var i=0; i<data.length; i++) {
+          var tmp = data[i];
+          var tr;
+          if(i<3)
+            tr = '<tr style="color:red"><td style="vertical-align: middle;padding: 2px;"><img style="width:50px;height:50px;border-radius: 40px;border: solid 2px #eeeeee;" src="'+tmp["icon"]+'"/>&nbsp;'+(i+1)+'</td><td style="vertical-align: middle;color:#1abc9c;"><a onclick="getFriendRes(&apos;/friend_res?public=1&uid='+tmp["uid"]+'&apos;)" style="text-decoration:none;cursor:pointer;">'+tmp["nick_name"]+'</a></td><td style="vertical-align: middle;">'+tmp["coin"]+'</td><td style="vertical-align: middle;">'+tmp["delta"]+'</td></tr>';
+          else  
+            tr = '<tr><td style="vertical-align: middle;color:#1abc9c;padding: 2px;"><img style="width:50px;height:50px;border-radius: 40px;border: solid 2px #eeeeee;" src="'+tmp["icon"]+'"/>&nbsp;'+(i+1)+'</td><td style="vertical-align: middle;color:#1abc9c;"><a onclick="getFriendRes(&apos;/friend_res?public=1&uid='+tmp["uid"]+'&apos;)" style="text-decoration:none;cursor:pointer;">'+tmp["nick_name"]+'</a></td><td style="vertical-align: middle;">'+tmp["coin"]+'</td><td style="vertical-align: middle;">'+tmp["delta"]+'</td></tr>';
+          $('.week-list').append(tr);
+        }
+        break;
+      case 2:
+        for(var i=0; i<data.length; i++) {
+          var tmp = data[i];
+          var tr;
+          if(i<3)
+            tr = '<tr style="color:red"><td style="vertical-align: middle;padding: 2px;"><img style="width:50px;height:50px;border-radius: 40px;border: solid 2px #eeeeee;" src="'+tmp["icon"]+'"/>&nbsp;'+(i+1)+'</td><td style="vertical-align: middle;color:#1abc9c;"><a onclick="getFriendRes(&apos;/friend_res?public=1&uid='+tmp["uid"]+'&apos;)" style="text-decoration:none;cursor:pointer;">'+tmp["nick_name"]+'</a></td><td style="vertical-align: middle;">'+tmp["coin"]+'</td><td style="vertical-align: middle;">'+tmp["delta"]+'</td></tr>';
+          else
+            tr = '<tr><td style="vertical-align: middle;color:#1abc9c;padding: 2px;"><img style="width:50px;height:50px;border-radius: 40px;border: solid 2px #eeeeee;" src="'+tmp["icon"]+'"/>&nbsp;'+(i+1)+'</td><td style="vertical-align: middle;color:#1abc9c;"><a onclick="getFriendRes(&apos;/friend_res?public=1&uid='+tmp["uid"]+'&apos;)" style="text-decoration:none;cursor:pointer;">'+tmp["nick_name"]+'</a></td><td style="vertical-align: middle;">'+tmp["coin"]+'</td><td style="vertical-align: middle;">'+tmp["delta"]+'</td></tr>';
+          $('.month-list').append(tr);
+        }
+        break;
+      case 3:
+        for(var i=0; i<data.length; i++) {
+          var tmp = data[i];
+          var tr;
+          if(i<10)
+            tr = '<tr style="color:red"><td style="vertical-align: middle;padding: 2px;"><img style="width:50px;height:50px;border-radius: 40px;border: solid 2px #eeeeee;" src="'+tmp["icon"]+'"/>&nbsp;'+(i+1)+'</td><td style="vertical-align: middle;color:#1abc9c;"><a onclick="getFriendRes(&apos;/friend_res?public=1&uid='+tmp["uid"]+'&apos;)" style="text-decoration:none;cursor:pointer;">'+tmp["nick_name"]+'</a></td><td style="vertical-align: middle;">'+tmp["coin"]+'</td></tr>';
+          else
+            tr = '<tr><td style="vertical-align: middle;color:#1abc9c;padding: 2px;"><img style="width:50px;height:50px;border-radius: 40px;border: solid 2px #eeeeee;" src="'+tmp["icon"]+'"/>&nbsp;'+(i+1)+'</td><td style="vertical-align: middle;color:#1abc9c;"><a onclick="getFriendRes(&apos;/friend_res?public=1&uid='+tmp["uid"]+'&apos;)" style="text-decoration:none;cursor:pointer;">'+tmp["nick_name"]+'</a></td><td style="vertical-align: middle;">'+tmp["coin"]+'</td></tr>';
+          $('.F-list').append(tr);
+        }
+        break;
+    }
+  }
+  $(function(){
+    //- $("#jifen").click(function(event) {
+    //-   /* Act on the event */
+    //-   event.preventDefault();
+    //-   window.open("http://www.friendsbt.com/#rules", "_blank");
+    //- });
+    $('.fb_nav > li > a.clickable').click(function () {
+      $(".fb_nav > li > a.clickable").css({"border-bottom": "3px solid #ecf0f1"});
+      $(this).css({"border-bottom": "3px solid #1abc9c"});
+    });
+    $("#fbTab0").click(function(){
+      $("html").css("overflow-y", "auto");
+      if($(this).attr("data") == 1){
+        return;
+      }
+      else{
+        $("#fbLoadingGif").show();
+        var that = this;
+        $.get("/fbrank?type=1",function(data){
+          var tmp;
+          try{
+            tmp = JSON.parse(data);
+          }
+          catch(e){
+            tmp = item;
+          }
+          $("#fbLoadingGif").hide();
+          if(tmp["type"] == 0)
+          {
+            showErrorToast("网络出现了故障，请重试");
+            return;
+          }
+          if($(that).attr("data") == 1){
+            return;
+          }
+          $(that).attr("data", 1);
+          fillData(1,tmp["data"]);
+        });
+      }
+    });
+    $("#fbTab1").click(function(){
+      $("html").css("overflow-y", "auto");
+      if($(this).attr("data") == 1){
+        return;
+      }
+      else{
+        $("#fbLoadingGif").show();
+        var that = this;
+        $.get("/fbrank?type=2",function(data){
+          var tmp;
+          try{
+            tmp = JSON.parse(data);
+          }
+          catch(e){
+            tmp = item;
+          }
+          $("#fbLoadingGif").hide();
+          if(tmp["type"] == 0)
+          {
+            showErrorToast("网络出现了故障，请重试");
+            return;
+          }
+          if($(that).attr("data") == 1){
+            return;
+          }
+          $(that).attr("data", 1);
+          fillData(2,tmp["data"]);
+        });
+      }
+    });
+    $("#fbTab2").click(function(){
+      $("html").css("overflow-y", "auto");
+      if($(this).attr("data") == 1){
+        return;
+      }
+      else{
+        var that = this;
+        $("#fbLoadingGif").show();
+        $.get("/fbrank?type=3",function(data){
+          var tmp;
+          try{
+            tmp = JSON.parse(data);
+          }
+          catch(e){
+            tmp = item;
+          }
+          $("#fbLoadingGif").hide();
+          if(tmp["type"] == 0)
+          {
+            showErrorToast("网络出现了故障，请重试");
+            return;
+          }
+          if($(that).attr("data") == 1){
+            return;
+          }
+          $(that).attr("data", 1);
+          fillData(3,tmp["data"]);
+        });
+      }
+    });
+    $("#fbTab3").click(function(){
+      $("html").css("overflow-y", "auto");
+      if($(this).attr("data") == 1){
+        return;
+      }
+      else{
+        $("#fbLoadingGif").show();
+        var frame = $("<iframe id='fmallFrame'></iframe>");
+        frame.attr("src","http://127.0.0.1:12345/fmall");
+        frame.attr("width", $(window).width());
+        frame.attr("height", $(window).height());
+        var left = $("#fbMall").css("margin-left");
+        var p_left = $("#fbMall").css("padding-left");
+        left = window.parseInt(left.replace("px","")) + window.parseInt(p_left.replace("px",""));
+        frame.css("margin-left",-left+"px");
+        $("#fbMall").html(frame);
+        if($(this).attr("data") == 1){
+          return;
+        }
+        $(this).attr("data", 1);
+        $("#fbLoadingGif").hide();
+
+        // fbmall page auto fit window size
+        $(window).resize(function() {
+        var frame = $('#fmallFrame');
+        frame.attr("width", $(window).width());
+        frame.attr("height", $(window).height() - 19);
+        });
+      }
+    });
+    $("#fbTab3").click();
+  });

@@ -1,0 +1,458 @@
+/*这部分是问答详情的css样式*/
+
+.question-detail .back-color {
+    background-color: #f4f6f6;
+}
+
+.extern.question-detail .modal-body {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.extern.question-detail .form-group {
+    padding-top:10px;
+}
+
+.extern.question-detail .row {
+    margin-right: 15px;
+}
+
+.extern.question-detail .course-info img {
+    width: 160px;
+    height: 160px;
+}
+
+.extern.question-detail  .question-info img {
+    width: 50px;
+    height: 50px;
+}
+
+.extern.question-detail .course-info .line-height {
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+
+.extern.question-detail  .button-style {
+    padding: 0px;
+    width:100px;
+    height: 35px;
+}
+
+.extern.question-detail .question-info .title {
+    font-weight:bold;
+    color: #000000;
+}
+
+.extern.question-detail .content-color {
+    color:#000000;
+}
+
+.extern.question-detail .to-right {
+    text-align: right;
+}
+
+.extern.question-detail .question-info .line-height {
+    margin-top:5px;
+    margin-bottom: 5px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.extern.question-detail .question-info .content {
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+.extern.question-detail .course-info .to-left {
+    margin-left: -80px;
+}
+
+.extern.question-detail .question-info .to-middle {
+    text-align: center;
+}
+
+.extern.question-detail textarea {
+    resize:none;
+}/*--end----*/
+
+/*这部分是问答起始页面的css样式（用户未登录时）*/
+
+/*.extern.question_answer {*/
+    /**/
+/*}*/
+
+.extern.question_answer .top {
+    height: 200px;
+    background-color: #35a0ed;
+}
+
+.extern.question_answer .font-color {
+    color:#ffffff;
+}
+
+.extern.question_answer input {
+    width: 200px;
+}
+
+.extern.question_answer .back-color {
+    background-color: #f4f6f6;
+}
+
+.extern.question_answer .login-style {
+    width: 200px;
+    height: 35px;
+    border: 1px solid #f4f6f6;
+    background-color: #35a0ed;
+    color:#FFFFFF;
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.extern.question_answer .login-style:hover {
+    background-color: #117a65;
+    border: 1px solid #117a65;
+}
+
+.extern.question_answer .to-left {
+    text-align: left;
+}
+
+.extern.question_answer .to-right {
+    text-align: right;
+}
+
+.extern.question_answer .to-middle {
+    text-align: center;
+}
+
+.extern.question_answer .body-top {
+    background-color: #f4f6f6;
+    height: 80px;
+    overflow-x: hidden;
+}
+
+.extern.question_answer {
+    letter-spacing: 2px;
+}
+
+.extern.question_answer .body-top img{
+    height: 60px;
+    width: 60px;
+    margin-top:10px;
+    cursor: pointer;
+}
+
+.extern.question_answer .body-top .carousel-control.left {
+    /*background-image: linear-gradient(to right, rgba(49, 204, 230, 0.71) 0px, rgba(224, 207, 22, 0) 100%);*/
+    cursor: pointer;
+    height: 80px;
+    width: 80px;
+}
+
+.extern.question_answer .body-top .carousel-control.right {
+    /*background-image: linear-gradient(to left, rgba(49, 204, 230, 0.71) 0px, rgba(224, 207, 22, 0) 100%);*/
+    cursor:pointer;
+    height: 80px;
+    width:80px;
+}
+
+.extern.question_answer .content .carousel-control.left {
+    display: none;
+}
+
+.extern.question_answer .content .carousel-control.right {
+    display: none;
+}
+
+.extern.question_answer .carousel-indicators {
+    display: none;
+}
+
+.extern.question_answer .content img {
+    width:50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.extern.question_answer .content {
+    margin-top: 10px;
+}
+
+.extern.question_answer .content-style {
+    text-indent: 2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    cursor: pointer;
+    color: #000000;
+}
+
+.extern.question_answer  .content-style a:hover{
+    text-decoration: underline;
+}
+.extern.question_answer .content-style a {
+    color: #000000;
+}
+
+.extern.question_answer .top a{
+    color:#ffffff;
+}
+
+.extern.question_answer .part-margin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.extern.question_answer .part-margin {
+    padding-top: 10px;
+}/*---end----*/
+
+/*这里是question-class.html文件的css样式*/
+
+/*.extern.question_class {*/
+    /*margin-top: -72px;*/
+/*}*/
+
+.extern.question_class .body .to-left {
+    padding-right:430px ;
+}
+
+.extern.question_class .body .to-left  img{
+    width: 20px;
+    height: 20px;
+}
+
+.extern.question_class .col-sm-12 {
+    padding-left: 0px ;
+    padding-right: 0px;
+}
+
+.extern.question_class .back-color {
+    background-color: #f4f6f6;
+}
+
+.extern.question_class .font-color {
+    color:#666
+}
+
+.extern.question_class {
+    color: #000000;
+}
+
+.extern.question_class .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+}
+
+.extern.question_class {
+    letter-spacing: 3px;
+}
+
+.extern.question_class .header {
+    height:80px;
+    background-color: #35a0ed;
+}
+
+.extern.question_class .header input {
+    width: 400px;
+    height: 40px;
+    background-color: #f4f6f6;
+    margin-top: 12px;
+}
+
+
+.extern.question_class  .body .img-small  img{
+    width:30px;
+    height: 30px;
+}
+
+.extern.question_class .header img {
+    width:40px;
+    height: 40px;
+}
+
+.extern.question_class .body img {
+    width: 50px;
+    height: 50px;
+}
+
+.extern.question_class .body .course-link img {
+    height: 20px;
+    width: 20px;
+}
+
+.extern.question_class .body li {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.extern.question_class .body li:hover {
+    background-color: #35a0ed;
+    color: #f4f6f6;
+}
+
+.extern.question_class .body .img-small li:hover {
+    color: #000000;
+}
+
+.extern.question_class .body .img-small li{
+    text-align: left;
+    background-color: #FFFFFF;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+.extern.question_class .body .img-small .back-color {
+    background-color: #f4f6f6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.extern.question_class .body .img-small .back-color:hover {
+    background-color: #35a0ed;
+    color:#FFFFFF;
+}
+
+.extern.question_class .body ul .active {
+    background-color: #35a0ed;
+    color:#FFFFFF;
+}
+
+.extern.question_class .body ul {
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #f4f6f6;
+}
+
+.extern.question_class .body .nav-title {
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.extern.question_class .body .nav-title span {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #f4f6f6;
+    cursor: pointer;
+    text-align: center;
+    display:block;
+}
+
+.extern.question_class .body .nav-title .active {
+    background-color: #35a0ed;
+    color:#FFFFFF;
+}
+
+.extern.question_class .body .nav-title span:hover {
+    background-color: #35a0ed;
+    color: #FFFFFF;
+}
+
+.extern.question_class .body header {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.extern.question_class .body .content, .extern.question_class .body .course-link {
+   padding: 10px 0px;
+}
+
+.extern.question_class .body footer {
+    padding-bottom: 5px;
+    border-bottom:1px dashed #888;
+}
+
+.extern.question_class .body footer span {
+    padding: 5px 20px;
+    color: #666;
+}
+
+.extern.question_class .img-bottom-number {
+    width:50px;
+    letter-spacing: 0px;
+    background-color: #f4f6f6;
+    display: block;
+    text-align: center;
+}
+
+/*这是myquestion部分的css*/
+
+.extern.myquestion {
+    margin-top: 10px;
+    color: #000000;
+}
+
+.extern.myquestion p {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.extern.myquestion .back-color {
+    background-color: #f4f6f6;
+}
+
+.extern.myquestion  .row {
+    margin: 10px 10px;
+}
+
+.extern.myquestion .user img {
+    width:100px;
+    height: 100px;
+}
+
+.extern.myquestion .user div {
+    height: 100px;
+    margin-left:5px;
+    margin-right: 5px;
+}
+
+.extern.myquestion .title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.extern.myquestion .title span{
+    padding: 0px 70px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.extern.myquestion .title span:hover {
+    font-weight: bold;
+}
+
+.extern.myquestion .title .active {
+    font-weight: bold;
+}
+
+.extern.myquestion .content img {
+    width:50px;
+    height: 50px;
+}
+
+.extern.myquestion header {
+    padding-top:20px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.extern.myquestion article {
+    padding-top: 10px;
+}
+
+.extern.myquestion footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.extern.myquestion footer span {
+    padding: 0px 20px;
+    color: #666;
+}

@@ -1,0 +1,35 @@
+.pagination-container {
+  color: grey;
+  margin: 10px 0;
+}
+
+.pagination-container > span {
+  border: 1px solid lightgrey;
+  padding: 6px 10px;
+  border-left-width: 0;
+}
+
+.pagination-container > .prev-button {
+  border-left-width: 1px;
+  border-radius: 3px 0 0 3px;
+}
+
+.pagination-container > .next-button {
+  border-radius: 0 3px 3px 0;
+}
+
+.pagination-container > span:hover {
+  background: rgba(0, 0, 0, 0.05);                                                                                                                        
+  cursor: pointer;
+}
+
+.pagination-container > .disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  color: grey;
+}
+
+.pagination-container > .current-button {
+  background: rgba(0, 0, 0, 0.05);                                                                                                                        
+  font-weight: bold;
+}

@@ -1,0 +1,591 @@
+style.
+  .editA{
+  cursor: pointer;
+  }
+  .resume{padding-top: 18px; padding-bottom: 0px;clear: both;}
+  .other{padding-top: 0px;padding-bottom: 12px;}
+  body{padding-top: 70px;}
+  h1,h2,h3,h4{color: #1abc9c;}
+  p{color: #7f8c8d;}
+  .order{color: #1abc9c;}
+  .divLine{height: 1px; width: 50%; border: dashed 1px;}
+  .imgDiv{padding-top: 30px;}
+  .navbar-default .navbar-brand {color: #1abc9c;}
+  .myActive{background-color: #bbbbbb;}
+  .editA{display: inline;}
+  .iWannaSay{color: #7F8C8D;}
+  /*这两行CSS模拟了flatUI典型的input样式*/
+  input{border: 2px solid #dce4ec; color: #34495e; border-radius: 6px;
+  transition: border linear .2s,box-shadow linear .2s;}
+  input:focus{border-color: #1abc9c; -webkit-box-shadow: none;
+  -moz-box-shadow: none; box-shadow: none; outline: none;}
+  input{display: block; margin-bottom: 6px;}
+  .modifyPassword{color: #da4f49;}
+  .item{
+  border-bottom: solid 1px #d8d8d8;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  }
+  .score{float: left; width: 33%; padding-bottom: 6px; color: red;}
+  .pcs{display: inline-block; width: 33%; text-align: right; padding-bottom: 6px;}
+  .doneWithComment{text-align: right;}
+  .status{float: left; width: 33%; padding-bottom: 6px; color: #1abc9c;}
+  .downloadingDiv{padding-right: 0px; height: 40px;}
+  .downloadingRow{padding-top: 10px;}
+  .downloadingCancelDiv{color: red; height: 40px;}
+  .downloadingCancelA{color: red;}
+  .col-lg-6 > span{
+  float: left;
+  font-size: 22px;
+  }
+  .msg p{
+  font-size: 22px;
+  }
+  #shuo{
+  word-break: break-all;
+  color: #1abc9c;font-size: 20px;font-family: inherit;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 10px;
+  padding: 4px;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  }
+  .demo-title{
+    font-size: 20px;
+    position: relative;
+    top: 11px;
+  }
+  .demo-content.demo-content-article p {
+    margin-bottom: 10px;
+  }
+b#m_size(style="display:none")= result.size
+.topcontrol(title="回到顶部",style="position: fixed; bottom: 165px; right: 25px; cursor: pointer; display: none;")
+  img(src="/images/gotop.gif",onclick="window.scrollTo(0,0);return false;",style="width:31px; height:31px;")
+ul.nav.nav-tabs.navbar-fixed-top
+  .collapse.navbar-collapse
+    ul.nav.navbar-nav.info_nav
+      li.active
+        a.clickable(href='#myShares', data-toggle='tab',style="border-bottom: 3px solid #1abc9c")
+          span.glyphicon.glyphicon-cloud
+          | &nbsp;我的分享
+      li
+        a.clickable(href='#myInfos', data-toggle='tab')
+          span.glyphicon.glyphicon-folder-close
+          | &nbsp;我的个人档
+    ul.nav.navbar-nav.navbar-right(style="margin-right: -5px;")
+      // <li><a href="/myInfo">{{ current_user }}</a></li>
+      li
+        a(href='/index',style="font-size: 14px;") FBT
+      li
+        a(href='/mySpace',title="个人中心")
+          span.glyphicon.glyphicon-user
+      li.dropdown
+      li
+        a(href='#', data-toggle='modal', data-target='#settingModal',title="设置")
+          span.glyphicon.glyphicon-cog
+      //- li
+      //-   a(href='#', onclick='quit()',title="退出") 
+      //-     span.glyphicon.glyphicon-log-out
+    // /.nav-collapse
+.container.tab-content
+  #myInfos.tab-pane.fade(style="padding: 50px;")
+    #d1.jumbotron(style="padding: 0 10px;margin-bottom: 0px;background: none;")
+      .row
+        .col-sm-10
+          h4.iWannaSay
+            | &#x6211;&#x60F3;&#x8BF4;&emsp;
+            span.glyphicon.glyphicon-bullhorn
+          #shuo(contentEditable="true")= result.shuo
+        .col-sm-2
+          img#userIcon(src=result.user.icon ,style="width: 70px;height: 70px;margin-top: 26px;border-radius: 35px;border: 4px solid white;")
+          span#editIcon.glyphicon.glyphicon-pencil(style="float: right;position: relative;top: 68px;right: 58px;cursor: pointer;padding: 5px;background: white;border-radius: 15px;font-size: 14px;")
+          input#editIconFile(type="file",style="display:none",accept=".png,.jpg,.gif,.jpeg")
+    .container.msg
+      .resume
+        .demo-title
+          h2 &#x79C1;&#x5BC6;&#x4FE1;&#x606F;:
+        .demo-content.demo-content-article
+          .col-lg-6
+            span &#x771F;&#x540D;&#xFF1A;
+            p#realName!= "&nbsp;"+result.user.real_name
+            span &#x624B;&#x673A;&#xFF1A;
+            p#tel!= "&nbsp;"+result.user.phone
+            span QQ&#xFF1A;
+            p#qq!= "&nbsp;"+result.user.qq
+          .col-lg-6
+            h2
+              b.editA(onclick='showModifyModal(0)')
+                span.glyphicon.glyphicon-edit
+      .resume
+        .demo-title
+          h2 &#x57FA;&#x672C;&#x4FE1;&#x606F;:
+        .demo-content.demo-content-article
+          .col-lg-6
+            span &#x6027;&#x522B;&#xFF1A;
+            p#gender!= "&nbsp;"+result.user.gender
+            span &#x611F;&#x60C5;&#x72B6;&#x6001;&#xFF1A;
+            p#love!= "&nbsp;"+result.user.love_state
+            span &#x9662;&#x6821;&#xFF1A;
+            p#school!= "&nbsp;"+result.user.school
+            span &#x73B0;&#x5C45;&#xFF1A;
+            p#addr!= "&nbsp;"+result.user.address
+            span 昵称：
+            p#nickName!= "&nbsp;"+result.user.nick_name
+          .col-lg-6
+            h2
+              b.editA(onclick='showModifyModal(1)')
+                span.glyphicon.glyphicon-edit
+      .resume
+        .demo-title
+          h2 &#x8D26;&#x6237;&#x4FE1;&#x606F;:
+        .demo-content.demo-content-article
+          .col-lg-6
+            span 用户名：
+            p#email!= "&nbsp;"+result.user.user
+            span 密码：
+          .col-lg-6
+            h2
+              b.editA(onclick='showModifyModal(2)')
+                span.glyphicon.glyphicon-edit
+  #myShares.tab-pane.fade.in.active(style="padding-top: 40px;")
+    #text_my_home_page_tips
+      center
+        h3#my_text_tips &#x6B63;&#x5728;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x5217;&#x8868;...
+    #more_resources1_top.get_more_resources1(style="height: 32px;")
+    #container_my_resources.container
+    #pageloadingwrap3(style="text-align:center;margin-top:20px")
+      img#pageloading3.img-responsive(src='images/loading2.gif', style='display:none;margin:auto')
+    #more_resources1_bottom.get_more_resources1
+// /.container
+// Modal
+#myModal0.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel0', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button') &times;
+        h4#myModalLabel0.modal-title &#x4FEE;&#x6539;&#x4FE1;&#x606F;
+      .modal-body
+        h5.modal-title &#x79C1;&#x5BC6;&#x4FE1;&#x606F;
+        input#nameInModal(type='text', value='', placeholder='真名')
+        input#telInModal(type='text', value='', placeholder='手机')
+        input#qqInModal(type='text', value='', placeholder='QQ')
+      .modal-footer
+        button.btn.btn-primary(type='button', onclick='saveChange(0)') &#x4FDD;&#x5B58;
+    // /.modal-content
+  // /.modal-dialog
+// /.modal
+// Modal
+#myModal1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel1', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button') &times;
+        h4#myModalLabel1.modal-title &#x4FEE;&#x6539;&#x4FE1;&#x606F;
+      .modal-body
+        h5.modal-title &#x57FA;&#x672C;&#x4FE1;&#x606F;
+        div(style='height: 42px;margin-top: 5px;')
+          | &#x6027;&#x522B;&#xFF1A;
+          select#genderInModal(value='男')
+            option(value='男') &#x7537;
+            option(value='女') &#x5973;
+        div(style='height: 42px;')
+          | &#x611F;&#x60C5;&#x72B6;&#x6001;&#xFF1A;
+          select#loveInModal(value='单身')
+            option(value='单身') &#x5355;&#x8EAB;
+            option(value='暧昧') &#x66A7;&#x6627;
+            option(value='恋爱') &#x604B;&#x7231;
+            option(value='已婚') 已婚
+        input#schoolInModal(type='text', value='', placeholder='院校')
+        input#addrInModal(type='text', value='', placeholder='现居')
+        input#nickNameInModal(type='text', value='', placeholder='昵称')
+      .modal-footer
+        button.btn.btn-primary(type='button', onclick='saveChange(1)') &#x4FDD;&#x5B58;
+    // /.modal-content
+  // /.modal-dialog
+// /.modal
+// Modal
+#myModal2.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel2', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button') &times;
+        h4#myModalLabel2.modal-title &#x4FEE;&#x6539;&#x4FE1;&#x606F;
+      .modal-body
+        h5.modal-title &#x8D26;&#x6237;&#x4FE1;&#x606F;
+        input#originPwdInModal(type='password', value='', placeholder='原始密码')
+        h5#myModalLabel.modal-title.modifyPassword
+          span.glyphicon.glyphicon-warning-sign
+          |           &#x4FEE;&#x6539;&#x5BC6;&#x7801;
+        input#passwordInModal(type='password', value='', placeholder='新密码')
+        input#confirmPasswordInModal(type='password', value='', placeholder='确认密码')
+        span#confirm(style='display:none;color:red') &#x5BC6;&#x7801;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x8BF7;&#x68C0;&#x67E5;
+      .modal-footer
+        button.btn.btn-primary(type='button', onclick='saveChange(2)') &#x4FDD;&#x5B58;
+    // /.modal-content
+  // /.modal-dialog
+// /.modal
+script(type='text/javascript').
+  function resizeImage(fileToUpload, callback) {
+    var file = fileToUpload;
+    var img = document.createElement("img");
+    var reader = new FileReader();
+    reader.onload = function(e)
+    {
+        img.src = e.target.result;
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var MAX_WIDTH = 70;
+        var MAX_HEIGHT = 70;
+        var width = img.width;
+        var height = img.height;
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        var dataurl = canvas.toDataURL("image/png");
+        //document.getElementById('image').src = dataurl;     
+        console.log(dataurl);
+        callback(dataurl);
+    }
+    reader.readAsDataURL(file);
+  }
+
+  var user;
+  var nums = 0;
+  $(function(){
+    copyMsg("body > div.wrap_all");
+    $("#editIcon").click(function(){
+      $("#editIconFile").click();
+    });
+    $("#editIconFile").on('change',function(){
+      var value = $("#editIconFile").val();
+      if(!value)
+        return; 
+      resizeImage($("#editIconFile")[0].files[0], function(dataurl) {
+        $.get("/editIcon?path=" + encodeURIComponent(dataurl),function(data){
+          $("#editIconFile").val("");
+          var tmp_data;
+          try{
+            tmp_data = JSON.parse(data);
+          }
+          catch(e){
+            tmp_data = data;
+          }
+          data = tmp_data;
+          if("type" in data && data["type"] == 1){
+            showSuccessToast("修改成功");
+            $("#userIcon").attr("src", dataurl);
+          }
+          else{
+            if("error" in data)
+              showErrorToast(data["error"]);
+            else
+              showErrorToast("修改失败，请重试");
+          }
+        },true);
+      });
+    }); 
+    var shuo = "点击编辑，鼠标移开即可保存";
+    var pre_shuo;
+    $("#shuo").mouseenter(function(){
+      if($.trim($(this).text()) == shuo)
+        $(this).text("");
+      pre_shuo = $(this).text();
+      $(this).css({"border": "solid 1px"});
+    });
+    $("#shuo").mouseleave(function(){
+      $(this).css({"border": "solid 0px"});
+      var content = $.trim($(this).text());
+      content = htmlencode(content);
+      if(content.length > 140){
+        showErrorToast("很抱歉，说说最长为140字");
+        return;
+      }
+      if(content == shuo || !content)
+      {
+        $(this).text(shuo);
+        return;
+      }
+      else if(content == pre_shuo)
+        return;
+      content = htmlencode(content);
+      var param = {};
+      param["op"] = 0;
+      param["param"] = content;
+      $.post('/myShuo', param, function(data, textStatus, xhr) {
+      /*optional stuff to do after success */
+      //console.log(data);
+      //data = $.parseJSON(data)
+      if(data["type"] && data["type"] == 1)
+      {
+      /*data = $.parseJSON(data["result"])*/
+      showSuccessToast(data["result"]["result"]);
+      }
+      else{
+      showErrorToast(data["error"])
+      }
+      });
+    });
+    $(".close").click(function(event) {
+    /* Act on the event */
+    $('#myModal'+nums).modal('hide');
+    });
+    user = {
+    "realName":$("#realName").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "tel":$("#tel").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "qq":$("#qq").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "gender":$("#gender").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "love":$("#love").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "school":$("#school").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "addr":$("#addr").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "email":$("#email").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "nickName":$("#nickName").html().replace(new RegExp("&nbsp;", 'g'), "")
+    }
+    //- currentMyPage = 1;
+    //- $("#btn_get_more_resources1").click(function () {
+    //-   $(this).attr("disabled", true);
+    //-   $("#loadingText1").text("正在获取更多...");
+    //-   $("#loadingGif1").show();
+    //-   currentMyPage += 1;
+    //-   $.post("/res", {"op":8, "uid":window.fbtUID,"page": currentMyPage, "friend":window.fbtUID}, function(item, textStatus, xhr){
+    //-     var tmp;
+    //-     try{
+    //-       tmp = JSON.parse(item);
+    //-     }
+    //-     catch(e){
+    //-       tmp = item;
+    //-     }
+    //-     var data = {};
+    //-     data["type"] = tmp["type"];
+    //-     data["resource_list"] = tmp["resource_list"];
+    //-     data["html"] = tmp["html"];
+    //-     var len = tmp["resource_list"].length;
+    //-     if("len" in tmp)
+    //-       len = tmp["len"]
+    //-     getResListCallback(len,1,data,'#container_my_resources','#text_my_home_page_tips');
+    //-   });
+    //- });
+    $.post("/res", {"op":8, "uid":window.fbtUID, "friend":window.fbtUID}, function(item, textStatus, xhr){
+      $("#pageloading3").hide();
+      var tmp;
+      try{
+        tmp = JSON.parse(item);
+      }
+      catch(e){
+        tmp = item;
+      }
+      var data = {};
+      data["type"] = tmp["type"];
+      data["resource_list"] = tmp["resource_list"];
+      data["html"] = tmp["html"];
+      var len = tmp["resource_list"].length;
+      if("len" in tmp)
+        len = tmp["len"]
+      getResListCallback(len,1,data,'#container_my_resources','#text_my_home_page_tips');
+      //myshare
+      var size = window.parseInt($("#m_size").text());
+      if(size > 20){
+        totalP = size / 20;
+        if(size % 20 != 0)
+          totalP += 1
+        var options = {
+          currentPage: 1,
+          totalPages: totalP,
+          numberOfPages:10,
+          size:'large',
+          alignment:'center',
+          tooltipTitles: function (type, page, current) {
+            switch (type) {
+              case "prev":
+                  return "上一页";
+              case "next":
+                  return "下一页";
+              case "page":
+                  return "第 " + page + "页";
+            }
+          },
+          itemContainerClass: function (type, page, current) {
+            return (page === current) ? "active" : "cur_p";
+          },
+          shouldShowPage:function(type, page, current){
+            switch(type)
+            {
+                case "first":
+                case "last":
+                    return false;
+                default:
+                    return true;
+            }
+          },
+          onPageClicked: function(e,originalEvent,type,page){
+            var currentTarget = $(e.currentTarget);
+            var pages = currentTarget.bootstrapPaginator("getPages");
+            if(pages.current == page)
+              return;
+            $("#pageloading3").show();
+            $("#container_my_resources").html("");
+            $.post("/res", {"op":8, "uid":window.fbtUID,"page": page, "friend":window.fbtUID}, function(item, textStatus, xhr){
+              $("#pageloading3").hide();
+              var tmp;
+              try{
+                tmp = JSON.parse(item);
+              }
+              catch(e){
+                tmp = item;
+              }
+              var data = {};
+              data["type"] = tmp["type"];
+              data["resource_list"] = tmp["resource_list"];
+              data["html"] = tmp["html"];
+              var len = tmp["resource_list"].length;
+              if("len" in tmp)
+                len = tmp["len"]
+              getResListCallback(len,1,data,'#container_my_resources','#text_my_home_page_tips');
+            });
+            if(currentTarget.attr("id") == "more_resources1_top")
+              $("#more_resources1_bottom").bootstrapPaginator("show", page);
+            else{
+              $("#more_resources1_top").bootstrapPaginator("show", page);
+              window.scrollTo(0,0);
+            }
+          }
+        }
+        $('.get_more_resources1').each(function(index, el) {
+          $(el).bootstrapPaginator(options);
+        });
+        $("#myShares").css("padding-top","34px");
+      }
+      else{
+        $(".get_more_resources1").hide();
+        $("#myShares").css("padding-top","50px");
+      }
+    });
+    $('.info_nav > li > a.clickable').click(function () {
+    $(".info_nav > li > a.clickable").css({"border-bottom": "3px solid #ecf0f1"});
+    $(this).css({"border-bottom": "3px solid #1abc9c"});
+  });
+  });
+  function showModifyModal(num){
+    nums = num;
+    if(num == 0)
+    {
+    $("#nameInModal").val($("#realName").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#telInModal").val($("#tel").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#qqInModal").val($("#qq").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    }
+    else if(num == 1){
+      var g = $("#gender").html().replace(new RegExp("&nbsp;", 'g'), "");
+      if(g)
+        $("#genderInModal").val(g);
+      var l = $("#love").html().replace(new RegExp("&nbsp;", 'g'), "");
+      if(l)
+        $("#loveInModal").val(l);
+      $("#schoolInModal").val($("#school").html().replace(new RegExp("&nbsp;", 'g'), ""));
+      $("#addrInModal").val($("#addr").html().replace(new RegExp("&nbsp;", 'g'), ""));
+      $("#nickNameInModal").val($("#nickName").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    }
+    else
+    {
+    //$("#emailInModal").val($("#email"));
+    $("#originPwdInModal").val("");
+    $("#passwordInModal").val("");
+    $("#confirmPasswordInModal").val("");
+    }
+    $('#myModal'+num).modal('show');
+  }
+  function saveChange(num){
+    nums = num;
+    var mod_user = {}
+    if(num == 0){
+    $("#realName").html("&nbsp;"+$("#nameInModal").encode_val());
+    $("#tel").html("&nbsp;"+$("#telInModal").encode_val());
+    $("#qq").html("&nbsp;"+$("#qqInModal").encode_val());
+    var realName = $("#nameInModal").encode_val();
+    var tel = $("#telInModal").encode_val();
+    var qq = $("#qqInModal").encode_val();
+    if(user["realName"] != realName)
+    mod_user["real_name"] = realName
+    if(user["tel"] != tel)
+    mod_user["phone"] = tel
+    if(user["qq"] != qq)
+    mod_user["qq"] = qq
+    }
+    else if(num == 1){
+    var gender = $("#genderInModal").encode_val();
+    var love = $("#loveInModal").encode_val();
+    var school = $("#schoolInModal").encode_val();
+    if(school.length > 20){
+      showErrorToast("学校名字不能超过20个字符，请修改");
+      return;
+    }
+    var addr = $("#addrInModal").encode_val();
+    var nickName = $("#nickNameInModal").encode_val();
+    $("#gender").html("&nbsp;"+$("#genderInModal").encode_val());
+    $("#love").html("&nbsp;"+$("#loveInModal").encode_val());
+    $("#school").html("&nbsp;"+$("#schoolInModal").encode_val());
+    $("#addr").html("&nbsp;"+$("#addrInModal").encode_val());
+    $("#nickName").html("&nbsp;"+$("#nickNameInModal").encode_val());
+    if(user["gender"] != gender)
+    mod_user["gender"] = gender
+    if(user["love"] != love)
+    mod_user["love_state"] = love
+    if(user["school"] != school)
+    mod_user["school"] = school
+    if(user["addr"] != addr)
+    mod_user["address"] = addr
+    if(user["nickName"] != nickName && nickName.length != 0)
+      mod_user["nick_name"] = nickName
+    else if(nickName.length == 0)
+    {
+      $("#nickName").html("&nbsp;"+user["nickName"]);
+      showErrorToast("昵称不能为空");
+      return;
+    }
+    }    
+    else{    
+    var originPwd = $("#originPwdInModal").val();    
+    var password = $("#passwordInModal").val();   
+    var confirm = $("#confirmPasswordInModal").val();
+    if (password != confirm) {
+    $("#confirm").css({"display":"inline"});
+    return;
+    }
+    else{
+    $("#confirm").css({"display":"none"});
+    mod_user["password"] = $.md5(password);
+    mod_user["originPwd"] = $.md5(originPwd);
+    }
+    }
+    if(mod_user)
+    {
+    var str = JSON.stringify(mod_user);
+    str = str.replace(new RegExp("&nbsp;", 'g'), "");
+    var param_user =  {"user":str}
+    $.post('/myInfo', param_user, function(data, textStatus, xhr) {
+    /*optional stuff to do after success */
+    //data = $.parseJSON(data)
+    if (data["type"] == 1) {
+    showSuccessToast(data["result"]["result"]);
+    }
+    else{
+    showErrorToast(data["error"]);
+    }
+    });
+    }
+    $('#myModal'+num).modal('hide');
+  }

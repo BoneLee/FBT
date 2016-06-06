@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block login_tip %}
+    欢迎，{{ my_real_name }}同学
+{% end %}
+
+{% block content %}
+<div id="fb_pay">
+    <div class="main">
+        <div class="shop">
+            <span>{{ real_name }}</span>
+        </div>
+    </div>
+    <div class="input">
+       <form id="pay" method="post">
+           <div class="span">支付金额(&yen;)</div>
+           <input class="input-control title " placeholder="请输入金额" id="how_much_yuan" name="how_much_yuan" autofocus="true">
+           <input type="hidden" name="user_to" value={{user_to}}>
+           <div class="overage"><span class="tips">{{ error }}</span>余额 <span ng-bind="allFbs">{{ left_coin }}</span>F(可抵扣 <span ng-bind="allMoney">{{ left_yuan }}</span>元)</div>      
+       </form>       
+       <botton type="submit" onClick='submitPay()' class="font16">支付</botton>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    function submitPay() {
+       $("#pay").submit();
+    }
+</script>
+{% end %}

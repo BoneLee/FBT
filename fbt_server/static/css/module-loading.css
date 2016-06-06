@@ -1,0 +1,35 @@
+#loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: progress;
+}
+
+#loading-container > div {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 160px;
+  top: 35%;
+}
+
+#loading-container > div > div {
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  padding: 20px;
+  background: white;
+  width: 160px;
+  display: block;
+  text-align: center;
+}
+
+#loading-container > div > div > img {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+}

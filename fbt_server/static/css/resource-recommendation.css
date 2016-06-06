@@ -1,0 +1,143 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #35a0ed
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+/*
+.extern.resource-recommendation {
+  margin-top: 100px;
+}
+*/
+
+.extern.resource-recommendation .row > label {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.extern.resource-recommendation .row > label + span {
+  font-size: 12px;
+  color: grey;
+}
+
+.item .poster {
+  height: 92px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid lightgrey;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/*
+.extern.resource-recommendation .poster:hover {
+  border: 3px solid lightgrey;
+}
+*/
+.item .download, .item .info {
+  display: inline-block;
+  vertical-align: top;
+  height: 51px;
+}
+
+.item .info > .download > * {
+  /* display: block;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+  font-size: 14px;
+  outline: 0; */
+  font-size: 12px;
+  padding: 4px;
+}
+
+.item .info > .details > * {
+  display: block;
+  color: grey;
+  font-size: 12px;
+}
+
+.item .info > label {
+  font-size: 14px;
+  color: inherit;
+   margin-bottom: 3px; 
+  cursor: pointer;
+  display: block;
+  max-height: 38px;
+  overflow-y: hidden;
+  overflow-x:hidden;
+  word-break: break-all;
+}
+
+.item .info > label:hover {
+  text-decoration: underline;
+}
+
+.item {
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+}
+
+.extern.resource-recommendation .row {
+  margin-bottom: 20px;
+}
+
+.extern.resource-recommendation > .col-md-2 {
+  padding-left: 0;
+}
+
+.extern.resource-recommendation .course-type > span {
+  text-align: center;
+  display: block;
+  padding: 8px;
+  border: 1px solid lightgrey;
+  border-top-width: 0;
+}
+
+.extern.resource-recommendation .course-type > span:hover {
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.extern.resource-recommendation .course-type > :first-child {
+  border-top-width: 1px;
+}
+
+
+.extern.resource-recommendation .course-type > span.selected {
+  border-left: 3px solid #35a0ed;
+}
+
+.extern.resource-recommendation .course-type > span > button {
+  width: 100%;
+  font-size: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resource_num, .recommend_more {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/*.extern .point {
+  display: inline-block;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}*/
+
+.item .info {
+  max-width: 50%;
+}
+/*
+.extern.resource-recommendation {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+*/

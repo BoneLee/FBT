@@ -1,0 +1,27 @@
+<div class="myspace">
+  <a class="close" ng-click="goHome()">×</a>
+  <div class="space_info">
+    <img src="{{info.icon}}">
+    <i class="fa fa-pencil edit_icon" data-ng-click="editIcon()"></i>
+    <div class="space_detail_wrap">
+      <h1>{{info.nick_name}}<input style="margin-left: 20px;font-size:14px; border:none; background:transparent;" ng-blur="updateShuo()" ng-model="newshuo" ng-click="newshuo=''"></h1>
+      <div class="detail">
+        <div class="detail-item"><span>F币</span><span>{{global.fbCoin}}</span></div>
+        <div class="detail-item"><span>好友</span><span>{{info.count}}</span></div>
+        <!--<div class="detail-item"><span>赞</span><span>12000</span></div>-->
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 space_sidemenu_wrap">
+      <ul>
+          <li data-ng-repeat="menu in sideMenus" class="space_side_menu" data-ng-class="{'active': $index==idx}" data-ng-click="loadPage(menu, $index)">
+          <div>{{ menu.title }}</div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10 space_content" ng-style="{'height': workspaceHeight - 50 + 'px', 'overflow-y': 'auto'}"> 
+      <ng-include src="spaceTemplate"></ng-include>
+    </div>
+  </div>
+</div>

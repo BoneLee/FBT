@@ -1,0 +1,86 @@
+<!-- vim: set sw=2 ts=2 : -->
+<!DOCTYPE html>
+<html lang="en" ng-app="fbtApp">
+<head>
+  <meta charset="utf-8">
+  <title>FBT2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/statics/css/bootstrap-grid.css">
+  <link rel="stylesheet" href="/statics/css/bootstrap-modals.css">
+  <link rel="stylesheet" href="/statics/css/base.css">
+  <link rel="stylesheet" href="/statics/css/resource-college.css">
+  <link rel="stylesheet" href="/statics/css/resource-college2.css">
+  <link rel="stylesheet" href="/statics/css/resource-recommendation.css">
+  <link rel="stylesheet" href="/statics/css/reward.css">
+  <link rel="stylesheet" href="/statics/css/myreward.css">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css"/>
+</head>
+<body
+>
+<div class="skin"></div>
+<div ng-controller="HeaderController" ng-init="init()">
+  <div class="header">
+    <div class="nav nav-main">
+     <ul>
+      <li ng-repeat="tab in ['home','schools','recommendation']">
+        <a ng-href="#{{tab}}" ng-class="{active:isCurrentTab(tab)}"  ng-bind="tabNames[tab]"></a>
+      </li>
+    </ul>
+  </div>
+  <div class="nav nav-tools">
+    <ul>
+      <li><button>上传</button></li>
+      <li><input type="text" /></li>
+    </ul>
+  </div>
+  <div class="nav nav-actions">
+    <ul>
+      <li><a href="">登录</a></li>
+      <li><a href="">退出</a></li>
+      <!-- <li><a href="">积分规则</a></li> -->
+<!--       <li><a href="">皮肤</a></li>
+      <li><a href="">设置</a></li> -->
+          <!--
+          <li><a href=""><i class="fa fa-question"></i></a></li>
+          <li><a href=""><i class="fa fa-minus"></i></a></li>
+          <li><a href=""><i class="fa fa-square-o"></i></a></li>
+          <li><a href=""><i class="fa fa-times" style="color:white"></i></a></li>
+        -->
+      </ul>
+    </div>
+  </div>
+ 
+  </div>
+  <div class="container" ng-view onload="init()">
+  </div>
+  <div class="shortcut-box">
+    <div class="top">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-arrow-up fa-stack-1x"></i>
+      </span>
+    </div>
+    <div class="bottom">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-arrow-down fa-stack-1x"></i>
+      </span>
+    </div>
+    <div class="chat">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-comments fa-stack-1x"></i>
+      </span>
+    </div>
+  </div>
+  <script src="/statics/js/sprintf.min.js"></script>
+
+  <script src="/statics/js/angular-1.1.5.min.js"></script>
+  <script src="/statics/js/app.js"></script>
+  <script src="/statics/js/controllers.js"></script>
+  <script src="/statics/js/controller-resource.js"></script>
+  <script src="/statics/js/controller-resourceCollege.js"></script>
+  <script src="/statics/js/controller-reward.js"></script>
+  <script src="/statics/js/controller-myreward.js"></script>
+  <script src="/statics/js/services.js"></script>
+  <script src="/statics/js/jquery-2.0.3.min.js"></script>
+  <script src="/statics/js/bootstrap-modals.js"></script>
+</body>
+</html>

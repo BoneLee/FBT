@@ -1,0 +1,87 @@
+<div data-ng-controller="FriendInfoController" class="friendinfo">
+	<style type="text/css">
+		.friendinfo .friendinfo_left{
+            background: rgba(0,0,0,0.6);
+            color: lightgrey;
+			display: inline-block;
+			width: 45%;
+			padding-left: 10px;
+			padding-right: 10px;
+			float: left;
+		}
+        .friendinfo .friendinfo_left .btn {
+            background: transparent;
+            color: lightgrey;
+            font-size: 14px;
+            float: right;
+            margin-bottom: 10px;
+            border: none;
+        }
+        .friendinfo .friendinfo_left .btn:hover {
+            background: rgba(0,0,0,0.75);
+            color: lightgrey;
+        }
+		.friendinfo .friendinfo_right{
+			display: inline-block;
+			width: 40%;
+		}
+		.friendinfo .friendinfo_right img{
+			width: 498px;
+			height: 498px;
+		}
+		.friendinfo .info_wrap{
+			padding-left: 10px;
+			margin-bottom: 10px;
+			text-align: left;
+			font-size: 16px;
+		}
+		.friendinfo .info_wrap input{
+			border: none;
+			background: none;
+            opacity: 1;
+		}
+		.friendinfo .info_wrap p{
+			padding: 5px;
+		}
+		.friendinfo .btnChangePwd{
+			margin-bottom: 15px;
+		}
+		.friendinfo .btnChangeInfo{
+			float: right;
+			position: relative;
+			top: -492px;
+			right: 39px;
+		}
+		.modifyPassword{color: #da4f49;}
+		.modInput{
+			width: 100%;
+			padding: 5px;
+			margin: 5px 0;
+		}
+	</style>
+	<div class="friendinfo_left">
+		<div class="info_wrap">
+			<p>昵称：<input data-ng-model="friendinfo.nick_name" disabled="disabled"></p>
+			<p>真名：<input data-ng-model="friendinfo.real_name" disabled="disabled"></p>
+			<p>邮箱：{{friendinfo.user}}</p>
+		</div>
+		<div class="info_wrap">
+			<p>学校：<input data-ng-model="friendinfo.school" disabled="disabled"></p>
+			<p>院系：<input data-ng-model="friendinfo.college" disabled="disabled"></p>
+			<p>入学年份：<input data-ng-model="friendinfo.freshyear" disabled="disabled"></p>
+			<p>家乡：<input data-ng-model="friendinfo.address" disabled="disabled"></p>
+			<p>性别：<input data-ng-model="friendinfo.gender" disabled="disabled"></p>
+			<p>感情状态：<input data-ng-model="friendinfo.love_state" disabled="disabled"></p>
+		</div>
+		<div class="info_wrap">
+			<p>qq：<input data-ng-model="friendinfo.qq" disabled="disabled"></p>
+			<p>电话：<input data-ng-model="friendinfo.phone" disabled="disabled"></p>
+			<p>微博：<input data-ng-model="friendinfo.weibo" disabled="disabled"></p>
+		</div>
+	</div>
+    <!--
+	<div class="friendinfo_right">
+		<img src="{{friendinfo.icon}}">
+	</div>
+    -->
+</div>

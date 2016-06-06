@@ -1,0 +1,341 @@
+doctype html
+html.dk_fouc.has-js(lang='en')
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        meta(charset='utf-8')
+        title FBT
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        // Loading Bootstrap
+        link(href='Flat-UI-master/bootstrap/css/bootstrap.css', rel='stylesheet')
+        // Loading Flat UI
+        link(href='Flat-UI-master/css/flat-ui.css', rel='stylesheet')
+        link(href='Flat-UI-master/css/flat-ui.min.css', rel='stylesheet')
+        // Custom styles for this template
+        link(href='css/grumble.min.css?v=5', rel='stylesheet')
+        link(type="text/css",href="css/jquery.toastmessage-min.css",rel="stylesheet")
+        link(type="text/css",href="css/ui.fancytree.css",rel="stylesheet")
+        link(type="text/css",href="css/font-awesome.min.css",rel="stylesheet")
+        link(rel='shortcut icon', href='images/user_icon/default.png')
+        link(href='css/jquery-sinaEmotion-2.1.0.css', rel='stylesheet')
+        link(href='css/fbt_common.css', rel='stylesheet')
+        link(href='css/fbt_index.css', rel='stylesheet')
+        link(href='css/jquery-ui.min.css', rel='stylesheet')
+
+        script(src='js/jquery-1.11.min.js', type='text/javascript')
+        script(src='js/bootstrap-alert.js', type='text/javascript')
+        script(src='js/json.js', type='text/javascript')
+        script(src='js/fbt_common.js', type='text/javascript')
+        script(src='js/fbt_index.js', type='text/javascript')
+        script(src='js/jquery.pin.js', type='text/javascript')
+        script(src='js/reconnecting-websocket.js', type='text/javascript')
+        script(type="text/javascript", src="/socket.io/socket.io.js")
+        script(src='Flat-UI-master/js/bootstrap-switch.js')
+        script(src='js/jquery-sinaEmotion-2.1.0.js', type='text/javascript')
+        script(src='js/jquery.easydrag.js', type='text/javascript')
+        // HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file.
+        //if lt IE 9
+          script(src='//cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js')
+    body(youdao='bind')
+        .wrap_all
+            style.
+                .btn:focus {
+                outline: 5px auto #FFF;
+                }
+                /*这两行CSS模拟了flatUI典型的input样式*/
+                input{border-radius: 6px;
+                border: 2px solid #dce4ec;
+                color: #34495e;
+                font-family: "Lato", sans-serif;
+                font-size: 14px;
+                padding: 8px 0 9px 10px;
+                text-indent: 1px;
+                -webkit-border-radius: 6px;
+                -moz-border-radius: 6px;
+                border-radius: 6px;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                transition: border linear .2s,box-shadow linear .2s;}
+                input:focus{
+                border-color: #1abc9c; -webkit-box-shadow: none;-moz-box-shadow: none; box-shadow: none; outline: none;}
+                input{display: block; margin-bottom: 6px; width: 100%; height: 42px;}
+                h2{font-size: 30px; margin-top: 4px; color: #1abc9c;}
+                h5{font-size: 22px; line-height: 30px;}
+                .remeberPW{line-height: 60px;}
+                .login-link{color: #aaaaaa;}
+                #auto_hint{display:none;}
+            br
+            br
+            br
+            br
+            .alert.alert-block.alert-error.fade
+                button.close(type='button', data-dismiss='alert') &times;
+                strong &#x63D0;&#x793A;&#xFF01;
+                span#hint
+            b#auto_hint= login_setting.auto 
+            .container
+                .row
+                    .col-xs-5(style='text-align: center; border-right:1px dashed #bbb;')
+                        img.img-responsive.center-block(src='images/loginPic3.png')
+                        h5 FBT: &#x5FEB;&#x4E50;&#x6E90;&#x4E8E;&#x5206;&#x4EAB;
+                    .col-xs-7(style='text-align: center; padding-left:70px;')
+                        br
+                        br
+                        .col-xs-8
+                            input#user(type='text', value='#{login_setting.user}', placeholder='邮箱')
+                        .col-xs-8
+                            input#pwd(type='password', value='#{login_setting.pwd}', placeholder='密码')
+                        .col-xs-8
+                            .row
+                            .col-xs-1
+                            .col-xs-4 &#x8BB0;&#x4F4F;&#x5BC6;&#x7801;&#xFF1A;
+                            .col-xs-6
+                                .switch(data-on-label="<i class='fui-check'></i>", data-off-label="<i class='fui-cross'></i>")
+                                    input(type='checkbox')
+                        .col-xs-8
+                            button#login.btn.btn-large.btn-primary.btn-block(onclick='login_click()') &#x767B;&#x5F55;
+                        .col-xs-8
+                            a(style="float: left;cursor:pointer",onclick='toCoin()') 积分规则
+                            a(style="float: right;",href='/registration') 注册
+                            a(href='#', data-toggle='modal', data-target='#resetModal') 忘记密码
+                            // /a.login-link(href='', style='display: inline-block;') &#x5FD8;&#x8BB0;&#x5BC6;&#x7801;?
+                .row#s_hint(style="color: #48c9b0;text-align: center;margin-top: 40px;font-weight: bold;")
+                    注意：如果分享的文件位于移动存储设备中，打开软件前请确保移动设备接入电脑。
+            #resetModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                      | ×
+                    .row
+                      .col-xs-1(style='position: relative;top: 13px;left: 6px;')
+                        img.img-responsive(src='images/fbtLogo2.png')
+                      .col-xs-5
+                        h5
+                          | FBT: 快乐源于分享
+                  .modal-body
+                    .row
+                      input#reset(type='text', placeholder='邮箱')
+                  .modal-footer
+                    button.btn.btn-primary(type='button', onclick='reset(1)')
+                      | 确定
+                    button.btn.btn-primary(type='button', onclick='reset(0)')
+                      | 取消
+            script(type='text/javascript').
+                var hints = ["注意：如果分享的文件位于移动存储设备中，打开软件前请确保移动设备接入电脑。",
+                    "点小人图标，进入个人中心，查看积分和添加好友；点好友昵称，可以查看其资源主页。",
+                    "点右上角积分榜旁边的分享图标，可以查看自己的资源，在个人档里完善信息和头像。",
+                    "私有圈是你所有好友的资源的集合，下载永久免积分。好友越多，免积分资源越多！",
+                    "点击FBT，可以返回主页或打开官网。官网可以了解积分规则：www.friendsbt.com。"];
+                window.setting = {};
+                if (!window.console) window.console = {};
+                if (!window.console.log) window.console.log = function() {}; 
+                function toCoin(){
+                    window.location.href="/coin";
+                }       
+                $(function(){
+                    createLocalSock();
+                    window.socket.emit("init");
+                    // default switch on
+                    $(".switch-animate").removeClass('switch-off').addClass('switch-on');
+                    if($("#user").val() != "")
+                    {
+                        $("#pwd").select();
+                        //console.log($(".switch-animate"));
+                    }
+                    else
+                        $("#user").select();
+                    $.get("/setting/init", function(data){
+                      window.setting = JSON.parse(data);
+                      if(window.setting["auto_log"] == 1 && parseInt($("#auto_hint").text()) == 1){
+                        if (validate()) {
+                            beforeLogin();
+                        }
+                      }
+                    },true);
+                    $("#s_hint").html(hints[Math.floor(Math.random()*hints.length)]);
+                });
+                $(".alert").alert();
+                function reset(flag){
+                    if(flag == 1 || flag == "1"){
+                        var user = $("#reset").val();
+                        if(user){
+                            $.get("/reset?user="+user, function(data){
+                              var tmp;
+                              try{
+                                tmp = JSON.parse(data);
+                              }
+                              catch(e){
+                                tmp = data;
+                              }
+                              if(tmp["type"] == 0)
+                                showErrorToast("请求失败，请重试");
+                              else
+                                showSuccessToast("重置密码的链接已经发到您的邮箱，请稍后查收");
+                            });
+                        }
+                    }
+                    $('#resetModal').modal('hide');
+                }
+                function validate(){
+                    if($("#user").val() == "" || $("#pwd").val() == "")
+                    {
+                        $("body > div.wrap_all #hint").html("用户名或者密码未填写.");
+                        $(".alert").addClass('in');
+                        return false;
+                    }
+                    return true;
+                }
+                function getToken(callback){
+                    $.getJSON(
+                        '/token',
+                        function(data){
+                            console.log(data["type"]);
+                            window.token = data["result"];
+                            window.platform = data["platform"];
+                            if(callback)
+                                callback();
+                        },true
+                    );
+                }
+                function beforeLogin(){
+                    document.body.style.cursor='wait';
+                    if(window.token){
+                        login();
+                    }
+                    else{
+                        getToken(login);
+                    }
+                }
+                function login() {
+                    var message = {}
+                    message["user"] = $("#user").val();
+                    message["pwd"] = $.md5($("#pwd").val());
+                    message["next"] = "/";
+                    if(!$(".switch-animate").hasClass('switch-off'))
+                        message["password"] = $("#pwd").val()
+                    var disabled = $("#login");
+                    disabled.disable();
+                    $.postJSON("/login", message, function(response) {
+                    //console.log(response);
+                    document.body.style.cursor='default';
+                    if(response.charAt(0) != '{')
+                    {
+                    console.log("login");
+                    $(".index").remove();
+                    var div = "<div class='index show'></div>";
+                    $("body").append(div);
+                    $(".index").html(response);
+                    $("body > div.wrap_all").addClass("hide");
+                    $('a').unbind(".plugin");
+                    $("a").bind("click.plugin",function(e){
+                    if($(this).attr("href") && $(this).attr("href").charAt(0) == '/'){
+                    e.preventDefault();
+                    var addr = $(this).attr("href");
+                    console.log(addr);
+                    if(addr == "/index"){
+                        var that = $(".show");
+                        $(that).removeClass("show").addClass("hide");
+                        $(".index").removeClass("hide").addClass("show");
+                        $("body").css("padding-top","0px");
+                    }
+                    else if(addr == "/mySpace"){
+                        var space = $(".mySpace");
+                        if(space.length > 0){
+                            var that = $(".show");
+                            $(that).removeClass("show").addClass("hide");
+                            $(".mySpace").removeClass("hide").addClass("show");
+                            $("body").css("padding-top","50px");
+                            $("#msgHint").hide();
+                        }
+                        else{
+                            var t = this;
+                            $(t).disable();
+                            $.get(addr, function(data) {
+                                $(t).enable();
+                                if($(".mySpace").length > 0)
+                                    return;
+                                var that = $(".show");
+                                $(that).removeClass("show").addClass("hide");
+                                var div = "<div class='mySpace show'></div>";
+                                $("body").append(div);
+                                $(".mySpace").html(data);
+                                $("body").css("padding-top","50px");
+                            }, false);
+                        }
+                    }
+                    else{
+                        var t = this;
+                        $(t).disable();
+                        $.get(addr, function(data) {
+                            $(t).enable();
+                            var that = $(".show");
+                            $(that).removeClass("show").addClass("hide");
+                            $("body > div.wrap_all").html(data);
+                            $("body > div.wrap_all").removeClass("hide").addClass("show");
+                            $("body").css("padding-top","0px");
+                        }, false);
+                    }
+                    return false;
+                    }
+                    else{
+                    return true;
+                    }
+                    });
+                    }
+                    else{
+                    console.log(response);
+                    $("body > div.wrap_all #hint").html("用户名或者密码错误");
+                    $(".alert").addClass('in');
+                    $("#pwd").val("");
+                    }
+                    disabled.enable();
+                    });
+                }
+                function login_click(){
+                    if (validate()) {
+                    beforeLogin();
+                    }
+                    return false;
+                }
+                $("#pwd").keypress(function(event) {
+                    /* Act on the event */
+                    keynum = event.keyCode || event.which;
+                    if (keynum == 13) {
+                    if (validate()) {
+                    beforeLogin();
+                    }
+                    return false;
+                    }
+                });
+                getToken();
+        // Load JS here for greater good =============================
+        script(src="js/jquery.md5.js")
+        script(src="js/bootstrap-paginator.min.js")
+        script(type="text/javascript", src="js/jquery.raty.js")
+        script(type="text/javascript", src="js/jquery.grumble.min.js")
+        script(type='text/javascript', src='js/jquery.toastmessage-min.js')
+        script(src='js/reconnecting-websocket.js', type='text/javascript')
+        script(src='Flat-UI-master/js/bootstrap.min.js', type='text/javascript')
+        script(type="text/javascript", src='Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js')
+        script(type="text/javascript", src='Flat-UI-master/js/jquery-ui.autocomplete.min.js')
+
+        script(type="text/javascript", src='Flat-UI-master/js/jquery.ui.touch-punch.min.js')
+        script(type="text/javascript", src='Flat-UI-master/js/bootstrap-select.js')
+        script(type="text/javascript", src='Flat-UI-master/js/flatui-checkbox.js')
+        script(type="text/javascript", src='Flat-UI-master/js/flatui-radio.js')
+        script(type="text/javascript", src='Flat-UI-master/js/jquery.tagsinput.js')
+        script(type="text/javascript", src='Flat-UI-master/js/jquery.placeholder.js')
+        script(type="text/javascript", src='Flat-UI-master/js/application.js')
+        script(type="text/javascript", src='js/jquery.fancytree.js')
+        script(type="text/javascript", src='js/jquery.fancytree.table.js')
+        script(type="text/javascript", src="js/filetree.js")
+        script(type="text/javascript", src="js/loglevel.min.js")
+        script(type="text/javascript", src="js/EventEmitter.js")
+        //注释v4
+        //script(type="text/javascript", src='js/peer.js')
+        //script(type="text/javascript", src="js/peerOps.js")
+        script(type="text/javascript", src='js/school.js')
+        //if lt IE 8
+          script(src='js/icon-font-ie7.js')
+          script(src='js/icon-font-ie7-24.js')

@@ -1,0 +1,759 @@
+style.
+  .demo-row{padding-top: 68px; padding-bottom: 0px;}
+  .other{padding-top: 0px;padding-bottom: 12px;}
+  h1,h2,h3,h4{color: #1abc9c;}
+  p{color: #7f8c8d;}
+  .order{color: #1abc9c;}
+  .divLine{height: 1px; width: 50%; border: dashed 1px;}
+  .imgDiv{padding-top: 30px;}
+  .navbar-default .navbar-brand {color: #1abc9c;}
+  .myActive{background-color: #bbbbbb;}
+  .comment{border-bottom: dashed 1px #DDD; margin-top: 5px;}
+  .time{font-size: 12px; color: black;}
+  .QQDiv{position: fixed;
+  background-color: #F5F5F5; min-height: 580px;
+  border: solid 3px #1abc9c; border-radius: 4px;
+  padding-top: 10px; right: 100px;top: 55px;}
+  .avatarDiv{padding-bottom: 10px; border-bottom: solid 1px white;}
+  .name{font-size: 16px; color: #1abc9c;}
+  .shuoShuo{padding-top: 10px;}
+  .navUl{margin: 10px 0px 10px 0px;}
+  .myTextArea{width: 100%; border: solid 2px #1abc9c;}
+  textarea:focus{outline: #1abc9c auto 5px;}
+  .publishButton{height: 60px; width: 75px; font-size: 100%;}
+  .zpz{font-size: 100%; padding: 0;}
+  .zan{text-align: center;}
+  /*这两行CSS模拟了flatUI典型的input样式*/
+  input{width: 100%; border: 2px solid #dce4ec; color: #34495e; border-radius: 6px;
+  transition: border linear .2s,box-shadow linear .2s;}
+  input:focus{border-color: #1abc9c; -webkit-box-shadow: none;
+  -moz-box-shadow: none; box-shadow: none; outline: none;}
+  .textInSearch{font-size: 14px;}
+  .divInSearch{border: solid 2px #1abc9c; border-radius: 3px; width: 32%; margin: 3px 3px 3px 3px;}
+  .noPaddingLR{padding-left: 2px; padding-right: 2px; padding-top: 2px;}
+  .addFriendDiv{text-align: right; background: #eeeeee;}
+  .searchDiv{padding-bottom: 10px; border-bottom: solid 1px #d8d8d8;}
+  .friendDiv{padding-top: 8px;}
+  .moreOperations{}
+  .textOfUnfriend{line-height: 24px; font-size: 12px; text-decoration: underline;}
+  .nameInFriendList{margin-bottom: 6px; border-bottom: dashed 1px #eeeeee;}
+  .modal-dialog{
+    width: 60%; /* respsonsive width */
+    margin-left:10%; /* width/2) */
+  }
+  .modal-content{}
+  .glyphicon-th{font-size: 12px;}
+  .nameOfLocalSearch{margin-bottom: 6px;}
+  .bottomBar{position: absolute; bottom: 4px; width: 100%;}
+  .flatColor{color:#16a085;}
+  .nav-chat > li {
+    position:relative;    
+  }
+  .nav-chat > li > b {
+    display:inline-block;
+  }
+  .nav-chat > li > span {
+    display:none;
+    cursor:pointer;
+    position:absolute;
+    right: 1px;
+    top: 12px;
+    color: #34495e;
+  }
+  .nav-chat > li:hover > span {
+    display: inline-block;
+  }
+  .nav-chat .active{
+    border-radius: 10px;
+    color: #16a085;
+  }
+  .badge{background: red;}
+  .msgNameTime{color: #16a085;float: right;}
+  .msgContent{color: #7f8c8d;display:block;max-width: 350px;word-break: break-all;}
+  .chatBox{
+    min-height:440px; border:1px solid #aaa; left: 20%;
+    height:440px; display:none; overflow:hidden;
+  }
+  #mySingleChat{
+    margin: 0px;
+    width: 100%;
+    height: 40px;
+    resize: none;
+    border: solid 2px #1abc9c;
+  }
+  .msgLeft{
+    float: left;
+    display: block;
+    padding-right: 382px;
+  }
+  .friendStar{
+    display:none;
+  }
+  .friendUnStar{
+    display:none;
+  }
+  .chat_b
+  {
+    cursor: pointer;
+    color: grey;
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: 1px solid transparent;
+    display: inline-block;
+    position: relative;
+    padding: 5px 14px;
+    border-radius: 10px;
+    max-width: 115px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+  }
+  .add_friend_item{
+    min-width: 160px;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+ul.nav.nav-tabs.navbar-fixed-top
+  .collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right(style="margin-right: -5px;")
+      li
+        a(href="/index",style="font-size: 14px;") FBT
+      li.dropdown
+      li
+        a(href='#', data-toggle='modal', data-target='#settingModal',title="设置")
+          span.glyphicon.glyphicon-cog
+.container.contentContainer
+  .row
+    .col-lg-8
+      // 这里放的是心情发布的东西
+      .row(style="position: fixed; z-index: 10;padding-top: 20px;margin-top: -20px;background: none;width: 765px;")
+        .col-lg-10
+          textarea#myGroupChat.myTextArea(style="resize: none;",rows='2', cols="65",placeholder='说点啥吧(按ctrl+enter即可发布),也可试试点击好友列表的昵称', data-role="none")
+        .col-lg-2.text-center(style="padding: 0px;text-align: left;")
+          img#myGroupChatFace(src="/images/smile.png",style="width: 35px;height: 35px;cursor: pointer;")
+          &emsp;
+          button.btn.btn-large.btn-primary.publishButton(onclick='publish()')
+            | 发送
+      div(style="display: block; height: 80px")
+      .chatBox
+        span(onclick="killChat()", class="glyphicon glyphicon-remove-circle", style="float:right;cursor:pointer;margin: 8px;font-size: 30px;")
+        ul.nav.nav-tabs.nav-chat(style="cursor:move")
+        .chat-content(style="width: 100%;min-width: 500px;min-height: 323px;overflow:auto;padding-left: 10px;padding-right: 10px;border-radius: 4px;")
+        div.row(style="background: #ecf0f1; padding: 10px;")
+          .col-lg-10
+            textarea#mySingleChat.chatTextArea(rows='2', placeholder='在此输入，和好友私聊(按ctrl+enter即可发布)',data-role="none", onkeypress="singlePress(event)")
+          .col-lg-2(style="padding-left: 5px;")
+            img#mySingleChatFace(src="/images/smile.png",style="width: 25px;height: 25px;cursor: pointer;")
+            &emsp;
+            button.btn.btn-large.btn-primary(onclick="chatSend()")
+              | &#x53D1;&#x9001;
+      #group_chat(style="margin-top: 10px;overflow:hidden")
+      br
+      button#moreGroupChat.btn.btn-primary.btn-lg.btn-block(type='button', style='visibility:hidden;width:50%; margin-left:25%; margin-right:25%; font-size:22px;', onclick='getMoreGroupChat();')
+        span#loadingText &#x67E5;&#x770B;&#x66F4;&#x591A;
+        img#loadingGif.img-responsive(src='images/loading2.gif', style='display:inline-block; visibility:hidden;')
+    .col-lg-1
+    .col-lg-3.QQDiv.pinned
+      .row.avatarDiv
+        .col-lg-3
+          a(href='/myInfo')
+            img(src= '#{result.icon}', style="width:70px;height:70px;border-radius: 35px;")
+        .col-lg-8(style="word-break: break-all;")
+          a(href='/myInfo')
+            span#userName.name #{result.nick_name}
+          br 
+          &nbsp;当前F币：
+          span#fb_coin #{result.fb_coin}
+        .col-lg-12.shuoShuo #{result.shuo}
+      // 这个是经典的折叠collapse
+      #accordion.panel-group(style="overflow-y: auto;overflow-x: hidden;")
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title
+              b(id="group_count" data-toggle='collapse', data-parent='#accordion', href='#collapseOne')= "我的好友(" + result.count_online + "/" + result.count +")"
+          #collapseOne.panel-collapse.collapse.in
+            #myFriends.panel-body
+              each item,i in result.friends
+                if item.online == 1 || item.online == "1"
+                  div.row.friend(id='accordion#{item.uid}') 
+                    .col-xs-10.nameInFriendList.cur_p(data=item.isStar)
+                      if item.real_name                    
+                        a(data="1",class="#{item.uid}",onclick="chatFriend('#{item.uid}','#{item.nick_name}')", style="text-decoration:none;") #{item.real_name}(#{item.nick_name})
+                      else
+                        a(data="1",class="#{item.uid}",onclick="chatFriend('#{item.uid}','#{item.nick_name}')", style="text-decoration:none;") #{item.nick_name}  
+                    .col-xs-2.nameInFriendList.cur_p
+                      a(onclick="toggleOp('#name"+i+"')")
+                        span.glyphicon.glyphicon-th
+                    div.col-xs-12.moreOperations.friendOp(id='name'+i,style="display:none")
+                      b.textOfUnfriend(onclick="chatFriend('#{item.uid}','#{item.nick_name}')", style="text-decoration:none;")
+                        span.glyphicon.glyphicon-comment
+                        | &nbsp;开始聊天&nbsp;&nbsp;
+                      b.textOfUnfriend(href='javascript:void(0)', onclick="delFriend('#{item.user}','#{item.isStar}',#{item.uid})", style="text-decoration:none;")
+                        span.glyphicon.glyphicon-trash
+                        | &nbsp;&#x5220;&#x9664;&#x597D;&#x53CB;&nbsp;&nbsp;
+                      b.textOfUnfriend(style="text-decoration:none;")
+                        a(href="/friend_res?uid=#{item.uid}", style="color: inherit;")
+                          span.glyphicon.glyphicon-star
+                          | &nbsp;&#x67E5;&#x770B;&#x8D44;&#x6E90;
+                      br
+                      if item.isStar
+                        b.textOfUnfriend.friendUnStar(href="javascript:void(0)", onclick="unStarFriend('#{item.user}')")
+                          span.glyphicon.glyphicon-star
+                          | &nbsp;&#x53D6;&#x6D88;&#x661F;&#x6807;&#x597D;&#x53CB;
+                      else            
+                        b.textOfUnfriend.friendStar(href='javascript:void(0)', onclick="starFriend('#{item.user}')")
+                          span.glyphicon.glyphicon-star
+                          | &nbsp;&#x661F;&#x6807;&#x597D;&#x53CB;
+              each item,i in result.friends
+                if item.online != 1 && item.online != "1"
+                  div.row.friend(id='accordion#{item.uid}') 
+                    .col-xs-10.nameInFriendList(data=item.isStar)                    
+                      if item.real_name                    
+                        a(data="0",class="#{item.uid}",onclick="chatFriend('#{item.uid}','#{item.nick_name}')", style="text-decoration:none; color:grey;") #{item.real_name}(#{item.nick_name})
+                      else
+                        a(data="0",class="#{item.uid}",onclick="chatFriend('#{item.uid}','#{item.nick_name}')", style="text-decoration:none; color:grey;") #{item.nick_name}  
+                    .col-xs-2.nameInFriendList.cur_p
+                      a(onclick="toggleOp('#name"+i+"')")
+                        span.glyphicon.glyphicon-th
+                    div.col-xs-12.moreOperations.friendOp(id='name'+i,style="display:none")
+                      b.textOfUnfriend(onclick="chatFriend('#{item.uid}','#{item.nick_name}')", style="text-decoration:none;")
+                        span.glyphicon.glyphicon-comment
+                        | 开始聊天&nbsp;&nbsp;
+                      b.textOfUnfriend(href='javascript:void(0)', onclick="delFriend('#{item.user}','#{item.isStar}',#{item.uid})", style="text-decoration:none;")
+                        span.glyphicon.glyphicon-trash
+                        | &nbsp;&#x5220;&#x9664;&#x597D;&#x53CB;&nbsp;&nbsp;
+                      b.textOfUnfriend(style="text-decoration:none;")
+                        a(href="/friend_res?uid=#{item.uid}", style="color: inherit;")
+                          span.glyphicon.glyphicon-star
+                          | &nbsp;&#x67E5;&#x770B;&#x8D44;&#x6E90;
+                      br
+                      if item.isStar
+                        b.textOfUnfriend.friendUnStar(href='javascript:void(0)', onclick="unStarFriend('#{item.user}')")
+                          span.glyphicon.glyphicon-star
+                          | &nbsp;&#x53D6;&#x6D88;&#x661F;&#x6807;&#x597D;&#x53CB;
+                      else            
+                        b.textOfUnfriend.friendStar(href='javascript:void(0)', onclick="starFriend('#{item.user}')")
+                          span.glyphicon.glyphicon-star
+                          | &nbsp;&#x661F;&#x6807;&#x597D;&#x53CB;
+      .bottomBar.row(style="text-align: center;")
+        a.textOfUnfriend(href="#", onclick='showModal()', style="display: block;margin: auto;width: 90%;background-color: white;text-decoration: none;border: solid 1px #ccc;padding: 5px 60px;") 
+          span#showAdd.glyphicon.glyphicon-plus-sign(style="margin-right: 5px;") 添加FBT好友
+.topcontrol(title="回到顶部",style="position: fixed; bottom: 165px; right: 25px; cursor: pointer; display: none;")
+    img(src="/images/gotop.gif",onclick="window.scrollTo(0,0);return false;",style="width:31px; height:31px;")
+// Modal of 搜索FBT好友
+#searchModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button') &times;
+        h4#myModalLabel.modal-title &#x641C;&#x7D22;&#x597D;&#x53CB;:
+      .modal-body
+        .row.searchDiv
+          .col-xs-3
+          .col-xs-5
+            input#nameOfSearch(type='text', value='', placeholder='昵称/邮箱/真名', onkeypress="press(event)")
+          .col-xs-1(style="margin-top: 8px;cursor: pointer;margin-left: -13px;")
+            a(onclick='showSearchResult()')
+              span.glyphicon.glyphicon-search
+          .col-xs-3
+        .row.friendDiv(style='height:235px; overflow:auto; ')
+script(type='text/javascript').
+  $(function(){
+    //$(".pinned").pin({containerSelector: ".container"});
+    if(window.setting["s_first"] != 0){
+      showNoticeToast("点击自己或者好友列表中的昵称可以进入个人主页");
+      window.setting["s_first"] = 0;
+      window.socket.emit("s_first", "1");
+    }
+    $("#myGroupChat").keypress(function(event) {
+      /* Act on the event */
+      keynum = event.keyCode || event.which;
+      if(event.ctrlKey && keynum == 13 || keynum == 10){
+        publish();
+      }
+    });
+    $("#showAdd").click(function(){
+      $(".friendDiv").empty();
+      $("#nameOfSearch").val("");
+    });
+    copyMsg(".mySpace");
+    $("#accordion").css("max-height",$( document ).height()*0.5);
+    /*
+    $(".nav-chat").mousedown(function (e) {
+      e.preventDefault();
+      iDiffX = e.pageX - $(this).offset().left; 
+      iDiffY = e.pageY - $(this).offset().top; 
+      $(document).bind("mousemove.chat", function (e) { 
+        $(".chatBox").css({ "left": (e.pageX - iDiffX), "top": (e.pageY - iDiffY) }); 
+      }); 
+    }); 
+    $(".nav-chat").mouseup(function (e) {
+      e.preventDefault(); 
+      $(document).unbind(".chat"); 
+    });
+    */
+    $(".nav-chat").on("click", "b", function(e){
+      e.preventDefault();
+      var href = $(this).attr('href');
+      if(window.cur_chat){
+        $(".chatBox").find("#c_"+window.cur_chat).hide();
+        $(".nav-chat").find(".c_"+window.cur_chat).removeClass("active");
+      }
+      window.cur_chat = href.substring(3);
+      $(".chatBox").find(href).show();
+      $(this).addClass("active");
+    })
+    .on("click", "span", function () {
+        var anchor = $(this).siblings('b');
+        $(".chatBox").find(anchor.attr('href')).remove();
+        $(this).parent().remove();
+        if($(".nav-chat").children().length == 0)
+          $(".chatBox").hide()
+        else
+          $(".nav-chat li").children('b').first().click();
+    }); 
+    // 表情
+    $('#mySingleChatFace').bind({
+      click: function(event){
+        if(! $('#sinaEmotion').is(':visible')){
+          $(this).sinaEmotion('#mySingleChat');
+          event.stopPropagation();
+        }
+      }
+    });
+    $('#myGroupChatFace').bind({
+      click: function(event){
+        if(! $('#sinaEmotion').is(':visible')){
+          $(this).sinaEmotion('#myGroupChat');
+          event.stopPropagation();
+        }
+      }
+    });
+    // 拖拽
+    $('.chatBox').easydrag();
+    $('.chatBox').css({
+      background: 'white',
+      opacity: 0.95,
+      width: '750px',
+      left: 108
+    });
+    $('.contentContainer').height(760);
+
+  });
+  function toggleOp(id){
+    if($(id).is(":hidden"))
+    {
+      $(id).show();
+      $(id).slideDown(); 
+    }
+    else{
+      $(id).hide();
+      $(id).slideUp(); 
+    }
+  }
+  function press(e){
+    if (e.keyCode == 13) {
+    showSearchResult();
+    return false;
+    }
+  }
+  function singlePress(event){
+    keynum = event.keyCode || event.which;
+    if(event.ctrlKey && keynum == 13 || keynum == 10){
+      chatSend();
+    }
+  }
+  function showModal(){
+    $("#searchModal").modal('show');
+  }
+  $(".close").click(function(event) {
+  /* Act on the event */
+    $("#searchModal").modal('hide');
+  });
+  function showSearchResult(){
+    var search = $("#nameOfSearch").val();
+    if(!search){
+      showWarningToast("搜索不能为空，请重新输入");
+      return;
+    }
+    var param = {}
+    param["op"] = 0;
+    param["search"] = search;
+    $.post('/myFriend', param, function(data, textStatus, xhr) {
+    /*optional stuff to do after success */
+    //data =  JSON.parse(data);
+    if(data["type"] && data["type"] == 1){
+    var tmp_list;
+    try{
+      tmp_list = JSON.parse(data["result"]);
+    }
+    catch(e){
+      tmp_list = data["result"];
+    }
+    data = tmp_list;
+    //console.log(data);
+    $(".friendDiv").empty();
+    var len = getJsonLength(data)
+    if(len == 0)
+    {
+    $(".friendDiv").html("抱歉，未能搜索到符合条件的结果。");
+    }
+    else{
+    var i = 0;
+    for (;i < len; i++) {
+    item = data[i];
+    //console.log(item);
+    if(!item["icon"])
+      break;
+    var div = '<div class="col-xs-4 divInSearch noPaddingLR"><div class="col-xs-4 noPaddingLR"><img src="' + item["icon"];
+    div = div + '" style="width:70px; height:70px;"></div><div class="col-xs-8 textInSearch add_friend_item">' + item["nick_name"] +'</div>';
+    div = div + '<div class="col-xs-8 textInSearch user add_friend_item">'+item["user"]+'</div>';
+    div = div + '<div class="col-xs-8 textInSearch add_friend_item">'+item["real_name"]+'</div>';
+    div = div + '<div class="col-xs-12 noPaddingLR addFriendDiv"><button class="btn btn-primary btn-xs" ' + 'onclick="addFriend(&apos;'+item["user"]+'&apos;,'+item["is_friend"]+')">+好友</button></div></div>';
+    $(".friendDiv").append($(div));
+    }
+    }
+    }
+    else{
+    $(".friendDiv").html("抱歉，未能搜索到符合条件的结果。");
+    }
+    });
+  }
+  function addFriendByNickname(nickname){
+    var param = {}
+    param["op"] = 0;
+    param["search"] = nickname;
+    $.post('/myFriend', param, function(data, textStatus, xhr) {
+      /*optional stuff to do after success */
+      //data =  JSON.parse(data);
+      if(data["type"] && data["type"] == 1){
+        var tmp_list;
+        try{
+          tmp_list = JSON.parse(data["result"]);
+        }
+        catch(e){
+          tmp_list = data["result"];
+        }
+        data = tmp_list;
+        if(!data.length) {
+          return showErrorToast("添加好友失败");
+        }
+        data.forEach(function(item) {
+          if(item['nick_name'] == nickname) {
+            addFriend(item['user']);
+          }
+        });
+      }
+    });
+  }
+  function addFriend(user,is_friend){
+    if(is_friend == 1){
+      showErrorToast("你们已经是好友，不能重复添加。");
+      return;
+    }
+    $(this).disable();
+    var param = {}
+    param["op"] = 1;
+    param["user"] = user;
+    $.post('/myFriend', param, function(data, textStatus, xhr) {
+    /*optional stuff to do after success */
+    //console.log(data);
+    //data = $.parseJSON(data)
+    if(data["type"] && data["type"] == 1)
+    {
+    /*data = $.parseJSON(data["result"])*/
+    showSuccessToast(data["result"]["result"]);
+    }
+    else{
+    showErrorToast(data["error"])
+    }
+    });
+  }
+  function delFriend(user, star, index){
+    var del = $("#delFriendModal");
+    var confirm = del.find("#confirmDelFriend")
+    confirm.attr("user", user);
+    confirm.attr("star", star);
+    confirm.attr("index", index);
+    del.modal("show");
+  }
+  function confirmDelFriend(flag){
+    var del = $("#delFriendModal");
+    if(window.parseInt(flag) == 0)
+    {
+      del.modal("hide");
+      return;
+    }
+    var confirm = del.find("#confirmDelFriend")
+    var param = {}
+    param["op"] = 3;
+    param["user"] = confirm.attr("user");
+    param["star"] = confirm.attr("star");
+    param["uid"] = window.fbtUID;
+    var that = this;
+    $.post('/myFriend', param, function(data, textStatus, xhr) {
+    /*optional stuff to do after success */
+    //console.log(data);
+    //data = $.parseJSON(data)
+    if(data["type"] && data["type"] == 1)
+    {
+    var count_h = $("#group_count").html();
+    var first = count_h.indexOf("(");
+    var next = count_h.indexOf("/");
+    var end = count_h.indexOf(")");
+    var online = window.parseInt(count_h.substring(first+1,next));
+    var all = window.parseInt(count_h.substring(next+1,end));
+    if(online != 0)
+      online--;
+    all--;
+    $("#group_count").html("我的好友("+online+"/"+all+")");
+    $("#accordion"+confirm.attr("index")).remove();
+    window.socket.emit("delFriend", confirm.attr("index"));
+    /*data = $.parseJSON(data["result"])*/
+    showSuccessToast(data["result"]["result"]);
+    }
+    else{
+    showErrorToast(data["error"])
+    }
+    });
+    del.modal("hide");
+  }
+  function starFriend(user){
+    var param = {}
+    param["op"] = 4;
+    param["user"] = user;
+    $.post('/myFriend', param, function(data, textStatus, xhr) {
+    /*optional stuff to do after success */
+    //console.log(data);
+    //data = $.parseJSON(data)
+    if(data["type"] && data["type"] == 1)
+    {
+    var t = $(".friendStar").parents(".friendOp")
+    $(".friendStar").remove();
+    var b = '<b class="textOfUnfriend friendUnStar" onclick="unStarFriend(&apos;'+user;
+    b = b + '&apos;)"><span class="glyphicon glyphicon-star"></span>取消星标好友</b>';
+    t.append($(b))
+    /*data = $.parseJSON(data["result"])*/
+    showSuccessToast(data["result"]["result"]);
+    }
+    else{
+    showErrorToast(data["error"])
+    }
+    });
+  }
+  function unStarFriend(user){
+    var param = {}
+    param["op"] = 5;
+    param["user"] = user;
+    $.post('/myFriend', param, function(data, textStatus, xhr) {
+    /*optional stuff to do after success */
+    //console.log(data);
+    //data = $.parseJSON(data)
+    if(data["type"] && data["type"] == 1)
+    {
+    var t = $(".friendUnStar").parents(".friendOp");
+    $(".friendUnStar").remove();
+    var b = '<b class="textOfUnfriend friendStar" onclick="starFriend(&apos;'+user;
+    b = b + '&apos;)"><span class="glyphicon glyphicon-star"></span>星标好友</b>';
+    t.append($(b))
+    /*data = $.parseJSON(data["result"])*/
+    showSuccessToast(data["result"]["result"]);
+    }
+    else{
+    showErrorToast(data["error"])
+    }
+    });
+  }
+  //single chat
+  function chatFriend(user, nick_name){
+    if(!onlineState(-1, user))
+    {
+      showNoticeToast("对方未在线，无法交流");
+      return;
+    }
+    $(".chatBox").show();
+    if($(".chatBox").find("#c_"+user).length > 0){
+      $(".nav-chat").find(".c_"+user).click();
+      return;
+    }
+    if($(".nav-chat").children().length == 4){
+      $(".nav-chat > li:first-child > span").click();
+    }
+    var li = '<li><b class="chat_b c_'+user+'" href="#c_'+user+'">'+nick_name+'</b><span class="glyphicon glyphicon-remove-circle"></span></li>';  
+    $(".nav-chat").append(li);      
+    $('.chat-content').append('<div style="width:100%;min-width:500px;min-height:323px;overflow-y:auto;overflow-x:hidden;height:323px;margin-bottom:5px;word-break: break-all;" class="tab-pane" id="c_'+user+'"></div>');
+    var p_div = $(".chat-content > div:last-child");
+    //console.log(p_div);
+    if(window.singleChat[user]){
+      var p_chat = window.singleChat[user];
+      var l = p_chat.length;
+      for(var i = 0; i < l; i++){
+        var p; 
+        if(p_chat[i]["sender"] == getCookie("fbt_user_id")){
+          p = "<p class='msgNameTime'><span>"+htmlencode(p_chat[i]["nick_name"])+"&emsp;"
+                +p_chat[i]["time"]
+                +"</span><br><span class='msgContent'>"
+                +htmlencode(p_chat[i]["msg"])
+                +"</span></p>";
+          p_div.append(p);
+          p = p_div.find("p:last-child");
+          p.css("padding-left", p_chat[i]["left"]);
+        }
+        else{
+          p = "<p class='msgNameTime msgLeft'>"+htmlencode(p_chat[i]["nick_name"])+"&emsp;"
+                +p_chat[i]["time"]
+                +"<br><span class='msgContent'>"
+                +htmlencode(p_chat[i]["msg"])
+                +"</span></p>";
+          p_div.append(p);
+        }        
+      }
+      p_div.scrollTop(p_div[0].scrollHeight);
+    }
+    $(".nav-chat > li:last-child > b").click(); 
+
+    //解析表情
+    $('.chat-content').parseEmotion();
+  }
+  function delayChat(data){
+    window.ws.send(JSON.stringify(data));
+  }
+  function chatSend(){
+    if(!onlineState(-1, window.cur_chat))
+    {
+      showNoticeToast("对方未在线，无法交流");
+      return;
+    }
+    var content = $(".chatTextArea").val() || document.getElementById('mySingleChat').value;
+    content = $.trim(content);
+    if(!content)
+    {
+      showWarningToast("内容为空不能发送，请重新输入");
+      return;
+    }
+    if(content.length > 200)
+    {
+      showWarningToast("内容过长，应少于200字");
+      return;
+    }
+    var time = (new Date()).Format("hh:mm MM-dd-yyyy");
+    var nick_name = window.nick_name;
+    var data = {"token":window.token,"type": 2,"nick_name": nick_name,"recv":window.cur_chat, "sender":getCookie("fbt_user_id"),"msg":content,"time":time};
+    if(!window.ws){
+       setTimeout("delayChat(data)",2000);
+    }
+    else
+      window.ws.send(JSON.stringify(data));
+    //console.log(content);
+    var p_div = $(".chatBox").find("#c_"+window.cur_chat);
+    var p = "<p class='msgNameTime'><span>"+htmlencode(nick_name)+"&emsp;"
+                +time
+                +"</span><br><span class='msgContent'>"
+                +htmlencode(content).replace(/\n/g, '<br/>')
+                +"</span></p>";
+    p_div.append(p);
+    p = p_div.find("p:last-child");
+    var left = $(".chatBox").width()-p.children().first().width()-126;
+    p.css("padding-left", left);
+    data["left"] = left;
+    if(!window.singleChat[window.cur_chat])
+      window.singleChat[window.cur_chat] = [];
+    window.singleChat[window.cur_chat].push(data);
+    $(".chatTextArea").val("");
+    p_div.scrollTop(p_div[0].scrollHeight); 
+
+    //解析表情
+    $('.chat-content').parseEmotion();
+    $('.chatBox').find('.tab-pane').scrollTop(999999);
+  }
+  function killChat(){
+    $(".chatBox").hide();
+    $(".nav-chat").empty();
+    $(".chat-content").empty();
+  }
+  //group chat
+  function publish(){
+  //{"type":3,"recv":"","sender":who,"msg":content,"time":time}
+    var content = $("#myGroupChat").val() || document.getElementById('myGroupChat').value;
+    content = $.trim(content);
+    if(!content)
+    {
+      showWarningToast("内容为空不能发送，请重新输入");
+      return;
+    }
+    if(content.length > 200)
+    {
+      showWarningToast("内容过长，应少于200字");
+      return;
+    }
+
+    var time = (new Date()).Format("hh:mm MM-dd-yyyy");
+    var data = {"uid":window.fbtUID,"token":window.token,"type": 3, "recv":"", "sender":getCookie("fbt_user"),"msg":content,"time":time,"name":window.nick_name};
+    if(!window.ws){
+       setTimeout("window.ws.send(JSON.stringify(data));",2000);
+    }
+    else
+      window.ws.send(JSON.stringify(data));
+    //console.log(content);
+    data["name"] = "我";
+    appendGroupChat(data);
+    $("#myGroupChat").val("");
+
+    //根据用户发送内容，自动回复
+    if(window.setting["chat_robot"] == 1) {
+      (function autoReply(content) {
+        var rules = {
+          "积分规则": "点击【排行榜】（资源库右上角），可进入查看【积分规则】。因细小变动，具体请以官网为准",
+          "赚积分": "多多上传【优质资源、首发资源】、ps：学习资源积分更多哟；多多在线，做种【供水】；多去【朋友圈】或者好友个人中心下载资源(免费)；多多【分享】",
+          "赚F币": "多多上传【优质资源、首发资源】、ps：学习资源积分更多哟；多多在线，做种【供水】；多去【朋友圈】或者好友个人中心下载资源(免费)；多多【分享】",
+          "网络不佳": "对方突然下线或者不在线，或者您已掉线，请等待…或者重启软件，还是不行的话请联系管理员: 1026250255",
+          "稍后重试": "对方突然下线或者不在线，或者您已掉线，请等待…或者重启软件，还是不行的话请联系管理员: 1026250255",
+          "排队中": "最多同时下载两个，剩余任务显示排队中，请稍后",
+          "加群": "新用户欢迎加入【FBT官方群】6群339674514，或7群194239857，或8群389730107。加群后请先看群公告，谢谢您的支持！ 另，欢迎关注【fbt百度贴吧】，发帖留言你的疑问和建议，我们会不断改进 ~！O(∩_∩)O~",
+          "批量": "暂时只能上传单个资源，或者压缩包。【文件夹上传、显示、下载】功能正在完善中。。。敬请期待。。O(∩_∩)O~~",
+          "文件夹": "暂时只能上传单个资源，或者压缩包。【文件夹上传、显示、下载】功能正在完善中。。。敬请期待。。O(∩_∩)O~~",
+          "怎么加好友": "好友列表右下角【+添加FBT好友】",
+          "查看我的": "点击资源库主页【我的分享图标】，或者点击聊天室【个人头像】",
+          "查看上传": "点击资源库右下角【N个资源正在上传】，可查看正在上传的资源和上传进度，以及取消上传",
+          "下载不了": "检查自己是否有连接【ipv6】校园网，软件暂不支持ipv4下载；查看资源是否有人【在线】即 [在线数/总数]；检查自己是否【掉线】；实在米办法就【重启软件】试试……",
+          "卡": "O.O不可能吧，程序猿已经优化了。。。O(∩_∩)O~~",
+          "上传的搜不到": "资源上传后，请【等待审核】…审核菌也是蛮拼的，最迟第二天即可显示； fbt已有一样的资源，你的资源信息被合并在首发者名下，可在评论里看到",
+          "怎么删除": "【上传途中的资源】可点X取消上传；【上传完成的资源】可选择:移动电脑原文件、更改资源名、删除文件等方式删除",
+          "电视看不了": "重装一下Windows Media Player，在CMD里输入regsvr32 wmnetmgr.dll，regsvr32 wmstream.dll"
+        }
+        for(var ruleKey in rules) {
+          if(content.indexOf(ruleKey) > -1) {
+            var time = (new Date()).Format("hh:mm MM-dd-yyyy");
+            var data = {"uid":null,"token":window.token,"type": 3, "recv":"", "sender":getCookie("fbt_user"),"msg":"关于【"+htmlencode(ruleKey)+"】："+rules[ruleKey],"time":time,"name":"FBT小兔"};
+            appendGroupChat(data);
+          }
+        }
+      }(content));
+    }
+
+    //解析表情
+    $('#group_chat').parseEmotion();
+  }
+  function getMoreGroupChat(){
+    $("#loadingText").text("正在获取更多...");
+    $("#loadingGif").css({"visibility":"visible"});
+    var index = window.group_chat_index;
+    if((window.group_chat_index+=10) > window.group_chat_count)
+      window.group_chat_index = window.group_chat_count;
+    $.each($("#group_chat").children(), function(i, value){
+      if(i == window.group_chat_index)
+        return false;
+      if(i < index)
+        return true;
+      $(value).fadeIn('fast',function(){}); 
+    });
+    $("#loadingText").text("查看更多");
+    $("#loadingGif").css({"visibility":"hidden"});
+  }
+  

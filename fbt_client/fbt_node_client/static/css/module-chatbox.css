@@ -1,0 +1,246 @@
+#chatbox-container {
+  width: 660px;
+  height: 480px;
+  right: 80px;
+  bottom: 80px;
+  cursor: auto !important;
+}
+
+#chatbox-container > .skin {
+  display: block;
+  border-radius: 3px;
+  border: 1px solid grey;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  background: url(../img/background.jpg); 
+  opacity: 1;
+}
+
+#chatbox-container > .chat-close {
+  position: absolute;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  color: lightgrey;
+  right: 12px;
+  top: 5px;
+}
+
+#chatbox-container > .chat-close:hover {
+  background: rgba(100, 0, 0, 0.8);
+  color: white;
+}
+
+#chatbox-container > .window {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+
+#chatbox-container > .window > .tabs {
+  float: left;
+  width: 80px;
+  height: 100%;
+  display: inline-block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#chatbox-container > .window > .tabs > .tab {
+  text-align: left;
+  padding: 5px;
+  margin: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;                                                                                                                        
+  color: white;
+  text-align: center;
+}
+
+#chatbox-container > .window > .tabs > .tab.choosed {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+#chatbox-container > .window > .tabs > .tab:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+#chatbox-container > .window > .tabs > .tab img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+#chatbox-container > .window > .tabs > .tab span.mark {
+  color: crimson;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#chatbox-container > .window > .tabs > .tab span.chat-close {
+  cursor: pointer;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  line-height: 15px;
+  text-align: center;
+  background: rgba(100, 0, 0, 0.8);
+  color: white;
+}
+
+#chatbox-container > .window > .tabs > .tab label {
+  clear: both;
+  color: white;
+  font-size: 12px;
+  display: block;
+}
+
+#chatbox-container > .window > .chat {
+  width: 575px;
+  height: 100%;
+  float: right;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#chatbox-container > .window > .chat > * {
+  display: block;
+}
+
+#chatbox-container > .window > .chat > .message {
+  width: 100%;
+  height: 430px;
+  border-bottom: 1px solid lightgrey;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 18px;
+}
+
+#chatbox-container > .window > .chat > .message > span.receive {
+  clear: both;
+  display: block;
+  float: left;
+  margin: 10px 30px 10px 5px;
+  max-width: 75%;
+  word-break: break-all;
+  text-align: left;
+}
+
+#chatbox-container > .window > .chat > .message > span.receive > i:nth-child(1) {
+  text-align: left;
+  font-style: oblique;
+  font-size: 12px;
+  display: inline-block;
+}
+
+#chatbox-container > .window > .chat > .message > span.receive > i:nth-child(2) {
+  cursor: pointer;
+  display: inline-block;
+}
+
+#chatbox-container > .window > .chat > .message > span.receive > i:nth-child(3) {
+  font-style: normal;
+  display: block;
+  background: #1abc9c;
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+#chatbox-container > .window > .chat > .message > span.send {
+  clear: both;
+  display: block;
+  float: right;
+  margin: 10px 5px 10px 30px;
+  max-width: 75%;
+  word-break: break-all;
+  text-align: right;
+}
+
+#chatbox-container > .window > .chat > .message > span.send > i:nth-child(1) {
+  font-size: 12px;
+  text-align: right;
+  font-style: oblique;
+  display: inline-block;
+}
+
+#chatbox-container > .window > .chat > .message > span.send > i:nth-child(1) {
+  cursor: pointer;
+  display: inline-block;
+}
+
+#chatbox-container > .window > .chat > .message > span.send > i:nth-child(3) {
+  font-style: normal;
+  display: block;
+  background: whitesmoke;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: left;
+}
+
+#chatbox-container > .window > .chat > .emotion {
+  position: absolute;
+  bottom: 50px;
+  background: white;
+  width: 576px;
+  border-top: 1px solid lightgrey;
+}
+
+#chatbox-container > .window > .chat > .emotion > span > i {
+  display: inline-block;
+  margin: 5px;
+}
+
+#chatbox-container > .window > .chat > .emotion > span:hover {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 8px 0;
+  border-radius: 3px;
+}
+
+#chatbox-container > .window > .chat > .input {
+  padding: 5px;
+}
+
+#chatbox-container > .window > .chat > .input > * {
+  display: inline-block;
+}
+
+#chatbox-container > .window > .chat > .input > textarea {
+  height: 35px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  width: 421px;
+  padding: 5px;
+  resize: none;
+}
+
+#chatbox-container > .window > .chat > .input > button {
+  border-radius: 3px;
+  border: none;
+  padding: 0 20px;
+  vertical-align: top;
+  height: 35px;
+}
+
+#chatbox-container > .window > .chat > .input > button.smile {
+  background: none;
+}
+
+#chatbox-container > .window > .chat > .input > button.smile:hover {
+  background: none;
+  color: grey;
+}
+
+#chatbox-container > .window > .chat > .input > button:hover {
+  background: lightgrey;
+}

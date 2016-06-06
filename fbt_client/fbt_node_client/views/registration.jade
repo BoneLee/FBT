@@ -1,0 +1,215 @@
+style.
+  .btn:focus {
+  outline: 5px auto #FFF;
+  }
+  /*这两行CSS模拟了flatUI典型的input样式*/
+  input{border-radius: 6px;
+  border: 2px solid #dce4ec;
+  color: #34495e;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  padding: 8px 0 9px 10px;
+  text-indent: 1px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  transition: border linear .2s,box-shadow linear .2s;}
+  input:focus{
+  border-color: #1abc9c; -webkit-box-shadow: none;-moz-box-shadow: none; box-shadow: none; outline: none;}
+  input{display: block; margin-bottom: 6px; width: 100%; height: 42px;}
+  h2{font-size: 30px; margin-top: 4px;}
+  h5{font-size: 22px; line-height: 30px;}
+  .remeberPW{line-height: 60px;}
+  .login-link{color: #aaaaaa;}
+br
+br
+.alert.alert-block.alert-error.fade
+  button.close(type='button', data-dismiss='alert') &times;
+  strong &#x63D0;&#x793A;&#xFF01;
+  span#hint
+.container
+  .row
+    .col-xs-5(style='text-align: center; padding-top: 30px;')
+      img.img-responsive.center-block(src="images/loginPic3.png")
+      h5
+        | FBT: 快乐源于分享
+      label.radio-inline(style="color: #1abc9c")
+        input.gender(type='radio', name='gender', value='男', style="cursor:pointer;width: 15px;height: 15px;margin-top: 10px;")
+        | 我是男生
+      label.radio-inline(style="color: #ff0088")
+        input.gender(type='radio', name='gender', value='女', style="cursor:pointer;width: 15px;height: 15px;margin-top: 10px;")
+        | 我是女生
+    .col-xs-7
+      .col-xs-7
+        h2 &#x6CE8;&#x518C;:
+      .col-xs-7
+        input#school.span5.input_l(type='text', value='', placeholder='学校')
+      .col-xs-7
+        input#email.span5.input_l(type='text', value='', placeholder='邮箱')
+      .col-xs-7
+        input#password.span5.input_l(type='password', value='', placeholder='密码(至少6位)')
+      .col-xs-7
+        input#confirmPassword.span5.input_l(type='password', value='', placeholder='密码确认', onblur='confirm()')
+      .col-xs-7
+        input#nickName.span5(type='text', value='', placeholder='昵称')
+      .col-xs-7
+        input#realName.span5(type='text', value='', placeholder='请填写真名，便于好友查找')
+      .col-xs-7
+        input#referName.span5(type='text', value='', placeholder='推荐人昵称或真名')
+      .col-xs-7
+        button.btn.btn-large.btn-primary.btn-block.submit(onclick='submit()') &#x63D0;&#x4EA4;
+      .col-xs-7
+        .col-xs-8
+          label#isRead.checkbox(for='isRead')
+            input(type="checkbox", value="", data-toggle="checkbox")
+            a#agreement 我已阅读并接受注册协议
+        .col-xs-4(style="margin-top: 5px;")
+          a(href="#",onclick="toLogin()") 登录
+script(type='text/javascript').
+  if (!window.console) window.console = {};
+  if (!window.console.log) window.console.log = function() {};
+  function toLogin(){
+    location.href = "/login";
+  }
+  
+  $(function(){
+    $( "#school" ).autocomplete({
+      source: school
+    })
+    .blur(function() {
+      $(this).val($(this).encode_val());
+    });
+  });
+
+  $("#agreement").click(function(event) {
+    /* Act on the event */
+    event.preventDefault();
+    window.open("http://www.friendsbt.com/agreement.htm", "_blank");
+  });
+
+  $("#isRead").trigger('click');
+
+  function validate(){
+  if (!$("#isRead").hasClass('checked')){
+    $("body > div.wrap_all #hint").text("请先勾选接受注册协议");
+    $(".alert").addClass('in');
+    return false; 
+  }
+
+  if ($("#school").val().length > 20){
+    $("body > div.wrap_all #hint").text("学校名称最多为20个字");
+    $(".alert").addClass('in');
+    return false;
+  }
+  if($("#school").val().length == 0){
+    $("body > div.wrap_all #hint").text("请填写学校");
+    $(".alert").addClass('in');
+    return false;
+  }
+  if($(".gender:checked").length == 0){
+    $("body > div.wrap_all #hint").text("请选择性别");
+    $(".alert").addClass('in');
+    return false;
+  }
+
+  var value = $("#email").val();
+  //console.log(value);
+  if($("#nickName").val().length > 10){
+    $("body > div.wrap_all #hint").text("昵称最多为10个字");
+    $(".alert").addClass('in');
+    return false;
+  }
+  else if($("#nickName").val() == ""){
+    $("body > div.wrap_all #hint").text("昵称未填写");
+    $(".alert").addClass('in');
+    return false;
+  }
+  else if($("#email").val() == "" || $("#password").val() == "" || $("#confirmPassword").val() == "")
+  {
+    $("body > div.wrap_all #hint").text("用户名或者密码未填写.");
+    $(".alert").addClass('in');
+    return false;
+  }
+  else if($("#password").val().length < 6){
+    $("body > div.wrap_all #hint").text("密码小于6位，为了您的账户安全，请重设");
+    $(".alert").addClass('in');
+    return false;
+  }
+  else if($("#password").val() != $("#confirmPassword").val()){
+    $("body > div.wrap_all #hint").text("两次密码输入不一致，请检查");
+    $(".alert").addClass('in');
+    return false;
+  }
+  else if ((null == value.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/))) {
+  $("body > div.wrap_all #hint").text("非法的邮箱格式.");
+  $(".alert").addClass('in');
+  return false;
+  }
+  else if($("#referName").val() != "" && ($("#referName").val() == $("#nickName").val() || $("#referName").val() == $("#realName").val())){
+    $("body > div.wrap_all #hint").text("推荐人请不要与所填昵称或者真名相同");
+    $(".alert").addClass('in');
+    return false;
+  }
+  return true;
+  }
+  $(".alert").alert()
+  function registration() {
+  var message = {}
+  message["school"] = $("#school").encode_val();
+  message["gender"] = $(".gender:checked").val();
+  message["user"] = $("#email").val();
+  message["pwd"] = $.md5($("#password").val());
+  message["nick"] = $("#nickName").encode_val();
+  message["name"] = $("#realName").encode_val();
+  message["refer"] = $("#referName").encode_val();
+  message["next"] = "/login";
+  var disabled = $(".submit");
+  disabled.disable();
+  $.postJSON("/registration", message, function(response) {
+    console.log(response);
+  if(response.charAt(0) != '{')
+  {
+    $("body > div.wrap_all #hint").text("FBT已经给您的注册邮箱发送了一封邮件，请稍后验证您的邮箱（某些邮箱可能会将该邮件误认为垃圾邮件）");
+    //$("body > div.wrap_all #hint").text("您已注册成功，请登录进入FBT。");
+    //- setTimeout(function() {
+    //-     location.href = "/login";
+    //-     }, 2000);
+  }
+  else{
+  response = $.parseJSON(response)
+  if ("type" in response && response["type"] == 1) {
+    $("body > div.wrap_all #hint").text("FBT已经给您的注册邮箱发送了一封邮件，请稍后验证您的邮箱（某些邮箱可能会将该邮件误认为垃圾邮件）");
+    //$("body > div.wrap_all #hint").text("您已注册成功，请登录进入FBT。");
+    //- setTimeout(function() {
+    //-     location.href = "/login";
+    //-     }, 2000);
+  }
+  else{
+  if(response["error"])
+    $("body > div.wrap_all #hint").text(response["error"]);
+  else
+    $("body > div.wrap_all #hint").text("注册出现了一点小故障，您可以去试试是否可以登录。");
+  }
+  }
+  disabled.enable();
+  $(".alert").addClass('in');
+  });
+  }
+  function submit(){
+  if (validate()) {
+  registration();
+  }
+  }
+  function confirm(){
+  if ($("#password").val() != $("#confirmPassword").val()) {
+  $("body > div.wrap_all #hint").text("两次密码输入不一致，请检查");
+  $(".alert").addClass('in');
+  }
+  else
+  {
+  $(".alert").removeClass('in');
+  }
+  }

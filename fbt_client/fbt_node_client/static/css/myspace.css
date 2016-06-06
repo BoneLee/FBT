@@ -1,0 +1,109 @@
+.myspace {
+    background: url(../img/background.jpg);
+    border-radius: 3px;
+    border: 1px solid grey;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    display: block;
+    padding: 20px;
+    min-height: 600px;
+    z-index: 10;
+
+    top: 30px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.myspace > .close {
+    background: red;
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    margin: 10px;
+    opacity: 1; right: 0;
+    border-radius: 50%; 
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    color: lightgrey;
+    padding: 6px;
+    text-decoration: none;
+}
+
+.myspace > .close:hover {
+  background: rgba(100, 0, 0, 0.8);
+  color: white;
+}   
+
+.myspace .space_info {
+    margin-bottom: 20px;
+}
+.myspace .space_info > img{
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	display: inline-block;
+}
+.myspace .space_detail_wrap{
+	display: inline-block;
+}
+.myspace .space_detail_wrap h1{
+	color: white;
+	margin-left: 15px;
+}
+.myspace .span2{
+	width: 150px;
+	float: left;
+	min-height: 1px;
+}
+.myspace .span8{
+	margin-left: 185px;
+}
+.myspace .space_content{
+/*	margin-top: 15px;*/
+}
+.myspace .space_sidemenu_wrap{
+    /*
+	margin-top: 15px;
+	margin-right: 20px;
+    */
+}
+.myspace .space_side_menu{
+    /*
+	padding: 10px;
+	padding-left: 30px;
+	font-size: 16px;
+	margin-bottom: 5px;
+    */
+	color:white;
+	cursor: pointer;
+	background-color: rgba(0,0,0,0.6);
+    padding: 10px;
+    text-align: center;
+    color: lightgrey;
+}
+.myspace .active{
+	background-color: rgba(0,0,0,0.75);
+    color: white;
+}
+.myspace .edit_icon{
+	position: relative;
+	top: 29px;
+	right: 20px;
+	cursor: pointer;
+	padding: 5px;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 50%;
+	font-size: 14px;
+    color: white;
+}
+.myspace .edit_icon:hover{
+	background-color: rgba(0,0,0,0.4);
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tornado Chat Demo</title>
+    <link rel="stylesheet" href="{{ static_url("css/chat.css") }}" type="text/css">
+  </head>
+  <body>
+    <div id="body">
+      <div id="inbox">
+      </div>
+      <div id="input">
+        <form action="/message" method="post" id="messageform">
+          <table>
+            <tr>
+              <td>to:<input name="to" id="to" style="width:50px"></td>
+              <td>content:<input name="message" id="message" style="width:500px"></td>
+              <td style="padding-left:5px">
+                <input id="send" type="submit" value="{{ _("Post") }}">
+                {% module xsrf_form_html() %}
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+    <script src="http://static.friendsbt.com/statics/js/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="{{ static_url("js/chat.js") }}" type="text/javascript"></script>
+  </body>
+</html>

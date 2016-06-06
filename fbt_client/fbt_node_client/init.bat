@@ -1,0 +1,1 @@
+taskkill /FI PID ne %1 /im nw.exe /F /t

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ date_time }}</title>
+</head>
+<body>
+    <h1>today({{ date_time }}) users list: {{ len(today_users) }}</h1>
+    <ul>
+       {% for user in today_users %}
+       <li>{{ user["real_name"] }} ({{ user["user"] }} {{ user["university"] }})</li>
+       {% end %}
+    </ul>
+    <h1>today question list: {{ len(today_questions) }}</h1>
+    <ul>
+       {% for Q in today_questions %}
+       <li>{{ Q["title"] }} ({{ Q["publisher"] }} {{ Q["publisher_real_name"] }} {{ Q["university"] }})</li>
+       {% end %}
+    </ul>
+    <h1>today answer list: {{ len(today_answers) }}</h1>
+    <ul>
+       {% for A in today_answers %}
+       <li>{{ A["title"] }} ({{ A["publisher"] }} {{ A["publisher_real_name"] }} {{ A["university"] }})</li>
+       {% end %}
+    </ul>
+    <h1>today download list: {{ len(today_download) }}</h1>
+    <ul>
+       {% for D in today_download %}
+       <li>{{ D["resource_name"] }} ({{D["downloader"]}} {{ D["university"] }} - {{ D["college"]}})</li>
+       {% end %}
+    </ul>
+    <h1>today uploaded resource list: {{ len(today_uploaded_res) }}</h1>
+    <ul>
+        {% for D in today_uploaded_res %}
+        <li>{{ D["resource_name"] }} ({{D["uploader"]}} {{ D["university"] }} - {{ D["college"]}} - {{ D["course"] }})</li>
+        {% end %}
+    </ul>
+    <h1>today auditting resource list: {{ len(today_auditing_res) }}</h1>
+    <ul>
+        {% for D in today_auditing_res %}
+        <li>{{ D["resource_name"] }} ({{D["uploader"]}} {{ D["university"] }} - {{ D["college"]}} - {{ D["course"] }})</li>
+        {% end %}
+    </ul>
+</body>
+</html>

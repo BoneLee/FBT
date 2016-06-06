@@ -1,0 +1,24 @@
+<!-- vim: set sw=2 ts=2 : -->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs"></div>
+</div>
+<div class="extern circle">
+  <!--<pagination-container group="circle"></pagination-container>-->
+  <div class="container" ng-repeat="i in ['考研', '雅思', '托福']">
+    <label>{{ i }}</label><span>更多</span>
+    <div class="row">
+      <div class="col-md-3 item" ng-repeat="j in [1,2,3,4,5,6,7,8]">
+        <img class="poster" src="img/poster.jpg">
+        <div class="info">
+          <label>Resource1.MP4</label>
+          <span>标清：200M</span>
+          <span>上传时间：2015-01-01</span>
+          <span>下载数目：10</span>
+          <span>在线：5/10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<pagination-container group="circle"></pagination-container>-->
+  <div class="mask"></div>
+</div>

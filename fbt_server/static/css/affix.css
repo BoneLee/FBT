@@ -1,0 +1,13 @@
+body{position:relative;}
+ul{background-color:#66FF33;list-style-type:none;}
+.affix {
+  top: 50px;
+}
+.affix-top {
+  top: 50px;
+  position:absolute;
+}
+.affix-bottom {
+  bottom: 50px;
+  position:absolute;
+}

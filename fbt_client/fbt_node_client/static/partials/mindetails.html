@@ -1,0 +1,62 @@
+<!-- vim: set sw=2 ts=2 : -->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs"></div>
+</div>
+<div class="extern mindetails">
+  <div class="row">
+    <button ng-click="returnLastPage()" class="btn default">快速返回上一页</button>
+  </div>
+  <div class="details-resource" ng-mouseenter="showSummary=true" ng-mouseleave="showSummary=false">
+    <img class="details-poster" ng-src="{{ resource.link }}" ng-style="{'height': height}">
+    <div class="details-info allowselect">
+      <label><i>{{ resource.file_name | normFileName }}</i> <i class="douban" ng-click="showDouban(resource.file_name)">豆瓣</i><i class="bad" ng-click="informBad(resource)">举报</i><br>
+        <span ng-if="resource.ext_info.resource_en_name" class="en_name">{{ resource.ext_info.resource_en_name }}</span>
+      </label>
+      <span ng-if="resource.isDir">文件个数: {{ resource.file_size }}</span>
+      <span ng-if="!resource.isDir">文件大小: {{ resource.file_size | normFileSize }}</span>
+      <span>类型: {{ resource.resType }}</span>
+      <span>标签: {{ resource.tags }}</span>
+      <span>上传者: {{ resource.owner }} <i class="message fa fa-envelope" ng-click="sendMessage(resource.owner)" title="发消息给Ta"></i></span>
+      <span>上传时间: {{ resource.mtime*1000 | date:'yyyy-MM-dd HH:mm' }}</span>
+      <span>下载数目: {{ resource.download_num }}</span>
+      <span>在线: {{ resource.online_owners_num }}/{{ resource.total_owners_num }}</span>
+      <span ng-if="resource.ext_info.year">年份: {{ resource.ext_info.year }}</span>
+      <span ng-if="resource.ext_info.countries">国家: <span ng-repeat="country in resource.ext_info.countries">{{ country }} </span></span>
+      <span ng-if="resource.ext_info.resource_album">专辑: {{ resource.ext_info.resource_album }}</span>
+      <span ng-if="resource.ext_info.rating">豆瓣评分: {{ resource.ext_info.rating }}</span>
+      <span ng-if="resource.ext_info.resource_art">音乐家: {{ resource.ext_info.resource_art }}</span>
+      <span ng-if="resource.ext_info.resource_school">学校: {{ resource.ext_info.resource_school }}</span>
+      <span ng-if="resource.ext_info.resource_academy">院系: {{ resource.ext_info.resource_academy }}</span>
+      <span ng-if="resource.ext_info.resource_course">课程: {{ resource.ext_info.resource_course }}</span>
+      <span ng-if="resource.ext_info.resource_teacher">授课老师: {{ resource.ext_info.resource_teacher }}</span>
+      <span ng-if="resource.ext_info.resource_platform">平台: {{ resource.ext_info.resource_platform }}</span>
+      <span ng-if="resource.ext_info.resource_version">版本: {{ resource.ext_info.resource_version }}</span>
+      <star-container group="details"></star-container> {{ resource.avg_grade | number:1 }}分
+      <span>
+        <button ng-if="!isMy && !resource.downloaded" class="btn default primary" ng-click="downloadResourceClickHandler()">FBT下载</button>
+        <button ng-if="!isMy && resource.downloaded" class="btn default primary disabled" ng-click="downloadResourceClickHandler()">已下载</button>
+        <button class="btn default" ng-click="shareResourceClickHandler()">分享</button>
+      </span>
+    </div>
+    <!--<div ng-if="summary && showSummary" class="details-summary allowselect">{{ summary }}</div>-->
+    <div ng-if="summary" ng-style="{'height': height}" class="details-summary allowselect">{{ summary }}</div>
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="comment" placeholder="说点啥吧..."/>
+    <button class="btn default primary" ng-click="publishCommentClickHandler(comment)">发布</button>
+  </div>
+  <div class="details-comments" ng-if="!comments.length">
+    还没有人评论哦，快抢沙发！
+  </div>
+  <div class="details-comments" ng-repeat="comment in comments">
+    <img class="details-logo" src="{{ comment.uicon }}">
+    <div>
+      <span>{{ comment.uname }}</span>
+      <span>{{ comment.ctime | date:'yyyy-MM-dd HH:mm' }}</span>
+      <div>{{ comment.comment }}</div>
+    </div>
+  </div>
+  <div ng-if="comments.length" class="details-more" ng-click="viewMoreCommentClickHandler()">加载更多
+  </div>
+  <div class="mask"></div>
+</div>

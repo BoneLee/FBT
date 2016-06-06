@@ -1,0 +1,138 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.myreward {
+  margin-top: 42px;
+}
+
+.extern.myreward > .pagination-container {
+  clear: both;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.extern.myreward .mask {
+  position: fixed;
+  height: 50px;
+  top: 120px;
+  left: 0;
+  right: 0px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.myreward > .rewards {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.extern.myreward > .row:nth-child(2) {
+  clear: both;
+}
+
+.extern.myreward .time {
+  color: grey;
+  font-style: italic;
+  display: inline-block;
+}
+
+.extern.myreward .logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.extern.myreward .name {
+  font-size: 14px;
+}
+
+.extern.myreward .message {
+  font-size: 12px;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.extern.myreward .item {
+  border: 1px solid lightgrey;
+  margin-left: 1px;
+  padding: 10px 0;
+  height: 100px;
+}
+
+.extern.myreward .item > div {
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.extern.myreward .item .resource-name p {
+  font-size: 18px;
+}
+
+.extern.myreward .item .resource-name span {
+  font-size: 12px;
+  padding-right: 5px;
+}
+
+.extern.myreward .item .fb {
+  font-size: 18px;
+}
+
+.extern.myreward .item .addition .small-logo {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: 1px solid lightgrey;
+}
+
+.extern.myreward .item .addition .fa {
+  cursor: pointer; 
+}
+
+.extern.myreward .modal .addition {
+  text-align: center;
+  margin-bottom: 15px
+}
+
+.extern.myreward .modal .addition .logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+}
+
+.extern.myreward > .row {
+  margin-bottom: 20px;
+}
+
+.extern.myreward > .row, .myreward > .rewards > .row {
+  margin-bottom: 20px;
+}
+
+.extern.myreward .modal table {
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+.extern.myreward .modal table .btn {
+  font-size: 12px;
+  padding: 3px 10px;
+}
+.extern.myreward .modal table td {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

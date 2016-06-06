@@ -1,0 +1,31 @@
+<!-- vim: set sw=2 ts=2 : -->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs"></div>
+</div>
+<div class="extern resource-college">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <input ng-model="query" type="text" ng-model="appendFb" placeholder="快速查找"/>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="tabs">
+        <div>全部高校</div><span>|</span>
+        <div>985名校</div><span>|</span>
+        <div>211大学</div><span>|</span>
+        <div>常青藤</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" ng-repeat="group in groups | filter:query">
+      <div class="group" ng-click="viewCollegeResourceClickHandler(group.title)">
+        <img class="logo" src="img/avatar.jpg"/>
+        <div class="title">{{ group.title }}群<br/><span>人数：1221</span><span>资源：11111</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="mask"></div>
+</div>

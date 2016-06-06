@@ -1,0 +1,13 @@
+/* vim: set sw=2 ts=2 : */
+'use strict';
+
+app.controller('CircleController', function($scope, pagination) {
+  /*
+  pagination.render(2, 20, 'circle', function(currentPageNum, totalPageNum) {
+    console.log('circle -- Page: ' + currentPageNum + '/' + totalPageNum);
+  });
+  pagination.render(2, 10, 'bad', function(currentPageNum, totalPageNum) {
+    console.log('bad -- Page: ' + currentPageNum + '/' + totalPageNum);
+  });
+  */
+});

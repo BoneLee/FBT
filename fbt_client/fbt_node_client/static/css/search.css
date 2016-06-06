@@ -1,0 +1,161 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.search {
+  margin-top: 42px;
+}
+
+.extern.search .pagination-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.extern.search .mask {
+  position: fixed;
+  height: 50px;
+  top: 90px;
+  left: 0;
+  right: 0px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.search > .row:first-child {
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 97px;
+  text-align: right;
+}
+
+.extern.search > .row:first-child > .radio {
+  padding-top: 8px;
+}
+
+.extern.search .right > div {
+  position: fixed;
+  width: 22%;
+}
+
+.extern.search .right .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.extern.search .right .title > span {
+  font-size: 12px;
+  color: grey;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.extern.search .right .title > span:hover {
+  color: #1abc9c;
+}
+
+.extern.search .right .top-items {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);                                                                                                                
+  height: 330px;
+}
+
+.extern.search .right .top-item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.extern.search .right .top-item:hover {
+  background: lightgrey;
+  padding: 10px 0;
+}
+
+.extern.search .right .top-item > span {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.extern.search .right .top-item > span:first-child {
+  width: 20px;
+  height: 20px;
+  background: #1abc9c;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  padding: 3px;
+}
+
+.extern.search .right .school:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.extern.search .left .item {
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-left: 35px;
+  max-width: 122px;
+}
+
+/*
+.extern.search .left .item > img:hover {
+  width: (140-6)px;
+  border: 3px solid lightgrey;
+}
+*/
+
+.extern.search .left .item > * {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+.extern.search .left .item > img {
+  border: 1px solid lightgrey;
+  height: 180px;
+  max-width: 122px;
+}
+
+.extern.search .left .item > span:nth-child(3)  {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 122px;
+  text-align: center;
+}
+
+.extern.search .left .item > span:nth-child(2) {
+  position: absolute;
+  top: 0px;
+  height: 180px;
+  width: 122px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  font-size: 15px;
+  padding-top: 50px;
+  /*text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;*/
+  word-break: break-all;
+}
+
+.extern.search .left .item > div {
+  position: absolute;
+  bottom: 80px;
+  width: 122px;
+}
+
+.extern.search .left .item > div > .btn {
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 5px 8px;
+  z-index: 1;
+}

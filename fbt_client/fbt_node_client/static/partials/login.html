@@ -1,0 +1,113 @@
+<div class="login" data-ng-controller="LoginController">
+	<style type="text/css">
+        .login {
+            position: absolute;
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            overflow-x: hidden; 
+        }
+		.login .btn:focus {
+        	outline: 5px auto #FFF;
+        }
+        /*这两行CSS模拟了flatUI典型的input样式*/
+        .login input{
+        	border-radius: 0;
+	        border: 1px solid #dce4ec;
+	        color: #34495e;
+	        font-family: "Lato", sans-serif;
+	        font-size: 14px;
+	        padding: 8px 0 9px 10px;
+	        text-indent: 1px;
+            /*
+	        -webkit-border-radius: 6px;
+	        -moz-border-radius: 6px;
+	        border-radius: 6px;
+	        -webkit-box-shadow: none;
+	        -moz-box-shadow: none;
+            */
+	        box-shadow: none;
+	        transition: border linear .2s,box-shadow linear .2s;
+	    }
+        .login input:focus{
+            border: 2px solid #1abc9c;
+        	/*border-color: #1abc9c; -webkit-box-shadow: none;-moz-box-shadow: none; box-shadow: none; outline: none;*/
+        }
+        .login input{
+        	display: block; margin-bottom: 6px; width: 100%; height: 42px;
+        }
+        .login h2{font-size: 30px; margin-top: 4px; color: #1abc9c;}
+        .login h5{font-size: 22px; line-height: 30px;}
+        .login .col-xs-8 span, .login .col-xs-8 a, .login .col-xs-8 button{
+            /*font-size: 16px;*/
+        } 
+        .alert {
+            text-align: center;
+            background: lightyellow;
+            width: 860px;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+	</style>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="alert" type="danger" close="closeAlert()" data-ng-if='alertMsg.length != 0'>{{alertMsg}}</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-5" style='text-align: center; border-right:1px solid #dce4ec;'>
+				<img src='images/loginPic3.png'>
+				<h5>FBT：快乐源于分享</h5>
+			</div>
+			<div class="col-xs-7" style='text-align: center; padding-left:70px;'>
+				<br>
+				<br>
+				<div class="col-xs-8">
+					<input type='text' data-ng-model="user" placeholder='邮箱'>
+				</div>
+				<div class="col-xs-8">
+					<input type='password' data-ng-model="pwd" data-ng-keypress="loginPress($event)" placeholder='密码'>
+				</div>
+				<div class="col-xs-8">
+					<div class="col-xs-4">记住密码：</div>
+					<div class="col-xs-6"><switch name="remenber" ng-model="remenber"></switch></div>
+				</div>
+				<div class="col-xs-8" style="margin-top: 2px">
+					<button data-ng-disabled="logined" class="btn default primary" data-ng-click="login_click()" style="background-color: #1abc9c; color: white; height: 42px; width: 100%">登录</button>
+				</div>
+				<div class="col-xs-8" style="margin-top: 10px">
+					<span style="float: left;cursor:pointer;color:#1abc9c" data-ng-click='toCoin()'>积分规则</span>
+                    <span class="cur_p" style="cursor:pointer;color:#1abc9c" data-ng-click="reset()"> 忘记密码 </span>
+                    <a style="color: #1abc9c; text-decoration: none;float: right" href="" data-ng-click="toRegister()">注册</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="color: #48c9b0;text-align: center;margin-top: 40px;font-size: 16px;">
+			{{hint}}
+		</div>
+	</div>
+	<script type="text/ng-template" id="resetModal.html">
+	    <div class="modal-header">
+	        <button class="close" data-ng-click="close()">&times;</button>
+            <div class="modal-title">
+                <h2>忘记密码</h2>
+	        </div>
+	    </div>
+	    <div class="modal-body">
+            <div class="form-group">
+	            <input type='text' placeholder='输入注册邮箱' data-ng-model="$parent.resetEmail">
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	        <button type="button" class="btn default" data-ng-click="resetPwd(0)">
+	            取消
+	        </button>
+	        <button type="button" class="btn default primary" data-ng-click="resetPwd(1)">
+	            确定
+	        </button>
+	    </div>
+    </script>
+</div>

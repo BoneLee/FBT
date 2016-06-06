@@ -1,0 +1,78 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.search > .banner {
+  top: 60px;
+}
+
+.search .extern {
+  margin-top: 100px;
+}
+
+.search .extern > .row > label {
+  font-size: 18px;
+  margin-right: 50px;
+}
+
+.search .extern > .row > label + span {
+  font-size: 12px;
+  color: grey;
+}
+
+.search .extern .poster {
+  width: 80px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid lightgrey;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/*
+.search .extern .poster:hover {
+  border: 3px solid lightgrey;
+}
+*/
+
+.search .extern .info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.search .extern .info > * {
+  display: block;
+  color: grey;
+  font-size: 12px;
+}
+
+.search .extern .info > label {
+  font-size: 18px;
+  color: inherit;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.search .extern .info > label:hover {
+  text-decoration: underline;
+}
+
+.search .extern .item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search .extern > .row {
+  margin-bottom: 20px;
+}
+
+.search .extern .pagination-container {
+  text-align: center;
+}

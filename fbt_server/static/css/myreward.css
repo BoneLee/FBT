@@ -1,0 +1,69 @@
+.myreward .active {
+  color: white;
+  background-color: #35a0ed;
+}
+.myreward .tabs {
+  /*text-align: right;*/
+    /*width:80px;*/
+    /*text-align:center;*/
+    /*font-size:16pt;*/
+}
+.myreward .tabs > div{
+  display: inline-block;
+  padding: 6px 20px;
+  cursor: pointer;
+  /*margin:10px 0 0 0;*/
+}
+.myreward .myreward-tag{
+    margin-top:15px;
+    font-size:16pt;
+}
+.myreward-new{
+    position:absolute;
+    margin-top:-8px;
+    margin-left:-15px;
+    color:white;
+    background-color:red;
+}
+.myreward .reward-state{
+    margin-top:10px;
+    text-align:center;
+    font-size:12pt;
+    /*margin-left:-40px;*/
+}
+.myreward .myreward-title {
+    margin:0 0 5px 10px;
+}
+.myreward .title{
+    width:400px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.myreward .reward-info{
+    display: block;
+    margin-top: -20px ;
+    font-size: 9pt;
+}
+.myreward .myreward-desc div{
+    margin:10px  10px 10px 10px;
+}
+.myreward .myreward-result{
+    margin-left:10%;
+    width:60%;
+}
+.myreward .myreward-answer{
+
+    padding-top:5px;
+}
+.myreward .myreward-answer .label{
+    font-size:10pt;
+}
+.myreward .myreward-desc{
+    min-height:80px;
+    border:1px solid #eee;
+}
+.myreward .reward-answer{
+    display:block;
+    margin-left: 85px;
+}

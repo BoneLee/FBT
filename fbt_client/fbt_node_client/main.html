@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" style="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Loading...</title>
+  <meta name="author" content="Jxnblk">
+  <meta name="description" content="This could take a while">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    .word {
+     animation-duration: 2s;
+     animation-iteration-count: -1;
+     animation-name: falling;
+     animation-fill-mode: forwards;
+     }
+   @keyframes falling {
+     from {
+     margin-left:0;
+     }
+     to {
+     margin-left:2px;
+     }
+   }
+  </style>
+</head>
+<body onload="process.mainModule.exports.tray()">
+
+<div style="position: absolute;width:400px;height:400px;left:50%;top:50%;margin-left:-100px;margin-top:-200px;">
+    <img src="static/images/loadings.gif" width="150" height="200">
+
+    <h1 style='color:#48c9b0;font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";'>Loading...</h1>
+</div>
+
+
+<script type="text/javascript">
+  /*var tray;
+   var trayMenu = new gui.Menu();
+   trayMenu.append(new gui.MenuItem({label:"exit"}));
+   trayMenu.items[0].click = function() {
+   gui.App.quit();
+   };
+   win.on('maximize', function(){
+   console.log("message");
+   this.hide();
+   tray = new gui.Tray({title:'fbt',icon:"fbtLogo.png"});
+   tray.menu = trayMenu;
+   tray.on("click", function(){
+   this.remove();
+   tray = null;
+   win.show();
+   });
+   });*/
+  //加载native ui 库
+  /*var gui = require('nw.gui');
+  //获取当前窗口
+  var win = gui.Window.get();
+  win.maximize();*/
+  //location.href = "http://127.0.0.1:12345/login";//"http://www.friendbt.com";
+</script>
+</body>
+</html>

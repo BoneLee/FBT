@@ -1,0 +1,189 @@
+script(type='text/javascript').
+  $(function(){
+    index_init();
+  });
+style.
+  html{
+    background: url(images/fbt_bg#{bg}.png) fixed;
+    background-size: 100% 100%
+  }
+div#container_sns_share(style='position: fixed;top: 45px;right: 0px;z-index: 101;cursor:pointer')
+  div.bdsharebuttonbox(data-tag='share_1')
+    a.bds_tsina(data-cmd='tsina')
+    a.bds_weixin(data-cmd='weixin')
+    a.bds_qzone(data-cmd='qzone', href='#')
+    a.bds_renren(data-cmd='renren')
+    a.bds_tieba(data-cmd='tieba')
+    a.bds_douban(data-cmd='douban')
+    a.bds_more(data-cmd='more') 更多
+    a.bds_count(data-cmd='count')
+  script.
+    window._bd_share_config = {
+    common : {
+    bdText : 'FBT-基于社交的资源分享平台',
+    bdDesc : '小伙伴们，我刚刚用FBT上分享了一部大片!快来用FBT下载吧!',
+    bdUrl : "http://www.friendsbt.com/?uid=" +window.fbtUID,
+    bdPic : 'http://prod0504130.pic5.websiteonline.cn/upload/pqy3.png'
+    },
+    share : [{
+    "bdSize" : 16,
+    "bdMini" : 2,
+    "bdMiniList" : ['tsina',"weixin",'qzone',"renren","baidu","tqq","sqq","mshare","tieba","douban","hi","kaixin001","t163","tsohu","fbook","twi","linkedin","ibaidu","bdhome","xg","ty","meilishuo","mogujie","huaban","duitang","mail","isohu","bdxc","thx"],
+    "bdPopupOffsetLeft":-138
+    }]
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+b#nick_name= nick_name
+.topcontrol(title="回到顶部",style="position: fixed; bottom: 165px; right: 25px; cursor: pointer; display: none;")
+  img(src="/images/gotop.gif",onclick="window.scrollTo(0,0);return false;",style="width:31px; height:31px;")
+ul.nav.nav-tabs.navbar-fixed-top
+  .collapse.navbar-collapse
+    ul.nav.navbar-nav.home_nav
+      li
+        a#home(style="font-size: 16px;color:gray;margin-top: 5px;") FBT
+      li.active
+        a#tab1.clickable(href='#resources', data-toggle='tab')
+          span.glyphicon.glyphicon-cloud
+          | &nbsp;&#x8D44;&#x6E90;&#x5E93;
+      li.bigBottom
+        a#tab4.clickable(href='#allFriendRes', data-toggle='tab')
+          span.glyphicon.glyphicon-lock
+          | &nbsp;朋友圈
+      li.bigBottom
+        a#tab2.clickable(href='#myResources', data-toggle='tab')
+          span.glyphicon.glyphicon-cloud-download
+          | &nbsp;我的下载
+          span.downloadHint(style="display:none;color: red;padding-left: 4px;font-size: 14px;font-weight: bold;") +1
+      li.bigBottom
+        a#tab3(href='#')
+          span.glyphicon.glyphicon-cloud-upload
+          | &nbsp;上传
+          span.uploadHint.glyphicon.glyphicon-circle-arrow-up(style="display:none;color: red;padding-left: 4px;")
+    .navbar-form.navbar-left(role='search',style="padding: 0 19px;margin-top: 4px;")
+      .input-group(style='width:100%;')
+        input#input_search_resource.form-control(type='text', placeholder='输入标签或名称搜索资源', style='font-size: 14px;;border-radius: 18px;margin-bottom: 0px; margin-bottom:0px; width:60%;height: 30px;', onfocus='longer(this.id);', onblur='shorter(this.id);')
+    ul.nav.navbar-nav.navbar-right(style="margin-right: -5px;")
+      // <li><a href="/myInfo">{{ current_user }}</a></li>
+      li
+        a(href='/myInfo',title="我的分享")
+          span.glyphicon.glyphicon-share
+      li
+        a(href='/fb',title="积分榜")
+          span.glyphicon.glyphicon-stats
+      li
+        a(href='/mySpace',title="个人中心")
+          span.glyphicon.glyphicon-user
+          span#msgHint.glyphicon.glyphicon-info-sign(style="display:none;color: red;padding-left: 4px;")
+      li.dropdown
+        a.dropdown-toggle(href='#', data-toggle='dropdown',title="正在供水")
+          span.glyphicon.glyphicon-upload
+          span.badge#beingDownloaded_count 0
+        ul.menu.dropdown-menu#beingDownloadedFiles(role="menu",style="-webkit-transition:0;transition:0;margin-top: 10px !important;max-height: 300px;overflow-y: auto;")
+            li
+                a.text-center 暂无供水
+
+      li.dropdown._
+        a.dropdown-toggle(href='#', data-toggle='dropdown',title="通知")
+          span.glyphicon.glyphicon-bell
+          span.badge.msg_count= count
+        ul.menu.dropdown-menu.msg(role="menu",style="-webkit-transition:0;transition:0;margin-top: 10px !important;max-height: 300px;overflow-y: auto;")
+          - var unReadCount = 0
+          each item in msg
+              if !item.isRead
+                li
+                  - unReadCount += 1
+                  a.unRead(onclick="handle('#{item.nick}','#{item.id}', '#{item.sender}')",class="msg#{item.id}") #{item.content} &nbsp; #{item.time}
+          li(style='display:none')
+            a(href='#') space
+          //
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          if unReadCount > -1
+              li#clearAllMsg
+                a.text-center(onclick="clearAllMsg()")
+                  span.glyphicon.glyphicon-trash
+                  &nbsp;清空所有消息
+      li
+        a#set(href='#', data-toggle='modal', data-target='#settingModal',title="设置")
+          span.glyphicon.glyphicon-cog
+      li
+        a(href="#",data-toggle='modal', data-target='#helpModal',title="帮助")
+          span.glyphicon.glyphicon-question-sign
+.tab-content
+  audio#audio(preload="auto",src="over.wav")
+  #upload_control.btn-group.dropup(style='position: fixed;bottom: 0;right: 0;z-index: 200;')
+    button.btn.btn-primary(type='button', style='padding: 10px;cursor: auto;')
+      span#upload_control_total 0
+      | 个资源正在上传
+    button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+      span.caret
+      span.sr-only Toggle Dropdown
+    ul#upload_control_panel.dropdown-menu.dropdown-menu-right(role='menu', style='-webkit-transition: 0;width: 210%;margin-bottom: 0;max-height: 270px;background: #C8CACA;')
+  #resources.tab-pane.fade.in.active(style="padding-top: 30px;")
+    #home_type.row(style='position: fixed;z-index: 100;cursor: pointer;width: 102%;background: white;margin-top: 0px;padding-top: 10px;border-bottom: 1px dotted #ddd;')
+      ul#list_resource_view.col-xs-6.hi(style="margin-left: 100px;margin-bottom: 5px;font-size: 14px;")
+        li
+          a.sel(href='#') 电影
+        li
+          a.not_sel(href='#') 剧集
+        li
+          a.not_sel(href='#') 学习
+        li
+          a.not_sel(href='#') 音乐
+        li
+          a.not_sel(href='#') 动漫
+        li
+          a.not_sel(href='#') 游戏
+        li
+          a.not_sel(href='#') 综艺
+        li
+          a.not_sel(href='#') 体育
+        li
+          a.not_sel(href='#') 软件
+        li
+          a.not_sel(href='#') 其他
+        li
+          a.not_sel(href='#',data="1") 网络电视
+        li
+          a.not_sel(href='#',meta="1") 悬赏
+
+      #select_resource_type.col-xs-3.hi(style="margin-left: -45px;")
+        label.radio-inline
+          input(type='radio', name='radio', value='1' checked style="font-size: 14px;cursor:pointer;height: 15px;margin-top: 10px;")
+          | 热度
+        label.radio-inline
+          input(type='radio', name='radio', value='0' style="font-size: 14px;cursor:pointer;height: 15px;margin-top: 10px;")
+          | 最新
+        label.radio-inline
+          input(type='radio', name='radio', value='2' style="font-size: 14px;cursor:pointer;height: 15px;margin-top: 10px;")
+          | 在线
+      #search_time(style="position: relative;top: 2px;display:none;z-index:-1;cursor: auto;")
+    #text_home_page_tips(style="padding-top: 50px;")
+      center
+        h3#text_tips &#x6B63;&#x5728;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x5217;&#x8868;
+          img(src='images/loading3.gif')
+    #more_resources0_top.get_more_resources0(style="padding-top: 43px;height: 72px;")
+    #container_resources.container
+    #pageloadingwrap(style="text-align:center;margin-top:20px")
+      img#pageloading.img-responsive(src='images/loading2.gif', style='display:none;margin:auto')
+    #more_resources0_bottom.get_more_resources0
+    //- button#btn_get_more_resources0.btn.btn-primary.btn-lg.btn-block(type='button', style='display:none;width:50%; margin-left:25%; margin-right:25%; font-size:22px;')
+    //-   span#loadingText0 &#x67E5;&#x770B;&#x66F4;&#x591A;
+    //-   img#loadingGif0.img-responsive(src='images/loading2.gif', style='display:inline-block; visibility:hidden;')
+  #allFriendRes.tab-pane.fade(style="padding-top: 36px;")
+    #text_all_friend_tips
+      center
+        h3#all_friend_tips &#x6B63;&#x5728;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x5217;&#x8868;
+          img(src='images/loading3.gif')
+    #more_resources2_top(style="height: 33px;")
+    #container_allFriend_resources.container
+    #pageloadingwrap1(style="text-align:center;margin-top:20px")
+      img#pageloading1.img-responsive(src='images/loading2.gif', style='display:none;margin:auto')
+    #more_resources2_bottom
+  #myResources.tab-pane.fade(style="padding-top: 60px;")
+    #text_his_page_tips
+      center
+        h3#text_tips &#x6B63;&#x5728;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x5217;&#x8868;
+          img(src='images/loading3.gif')
+    #container_download_resources.container
+    // 第二个tab，东西都放这个container里面    

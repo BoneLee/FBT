@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>校园星空</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+    <div id="main">
+        <div id="header">
+            <h1>
+                校园星空支付页面
+            </h1>
+        </div>
+        <div id="form">
+            <form method="post" action="/transfer">
+                <h1>hello, {{ real_name }}<h1>
+                <input type="hidden" name="user_to" value={{user_to}}>
+                <input name="how_much" autofocus="true" type="text">
+                <p>剩余金额：{{ left_coin }}F（可抵扣{{ left_yuan }}元）</p>
+                <button class="button" type="submit" >转账</button>
+            </form>
+        </div>
+
+        <div class="fixed"></div>
+        <div id="footer">
+            <a href="http://www.study.friendsbt.com" title="校园星空">校园星空，发现闪光的你！</a>
+        </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://www.bootcss.com/p/flat-ui/# -->
+<html lang="en" class="dk_fouc has-js">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>FBT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="{{ static_url("Flat-UI-master/bootstrap/css/bootstrap.css") }}" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="{{ static_url("Flat-UI-master/css/flat-ui.css") }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+    <link href="{{ static_url("Flat-UI-master/css/docs.css") }}" rel="stylesheet">
+    <link href="{{ static_url("css/fbt_common.css") }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ static_url("images/user_icon/default.png") }}">
+
+    <script src="{{ static_url("js/jquery-1.11.min.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/bootstrap-alert.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/json.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/fbt_common.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/jquery.pin.js") }}" type="text/javascript"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <![endif]-->
+   
+</head>
+  <body youdao="bind">
+      <div style="display:none" class="wrap_hide"></div>
+<div class="wrap_all">
+<style>
+.btn:focus {
+    outline: 5px auto #FFF;
+}
+body{
+  background-image:url('{{ static_url("images/bg.png") }}'); background-repeat: repeat; background-attachment:fixed;
+}
+
+/*这两行CSS模拟了flatUI典型的input样式*/
+input{border-radius: 6px;
+border: 2px solid #dce4ec;
+color: #34495e;
+font-family: "Lato", sans-serif;
+font-size: 14px;
+padding: 8px 0 9px 10px;
+text-indent: 1px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+transition: border linear .2s,box-shadow linear .2s;}
+input:focus{
+  border-color: #1abc9c; -webkit-box-shadow: none;-moz-box-shadow: none; box-shadow: none; outline: none;}
+input{display: block; margin-bottom: 6px; width: 100%; height: 42px;}
+
+  h2{font-size: 30px; margin-top: 4px;}
+  h5{font-size: 22px; line-height: 30px;}
+
+  .remeberPW{line-height: 60px;}
+  .login-link{color: #aaaaaa;}
+</style>
+<br>
+<br>
+<br>
+<br>
+<div class="alert alert-block alert-error fade">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>提示！</strong> <span id="hint"></span>
+          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-5" style="text-align: center; padding-top: 80px;">
+            <img src="{{ static_url("images/user_icon/fbtLogo.png") }}" class="img-responsive center-block">
+            <h5>FBT: 快乐源于 <span style="background-color: #1abc9c; color:white; font-weight: bold;">&emsp;分享!&emsp;</span></h5>
+        </div>
+        <div class="col-xs-7">
+
+          <div class="col-xs-7">
+            <h2>注册:</h2>
+          </div>
+          <div class="col-xs-7">
+            <input id="email" type="text" value="" placeholder="邮箱" class="span5">
+            <span id="checkmarkEmail" class="fui-checkmark-24"></span>
+          </div>
+
+          <div class="col-xs-7">
+            <input id="password" type="password" value="" placeholder="密码" class="span5">
+            <span id="checkmarkPassword" class="fui-checkmark-24"></span>
+          </div>
+
+          <div class="col-xs-7">
+            <input id="confirmPassword" type="password" value="" placeholder="密码确认" class="span5" onblur="confirm()">
+            <span id="checkmarkConfirm" class="fui-checkmark-24"></span>
+          </div>
+
+          <div class="col-xs-7">
+            <input id="nickName" type="text" value="" placeholder="昵称" class="span5">
+          </div>
+          <div class="col-xs-7">
+            <button class="btn btn-large btn-primary btn-block submit" onclick="submit()">提交</button>
+<!--             &nbsp;&nbsp;<a data-toggle="collapse" class="btn btn-info" href="/login">已有账号</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      if (!window.console) window.console = {};
+if (!window.console.log) window.console.log = function() {};
+function validate(){
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var value = $("#email").val();
+    if($("#email").val() == "" || $("#password").val() == "" || $("#confirmPassword").val() == "")
+    {
+        $("body > div.wrap_all #hint").text("用户名或者密码未填写.");
+        $(".alert").addClass('in');
+        return false;
+    }
+    else if (!emailReg.test(value)) {
+        $("body > div.wrap_all #hint").text("非法的邮箱格式.");
+        $(".alert").addClass('in');
+        return false;
+    }
+    return true;
+}
+$(".alert").alert()
+function registration() {
+    var message = {}
+    message["user"] = $("#email").val();
+    message["pwd"] = $("#password").val();
+    message["nick"] = $("#nickName").val()
+    message["next"] = "/login"
+    var disabled = $(".submit");
+    disabled.disable();
+    $.postJSON("/registration", message, function(response) {
+        if(response.charAt(0) != '{')
+        {
+            location.href = "/login";
+        }
+        else{
+          response = $.parseJSON(response)
+          if (response["type"] && response["type"] == 1) {
+              location.href = "/login";
+          }
+          else{
+              $("body > div.wrap_all #hint").text(response["error"]);
+              $(".alert").addClass('in');
+          }
+        } 
+        disabled.enable();
+    });
+}
+function submit(){
+  if (validate()) {
+        registration();
+    }
+}
+function confirm(){
+  if ($("#password").val() != $("#confirmPassword").val()) {
+        $("#checkmarkConfirm").html("密码不一致，请检查");
+    }
+    else
+    {
+        $("#checkmarkConfirm").html("");
+    }
+}
+    </script>
+    </div> <!-- /container -->
+    <!-- Load JS here for greater good =============================-->
+    <script src="{{ static_url("js/reconnecting-websocket.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap.min.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.ui.touch-punch.min.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap-select.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap-switch.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/flatui-checkbox.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/flatui-radio.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.tagsinput.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.placeholder.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/video.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/application.js") }}">
+    </script>
+    <!--[if lt IE 8]>
+      <script src="js/icon-font-ie7.js"></script>
+      <script src="js/icon-font-ie7-24.js"></script>
+    <![endif]-->
+</body>
+</html>

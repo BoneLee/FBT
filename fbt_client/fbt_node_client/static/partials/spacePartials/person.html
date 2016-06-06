@@ -1,0 +1,180 @@
+<div data-ng-controller="MyinfoController" id="myinfoWrap" class="myinfo">
+	<style type="text/css">
+		.myinfo .myinfo_left{
+            background: rgba(0,0,0,0.6);
+            color: lightgrey;
+			display: inline-block;
+			width: 45%;
+			padding-left: 10px;
+			padding-right: 10px;
+			float: left;
+		}
+        .myinfo .myinfo_left .btn {
+            background: transparent;
+            color: lightgrey;
+            font-size: 14px;
+            float: right;
+            margin-bottom: 10px;
+            border: none;
+        }
+        .myinfo .myinfo_left .btn:hover {
+            background: rgba(0,0,0,0.75);
+            color: lightgrey;
+        }
+		.myinfo .myinfo_right{
+			display: inline-block;
+			width: 40%;
+		}
+		.myinfo .myinfo_right img{
+			width: 498px;
+			height: 498px;
+		}
+		.myinfo .info_wrap{
+			padding-left: 10px;
+			margin-bottom: 10px;
+			text-align: left;
+			font-size: 16px;
+		}
+		.myinfo .info_wrap input{
+			border: none;
+			background: none;
+            opacity: 1;
+		}
+		.myinfo .info_wrap p{
+			padding: 5px;
+		}
+		.myinfo .btnChangePwd{
+			margin-bottom: 15px;
+		}
+		.myinfo .btnChangeInfo{
+			float: right;
+			position: relative;
+			top: -492px;
+			right: 39px;
+		}
+		.modifyPassword{color: #da4f49;}
+		.modInput{
+			width: 100%;
+			padding: 5px;
+			margin: 5px 0;
+		}
+        .modal-content #scselector-container{
+            width: 850px;
+            overflow-y: auto; 
+        } 
+        .modal-content #scselector-container .modal-dialog{
+            margin: 0;
+        }
+	</style>
+	<div class="myinfo_left" data-ng-show="myinfoReady">
+		<div class="info_wrap">
+			<p>昵称：<input data-ng-model="myinfo.nick_name" disabled="disabled"></p>
+			<p>真名：<input data-ng-model="myinfo.real_name" disabled="disabled"></p>
+			<p>邮箱：{{myinfo.user}}</p>
+		</div>
+		<div class="info_wrap">
+			<p>学校：<input data-ng-model="myinfo.school" disabled="disabled"></p>
+			<p>院系：<input data-ng-model="myinfo.college" disabled="disabled"></p>
+			<p>入学年份：<input data-ng-model="myinfo.freshyear" disabled="disabled"></p>
+			<p>家乡：<input data-ng-model="myinfo.address" disabled="disabled"></p>
+			<p>性别：<input data-ng-model="myinfo.gender" disabled="disabled"></p>
+			<p>感情状态：<input data-ng-model="myinfo.love_state" disabled="disabled"></p>
+		</div>
+		<div class="info_wrap">
+			<p>qq：<input data-ng-model="myinfo.qq" disabled="disabled"></p>
+			<p>电话：<input data-ng-model="myinfo.phone" disabled="disabled"></p>
+			<p>微博：<input data-ng-model="myinfo.weibo" disabled="disabled"></p>
+		</div>
+		<button class="btn default" data-ng-click="changePwd()">修改密码</button>
+		<button class="btn default" data-ng-click="editInfo()">编辑资料</button>
+	</div>
+    <!--
+	<div class="myinfo_right">
+		<img src="{{myinfo.icon}}">
+		<button class="btn btn-primary btnChangeInfo" data-ng-click="editInfo()">编辑资料</button>
+	</div>
+    -->
+</div>
+<script type="text/ng-template" id="changePassword.html">
+	<div class="modal-header">
+        <button class="close" data-ng-click="close()">&times;</button>
+        <div class="modal-title">
+            <h2>修改密码</h2>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input class="modInput" data-ng-model="$parent.originPwd" type="password" placeholder="原始密码">
+        </div>
+        <div class="form-group">
+            <input class="modInput" data-ng-model="$parent.newPwd" type="password" placeholder="新密码">
+        </div>
+        <div class="form-group">
+            <input class="modInput" data-ng-model="$parent.confirmPwd" type="password" placeholder="确认密码"><span data-ng-show="pwdMatch">两次密码不相同，请检查</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn default" data-ng-click="close()">取消</button>
+        <button data-ng-click="savePwd()" class="btn default primary">保存</button>
+    </div>
+</script>
+<script type="text/ng-template" id="changeInfo.html">
+	<div class="modal-header">
+	    <button class="close" data-ng-click="close()">&times;</button>
+        <div class="modal-title">
+            <h2>修改资料</h2>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <div class="title">账户信息</div>
+        <div class="form-group">
+            <label>真名</label>
+            <input type="text" class="modInput" data-ng-model="$parent.$parent.myinfo.real_name">
+        </div>
+        <div class="title">基本信息</div>
+        <div class="form-group">
+            <label>学校</label>
+            <input data-ng-model="$parent.$parent.myinfo.school" ng-click="selectCollegeClickHandler()" type="text" placeholder="学校 点击选择(必选)" class="modInput" readOnly="true">
+        </div>
+        <div class="form-group">
+            <label>院系</label>
+            <input data-ng-model="$parent.$parent.myinfo.college" ng-click="selectCollegeClickHandler()" type="text" placeholder="学院 点击选择(必选)" class="modInput" readOnly="true">
+        </div>
+        <div class="form-group">
+            <label>入学年份</label>
+            <input class="modInput" data-ng-model="$parent.$parent.myinfo.freshyear">
+        </div>
+        <div class="form-group">
+            <label>家乡</label>
+            <input class="modInput" data-ng-model="$parent.$parent.myinfo.address">
+        </div>
+        <div class="form-group">
+            <label>性别</label>
+        	<select ng-model="$parent.$parent.myinfo.gender" ng-options="gender for gender in $parent.genders">
+        	</select>
+        </div>
+        <div class="form-group">
+            <label>恋爱状态</label>
+        	<select ng-model="$parent.$parent.myinfo.love_state" ng-options="state for state in $parent.loveStates">
+        	</select>
+      	</div>
+        <div class="title">社交信息</div>
+        <div class="form-group">
+            <label>QQ</label>
+            <input class="modInput" data-ng-model="$parent.$parent.myinfo.qq">
+        </div>
+        <div class="form-group">
+            <label>电话</label>
+            <input class="modInput" data-ng-model="$parent.$parent.myinfo.phone">
+        </div>
+        <div class="form-group">
+            <label>微博</label>
+            <input class="modInput" data-ng-model="$parent.$parent.myinfo.weibo">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-ng-click="saveInfo(0)" class="btn default">取消</button>
+        <button data-ng-click="saveInfo(1)" class="btn default primary">保存</button>
+    </div>
+    <scselector-container></scselector-container>
+</script>

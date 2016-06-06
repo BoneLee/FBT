@@ -1,0 +1,8 @@
+tornado<4.0
+tornado-celery==0.3.4
+motor>=0.4
+redis
+requests
+jieba
+gevent
+pyinotify

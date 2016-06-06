@@ -1,0 +1,823 @@
+<!-- vim: set sw=2 ts=2 : -->
+<!DOCTYPE html>
+<html lang="en" ng-app="fbtApp">
+<head>
+  <meta charset="utf-8">
+  <title>FBT2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" href="css/bootstrap-modals.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/fontdiao.css">
+  <link rel="stylesheet" href="css/toaster.css">
+  <link rel="stylesheet" href="css/module-loading.css">
+  <link rel="stylesheet" href="css/module-pagination.css">
+  <link rel="stylesheet" href="css/module-selector.css">
+  <link rel="stylesheet" href="css/module-chatbox.css">
+  <link rel="stylesheet" href="css/module-star.css">
+  <link rel="stylesheet" href="css/module-share.css">
+  <link rel="stylesheet" href="css/emoji.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/ui.fancytree.css">
+
+  <link rel="stylesheet" href="css/home.css">
+
+  <link rel="stylesheet" href="css/resource-college.css">
+  <link rel="stylesheet" href="css/resource-college2.css">
+  <link rel="stylesheet" href="css/resource-recommendation.css">
+  <link rel="stylesheet" href="css/resource-common.css">
+
+  <link rel="stylesheet" href="css/reward-common.css">
+  <link rel="stylesheet" href="css/reward-my.css">
+
+  <link rel="stylesheet" href="css/circle-common.css">
+  <link rel="stylesheet" href="css/details.css">
+  <link rel="stylesheet" href="css/mindetails.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/top.css">
+
+  <link rel="stylesheet" href="css/myspace.css">
+  
+  <script src="js/jquery-1.11.min.js"></script>
+  <script src="js/angular-1.1.5.min.js"></script>
+  <script src="js/jquery.easydrag.js"></script>
+  <script src="js/qrcode.js"></script>
+  <script src="js/angular-qrcode.js"></script>
+  <script src="js/scrollglue.js"></script>
+  <script src="js/fbt_common.js"></script>
+  <script src="js/sprintf.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/controller-home.js"></script>
+  <script src="js/controller-resource.js"></script>
+  <script src="js/controller-resourceCollege.js"></script>
+  <script src="js/controller-resourceRecommendation.js"></script>
+  <script src="js/controller-resourceCommon.js"></script>
+  <script src="js/controller-resourceDetails.js"></script>
+  
+  <script src="js/controller-rewardCommon.js"></script>
+  <script src="js/controller-rewardMy.js"></script>
+
+  <script src="js/controller-circle.js"></script>
+  <script src="js/controller-circleCommon.js"></script>
+
+  <script src="js/controller-search.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/bootstrap-modals.js"></script>
+  <script src="js/toaster.js"></script>
+  <script src="js/module-loading.js"></script>
+  <script src="js/module-pagination.js"></script>
+  <script src="js/module-selector.js"></script>
+  <script src="js/module-scselector.js"></script>
+  <script src="js/module-chatbox.js"></script>
+  <script src="js/module-star.js"></script>
+  <script src="js/module-empty.js"></script>
+  <script src="js/module-share.js"></script>
+  <script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+  <script src="js/controller-myspace.js"></script>
+  <script src="js/controller-friend.js"></script>
+  <script src="js/emoji.js"></script>
+  <script type="text/javascript" src="js/school.js"></script>
+</head>
+<!--
+<body
+  oncontextmenu='return false'  
+  ondragstart='return false'   
+  onselectstart ='return false'   
+  onselect='document.selection.empty()'   
+  oncopy='document.selection.empty()'   
+  onbeforecopy='return false' ng-controller="RootController"
+  -->
+<body ng-controller="RootController" class="noselect">
+  <div ng-if="shouldShowFrame">
+    <div class="fbt-title" style="display: none;" ng-show="!isMac">
+      <label>FBT2.0 快乐源于分享</label>
+      <div>
+        <i ng-click="minApp()">-</i>
+        <i ng-click="maxApp()">□</i>
+        <i ng-click="closeApp()">×</i>
+      </div>
+    </div>
+    <div class="fbt-title" style="display: none;" ng-show="isMac">
+      <div style="float: left;">
+        <i ng-click="closeApp()">×</i>
+        <i ng-click="minApp()">-</i>
+        <i ng-click="maxApp()">□</i>
+      </div>
+    </div>
+  </div>
+  <div ng-if="!shouldShowFrame">
+    <div class="fbt-title">
+    </div>
+  </div>
+  <audio preload="auto" src="over.wav" id="audio"></audio>
+  <div data-ng-show="global.isLogin" ng-cloak class="ng-cloak skin"></div>
+  <div data-ng-show="global.isLogin" data-ng-controller="HeaderController" ng-cloak class="ng-cloak">
+    <div class="header">
+      <div class="infobox">
+        <div class="logo cur_p">
+          <div ng-show="global.msgCount" class="toast toast-msg"><a data-ng-href="#/myspace?idx=0" ng-click="selectHeaderTab('myspace')">{{global.msgCount > 99 ? 99 : global.msgCount}}</a></div>
+          <!--
+          <div class="toast toast-level">Lv10</div>
+          -->
+          <a data-ng-href="#/myspace" ng-click="selectHeaderTab('myspace')"><img ng-src="{{ info.icon }}"></a>
+        </div>
+        <div class="detail">
+          <div class="detail-item"><span>F币</span><span>{{ global.fbCoin }}</span></div>
+          <div class="detail-item"><span></span><span></span></div>
+          <!--
+          <div class="detail-item"><span>好友</span><span>1200</span></div>
+          <div class="detail-item"><span>赞</span><span>12000</span></div>
+          -->
+        </div>
+      </div>
+      <div class="nav nav-main">
+        <ul ng-init="tabNames={'home':'动态', 'resource':'资源库', 'circle':'朋友圈', 'reward':'悬赏'}">
+          <li ng-repeat="tab in ['home', 'resource', 'circle', 'reward']"><a ng-href="#/{{ tab }}" ng-click="resetPageNum()" ng-class="{active:isCurrentTab(tab)}" ng-click="selectHeaderTab(tab)">{{ tabNames[tab] }}</a></li>
+        </ul>
+      </div>
+      <div class="nav nav-tools">
+        <ul>
+          <li><button data-ng-click="uploadFile()">上传<i data-ng-show="isUploading()" class="fa fa-arrow-circle-o-up"></i></button></li>
+          <li><input ng-style="{'width': searchKeywords ? '160px' : '140px'}" type="text" placeholder="快速检索资源" ng-keydown="($event.which == 13) && searchKeywordsClickHandler(searchKeywords)" ng-model="searchKeywords"><i ng-show="searchKeywords" ng-click="searchKeywords=''">×</i></li>
+        </ul>
+        <!--
+        <div class="nav nav-list" ng-show="searchKeywords">
+          <button ng-click="searchKeywordsClickHandler(searchKeywords)">搜索</button>
+          <hr>
+          <label>过滤以下信息精准检索</label>
+          <label>检索范围：</label>
+          <div class="form-group">
+            <select
+              ng-init="selectedResourceType='全部'"
+              ng-model="selectedResourceType"
+              ng-options="o for o in ['全部', '学习', '剧集', '电影', '音乐', '动漫', '游戏', '综艺', '体育', '软件', '其它']">
+            </select>
+          </div> 
+          <button ng-if="selectedResourceType == '学习'" ng-click="selectCollegeClickHandler()">{{ selectedCollege ? selectedCollege : '选择学校' }}</button>
+          <button ng-if="selectedResourceType == '学习'" ng-click="selectedMajorClickHandler()">选择专业</button>
+        </div>
+        -->
+      </div>
+      <div class="nav nav-actions">
+        <ul>
+          <li><a href="#/myspace?idx=2"><i class="fa fa-share"></i> 我的分享</a></li>
+          <li><a href="#/top"><i class="fa fa-signal"></i> 排行榜</a></li>
+          <li><a ng-click="alertRule()">积分规则</a></li>
+          <!--<li><a href="">皮肤</a></li>-->
+          <li><a data-ng-click="alertSetting()">设置</a></li>
+          <li><a data-ng-click="alertHelp()">关于</a></li>
+          <!--
+          <li><a href=""><i class="fa fa-question"></i></a></li>
+          <li><a href=""><i class="fa fa-minus"></i></a></li>
+          <li><a href=""><i class="fa fa-square-o"></i></a></li>
+          <li><a href=""><i class="fa fa-times" style="color:white"></i></a></li>
+          -->
+        </ul>
+      </div>
+      <div class="nav nav-share">
+        <ul>
+          <li><a data-ng-click="shareClickHandler()"><i class="fa fa-jpy"></i> 分享送积分</a></li>
+        </ul>
+      </div>
+    </div>
+    <div ng-if="subheaderTabs" class="subheader">
+      <div class="nav nav-categories">
+        <ul>
+          <!--<li><a class="noHover" href="">学习</a></li>-->
+          <li ng-repeat="tab in subheaderTabs"><a href="" ng-class="{active:selectedSubheaderTab == tab, noHover:isNoHover(tab), compact:isCompact()}" ng-click="subheaderTabClickHandler(tab)">{{ tab }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <loading-container></loading-container>
+  <selector-container></selector-container>
+  <chatbox-container></chatbox-container>
+  <share-container></share-container>
+  <toaster-container toaster-options="{'time-out': 2500}"></toaster-container>
+  <div class="container workspace" style="width: 100%; padding: 20px;"
+    ng-style="{'height': workspaceHeight + 'px', 'overflow-y': {true:'auto', false:'hidden'}[global.isLogin]}"
+    ng-view>
+  </div>
+  <div data-ng-show="global.isLogin" ng-controller="shortcutBoxController" ng-cloak class="ng-cloak shortcut-box" ng-init="showShortcutBox=true">
+    <div class="shortcut-box-switch"
+      title="{{ showShortcutBox ? '收起工具栏' : '展开工具栏' }}"
+      ng-style="{'right': showShortcutBox ? '220px' : '0'}" ng-click="showShortcutBox=!showShortcutBox">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-stack-2x"></i>
+        <i ng-class="{true: 'fa-caret-right', false: 'fa-caret-left'}[showShortcutBox]"
+          class="fa fa-stack-1x"></i>
+      </span>
+    </div>
+    <div class="shortcut" ng-show="showShortcutBox">
+      <div class="chat" ng-click="openChatbox()" title="聊天">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-stack-2x"></i><i class="fa fa-comment fa-stack-1x"> 开始聊天</i>
+        </span>
+      </div>
+      <div class="upload-resource" ng-controller="uploadCtrl" title="我的上传">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-stack-2x"></i><i class="fa fa-cloud-upload fa-stack-1x" data-ng-click="showUpload()"></i>
+        </span>
+      </div>
+      <div class="download-resource" data-ng-controller="downloadCtrl" title="我的下载">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-stack-2x"></i><i class="fa fa-cloud-download fa-stack-1x" data-ng-click="showDownload()"></i>
+        </span>
+      </div>
+      <div class="true-upload" data-ng-controller="trueUploadCtrl" title="正在供水">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-stack-2x"></i><i class="fa fa-rocket fa-stack-1x" data-ng-click="showUpload()"></i>
+        </span>
+      </div>
+      <div class="go-top" ng-click="goTopClickHandler()" title="回到顶部">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-stack-2x"></i><i class="fa fa-arrow-up fa-stack-1x"></i>
+        </span>
+      </div>
+      <div class="go-bottom" ng-click="goBottomClickHandler()" title="奔向底部">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-stack-2x"></i><i class="fa fa-arrow-down fa-stack-1x"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div id="baidu-share" style="display: none">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a></div>
+    <script>
+      window._bd_share_config={
+        "common":{
+          "bdSnsKey":{},
+          "bdText":"",
+          "bdMini":"2",
+          "bdPic":"",
+          "bdStyle":"0",
+          "bdSize":"16",
+          "onBeforeClick":function(cmd,config){
+            return {
+              //bdText : 'FBT——基于社交的资源分享平台',
+              bdText : '小伙伴们，我刚刚用FBT上分享了“' + window.baiduShare.file_name + '”！快来用FBT下载吧！',
+              bdDesc : '小伙伴们，我刚刚用FBT上分享了“' + window.baiduShare.file_name + '”！快来用FBT下载吧！',
+              bdUrl : "http://www.friendsbt.com/?uid=" + window.baiduShare.fbtUID,
+              bdPic : window.baiduShare.link
+            }
+          }
+        },
+        "share":{}
+      };
+      with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </script>
+  </div>
+  -->
+  <script type="text/ng-template" id="uploadContentModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>我的上传</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="note">
+        <div id="guifan-link">上传成功后请保持在线，请先阅读<span>{{guifan}}</span>上传规范(<a class="underline" data-ng-click="readGf()">开始阅读</a>)</div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="btn default primary dropdown-toggle" data-ng-click="toggleFileType()" style="margin-top:0; font-size: 14px;">
+                  {{uploadFileType}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" data-ng-show="showUploadFileType" style="border-radius: 0">
+                  <li><a href="" data-ng-click="fileSelChange('上传文件')">上传文件</a></li>
+                  <li><a href="" data-ng-click="fileSelChange('上传文件夹')">上传文件夹</a></li>
+                </ul>
+              </div>
+              <i class="fa fa-check" data-ng-show="showUploadHint"></i>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <select
+                id = "upload_res_type"
+                data-ng-change="typeChange()"
+                data-ng-model="$parent.selectedResourceType"
+                data-ng-options="o for o in ['请选择类别', '学习', '剧集', '电影', '音乐', '动漫', '游戏', '综艺', '体育', '软件', '其它']">
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4" data-ng-show="shouldShowSub">
+            <div class="form-group">
+              <select
+                data-ng-init="$parent.selectedSubType='标清(默认)'"
+                data-ng-model="$parent.selectedSubType"
+                data-ng-options="o for o in ['标清(默认)', '高清', '超清']">
+              </select>
+            </div>
+          </div>
+      </div>
+      <div class="row" id="upload_panel" data-ng-init="fillData()">
+          
+      </div>
+      <div class="row" style="margin-left: 5px;margin-bottom: 5px;">
+        <a data-ng-repeat="tag in labelTags" style='cursor:pointer;color:#1abc9c' ><i style='margin-left:10px;cursor:pointer;' class='fa fa-tag' data-ng-click="delTag($index)"></i> {{tag}}</a>
+      </div>
+      <select
+        class="form-control cur_p"
+        data-ng-change="tagChange()"
+        data-ng-model="$parent.selectedTag"
+        data-ng-options="o for o in tagList">
+      </select>
+      <textarea data-ng-model="$parent.resourceComment" rows="4" placeholder="为了让更多的人来下载该资源，请简要介绍下该资源？200字以内:-)" style="resize: none;margin-top: 5px;width: 100%; border: solid 1px #1abc9c;" myMaxlength="200">
+      </textarea>
+      <center>
+          <div id="err_tips" style="color: red">
+          </div>
+      </center>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-xs-6 uploadModal">
+              <span style="display: inline-block;vertical-align: super;margin-right: 12px;">我来打分:</span>
+              <star-container group="uploadStar"></star-container>
+            </div>
+            <div class="col-xs-3" style="display: inline-block;line-height: 34px;" data-ng-show="shouldShowPublic">
+              <label class="checkbox">
+                <input type="checkbox" data-ng-model="$parent.onlyFriendSee">
+                仅好友可见
+              </label>
+            </div>
+            <button style="position: relative;right: 17px;" type="button" class="btn default primary" data-ng-click="fileUpload()">
+                发 布
+            </button>
+        </div>
+    </div>
+  </script>
+  <script type="text/ng-template" id="downloadModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>我的下载</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <empty-container ng-if="!allDownloads.length"></empty-container>
+      <div class="row download_row" data-ng-repeat="oneDownload in allDownloads">
+      <div data-ng-if="!oneDownload.shouldHide"  style="overflow-y: auto;">
+        <div class="col-sm-3 point">{{oneDownload.fileName}}</div>
+        <div class="col-sm-5" data-ng-if="oneDownload.downloadStart"><pbar value="oneDownload"></pbar></div>
+        <div class="col-sm-5" data-ng-if="!oneDownload.downloadStart">正在请求下载信息</div>
+        <div class="col-sm-1"><i style="display: inline; margin-right: 3px;padding:3px" class="fa fa-play cur_p" data-ng-if="oneDownload.isPause && oneDownload.state != 2 && oneDownload.state != 1" data-ng-click="downloadCtrls($index, 1)"></i><i style="display: inline; margin-right: 3px;padding:3px" class="fa fa-pause cur_p" data-ng-if="!(oneDownload.isPause || oneDownload.state == 2 || oneDownload.state == 1)" data-ng-click="downloadCtrls($index, 0)"></i><i style="display: inline; margin-right: 3px;padding:3px" class="fa fa-times cur_p" data-ng-click="cancelDownload($index)" data-ng-if="oneDownload.state != 2"></i></div>
+        <div class="col-sm-2" data-ng-show="oneDownload.state == 1" style="margin-top: -8px;"><button class="btn default" data-ng-click="continueDownload($index)" style="padding: 5px 6px; font-size: 12px;">继续下载</button></div>
+        <div class="col-sm-2" data-ng-show="oneDownload.state == -1" style="margin-top: -8px;"><button class="btn default" data-ng-click="reDownload($index)" style="padding: 5px 6px; font-size: 12px;">重新下载</button></div>
+        <div class="col-sm-2" data-ng-show="oneDownload.state == 2" style="margin-top: -8px;"><button class="btn default" data-ng-click="openDir($index)" style="padding: 5px 6px; font-size: 12px;">打开目录</button></div>
+        <span style="color: #1abc9c;margin-left:6px;margin-right:3px;" data-ng-show="oneDownload.isDir && oneDownload.state != 2" data-ng-click="viewDownload($index)" class="cur_p">查看</span>
+      </div>
+      </div> 
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="close()">
+            放到后台
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="folderModal.html">
+    <div class="modal-header">
+      <div class="row">
+      <button class="close" data-ng-click="close()">&times;</button>
+          <div class="col-xs-1 modal-img">
+              <img src="images/fbtLogo2.png">
+          </div>
+          <div class="col-xs-9">
+              <h3>
+                文件夹下载
+              </h3>
+          </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div style="overflow-y: auto; overflow-x: hidden; max-height: 280px; font-size: 13px;">
+          <table fancy-tree data-ng-if="shouldHide">
+            <colgroup>
+            <col width="30px"></col>
+            <col width="450px"></col>
+            <col width="80px"></col>
+            <col width="90px"></col>
+            <col width="90px"></col>
+            </colgroup>
+            <thead>
+                <tr> <th></th> <th>文件名</th> <th>大小</th> <th>下载总数</th><th>在线/总数</th> </tr>
+            </thead>
+            <tbody>
+                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+            </tbody>
+          </table>
+          <div style="text-align: center;" data-ng-hide="shouldHide"><img src="images/loading2.gif" style="display:inline-block;margin: auto;"></div>
+          <div style="text-align: center;color: red;" data-ng-show="shouldHide && error.length>0">{{error}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer" data-ng-show="canDownload">
+        <button class="btn default px12" data-ng-click="download(0)">取消</button>
+        <button class="btn default primary px12" data-ng-click="download(1)">下载({{selectedFiles.length}}/{{totalFiles}})</button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="folderDownloadModal.html">
+    <div class="modal-header">
+      <div class="row">
+        <button class="close" data-ng-click="close()">&times;</button>
+        <div class="col-xs-1 modal-img">
+            <img src="images/fbtLogo2.png">
+        </div>
+        <div class="col-xs-9">
+            <h3>
+              文件夹下载进度
+            </h3>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body" style="padding-top: 0;width:606px;overflow-y:scroll;max-height:590px;">
+      <div class="row">
+        <div style="overflow-y: auto; overflow-x: hidden; max-height: 280px; font-size: 13px;">
+          <table fancy-tree data-ng-if="shouldHide">
+            <colgroup>
+            <col width="30px"></col>
+            <col width="450px"></col>
+            <col width="80px"></col>
+            <col width="90px"></col>
+            </colgroup>
+            <thead>
+                <tr> <th></th><th>文件名</th> <th>大小</th> <th>下载进度</th></tr>
+            </thead>
+            <tbody>
+                <tr> <td></td><td></td> <td></td> <td></td> </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/ng-template" id="uploadModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>我的上传</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="row" style="overflow-y: auto;">
+        <empty-container ng-if="!hasUpload()"></empty-container>
+        <ul>
+          <li data-ng-repeat='(key, oneUpload) in uploadProgress' style="border-bottom: 1px solid #eee;">
+            <a style="font-size: 18px;padding: 10px;text-decoration: none;" class="textMain">
+              <span style="min-width: 240px;max-width: 260px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;display: inline-block;position: relative;top: 4px;">
+                {{oneUpload.name}}
+              </span>
+              <span style="position: relative;right: -4px;">
+                <span style="position:relative;right:4px;">{{oneUpload.progress}}</span>
+                <i data-ng-show="oneUpload.showCancel" data-ng-click="showCancelUpload('{{oneUpload.id}}')" style="position: relative;top: 12px;right: 34px;float: right;cursor:pointer;" class="fa fa-times-circle"></i>
+                <span style="color:red;float: right;margin-right: 5px;" data-ng-show="oneUpload.showError">上传失败</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="close()">
+            放到后台
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="trueUploadModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>正在供水</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="row" style="overflow-y: auto;">
+        <empty-container ng-if="!trueUpload.length"></empty-container>
+        <ul>
+          <li data-ng-repeat='upload in trueUpload' style="margin-left:5px;border-bottom: 1px solid #eee; color: #1abc9c; font-size: 16px">
+            {{upload}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="close()">
+            放到后台
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="uploadCancelModal.html">
+    <div class="modal-header">
+      <div class="row">
+          <button class="close" data-ng-click="close()">&times;</button>
+          <div class="col-xs-1 modal-img">
+              <img src="images/fbtLogo2.png">
+          </div>
+          <div class="col-xs-9">
+            <h3>
+              快乐源于分享
+            </h3>
+          </div>
+      </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+                确定要取消上传吗？
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default primary px12" data-ng-click="cancelUpload(1)">
+            是
+        </button>
+        <button type="button" class="btn default primary px12" data-ng-click="cancelUpload(0)">
+            否
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="updateModal.html">
+    <div class="modal-header">
+      <div class="row">
+          <button class="close" data-ng-click="close()">&times;</button>
+          <div class="col-xs-1 modal-img">
+              <img src="images/fbtLogo2.png">
+          </div>
+          <div class="col-xs-9">
+            <h3>
+              快乐源于分享
+            </h3>
+          </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+            新版本已经下载完毕，点击确定，软件将关闭并自动开始新版本的安装，点击取消，
+            您可以稍后到所设置下载目录中自行更新。(更新客户端无需卸载，为保证软件正常运行，请勿删除.fbt文件夹)
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default primary px12" data-ng-click="update(1)">
+          确定
+        </button>
+        <button type="button" class="btn default px12" data-ng-click="update(0)">
+          取消
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="fbRuleModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>积分规则</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="title">收入</div>
+      <div>
+        <p>1. 注册成功，第一次登陆FBT送200个F币
+        </p><p>2. 上传和下载私有圈资源（仅好友可见），无需F币</p>
+        <p>3. 积分大于200的用户，每在线1小时，送10个F币</p>
+        <p>4. 平台首发优质资源，下载超过100次时，奖励首发用户200F；下载超过500次时，再奖励500F</p>
+        <p>5. 上传或下载资源并保持在线，每被他人成功下载一次，送1F币（资源总数小于20的送5F/次）。</p>
+        <p>6. 关注我们微博和微信，或加入我们的QQ群，送200个F币</p>
+        <p>7. 成功推荐身边同学注册FBT(注册时填写推荐人昵称或姓名)，奖励推荐人100F币，无上限。</p>
+        <p>8. 举报非法、劣质或者标题和内容不符的资源请发截图发邮件到fbt_copyright@163.com，核实后奖励第一个举报人500F</p>
+      </div>
+      <div class="title">支出</div>
+      <div>
+        <p>1. 最新上传的资源，前十人下载免积分，之后的人下载该资源扣除的积分为1F/200MB，不足200MB的资源按照200MB计算，例如：一个资源大小为600MB，那么下载该资源需要支付3F。积分在资源下载完成时扣除。</p>
+        <p>2. 上传的资源标题和内容不符或传错类别，扣除500个F币</p>
+        <p>3. 上传非法（色情、反动等）公共资源扣除500个F币，情节严重者封号处理!</p>
+        <p>4. 恶意刷分者，一旦查实，封IP处理!</p>
+        <p>5. 上传质量差的视频资源又没标明的用户，罚500F。</p>
+      </div>
+      <div class="note">最新积分规则详情见：<a class="underline" ng-click="toWeb()">www.friendsbt.com</a></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="close()">
+            知道啦
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="settingModal.html">
+    <div class="modal-header">
+        <button class="close" data-ng-click="close()">&times;</button>
+        <div class="modal-title">
+          <h2>设置中心</h2>
+        </div>
+    </div>
+    <div class="modal-body">
+      <div class="title">常规设置</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox1">
+                <input type="checkbox" value="" data-ng-model="setting.auto_login">
+                开机启动
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox2">
+                <input type="checkbox" value="" data-ng-model="setting.exit_tray">
+                关闭时最小化到托盘
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox2">
+                <input type="checkbox" value="" data-ng-model="setting.auto_log">
+                自动登录
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox2">
+              <input type="checkbox" value="" data-ng-model="setting.voice">
+              下载完毕提示音
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox1">
+                <input type="checkbox" value="" data-ng-model="setting.chat_robot">
+                启用FBT小兔
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox1">
+                <input type="checkbox" value="" data-ng-model="setting.allow_bg">
+                启用背景
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox" for="checkbox1">
+                <input type="checkbox" value="" data-ng-model="setting.friends_online_inform">
+                好友上下线提醒
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+      <div class="title">上传设置</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox">资源索引生成速度：</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input style="width: 70%" data-ng-model = "setting.set_upload_speed" />M/s
+          </div>
+        </div>
+      </div>
+      <div class="title">下载设置</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <button class="btn default" data-ng-click="selectDir()">选择目录</button> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          下载至:
+          <p id="settingPath">{{setting.text_download_path}}</p>
+        </div>
+      </div>
+      <div class="note">提示：如果分享的文件位于移动存储设备中，打开软件前请确保移动设备接入电脑哦～</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="resetSettings()">
+            恢复默认
+        </button>
+        <button type="button" class="btn default primary" data-ng-click="saveSettings()">
+            保存设置
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="helpModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>关于</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="text-center">
+        <img src="images/loginPic3.png">
+        <p>版本号：2.0.9</p>
+        <p>Copyright © 2014-2016 <a class="underline" data-ng-click="toWeb()">www.friendsbt.com</a> all rights reserved​</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="close()">
+            知道啦
+        </button>
+    </div>
+  </script><script type="text/ng-template" id="noCoinModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>友情提示</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="text-center">
+        积分不足3000的用户暂时无法上传资源到公共库，不过您可以加入资源供水群(群号165435963)获得上传权限，第一时间获得更多优质资源噢。
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="close()">
+            知道啦
+        </button>
+    </div>
+  </script>
+  
+  <script type="text/ng-template" id="closeModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>关闭提示</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      保持在线可以迅速赚取F币，您是否想直接退出FBT？如果不是，请到设置中心修改最小化到托盘设置。
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="closeSoftware(1)">
+          退出FBT
+        </button>
+        <button type="button" class="btn default primary" data-ng-click="closeSoftware(0)">
+          继续赚F币
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="cancelRewardModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>取消提示</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      您确定要删除该悬赏吗？
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="cancel(1)">
+          删除
+        </button>
+        <button type="button" class="btn default primary" data-ng-click="cancel(0)">
+          留着
+        </button>
+    </div>
+  </script>
+  <script type="text/ng-template" id="messageModal.html">
+    <div class="modal-header">
+      <button class="close" data-ng-click="close()">&times;</button>
+      <div class="modal-title">
+        <h2>给 {{ to_who }} 发送消息</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><input type="text" placeholder="说点啥吧..." ng-model="content"/></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn default" data-ng-click="send(0)">
+          取消
+        </button>
+        <button type="button" class="btn default primary" data-ng-click="send(1, content)">
+          发送
+        </button>
+    </div>
+  </script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script type="text/javascript" src="js/jquery.fancytree.js"></script>
+  <script type="text/javascript" src="js/jquery.fancytree.table.js"></script>
+  <script type="text/javascript" src="js/jquery.md5.js"></script>
+
+</body>
+</html>

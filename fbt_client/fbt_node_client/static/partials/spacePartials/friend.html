@@ -1,0 +1,400 @@
+<div data-ng-controller="FriendController" id="friendWrap" class="friend row">
+	<style type="text/css">
+		.friend .color_grey{
+			color:grey;
+		}
+		.friend .color_main{
+			color:#1abc9c;
+		}
+		.w70{
+			width:70px; height:70px;
+	  }
+		.friend .friend_left{
+            background-color: rgba(0,0,0,0.6);
+			text-align: center;
+		}
+		.friend .friend_search{
+		}
+		.friend .friend_search > i{
+			float: right;
+			position: relative;
+			top: -34px;
+			right: 10px;
+		}
+		.friend .friend_search > input{
+            border: none;
+            margin: 10px 0;
+            color: rgba(0,0,0,0.4);
+		}
+		.friend .friend_search > input:hover,
+		.friend .friend_search > input:focus{
+            background: white;
+        }
+		.friend .friend_panel{
+			overflow-y: auto; 
+			overflow-x: hidden; 
+			height: 200px;
+		}
+		.friend #friend_panel_id{
+			padding-right: 5px;
+			text-align: right;
+            color: lightgrey;
+		}
+        .friend #friend_panel_id>div:hover{
+            color: white;
+		}
+		.friend .btn-white{
+			color: black;
+			background-color: white;
+			border: solid 1px black;
+		}
+		.friend .panel{
+			margin-bottom: 10px;
+		}
+		.friend .friend_right{
+			max-height: 484px;
+		}
+		.friend .friend_right .card{
+            margin-left: 25px;
+            margin-bottom: 20px;
+            height: 140px;
+            padding-top: 6px;
+			background-color: rgba(0,0,0,0.6);
+			width: 29%;
+            cursor: pointer;
+		}
+		.friend .friend_right .card:hover{
+            color: white;
+        }
+		.friend .friend_right > .groupChat{
+			min-height: 436px;
+			background-color: #eee;
+			padding: 10px;
+			max-height: 436px;
+		}
+		.friend .group_chat_send_wrap{
+			background: #eee;
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		.friend .group_chat_btn{
+			padding: 0px;text-align: left;
+		}
+		.friend .group_chat_btn > img{
+			width: 35px;height: 35px;cursor: pointer;
+		}
+		.friend .add_friend{
+			text-decoration: underline; font-size: 12px; cursor: pointer;
+		}
+		.friend .friendItem{margin-right: 0;}
+		.friend .nameInFriendList{margin-bottom: 6px; border-bottom: dashed 1px #eeeeee;}
+		.friend .textOfUnfriend{line-height: 24px; font-size: 12px;}
+		.friend .demo-row{padding-top: 68px; padding-bottom: 0px;}
+	  .friend .other{padding-top: 0px;padding-bottom: 12px;}
+	  .friend p{color: #7f8c8d;}
+	  .friend .order{color: #1abc9c;}
+	  .friend .divLine{height: 1px; width: 50%; border: dashed 1px;}
+	  .friend .imgDiv{padding-top: 30px;}
+	  .friend .navbar-default .navbar-brand {color: #1abc9c;}
+	  .friend .myActive{background-color: #bbbbbb;}
+	  .friend .comment{border-bottom: dashed 1px #DDD; margin-top: 5px;}
+	  .friend .time{font-size: 12px; color: black;}
+	  .friend .QQDiv{position: fixed;
+	  background-color: #F5F5F5; min-height: 580px;
+	  border: solid 3px #1abc9c; border-radius: 4px;
+	  padding-top: 10px; right: 100px;top: 55px;}
+	  .friend .avatarDiv{padding-bottom: 10px; border-bottom: solid 1px white;}
+	  .friend .name{font-size: 16px; color: #1abc9c;}
+	  .friend .shuoShuo{padding-top: 10px;}
+	  .friend .navUl{margin: 10px 0px 10px 0px;}
+	  .friend .myTextArea{width: 100%; border: solid 2px #1abc9c;resize: none;}
+	  .friend textarea:focus{outline: #1abc9c auto 5px;}
+	  .friend .publishButton{height: 60px; width: 75px; font-size: 100%;}
+	  .friend .zpz{font-size: 100%; padding: 0;}
+	  .friend .zan{text-align: center;}
+	  /*这两行CSS模拟了flatUI典型的input样式*/
+	  .friend input{width: 100%;;
+	  transition: border linear .2s,box-shadow linear .2s;padding: 5px;}
+	  .friend input:focus{border-color: #1abc9c; -webkit-box-shadow: none;
+	  -moz-box-shadow: none; box-shadow: none; outline: none;}
+	  .textInSearch{font-size: 14px;}
+	  .divInSearch{}
+	  .noPaddingLR{padding-left: 2px; padding-right: 2px; padding-top: 2px;margin-bottom: 5px;}
+      .addFriendDiv > .btn {
+          font-size: 12px;
+          width: 100%;
+          border: 1px solid lightgrey;
+          padding: 3px;
+          background: white;
+      }
+      .addFriendDiv > .btn:hover {
+          background: rgba(0, 0, 0, 0.05);
+      }
+	  .searchDiv{padding-bottom: 10px; border-bottom: solid 1px #d8d8d8;}
+	  .searchBtn{
+	  	cursor: pointer;
+        top: 0;
+        position: absolute;
+        right: 0;
+        margin-top: 20px;
+	  }
+	  .friendDiv{padding-top: 8px;height:235px; overflow:auto;}
+	  .friend .nameOfLocalSearch{margin-bottom: 6px;}
+      .friend .bottomBar > button {
+          margin-bottom: 10px;
+          width: 80%;
+          text-align: center;
+          font-size: 14px;
+          background: transparent;
+          color: lightgrey;
+          border: none;
+
+		}
+      .friend .bottomBar > button:hover{
+          background: rgba(0,0,0,0.75);
+          color: white;
+       }
+	  .friend .flatColor{color:#16a085;}
+	  .friend .nav-chat > li {
+	    position:relative;    
+	  }
+	  .friend .nav-chat > li > b {
+	    display:inline-block;
+	  }
+	  .friend .nav-chat > li > span {
+	    display:none;
+	    cursor:pointer;
+	    position:absolute;
+	    right: 1px;
+	    top: 12px;
+	    color: #34495e;
+	  }
+	  .friend .nav-chat > li:hover > span {
+	    display: inline-block;
+	  }
+	  .friend .nav-chat .active{
+	    border-radius: 10px;
+	    color: #16a085;
+	  }
+	  .friend .badge{background: red;}
+	  .friend .msgNameTime{color: #16a085;float: right;}
+	  .friend .msgContent{color: #7f8c8d;display:block;max-width: 350px;word-break: break-all;}
+	  .friend .chatBox{
+	    min-height:440px; border:1px solid #aaa; left: 20%;
+	    height:440px; display:none; overflow:hidden;
+	  }
+	  .friend #mySingleChat{
+	    margin: 0px;
+	    width: 100%;
+	    height: 40px;
+	    resize: none;
+	    border: solid 2px #1abc9c;
+	  }
+	  .friend .msgLeft{
+	    float: left;
+	    display: block;
+	    padding-right: 382px;
+	  }
+	  .friend .friendStar{
+	    display:none;
+	  }
+	  .friend .friendUnStar{
+	    display:none;
+	  }
+	  .friend .chat_b
+	  {
+	    cursor: pointer;
+	    color: grey;
+	    margin-right: 2px;
+	    line-height: 1.428571429;
+	    border: 1px solid transparent;
+	    display: inline-block;
+	    position: relative;
+	    padding: 5px 14px;
+	    border-radius: 10px;
+	    max-width: 115px;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: inline-block;
+	    position: relative;
+	    top: 3px;
+	  }
+	  .add_friend_item{
+	    max-width: 160px;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: inline-block;
+	  }
+	  .friend .emoji{
+	  	padding: 5px;
+	  	margin: 5px;
+	  }
+	  .friend .emojiWrap{
+	  	width:435px;
+	  	margin-top: -124px;
+			margin-left: auto;
+			margin-right: auto;
+	  }
+	  .friend .friend_right img{
+	  	width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		border: 1px solid white;
+		margin: 4px;
+		display: inline-block;
+	  }
+	  .friend .friend_right .close{
+	  	  cursor: pointer;
+		  background: 0 0;
+		  border: 0;
+		  float: right;
+		  font-size: 28px;
+		  line-height: 1;
+		  color: lightgrey;
+		  text-shadow: 0 1px 0 #fff;
+	  }
+	  .friend .info span{
+	  	display: block;
+        color: lightgray;
+	  }
+	  .friend .download{
+	  	margin-top: 5px;
+		margin-bottom: 8px;
+	  }
+	  .friend .friend_right .download .btn{
+	  	font-size: 12px;
+	  	margin-right: 10px;
+        vertical-align: top;
+        display: inline-block;
+	  }
+	</style>
+	<div class="friend_left col-md-2">
+		<div class="friend_search">
+			<input placeholder="搜索好友" data-ng-model="queryFriend"/><i class="fa fa-search"></i>
+		</div>
+		<div class="panel-group friend_panel" id="friend_panel_id">
+		    <div class="panel panel-default cur_p">
+		        <div class="panel-heading">
+		            <div class="panel-title">
+		                <div data-ng-click="showFriendGroup($index)">
+		                    {{friendGroup.title}}({{friendGroup.online}}/{{friendGroup.total}})
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="bottomBar row">
+	    <button data-ng-click="showModal()" class="btn default">+&nbsp;添加好友
+	    </button>
+		</div>
+	</div>
+    <div class="friend_right col-md-10" ng-style="{'height': workspaceHeight - 50 + 'px', 'overflow-y': 'auto'}">
+		<div class="row">
+        <div ng-style="{'background': {true:'rgba(116, 0, 0, 0.6)', false:'rgba(0,0,0,0.6)'}[deleteUserBegin]}" data-ng-mouseenter="showCtrl=true" data-ng-mouseleave="showCtrl=false" class="col-md-3 item card" data-ng-repeat="friend in friendGroup.friends | filter:queryFriend">
+      	<button ng-mouseenter="deleteUserBegin=true" ng-mouseleave="deleteUserBegin=false" class="close" data-ng-click="delFriend('{{friend.user}}','{{friend.isStar}}',{{friend.uid}}, {{friendGroup.index}})">&times;</button>
+        <img class="poster" ng-src="{{friend.icon}}" data-ng-class="getStyleClass(friend.online)">
+        <div class="info">
+          <span class="point" title="{{friend.nick_name}}" data-ng-if="!friend.real_name">{{friend.nick_name}}</span>
+          <span class="point" title="{{friend.real_name}}({{friend.nick_name}})" data-ng-if="friend.real_name">{{friend.real_name}}({{friend.nick_name}})</span>
+          <div data-ng-show="!showCtrl" class="details" style="height: 44px;">
+	          <span data-ng-if="friend.gender == 1">性别：<i class="fa fa-mars" style="color:#009EFF"></i></span>
+	          <span data-ng-if="friend.gender == 0">性别：<i class="fa fa-venus" style="color:#FF0088"></i></span>
+	          <span data-ng-if="friend.gender == undefined">性别：<i class="fa fa-venus" style="color:#FF0088"></i></span>
+	          <span class="point" title="{{friend.school}}">学校：{{friend.school ? friend.school : '无业游民'}}</span>
+      	  </div>
+          <div data-ng-show="showCtrl" class="download">
+              <button style="padding: 5px 7px;" class="btn default" data-ng-class="getChatStyleClass(friend.online)"data-ng-click="chatFriend('{{friend.uid}}','{{friend.nick_name}}')" ng-class="{'disabled': !friend.online}"><i class="fa fa-comment"></i>&nbsp;发起聊天</button>
+	          <a style="padding: 5px 7px; text-decoration: none;" class="btn default" href="#/friend_res?return_url=myspace&public=0&uid={{friend.uid}}">
+	              <i class="fa fa-eye"></i>
+	              &nbsp;查看资源
+	          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+		<!-- <div class="groupChat">
+			<div class="row comment" data-ng-repeat="oneGroupChat in groupChats">
+				<div class="col-lg-12">
+					<h5 style="font-size: 16px;margin: 0">
+						<span class="flatColor">
+							<a href="javascript:void(0)" style="text-decoration:none;cursor:pointer;">
+								{{oneGroupChat["name"] | escapeHTML}}
+							</a>
+						</span>
+						<i class="fa fa-mars" style="color:#009EFF" data-ng-if="oneGroupChat.hasOwnProperty('gender') && parseInt(oneGroupChat['gender'])==1">&emsp;</i>
+						<i class="fa fa-venus" style="color:#FF0088" data-ng-if="oneGroupChat.hasOwnProperty('gender') && parseInt(oneGroupChat['gender'])==0">&emsp;</i>
+						&emsp;
+						<a class="add_friend" data-ng-click="addFriendByNickname('{{oneGroupChat[\"name\"]}}')" data-ng-if="!(friendsUids.hasOwnProperty(oneGroupChat['uid']+''))">(加为好友)&emsp;</a>
+						说：
+						<span class="time">
+							{{oneGroupChat["time"]}}
+						</span>
+					</h5>
+				</div>
+				<div class="col-lg-12" style="word-break: break-all;">
+					<p style="margin: 0 0 5px 0;font-size: 14px;" ng-bind-html-unsafe='oneGroupChat["msg"] | escapeHTML | emoji'>
+					</p>
+				</div>
+			</div>			
+		</div>
+		<div data-ng-show="canShowEmoji" class="emojiWrap">
+			<i data-ng-repeat="emojiItem in emojis" class="cur_p emoji emoji_{{emojiItem}}" data-ng-click="emojiClick($index)">{{emojiItem}}</i>
+		</div>
+		<div class="row group_chat_send_wrap">
+		      <div class="col-lg-10">
+		        <textarea data-ng-model="myGroupChat" data-ng-init="myGroupChat=''" rows="2" cols="65" placeholder="说点啥吧(按ctrl+enter即可发布),也可试试点击好友列表的昵称" class="myTextArea" data-ng-keypress="groupChatPress($event,myGroupChat)"></textarea>
+		      </div>
+		      <div class="col-lg-2 group_chat_btn"><img class="cur_p" src="/images/smile.png" data-ng-click="showSmile()">&emsp;
+		        <button data-ng-click="publish(myGroupChat)" class="btn btn-large btn-primary">发送</button>
+		      </div>
+		    </div> -->
+	</div>
+</div>
+<script type="text/ng-template" id="delFriendModal.html">
+  <div class="modal-header">
+     <button class="close" data-ng-click="confirmDelFriend(0)">&times;</button>
+     <div class="modal-title">
+         <h2>删除好友</h2>
+     </div>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="row col-xs-10" style="word-break: break-all;margin-left: 10px;">
+          你确定要跟该好友说再见吗？
+      </div>
+  	</div>
+  </div>
+  <div class="modal-footer">
+      <button class="btn default" data-ng-click="confirmDelFriend(1)">是</button>
+      <button class="btn default" data-ng-click="confirmDelFriend(0)">否</button>
+  </div>
+</script>
+<script type="text/ng-template" id="searchModal.html">
+  <div class="modal-header">
+     <button class="close" data-ng-click="close()">&times;</button>
+     <div class="modal-title">
+         <h2>添加好友</h2>
+     </div>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+        <input type="text" data-ng-model="searchFriend" placeholder="昵称/邮箱/真名" data-ng-keypress="press($event, searchFriend)" data-ng-init="searchFriend=''">
+        <div class="col-xs-1 searchBtn"><a data-ng-click="showSearchResult(searchFriend)"><i class="fa fa-search"></i></a></div>
+    </div>
+    <div data-ng-show="noResult" style="margin-top: 10px;">抱歉，未能搜索到符合条件的结果。</div>
+    <div class="col-xs-4 divInSearch noPaddingLR" data-ng-repeat="result in searchResults track by $index">
+    		<div class="col-xs-4 noPaddingLR">
+    			<img src='{{result["icon"]}}' class="w70">
+    		</div>
+    		<div class="col-xs-8 textInSearch add_friend_item">{{result["nick_name"]}}</div>
+      	<div class="col-xs-8 textInSearch add_friend_item" title='{{result["user"]}}'>{{result["user"]}}</div>
+      	<div class="col-xs-8 textInSearch add_friend_item">{{result["real_name"]}}</div>
+      	<div class="col-xs-12 noPaddingLR addFriendDiv">
+      		<button class="btn" data-ng-click="addFriend(&apos;{{result['user']}}&apos;,{{result['is_friend']}})">加为好友
+      		</button>
+      	</div>
+      </div>
+  </div>
+</script>

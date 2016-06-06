@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>FBT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="{{ static_url("Flat-UI-master/bootstrap/css/bootstrap.css") }}" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="{{ static_url("Flat-UI-master/css/flat-ui.css") }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+    <link href="{{ static_url("Flat-UI-master/css/docs.css") }}" rel="stylesheet">
+    <link href="{{ static_url("css/fbt_common.css") }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ static_url("images/user_icon/default.png") }}">
+
+    <script src="{{ static_url("js/jquery-1.11.min.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/bootstrap-alert.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/json.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/fbt_common.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/jquery.pin.js") }}" type="text/javascript"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <![endif]-->
+   
+</head>
+  <body class="containerBody">
+<div style="display:none" class="wrap_hide"></div>
+  <div class="wrap_all">
+    <style>
+        .demo-row{padding-top: 68px; padding-bottom: 0px;}
+        .other{padding-top: 0px;padding-bottom: 12px;}
+        body{padding-top: 70px;min-height: 2000px;}
+        h1,h2,h3,h4{color: #1abc9c;}
+        p{color: #7f8c8d;}
+        .order{color: #1abc9c;}
+        .divLine{height: 1px; width: 50%; border: dashed 1px;}
+        .imgDiv{padding-top: 30px;}
+        .navbar-default .navbar-brand {color: #1abc9c;}
+        .myActive{background-color: #bbbbbb;}
+        .comment{background-color: #cccccc; margin-top: 20px;}
+        .time{font-size: 12px; color: black;}
+        .QQDiv{position: relative;
+                background-color: #eeeeee; min-height: 500px; 
+                border: solid 3px #1abc9c; border-radius: 4px; 
+                padding-top: 10px; margin-top: 53px;}
+        .avatarDiv{padding-bottom: 10px; border-bottom: solid 1px white;}
+        .name{font-size: 16px; color: #1abc9c;}
+        .shuoShuo{padding-top: 10px;}
+        .navUl{margin: 10px 0px 10px 0px;}
+
+        .myTextArea{width: 100%; border: solid 2px #1abc9c;}
+        textarea:focus{outline: #1abc9c auto 5px;}
+        .publishButton{height: 100px; width: 100px; font-size: 100%;}
+        .zpz{font-size: 100%; padding: 0;}
+        .zan{text-align: center;}
+
+        /*这两行CSS模拟了flatUI典型的input样式*/
+        input{width: 100%; border: 2px solid #dce4ec; color: #34495e; border-radius: 6px;
+              transition: border linear .2s,box-shadow linear .2s;}
+        input:focus{border-color: #1abc9c; -webkit-box-shadow: none;
+                    -moz-box-shadow: none; box-shadow: none; outline: none;}
+
+        .textInSearch{font-size: 14px;}  
+        .divInSearch{border: solid 2px #1abc9c; border-radius: 3px; width: 32%; margin: 3px 3px 3px 3px;}
+        .noPaddingLR{padding-left: 2px; padding-right: 2px; padding-top: 2px;}
+        .addFriendDiv{text-align: right; background: #eeeeee;}
+
+        .searchDiv{padding-bottom: 10px; border-bottom: solid 1px #d8d8d8;}
+        .friendDiv{padding-top: 8px;}
+
+        .moreOperations{}
+        .textOfUnfriend{line-height: 24px; font-size: 12px; text-decoration: underline;}
+        .nameInFriendList{margin-bottom: 6px; border-bottom: dashed 1px #eeeeee;}
+
+.modal-dialog{
+    width: 60%; /* respsonsive width */
+    margin-left:10%; /* width/2) */ 
+}
+
+.modal-content{}        
+
+.glyphicon-th{font-size: 12px;}
+
+.nameOfLocalSearch{margin-bottom: 6px;}
+
+.bottomBar{position: absolute; bottom: 0;}
+</style>
+  <div id="nav" style="display:none">
+      <b class="user">{{ current_user }}</b>
+    </div>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">FBT</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"></a></li>
+            <li><a href="#resume">资源主页</a></li>
+            <li  class="myActive"><a href="/myInfo">个人中心</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container contentContainer">
+      <div class="row">
+
+        <div class="col-lg-8">
+
+          <!--这里放的是心情发布的东西-->
+          <div class="row">
+            <div class="col-lg-10">
+              <textarea rows="4" class="myTextArea" placeholder="说点啥吧..."></textarea>
+            </div>
+            <div class="col-lg-2">
+              <button class="btn btn-large btn-block btn-primary publishButton" onclick="publish()">
+                发布
+              </button>
+            </div>
+          </div>
+
+          <!--这里放的是我发布的历史数据1-->
+          <div class="row comment">
+
+            <div class="col-lg-12"><h5>我评论了
+              <a href="#">《美国队长2》</a>:
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="time">18:32&emsp;&emsp;07-04-2014</span> </h5>
+            </div>
+            <div class="col-lg-12">
+            <p>&emsp;帅到死的红骷髅雨果哥领衔了一群肌肉男和德国军装让人花痴，但剧情弱智的令人发指，打斗场面都快不如同家族的钢铁侠合理了。。雨果哥一出来我就自动V客附身，还有红唇小帽长腿舞娘，以及钢铁侠那长得克拉克盖博一样的斯达克老爸，还有和伊万很像的斯坦，当然，在德国军装面前，一切都是浮云：） </p>
+            </div>
+
+            <div class="col-xs-8"></div>
+            <div class="col-xs-2 zpz zan"><a href="#">赞(28)</a></div>
+            <div class="col-xs-1 zpz"><a href="#">评论</a></div>
+            <div class="col-xs-1 zpz"><a href="#">转发</a></div>
+
+          </div>
+
+          <!--这里放的是我发布的历史数据2-->
+          <div class="row comment">
+
+            <div class="col-lg-12"><h5>我评论了
+              <a href="#">《白老妇》</a>:
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="time">18:32&emsp;&emsp;07-04-2014</span> </h5>
+            </div>
+            <div class="col-lg-12">
+            <p>&emsp;剧情和佐伯家无关，属于外传性质，当然了，咒怨风格依然，嘎嘎声也健在，片名副标题取“白老妇”我觉得不大妥当，单单一个“白”字就可以了</p>
+            </div>
+
+            <div class="col-xs-8"></div>
+            <div class="col-xs-2 zpz zan"><a href="#">赞(908)</a></div>
+            <div class="col-xs-1 zpz"><a href="#">评论</a></div>
+            <div class="col-xs-1 zpz"><a href="#">转发</a></div>
+
+          </div>
+
+          <!--这里放的是我发布的历史数据3-->
+          <div class="row comment">
+
+            <div class="col-lg-12">
+              <h5>我评论了
+              <a href="#">《Mr. Peabody & Sherman》</a>:
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              </h5>
+              <h5><span class="time">18:32&emsp;&emsp;07-04-2014</span></h5>
+            </div>
+            <div class="col-lg-12">
+            <p>&emsp;一直在掉又心酸又心痛的眼泪，我家玛雅除了吃饭拉屎睡觉，最人性化的技能就是打呼噜磨牙放屁说梦话～～～我都不指望你养我，我把自己锁在屋外你能给我开门也行啊！！！</p>
+            </div>
+
+            <div class="col-xs-8"></div>
+            <div class="col-xs-2 zpz zan"><a href="#">赞(1243)</a></div>
+            <div class="col-xs-1 zpz"><a href="#">评论</a></div>
+            <div class="col-xs-1 zpz"><a href="#">转发</a></div>
+
+          </div>
+
+
+        </div>
+
+        <div class="col-lg-1">
+        </div>
+
+        <div class="col-lg-3 QQDiv pinned">
+
+<!--
+            <div class="col-xs-10">
+              <input id="nameOfLocalSearch" type="text" value="" placeholder="搜索我的好友...">
+            </div>
+            <div class="col-xs-2">
+              <a href="javascript:void(0)" onclick="showLocalSearchResult()">
+                <span class="glyphicon glyphicon-search"></span>
+              </a>
+            </div>        
+-->
+
+          <!--这里是头像、名字、心情-->
+          <div class="row avatarDiv">
+            <div class="col-lg-4">
+              <img src="{{ user['icon'] }}" class="img-responsive img-rounded">
+            </div>
+            <div class="col-lg-8"><span class="name">{{ user['nick_name'] }}</span></div>
+            <div class="col-lg-12 shuoShuo">{{ shuo }}</div>
+          </div>
+
+          <!--这个是导航tab nav-->
+          <ul id="tab" class="nav nav-tabs navUl">
+            <li class="active"><a href="#home" data-toggle="tab">动态</a></li>
+            <li><a href="#news" data-toggle="tab">好友</a></li>
+            <li><a href="#blog" data-toggle="tab">圈子</a></li>
+          </ul>
+
+          <input class="nameOfLocalSearch" id="nameOfLocalSearch" type="text" value="" placeholder="输入昵称搜索我的好友...">
+
+<!--这个是经典的折叠collapse-->
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <b data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          第一分组({{count_online}}/{{count}})
+        </b>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        {% for i in range(count) %}
+          <div id="{{'accordion'+str(i)}}" class="row friend">
+            <div class="col-xs-10 nameInFriendList" data={{friends[i]["isStar"]}}>{{friends[i]["user"]}}{% if friends[i]["user"] in onlineFriends%}&nbsp;在线{% end %}</div>
+            <div class="col-xs-2 nameInFriendList">
+              <b data-toggle="collapse" data-toggle="collapse" data-parent="{{'#accordion'+str(i)}}" href="{{'#name'+str(i)}}">
+                <span class="glyphicon glyphicon-th"></span>
+              </b>
+            </div>
+            <div id="{{'name'+str(i)}}" class="col-xs-12 panel-collapse collapse moreOperations friendOp">
+              <b class="textOfUnfriend" href="javascript:void(0)" onclick="delFriend(&apos;{{friends[i]['user']}}&apos;,{{friends[i]['isStar']}}, &apos;{{'accordion'+str(i)}}&apos;)">
+                <span class="glyphicon glyphicon-trash"></span>&nbsp;删除好友
+              </b>
+              &emsp;
+              {% if friends[i]["isStar"]%}
+              <b class="textOfUnfriend friendUnStar" href="javascript:void(0)" onclick="unStarFriend(&apos;{{friends[i]['user']}}&apos;)">
+                <span class="glyphicon glyphicon-star"></span>&nbsp;取消星标好友
+              </b>
+              {% else %}             
+              <b class="textOfUnfriend friendStar" href="javascript:void(0)" onclick="starFriend(&apos;{{friends[i]['user']}}&apos;)">
+                <span class="glyphicon glyphicon-star"></span>&nbsp;星标好友
+              </b>
+              {% end %}
+            </div>      
+          </div>
+        {% end %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="bottomBar">
+  <b class="textOfUnfriend" onclick="show()">
+    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;FBT好友
+  </b>
+</div>
+        </div>
+      </div>
+    </div>
+ 
+
+
+   <!-- Modal of 搜索FBT好友 -->
+   <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close">&times;</button>
+           <h4 class="modal-title" id="myModalLabel">搜索好友:</h4>
+         </div>
+         <div class="modal-body">
+          <div class="row searchDiv">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-5">
+              <input id="nameOfSearch" type="text" value="" placeholder="昵称/关键字...">
+            </div>
+            <div class="col-xs-1">
+              <b onclick="showSearchResult()">
+                <span class="glyphicon glyphicon-search"></span>
+              </b>
+            </div>
+            <div class="col-xs-3"></div>
+          </div>
+            <div class="row friendDiv" style="height:235px; overflow:auto; ">
+
+              <!--一个好友占一个div-->
+              <!-- <div class="col-xs-4 divInSearch noPaddingLR">
+                <div class="col-xs-4 noPaddingLR">
+                  <img src="img/avatarInSearch.png" style="width:70px; height:70px;">
+                </div>
+                <div class="col-xs-8 textInSearch">波多野结衣</div>
+                <div class="col-xs-12 noPaddingLR addFriendDiv">
+                  <button class="btn btn-primary btn-xs">+好友</button>
+                </div>
+              </div>  -->                        
+                
+            </div>
+         </div>
+       </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+   </div><!-- /.modal -->
+    <!-- PIN ALL THE THINGS! -->
+  <script>
+    //$(".pinned").pin();
+    function press(e){
+      if (e.keyCode == 13) {
+            showSearchResult();
+            return false;
+        }
+    }
+    $("#nameOfSearch").keypress(function(event) {
+      /* Act on the event */
+      press(event)
+    });
+    function show(){
+      $("#searchModal").modal('show');
+    }
+    $(".close").click(function(event) {
+      /* Act on the event */
+      $("#searchModal").modal('hide');
+    });
+    $(".pinned").pin({containerSelector: ".container"});
+    function showSearchResult(){
+      var search = $("#nameOfSearch").val()
+      var param = {}
+      param["op"] = 0;
+      param["search"] = search;
+      $.post('/myFriend', param, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        data =  JSON.parse(data);
+        if(data["type"] && data["type"] == 1){
+          data = JSON.parse(data["result"])
+          $(".friendDiv").empty();
+          var len = getJsonLength(data)
+          if(len == 0)
+          {
+            $(".friendDiv").html("抱歉，未能搜索到符合条件的结果。");
+          }
+          else{
+            var i = 0;
+            for (;i < len; i++) {
+              item = data[i];
+              var div = '<div class="col-xs-4 divInSearch noPaddingLR"><div class="col-xs-4 noPaddingLR"><img src="' + item["icon"];
+              div = div + '" style="width:70px; height:70px;"></div><div class="col-xs-8 textInSearch">' + item["nick_name"] +'</div>';
+              div = div + '<div class="col-xs-8 textInSearch user">'+item["user"]+'</div>';
+              div = div + '<div class="col-xs-12 noPaddingLR addFriendDiv"><button class="btn btn-primary btn-xs" ' + 'onclick="addFriend(&apos;'+item["user"]+'&apos;)">+好友</button></div></div>';
+              $(".friendDiv").append($(div));
+            }
+          }
+        }
+        else{
+          $(".friendDiv").html("抱歉，未能搜索到符合条件的结果。");
+        }
+      });
+    }
+    function addFriend(user){
+      var param = {}
+      param["op"] = 1;
+      param["user"] = user;
+      $.post('/myFriend', param, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        console.log(data);
+        data = $.parseJSON(data)
+        if(data["type"] && data["type"] == 1)
+        {
+          /*data = $.parseJSON(data["result"])*/
+          alert(data["result"]["result"])
+        }
+        else{
+          alert(data["error"])
+        }
+      });
+    }
+    function delFriend(user, star, id){
+      var param = {}
+      param["op"] = 3;
+      param["user"] = user;
+      param["star"] = star
+      $.post('/myFriend', param, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        console.log(data);
+        data = $.parseJSON(data)
+        if(data["type"] && data["type"] == 1)
+        {
+          $("#"+id).remove()
+          /*data = $.parseJSON(data["result"])*/
+          alert(data["result"]["result"])
+        }
+        else{
+          alert(data["error"])
+        }
+      });
+    }
+    function starFriend(user){
+      var param = {}
+      param["op"] = 4;
+      param["user"] = user;
+      $.post('/myFriend', param, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        console.log(data);
+        data = $.parseJSON(data)
+        if(data["type"] && data["type"] == 1)
+        {
+          var t = $(".friendStar").parents(".friendOp")
+          $(".friendStar").remove();
+          var b = '<b class="textOfUnfriend friendUnStar" onclick="unStarFriend(&apos;'+user;
+          b = b + '&apos;)"><span class="glyphicon glyphicon-star"></span>取消星标好友</b>';
+          t.append($(b))
+          /*data = $.parseJSON(data["result"])*/
+          alert(data["result"]["result"])
+        }
+        else{
+          alert(data["error"])
+        }
+      });
+    }
+    function unStarFriend(user){
+      var param = {}
+      param["op"] = 5;
+      param["user"] = user;
+      $.post('/myFriend', param, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        console.log(data);
+        data = $.parseJSON(data)
+        if(data["type"] && data["type"] == 1)
+        {
+          var t = $(".friendUnStar").parents(".friendOp");
+          $(".friendUnStar").remove();
+          var b = '<b class="textOfUnfriend friendStar" onclick="starFriend(&apos;'+user;
+          b = b + '&apos;)"><span class="glyphicon glyphicon-star"></span>星标好友</b>';
+          t.append($(b))
+          /*data = $.parseJSON(data["result"])*/
+          alert(data["result"]["result"])
+        }
+        else{
+          alert(data["error"])
+        }
+      });
+    }
+    function publish(){
+      var content = $(".myTextArea").val();
+      param = {}
+      param["op"] = 0
+      param["param"] = content
+      $.post('/myShuo', param, function(data, textStatus, xhr) {
+        /*optional stuff to do after success */
+        console.log(data);
+        data = $.parseJSON(data)
+        if(data["type"] && data["type"] == 1)
+        {
+          /*data = $.parseJSON(data["result"])*/
+          alert(data["result"]["result"])
+        }
+        else{
+          alert(data["error"])
+        }
+      });
+    }
+    createSock();
+  </script>
+    <!-- That's all - pretty easy, right? -->
+</div>
+    <!-- Load JS here for greater good-->
+    <script src="{{ static_url("js/reconnecting-websocket.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap.min.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.ui.touch-punch.min.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap-select.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap-switch.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/flatui-checkbox.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/flatui-radio.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.tagsinput.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.placeholder.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/video.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/application.js") }}">
+    </script>
+  </body>
+</html>

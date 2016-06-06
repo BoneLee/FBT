@@ -1,0 +1,111 @@
+<div class="register">
+	<style type="text/css">
+      .register {
+        position: absolute;
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+      }
+	  .register #register-form{
+	  	font-size: 16px;
+	  }
+	  .register .btn:focus {
+	  outline: 5px auto #FFF;
+	  }
+	  /*这两行CSS模拟了flatUI典型的input样式*/
+	  .register #register-form input[type="text"], .register input[type="password"]{border-radius: 6px;
+	  border: 2px solid #dce4ec;
+	  color: #34495e;
+	  font-family: "Lato", sans-serif;
+	  font-size: 14px;
+	  padding: 8px 0 9px 10px;
+	  text-indent: 1px;
+	  -webkit-border-radius: 6px;
+	  -moz-border-radius: 6px;
+	  border-radius: 6px;
+	  -webkit-box-shadow: none;
+	  -moz-box-shadow: none;
+	  box-shadow: none;
+	  transition: border linear .2s,box-shadow linear .2s;}
+	  .register #register-form input[type="text"]:focus, .register input[type="password"]:focus{
+	  border-color: #1abc9c; -webkit-box-shadow: none;-moz-box-shadow: none; box-shadow: none; outline: none;}
+	  .register #register-form input[type="text"], .register input[type="password"]{display: block; margin-bottom: 6px; width: 100%; height: 42px;}
+	  .register #register-form h2{font-size: 30px; margin-top: 4px;}
+	  .register #register-form h5{font-size: 22px; line-height: 30px;}
+	  .register .remeberPW{line-height: 60px;}
+	  .register .login-link{color: #aaaaaa;}
+        .alert {
+            text-align: center;
+            background: lightyellow;
+            width: 860px;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+	</style>
+    <alert type="danger" close="closeAlert()" data-ng-if='alertMsg.length != 0'>
+        <div ng-if="alertMsg.result">{{alertMsg.result}}</div>
+        <div ng-if="!alertMsg.result">{{alertMsg}}</div>
+    </alert>
+	<br>
+	<br>
+	<div class="container" id="register-form">
+		<div class="row">
+		    <div style="text-align: center; padding-top: 30px;" class="col-xs-5"><img src="images/loginPic3.png" class="img-responsive center-block">
+		      <h5>你是哥哥还是妹妹？</h5>
+		      <label style="color: #1abc9c" class="radio-inline">
+		        <input type="radio" name="gender" value="男" style="cursor:pointer;width: 15px;height: 15px;margin-top: 10px;" data-ng-model="gender"><span style="margin-top: 5px;display: inline-block;">我是男生</span>
+		      </label>
+		      <label style="color: #ff0088" class="radio-inline">
+		        <input type="radio" name="gender" value="女" style="cursor:pointer;width: 15px;height: 15px;margin-top: 10px;" data-ng-model="gender"><span style="margin-top: 5px;display: inline-block;">我是女生</span>
+		      </label>
+		    </div>
+		    <div class="col-xs-7">
+		      <div class="col-xs-7">
+		        <h2>注册:</h2>
+		      </div>
+		      <div class="col-xs-7">
+		        <!--autocomplete data-ng-model="school" attr-placeholder="学校" click-activation="true" data="schools"></autocomplete-->
+		        <input data-ng-model="school" ng-click="selectCollegeClickHandler()" type="text" value="" placeholder="学校 点击选择(必选)" class="span5 input_l" readOnly="true">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="college" ng-click="selectCollegeClickHandler()" type="text" value="" placeholder="学院 点击选择(必选)" class="span5 input_l" readOnly="true">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="email" type="text" data-ng-init="email=''" placeholder="邮箱" class="span5 input_l">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="password" type="password" data-ng-init="password=''" placeholder="密码(至少6位)" class="span5 input_l">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="confirmPassword" type="password" data-ng-init="confirmPassword=''" placeholder="密码确认" data-ng-blur="confirm()" class="span5 input_l">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="nickName" type="text" data-ng-init="nickName=''" placeholder="昵称" class="span5" myMaxlength = "10">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="realName" type="text" data-ng-init="realName=''" placeholder="请填写真名，便于好友查找" class="span5">
+		      </div>
+		      <div class="col-xs-7">
+		        <input data-ng-model="referName" type="text" data-ng-init="referName=''" placeholder="推荐人昵称或真名" class="span5">
+		      </div>
+		      <div class="col-xs-7">
+		        <div class="col-xs-12" style="padding: 0">
+		        	<label class="checkbox"  style="padding-left: 0">
+		                <input type="checkbox" data-ng-model="readAgreement">
+		                我已阅读并接受注册协议(<span style="cursor:pointer;color:#1abc9c" data-ng-click="agreement()">阅读</span>)
+		            </label>
+		        </div>
+		      </div>
+		      <div class="col-xs-7">
+		        <button data-ng-click="submit()" class="btn default primary" style="background-color: #1abc9c; color: white;z-index: 10; width: 100%;" data-ng-disabled="clicked">提交注册</button>
+		      </div>
+		      <div class="col-xs-7">
+		        <div style="margin-top: 10px; padding: 0" class="col-xs-12"><a href="" style="color: #1abc9c; text-decoration: none;float: right" data-ng-click="toLogin()">去登录→</a></div>
+		      </div>
+		    </div>
+	    </div>
+	</div>
+	<scselector-container></scselector-container>
+</div>

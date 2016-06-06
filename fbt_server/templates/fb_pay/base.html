@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>校园星空F币支付</title>
+    <link rel="stylesheet" href="/css/fbPayBase.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <script src="http://static.friendsbt.com/static/js/jquery.md5.js"></script>
+</head>
+<body>
+<div>
+    <div class="head title">
+        <span class="back">
+        {% block login_tip %}
+            请登录
+        {% end %}
+        </span>
+        <span class="logout set-up" onclick="logout()">[注销]</span>
+    </div>
+<div>
+{% block content %}    
+<div id="login" onclick="changeCss()">
+    <div class="main">
+        <div class="logo">
+           <span>校园星空</span><span class="title">.com</span>
+        </div>
+        <div class="input">
+           <form id="input_info" method="post" action="/login/customer">
+               <div class="input-group">
+                   <input id="username" ng-click="clearInfo()" placeholder="校园星空账号" type="text" class="input-control font16" autocomplete="off" name="user" autofocus="true" value={{ user }}>
+               </div>
+               <div class="input-group">
+                   <input id="password" ng-click="clearInfo()" placeholder="密码" type="password" class="input-control font16" autocomplete="off" name="password" id="password">
+                   <input type="hidden" name="passwd" value="" id="passwd"/>
+               </div>
+               <input type="hidden" name="action" value={{action}}>
+               <botton onClick="submitLogin()" class="font16">登录</botton>
+           </form>
+           <div class="error-info" ng-bind="errorInfo">{{ error }}</div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+        注册或密码找回请访问pc端
+    </div>
+</div>    
+{% end %}
+</div>
+<!--登出模态框-->
+<div id="logout" style="display: none;">
+    <div class="dialogue">
+        <div class="title">确定退出？</div>
+        <div class="footer">
+             <span class="logout-btn font14" onclick="ensureLogout(false)">取消</span>
+             <span class="logout-btn font14" onclick="ensureLogout(true)">退出</span>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    window.onload = function() {
+        //每次登录判断localStorage.username是否为空，不为空自动添加到input
+        var username = document.getElementById('username');
+        if(localStorage.username && username) username.value = localStorage.username;
+        
+        var pattern = /\buser_token="([^;]*)"/g;
+        var user_token = pattern.exec(document.cookie);
+        if(user_token){
+            $(".logout").show();
+        }else{
+            $(".logout").hide();
+        }
+    };
+
+    //如果用户登录成功存储名字到localStorage
+    function saveUser(){
+      var username = document.getElementById('username');
+      localStorage.username = username.value;
+    };
+
+    function logout() {
+        $('#logout').show();
+    }
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    }
+
+    function ensureLogout(ok) {
+        if (ok) {
+            var transferTo = getUrlParameter('to');
+            if (transferTo) {
+                $(location).attr('href', "http://" + window.location.host + "/logout?transfer_to=" +  transferTo);
+            } else {
+                $(location).attr('href', "http://" + window.location.host + "/logout?transfer_to=");
+            }
+        } else {
+            $("#logout").hide();
+        }
+    }
+    function submitLogin() {
+        saveUser();
+        $('#passwd').val($.md5($('#password').val()));
+        $("#input_info").submit();
+    } 
+
+    function changeCss(){
+      var usernameInput = document.getElementById('username');
+      var passwordInput = document.getElementById('password');
+      var footerCss = document.getElementById('footer');
+      if (usernameInput == document.activeElement || passwordInput == document.activeElement ) {
+          footerCss.style.display = "none";
+      } else {
+          footerCss.style.display = "inline"
+      }
+    }
+
+</script>
+</html>

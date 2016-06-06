@@ -1,0 +1,75 @@
+<!-- vim: set sw=2 ts=2 : -->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs" class="allowselect"></div>
+</div>
+<div class="extern search">
+  <div class="row">
+    <div class="radio"
+      ng-class="{true: 'checked', false: ''}[sort_by == '资源库']"
+      >
+      <label>
+        <span><input type="radio" name="sort" ng-click="sort_by='资源库'; changeSortbyClickHandler(sort_by);"></span>
+        资源库
+      </label>
+    </div>
+    <div class="radio"
+      ng-class="{true: 'checked', false: ''}[sort_by == '朋友圈']"
+      style="margin-right: 20px;"
+      >
+      <label>
+        <span><input type="radio" name="sort" ng-click="sort_by='朋友圈'; changeSortbyClickHandler(sort_by);"></span>
+        朋友圈
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <!--<div class="col-md-9 left">-->
+    <div class="col-md-12 left">
+      <div class="row" ng-if="!resource_list.length">
+      </div>
+      <pagination-container group="search" ng-show="{{ resource_list.length }}"></pagination-container>
+      <empty-container ng-if="!resource_list.length"></empty-container>
+      <div class="row" ng-if="resource_list.length">
+        <div class="col-md-3" ng-repeat="resource in resource_list">
+          <div class="item" ng-click="viewResourceDetailsClickHandler(resource)" ng-mouseleave="showDownloadDetail=false">
+            <img
+              ng-src="{{ resource.link }}"
+              ng-init="showDownloadDetail=false"
+              ng-mouseenter="showDownloadDetail=true"
+            >
+            <span ng-show="showDownloadDetail" ng-mouseenter="showDownloadDetail=true" title="{{ resource.file_name | normFileName }}">{{resource.file_name | limitFileName }}</span>
+            <span ng-style="{'color': {true:'red'}[resource.sticky && resource.sticky > 0]}">
+              {{ resource.online_owners_num }}/{{ resource.total_owners_num }} <span ng-if="resource.ext_info.rating">{{ resource.ext_info.rating }}分</span><br/>{{ resource.file_name | normFileName }}
+            </span>
+            <div ng-show="showDownloadDetail" ng-mouseenter="showDownloadDetail=true">
+              <button ng-click="viewResourceDetailsClickHandler(resource)" class="btn default">详情</button>
+              <button ng-if="resource.downloaded" class="btn default disabled" ng-click="downloadResourceClickHandler($index)">已下载</button>
+              <button ng-if="!resource.downloaded" class="btn default" ng-click="downloadResourceClickHandler($index);$event.stopPropagation();">下载</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pagination-container group="search" ng-show="{{ resource_list.length }}"></pagination-container>
+    </div>
+    <!--
+    <div class="col-md-3 right">
+      <div>
+        <div class="title">
+          下载排行榜
+          <span>周排行</span>
+          <span>月排行</span>
+          <span>总排行</span>
+        </div>
+        <div class="top-items">
+          <div class="top-item" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+            <span class="index">{{ i }}</span>
+            <span class="title">归来</span>
+            <span class="count">{{ 1000*(11-i) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="mask"></div>
+  </div>
+</div>

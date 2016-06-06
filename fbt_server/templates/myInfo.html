@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>FBT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="{{ static_url("Flat-UI-master/bootstrap/css/bootstrap.css") }}" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="{{ static_url("Flat-UI-master/css/flat-ui.css") }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+    <link href="{{ static_url("Flat-UI-master/css/docs.css") }}" rel="stylesheet">
+    <link href="{{ static_url("css/fbt_common.css") }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ static_url("images/user_icon/default.png") }}">
+
+    <script src="{{ static_url("js/jquery-1.11.min.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/bootstrap-alert.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/json.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/fbt_common.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("js/jquery.pin.js") }}" type="text/javascript"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <![endif]-->
+   
+</head>
+  <body>
+    <div style="display:none" class="wrap_hide"></div>
+  <div class="wrap_all">
+    <style>
+    .editA{
+      cursor: pointer;
+    }
+                .demo-row{padding-top: 68px; padding-bottom: 0px;}
+        .other{padding-top: 0px;padding-bottom: 12px;}
+        body{padding-top: 70px;min-height: 2000px;}
+        h1,h2,h3,h4{color: #1abc9c;}
+        p{color: #7f8c8d;}
+        .order{color: #1abc9c;}
+        .divLine{height: 1px; width: 50%; border: dashed 1px;}
+        .imgDiv{padding-top: 30px;}
+        .navbar-default .navbar-brand {color: #1abc9c;}
+
+        .myActive{background-color: #bbbbbb;}
+        .editA{display: inline;}
+        .iWannaSay{color: #7F8C8D;}
+
+        /*这两行CSS模拟了flatUI典型的input样式*/
+        input{border: 2px solid #dce4ec; color: #34495e; border-radius: 6px;
+              transition: border linear .2s,box-shadow linear .2s;}
+        input:focus{border-color: #1abc9c; -webkit-box-shadow: none;
+                    -moz-box-shadow: none; box-shadow: none; outline: none;}
+        input{display: block; margin-bottom: 6px;}
+
+        .modifyPassword{color: #da4f49;}
+
+    .item{
+    border-bottom: solid 1px #d8d8d8;
+    padding-top: 8px;
+    padding-bottom: 8px; 
+  }
+
+  .score{float: left; width: 33%; padding-bottom: 6px; color: red;}
+  .pcs{display: inline-block; width: 33%; text-align: right; padding-bottom: 6px;}
+  .doneWithComment{text-align: right;}
+  .status{float: left; width: 33%; padding-bottom: 6px; color: #1abc9c;}
+
+  .downloadingDiv{padding-right: 0px; height: 40px;}
+  .downloadingRow{padding-top: 10px;}
+  .downloadingCancelDiv{color: red; height: 40px;}
+  .downloadingCancelA{color: red;}
+  .col-lg-6 > span{
+    float: left;
+    font-size: 22px;
+  }
+  .msg p{
+    font-size: 22px;
+  }
+    </style> 
+    <div id="nav" style="display:none">
+      <b class="user">{{ current_user }}</b>
+    </div>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">FBT</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"></a></li>
+            <li class="myActive"><a href="#">个人档</a></li>
+            <li><a href="#">我的分享</a></li>
+            <li><a href="#">我的点评</a></li>
+            <li><a href="#">我的收藏</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="alert-block fade">
+      <strong>提示：</strong> <span id="hint"></span>
+    </div>
+    <div class="container">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div id="d1" class="jumbotron">
+
+        <div class="row">
+        <div class="col-sm-10">
+          <h4 class="iWannaSay">我想说&emsp;<span class="glyphicon glyphicon-bullhorn"></span></h4>
+          <h3>{{shuo}}</h3>
+        </div>
+        <div class="col-sm-2"><img src="{{ user['icon'] }}" class="img-responsive img-rounded" alt="Responsive image"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title">私密信息</h5>
+        <input id="nameInModal" type="text" value="" placeholder="真名">
+        <input id="telInModal" type="text" value="" placeholder="手机">
+        <input id="qqInModal" type="text" value="" placeholder="QQ">        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="saveChange(0)">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title">基本信息</h5>
+        <div style="height: 42px;margin-top: 5px;">性别：<select id="genderInModal" value="男"><option value="男">男</option><option value="女">女</option></select></div>
+        <div style="height: 42px;">感情状态：<select id="loveInModal" value="单身"><option value="单身">单身</option><option value="暧昧">暧昧</option><option value="恋爱">恋爱</option></select></div>
+        <input id="schoolInModal" type="text" value="" placeholder="院校">
+        <input id="addrInInModal" type="text" value="" placeholder="现居">       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="saveChange(1)">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title">账户信息</h5>
+        <input id="nickNameInModal" type="text" value="" placeholder="昵称">
+
+        <h5 class="modal-title modifyPassword" id="myModalLabel">
+          <span class="glyphicon glyphicon-warning-sign"></span>
+          修改密码
+        </h5>
+        <input id="passwordInModal" type="text" value="" placeholder="密码">
+        <input id="confirmPasswordInModal" type="text" value="" placeholder="确认密码">
+        &nbsp;&nbsp;<span style="display:none;color:red" id="confirm">密码不一致，请检查</span>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="saveChange(2)">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+    <div class="container msg">
+    <div id="resume" class="demo-row">
+        <div class="demo-title">
+          <h2>私密信息:</h2>
+        </div>
+
+        <div class="demo-content demo-content-article">
+          <div class="col-lg-6">
+          <span>真名：</span><p id="realName">&nbsp;{{user['real_name']}}</p>
+          <span>手机：</span><p id="tel">&nbsp;{{user['phone']}}</p>
+          <span>QQ：</span><p id="qq">&nbsp;{{user['qq']}}</p>
+          </div>
+          <div class="col-lg-6">
+            <h2>
+              <b class="editA" onclick="showModifyModal(0)">
+                <span class="glyphicon glyphicon-edit"></span>
+              </b>
+            </h2>
+          </div>
+        </div>
+    </div>
+
+    <div id="resume" class="demo-row">
+        <div class="demo-title">
+          <h2>基本信息:</h2>
+        </div>
+
+        <div class="demo-content demo-content-article">
+          <div class="col-lg-6">
+          <span>性别：</span><p id="gender">&nbsp;{{user['gender']}}</p>
+          <span>感情状态：</span><p id="love">&nbsp;{{user['love_state']}}</p>
+          <span>院校：</span><p id="school">&nbsp;{{user['school']}}</p>
+          <span>现居：</span><p id="addr">&nbsp;{{user['address']}}</p>
+          </div>
+          <div class="col-lg-6">
+            <h2>
+              <b class="editA" onclick="showModifyModal(1)">
+                <span class="glyphicon glyphicon-edit"></span>
+              </b>
+            </h2>
+          </div>
+        </div>
+    </div>
+
+    <div id="resume" class="demo-row">
+        <div class="demo-title">
+          <h2>账户信息:</h2>
+        </div>
+
+        <div class="demo-content demo-content-article">
+          <div class="col-lg-6">
+          <span>邮箱：</span><p id="email">&nbsp;{{user['user']}}</p>
+          <span>密码：</span><p id="password">&nbsp;{{user['password']}}</p>
+          <span>昵称：</span><p id="nickName">&nbsp;{{user['nick_name']}}</p>
+          </div>
+          <div class="col-lg-6">
+            <h2>
+              <b class="editA" onclick="showModifyModal(2)">
+                <span class="glyphicon glyphicon-edit"></span>
+              </b>
+            </h2>
+          </div>
+        </div>
+    </div>
+
+  </div>
+    <!-- /.container -->
+  <div class="container">
+
+        <div class="row item">
+        <div class="col-xs-3">
+          <img src="{{ static_url("images/movie.jpg") }}" class="img-responsive center-block img-rounded"> 
+        </div>
+        <div class="col-xs-8">
+          <a href="#"><h4>宠物/Despicable Me 2</h4></a>
+          <br>
+          <div class="row">
+            <div class="col-xs-3 downloadingDiv downloadCol">40M/100M&emsp;&emsp;40%</div>
+            <div class="col-xs-6 downloadingRow">
+
+<div class="progress progress-striped">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
+</div>
+            </div>
+
+            <div class="col-xs-2 downloadingCancelDiv downloadCol">
+            <a class="downloadingCancelA" href="javascript:void(0)" onclick="pauseDownload()">
+              <span class="glyphicon glyphicon-pause"></span>
+              &emsp;
+            </a>
+
+            <a class="downloadingCancelA" href="javascript:void(0)" onclick="cancelDownload()">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>            
+            </div>
+
+          </div>
+
+        </div><!--col-8-->
+      </div><!--一个电影下载row的结束-->
+
+        <div class="row item">
+        <div class="col-xs-3">
+          <img src="{{ static_url("images/movie.jpg") }}" class="img-responsive center-block img-rounded"> 
+        </div>
+        <div class="col-xs-8">
+
+          <a href="#"><h4>宠物/Despicable Me 2</h4></a>
+          <p>2013-10-22(美国)/皮埃尔/...........推聊是一个基于极光推送的Android手机聊天系统。支持群聊与点对点聊天。当前包括Android客户端与Java服务器端。3分钟就可以整套系统跑起来。</p>
+
+              <div class="score">
+                9.1 
+                <a data-toggle="collapse" data-toggle="collapse" href="#collapseAllComment1">(查看8888人评论)</a>
+              </div>
+
+            <div class="pcs">
+            <a data-toggle="collapse" data-toggle="collapse" href="#collapseMyComment1">评论| </a>
+            <a href="#">查看| </a>
+            <a href="#">删除</a>
+            </div>
+
+            <div class="status">
+              状态:共享中
+            </div>
+        
+        <div id="collapseAllComment1" class="collapse">
+          <div class="row">
+            <div class="col-xs-12">
+              评论全部放在这里<br>
+              评论全部放在这里<br>
+              评论全部放在这里<br>
+              评论全部放在这里
+            </div>
+          </div>
+        </div>
+
+        <div id="collapseMyComment1" class="collapse myCollapse">
+          <div class="row">
+            <div class="col-xs-12">
+              <input type="text" class="form-control" id="myComment1" placeholder="发表观后感吧(1000字最多)...">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-8" style="padding-top: 8px;">
+              <span class="glyphicon glyphicon-picture">图片</span>
+              <span class="glyphicon glyphicon-paperclip">附件</span>
+              <span >@好友</span>
+            </div>
+
+            <div class="col-xs-4 doneWithComment">
+              <button type="button" class="btn btn-sm btn-success">完成评论</button>
+            </div>
+          </div><!--评论第二行-->
+
+        </div><!--collapseMyComment-->
+        </div><!--col-9-->
+      </div><!--一个电影row的结束-->
+
+</div>
+    <script>
+    var nums = 0;
+  $(".alert-block").alert();
+  $(".close").click(function(event) {
+    /* Act on the event */
+    $('#myModal'+nums).modal('hide');
+  });
+  var user = {
+    "realName":$("#realName").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "tel":$("#tel").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "qq":$("#qq").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "gender":$("#gender").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "love":$("#love").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "school":$("#school").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "addr":$("#addr").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "email":$("#email").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "nickName":$("#nickName").html().replace(new RegExp("&nbsp;", 'g'), ""),
+    "password":$("#password").html().replace(new RegExp("&nbsp;", 'g'), "")
+  }
+function showModifyModal(num){
+  nums = num;
+  if(num == 0)
+  {
+    $("#nameInModal").val($("#realName").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#telInModal").val($("#tel").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#qqInModal").val($("#qq").html().replace(new RegExp("&nbsp;", 'g'), ""));
+  }
+  else if(num == 1){
+    $("#genderInModal").val($("#gender").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#loveInModal").val($("#love").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#schoolInModal").val($("#school").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#addrInModal").val($("#addr").html().replace(new RegExp("&nbsp;", 'g'), ""));
+  }
+  else
+  {
+    //$("#emailInModal").val($("#email"));
+    $("#nickNameInModal").val($("#nickName").html().replace(new RegExp("&nbsp;", 'g'), ""));
+    $("#passwordInModal").val($("#password").html().replace(new RegExp("&nbsp;", 'g'), ""));
+  }  
+  $('#myModal'+num).modal('show');
+}
+function saveChange(num){
+  nums = num;
+  var mod_user = {}
+  if(num == 0){
+    $("#realName").html("&nbsp;"+$("#nameInModal").val());
+    $("#tel").html("&nbsp;"+$("#telInModal").val());
+    $("#qq").html("&nbsp;"+$("#qqInModal").val());
+    var realName = $("#realName").html();
+    var tel = $("#tel").html();
+    var qq = $("#qq").html();
+    if(user["realName"] != realName)
+      mod_user["real_name"] = realName
+    if(user["tel"] != tel)
+      mod_user["phone"] = tel
+    if(user["qq"] != qq)
+      mod_user["qq"] = qq
+  }
+  else if(num == 1){
+    $("#gender").html("&nbsp;"+$("#genderInModal").val());
+    $("#love").html("&nbsp;"+$("#loveInModal").val());
+    $("#school").html("&nbsp;"+$("#schoolInModal").val());
+    $("#addr").html("&nbsp;"+$("#addrInModal").val());
+    var gender = $("#gender").html();
+    var love = $("#love").html();
+    var school = $("#school").html();
+    var addr = $("#addr").html();
+    if(user["gender"] != gender)
+      mod_user["gender"] = gender
+    if(user["love"] != love)
+      mod_user["love_state"] = love
+    if(user["school"] != school)
+      mod_user["school"] = school
+    if(user["addr"] != addr)
+      mod_user["address"] = addr
+  }
+  else{
+    $("#nickName").html("&nbsp;"+$("#nickNameInModal").val());
+    $("#password").html("&nbsp;"+$("#passwordInModal").val());
+    var nickName = $("#nickName").html();
+    var password = $("#password").html();
+    if(user["nickName"] != nickName)
+      mod_user["nick_name"] = nickName
+    if(user["password"] != password)
+    {
+      var confirm = "&nbsp;"+$("#confirmPasswordInModal").val();
+      if (password != confirm) {
+        $("#confirm").css({"display":"inline"});
+        return;
+      }
+      else{
+        $("#confirm").css({"display":"none"});
+        mod_user["password"] = password   
+      }
+    }      
+  }
+  var len = getJsonLength(mod_user)
+  if(len != 0)
+  {
+    var str = JSON.stringify(mod_user);
+    str = str.replace(new RegExp("&nbsp;", 'g'), "");
+    var param_user =  {"user":str}
+    $.post('/myInfo', param_user, function(data, textStatus, xhr) {
+      /*optional stuff to do after success */
+      data = $.parseJSON(data)
+      if (data["type"] == 1) {
+        $("#hint").text("修改成功。");
+        if($(".alert-block").hasClass('alert-error'))
+          $(".alert-block").removeClass('alert-error');
+        $(".alert-block").addClass('in').addClass('alert-success');
+      }
+      else{
+        $("#hint").text("修改失败，请重新修改");
+        if($(".alert-block").hasClass('alert-success'))
+          $(".alert-block").removeClass('alert-success');
+        $(".alert-block").addClass('in').addClass('alert-error');
+      }
+      setTimeout("$('.alert-block').removeClass('in')", 1500);
+    });
+  }
+  $('#myModal'+num).modal('hide');
+}
+createSock();
+</script>
+  </div>
+    <!-- Load JS here for greater good =============================-->
+    <script src="{{ static_url("js/reconnecting-websocket.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap.min.js") }}" type="text/javascript"></script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.ui.touch-punch.min.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap-select.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/bootstrap-switch.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/flatui-checkbox.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/flatui-radio.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.tagsinput.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/jquery.placeholder.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/video.js") }}">
+    </script>
+    <script src="{{ static_url("Flat-UI-master/js/application.js") }}">
+    </script>
+
+  </body>
+</html>

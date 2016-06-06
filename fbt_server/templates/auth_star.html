@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+            width: 800px;
+        }
+        .container label:first-child {
+            color: #1abc9c;
+            font-weight: bold;
+            width: 100%;
+            display: block;
+            padding-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+        <label>^_^, 出错啦！{{ error }}</label>
+        {% else %}
+        <label>恭喜您通过了校园星空"{{ tag_class }}之星"审核！！！</label>
+        <p>此时此刻，我对您的敬仰如滔滔江水延绵不绝！！！赶紧到<a href="http://www.校园星空.com/">校园星空</a>展示您的才华吧！！！</p>
+        {% end %}
+    </div>
+</body>
+</html>

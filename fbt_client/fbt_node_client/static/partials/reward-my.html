@@ -1,0 +1,171 @@
+<!-- vim: set sw=2 ts=2 : -->
+<!--
+<div class="banner">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      悬赏啊悬赏，悬赏啊悬赏。
+      悬赏啊悬赏，悬赏啊悬赏。
+    </div>
+    <div class="col-md-5">
+      <a class="btn" href="#/reward-my">我的悬赏</a>
+      <a class="btn" ng-click="publishRewardClickHandler()">发布悬赏</a>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+-->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs"></div>
+</div>
+<div class="extern myreward">
+  <div class="row" ng-if="!rewards.length">
+  </div>
+  <empty-container ng-if="!rewards.length"></empty-container>
+  <pagination-container group="reward-my" ng-show="{{ rewards.length }}"></pagination-container>
+  <div class="row rewards" ng-if="rewards.length">
+    <div class="row" ng-repeat="reward in rewards">
+      <div class="col-md-2">
+        <div class="time">
+          {{ reward.ctime | date:'MM/dd HH:mm' }}
+        </div>
+        <img class="logo" ng-src="{{ reward.icon }}"/>
+      </div>
+      <div class="col-md-10">
+        <div class="name">{{ reward.nick_name }}</div>
+        <div class="message">发布者说话</div>
+        <div class="row item">
+          <div class="col-md-2 resource-name">
+            <p>{{ reward.fileName }}</p>
+            <p><span>{{ getResTypeByIndex(reward.res_type) }}</span><span>{{ reward.res_year }}</span><span>{{ reward.res_country }}</span></p>
+          </div>
+          <div class="col-md-2 fb">{{ reward.total_fb }}F</div>
+          <div class="col-md-5 addition">
+            追加悬赏:
+            <span ng-show="!reward.append_uid.length">暂无</span>
+            <span ng-repeat="uid in reward.append_uid | limitTo:3 track by $index">
+              <img class="small-logo" src="{{ reward.append_user[$index].icon }}"/> {{ reward.append_fb[$index] }}F 
+            </span>
+            <span ng-show="reward.append_uid.length > 3" ng-click="viewAppendRewardClickHandler(reward.append_uid, reward.append_user, reward.append_fb)" class="more-addition">
+              <i class="fa fa-angle-down"></i>
+            </span>
+          </div>
+          <div class="col-md-3">
+            <div class="row">
+              <button ng-click="viewResourceClickHandler(reward.file_infos, reward.rid)" class="btn default primary" ng-if="reward.file_infos">查看资源</button>
+              <button class="btn default primary disabled" ng-if="!(reward.file_infos)">暂无上传</button>
+              <button class="btn default" ng-click="cancelReward(reward.rid, reward.res_type, $index)" ng-if="!(reward.file_infos)">删除悬赏</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-container group="reward-my" ng-show="{{ rewards.length }}"></pagination-container>
+  <div class="mask"></div>
+
+  <!--==============================================================
+  View Resource Modal
+  ===============================================================-->
+  <div class="modal fade" id="view-resource-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>资源列表</h2></div>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <th>文件名称</th>
+              <th>大小</th>
+              <th>类型</th>
+              <th>上传者</th>
+              <th>上传时间</th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="resource in file_infos">
+              <td title="{{ resource.file_name }}">{{ resource.file_name }}</td>
+              <td>{{ resource.file_size | normFileSize }}</td>
+              <td>{{ resource.resType }}</td>
+              <td>{{ resource.owner }}</td>
+              <td>{{ resource.mtime | date:'MM-dd HH:mm' }}</td>
+              <td><button class="btn default" ng-click="downloadResourceClickHandler(resource, rid)">下载</button></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--==============================================================
+  View Modal
+  ===============================================================-->
+  <div class="modal fade" id="view-append-reward-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>悬赏列表</h2></div>
+        </div>
+        <div class="modal-body">
+          <div ng-repeat="row_list in append_list">
+            <div class="row addition">
+                <div class="col-md-3" ng-repeat="i in row_list"><img class="logo" src="{{ i.append_user.icon }}"/><br/>{{ i.append_user.nick_name }} {{ i.append_fb }}F</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--==============================================================
+  View Reward Modal
+  ===============================================================-->
+  <!--
+  <div class="modal fade" id="view-reward-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>悬赏列表</h2></div>
+        </div>
+        <div class="modal-body">
+          <div class="row addition">
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+          </div>
+          <div class="row addition">
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+          </div>
+          <div class="row addition">
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+          </div>
+          <div class="row addition">
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+            <div class="col-md-3"><img class="logo" src="img/avatar.jpg"/><br/>ABC 200F</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+</div>

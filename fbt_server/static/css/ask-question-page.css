@@ -1,0 +1,124 @@
+.vertical-middle {
+    vertical-align: middle;
+}
+
+.ask-container {
+    margin-top: 20px;
+    width: 992px;
+}
+
+.ask-row-interval {
+    margin-bottom: 10px;
+}
+
+.ask-container .input-group {
+    display: table;
+}
+
+.ask-left {
+    width: 200px;
+    /*padding-right: 30px;*/
+}
+
+.ask-tips {
+    color: #999;
+
+}
+
+.ask-right {
+    padding-left: 30px;
+    width: 792px;
+    /*border-left: 1px dashed;*/
+}
+
+.tag-input {
+    border: none;
+    width: 150px;
+}
+
+.tag-input:focus {
+    outline: none;
+}
+
+.added-tags {
+    float: left;
+    background: #eff6fa;
+    color: gray;
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+.tag-text {
+    margin-right: 5px;
+}
+
+.tag-remove {
+    cursor: pointer;
+    font-size: smaller;
+}
+
+.tag-input-group {
+}
+
+.tag-input-group .added-tags {
+    padding: 5px 5px 5px 5px;
+}
+
+.tag-inviter {
+    padding: 10px;
+}
+
+.ask-cancel {
+    margin: 0 10px 0 10px;
+}
+
+.invite-user-img {
+    width: 40px;
+    margin-top: -10px;
+}
+
+.users-panel {
+    height: 150px;
+    overflow-y: auto;
+}
+
+.invite-user-info {
+    border-bottom: 1px dashed;
+    padding-top: 5px;
+}
+
+.invite-user-desc {
+    display: inline-block;
+}
+
+.users-empty-tip {
+    width: 200px;
+}
+
+.click-link {
+    color: rgb(53, 160, 237);
+    text-decoration: underline;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}

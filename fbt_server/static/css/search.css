@@ -1,0 +1,191 @@
+
+#find {
+    font-size: 16px;
+    margin-left: 135px;
+}
+
+#find .nav {
+    margin-top: 20px;
+    margin-bottom:40px;
+}
+
+#find article {
+    line-height: 1.0em;
+/*    height: 3.0em;*/
+    overflow: hidden;
+    padding-bottom: 10px;
+    text-align: justify;
+}
+
+#find .border {
+    border: 1px solid #EEEEEE;
+    font-size: 16px;
+    width: 23%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+#find .border-shadow {
+    border: 2px solid #eee;
+    font-size: 16px;
+    width: 23%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    box-shadow: 6px 6px 10px lightgrey;
+    -moz-box-shadow: 6px 6px 10px lightgrey;
+    -webkit-box-shadow: 6px 6px 10px lightgrey;
+}
+
+#find .col6 {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#find img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+#find .question-more img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    left: -10px;
+}
+
+#find .nav .border {
+    width: 11%;
+    border: 1px solid #EEEEEE;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#find .switch-list ul {
+    border-bottom: 1px solid #EEEEEE;
+}
+
+#find .switch-list li {
+    padding-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+#find .switch-list li:hover,
+#find .switch-list .active {
+    border-bottom: 2px solid #35a0ed;
+}
+
+
+#find .right div {
+    border: 1px solid #EEEEEE;
+    cursor: pointer;
+    padding: 9px 9px;
+}
+
+#find .right div:hover {
+    background-color: #EEEEEE;
+    color: rgb(53,160,237);
+}
+
+#find .right ul {
+    border-radius: 0%;
+    font-size: 16px;
+    text-align: right;
+}
+
+#find .right li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#find .right li:hover {
+    background-color: #248DD8;
+    color: #FFFFFF;
+}
+
+#find .right ul .active {
+    background-color: #248DD8;
+    color: #FFFFFF;
+}
+
+#find .down .content ul:hover {
+    cursor: pointer;
+}
+
+#find .down .content .border {
+    border: 1px solid #eeeeee;
+}
+
+#find .down .content p {
+    padding: 15px 0px;
+}
+
+#find .down .content .border-top:hover {
+    cursor: pointer;
+    color: rgb(53,160,237);
+}
+
+#find .down .content .border-top span {
+    top: 2px;
+}
+#find .answer a:hover {
+    color: #666;
+}
+
+#find .praise {
+    text-align: center;
+    padding: 10px 0px;
+}
+
+#find .visit {
+    border: #eee 1px solid;
+    width: 200px;
+    padding: 5px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+#find .visit:hover, #find .concern:hover {
+    color: rgb(53,160,237);
+}
+
+#find .hotsearch {
+    border: #eee 1px solid;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#find .concern {
+    border: #eee 1px solid;
+    width: 200px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#find .ellipsis{
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+#find a:hover {
+    color: rgb(53,160,237);
+}
+#find .whiteback{
+    background: white;
+}
+#find .pagination_div{
+    height: auto;
+}
+
+

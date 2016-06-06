@@ -1,0 +1,57 @@
+<div data-ng-controller="InformController" class="inform">
+	<style type="text/css">
+		.inform .msg-ctrl button{
+            font-size: 14px;
+            background: rgba(0,0,0,0.6);
+            color: lightgrey;
+            border: none;
+        }
+		.inform .msg-ctrl button:hover{
+            background: rgba(0,0,0,0.75);
+            color: white;
+		}
+		.inform li {
+            background: rgba(255,255,255,0.5);
+            padding: 0 5px;
+        }
+		.inform li div{
+			padding: 10px 0;
+			font-size: 14px;
+            margin: 8px 2px;
+		}
+		.inform li div button{
+			float: right;
+			margin-right: 5px;
+		}
+	</style>
+	<!-- <div class="my_resource">
+		<div class="row">
+	      <div data-ng-mouseenter="showDownload=true" data-ng-mouseleave="showDownload=false" class="col-md-3 item" data-ng-repeat="res in curRes">
+	          <img class="poster" data-ng-src="{{res.link}}">
+	          <div class="info">
+	            <label>{{res.file_name}}</label>
+	            <div ng-show="showDownload" class="download">
+	              <button class="btn btn-success" data-ng-click="download($index)" data-ng-hide="res.isDir">下载</button>
+	              <button class="btn btn-success" data-ng-click="showDir($index)" data-ng-show="res.isDir">下载</button>
+	              <a href="#/resource-recommendation/details/{{i}}" class="btn btn-default">详情</a>
+	            </div>
+	            <div ng-show="!showDownload" class="details">
+	              <span>{{res.resType}}</span>
+	              <span>上传时间：{{res.time}}</span>
+	          	  <span>下载数目：{{res.download_num}}</span>
+	              <span>在线：{{res.online_owners_num}}/{{res.total_owners_num}}</span>
+	            </div>
+	          </div>
+	        </div>
+	    </div>
+	</div> -->
+	<div class="msg-ctrl">
+		<button data-ng-click="clearAllMsg()" class="btn default" style="font-size:14px">清空消息</button>
+	</div>
+	<ul>
+		<li data-ng-repeat="msg in msgCenter">
+			<div data-ng-if="sysShow(msg)">系统通知：{{msg.content}}&emsp;{{msg.time}}<button class="btn default" style="font-size: 14px;" data-ng-click="handle('{{msg.id}}', $index)">阅读</button></div>
+			<div data-ng-if="!sysShow(msg)">系统消息：{{msg.content}}&emsp;{{msg.time}}<button class="btn default" style="font-size: 14px; margin-top: -6px;" data-ng-click="handleFriend(msg, 0)">拒绝</button><button class="btn default" style="font-size: 14px; margin-top: -6px;" data-ng-click="handleFriend(msg, 1)">同意</button></div>
+		</li>
+	</ul>
+</div>

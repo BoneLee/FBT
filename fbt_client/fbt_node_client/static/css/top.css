@@ -1,0 +1,76 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.top {
+  margin-top: 42px;
+}
+
+.extern.top .mask {
+  position: fixed;
+  height: 50px;
+  top: 90px;
+  left: 0;
+  right: 0px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.top > .row:first-child {
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 67px;
+  text-align: right;
+}
+
+.extern.top .nav {
+  position: fixed;
+  top: 86px;
+  font-size: 14px;
+  background: transparent;
+  z-index: 1;
+}
+
+.extern.top .nav a {
+  color: #666;
+}
+
+.extern.top .nav a.active {
+  color: #1abc9c;
+  background: transparent;
+}
+
+.extern.top .nav a:hover {
+  color: #1abc9c;
+  background: transparent;
+  text-decoration: underline;
+}
+
+.extern.top table {
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.extern.top table td {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.extern.top img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin: 4px;
+}

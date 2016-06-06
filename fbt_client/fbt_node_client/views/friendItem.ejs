@@ -1,0 +1,52 @@
+<div id="accordion<%= uid %>" class="row friend">
+    <% if (online == 1) { %>
+        <div data="0" class="col-xs-10 nameInFriendList cur_p">
+            <a data="1" onclick='chatFriend("<%= uid %>", "<%= nick_name %>")' style="text-decoration:none;" class="<%= uid %>">
+                <% if (real_name) { %>
+                    <%= real_name %>(<%= nick_name %>)
+                <% } else { %>
+                    <%= nick_name %>
+                <% } %>
+            </a>
+        </div>
+    <% } else { %>
+        <div data="0" class="col-xs-10 nameInFriendList">
+            <a data="0" onclick='chatFriend("<%= uid %>", "<%= nick_name %>")' style="text-decoration:none;color:grey;" class="<%= uid %>">
+                <% if (real_name) { %>
+                    <%= real_name %>(<%= nick_name %>)
+                <% } else { %>
+                    <%= nick_name %>
+                <% } %>
+            </a>
+        </div>
+    <% } %>    
+    <div class="col-xs-2 nameInFriendList cur_p">
+        <a onclick="toggleOp('#name<%= count %>')">
+            <span class="glyphicon glyphicon-th">
+            </span>
+        </a>
+    </div>
+    <div id="name<%= count %>" class="col-xs-12 moreOperations friendOp" style="display:none">
+        <b onclick="chatFriend('<%= uid %>','<%= nick_name %>')" class="textOfUnfriend" style="text-decoration:none;">
+            <span class="glyphicon glyphicon-comment">
+            </span>&nbsp;开始聊天&nbsp;&nbsp;
+        </b>
+        <b onclick="delFriend('<%= user %>','0',<%= uid %>)"
+        class="textOfUnfriend" style="text-decoration:none;">
+            <span class="glyphicon glyphicon-trash">
+            </span>&nbsp;删除好友&nbsp;&nbsp;
+        </b>
+        <b class="textOfUnfriend" style="text-decoration:none;">
+            <a href="/friend_res?uid=<%= uid %>" style="color: inherit;">
+                <span class="glyphicon glyphicon-star">
+                </span>
+            </a>&nbsp;查看资源
+        </b>
+        <br>
+        <b href="javascript:void(0)" onclick="starFriend('<%= user %>')" class="textOfUnfriend friendStar">
+            <span class="glyphicon glyphicon-star">
+            </span>
+            &nbsp;星标好友
+        </b>
+    </div>
+</div>

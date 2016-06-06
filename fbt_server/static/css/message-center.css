@@ -1,0 +1,192 @@
+/*这是消息中心样式表，对应html是message-center.html*/
+
+#message-center {
+    color:#333;
+    min-height: 540px;
+}
+
+#message-center .cursor {
+    cursor:pointer;
+}
+
+#message-center .to-top {
+    margin-top: 40px;
+}
+
+#message-center .to-left {
+    margin-left: 2.8%;
+}
+
+#message-center .nav-pad-left {
+    padding-left: 1em
+}
+
+#message-center .nav-list,#message-center .main{
+    background-color: #FFFFFF;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+#message-center .main {
+    margin-top: 84px;
+}
+
+#message-center .nav-list .title,#message-center .head {
+    padding-top: 0.5em;
+    padding-bottom:0.5em;
+}
+
+#message-center .nav-list li,#message-center .nav-list-padding{
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+
+#message-center .active {
+    color:#35a0ed;
+}
+
+#message-center .nav-list .title {
+    padding-left: 1em;
+    color:#333;
+    font-weight: bold;
+}
+
+#message-center .nav-list .head {
+    border-top: 1px solid #EEEEEE;
+}
+
+#message-center .nav-list .del-user:hover {
+    color: #35a0ed;
+    cursor:pointer;
+}
+
+#message-center .main .head {
+    border-bottom: 1px solid #EEEEEE;
+}
+
+#message-center .nav-list li{
+  padding-left: 2em;
+}
+
+#message-center li:hover,#message-center .nav-list-padding span:hover{
+    cursor:pointer;
+    color:#35a0ed;
+}
+
+#message-center .to-right {
+    margin-left: 70%;
+}
+
+#message-center .content {
+    padding-top:0.5em;
+    padding-bottom: 0.5em;
+}
+
+#message-center .content-padding {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+#message-center .bottom-line {
+    width:96.2%;
+    border-bottom: 1px dashed #eeeeee;
+    margin-left: 14px;
+    padding-bottom: 0.25em;
+}
+
+#message-center .head-line {
+    width:96.2%;
+    border-bottom: 1px solid #EEEEEE;
+    margin-left: 14px;
+    padding-bottom: 0.25em;
+}
+
+#message-center img {
+    border-radius:50%;
+    width:60px;
+    height: 60px;
+    position: relative;
+    top:0.5em;
+    left:0.25em;
+}
+
+#message-center .no-result, #message-center .no-message {
+    padding-top: 1em;
+    text-align: center;
+}
+
+#message-center textarea {
+    resize:none;
+}
+
+#message-center a{
+    cursor: pointer;
+    color: #35a0ed;
+}
+
+#message-center a:hover{
+    color:#666;
+}
+
+#message-center .ellipsis{
+    max-width:100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#message-center .load-more {
+    margin-top: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: rgb(53,160,237);
+    color:#FFFFFF;
+    text-align: center;
+    cursor:pointer;
+}
+
+#message-center .load-more:hover {
+    background-color:#248DD8;
+}
+
+#message-center .no-more {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+
+#message-center .message-title {
+    font-size: 17px;
+}
+
+#message-center .time-style {
+    color:#858585;
+}
+
+#message-center .user-load-more:hover{
+    cursor:pointer;
+    color:#35a0ed;
+}
+
+#message-center .white-circle,#message-center .blue-circle{
+    display: block;
+    height: 12px;
+    width: 12px;
+    border-radius:50%;
+    color: #248DD8;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+#message-center .blue-circle {
+    background-color: #248DD8;
+}
+
+#message-center .white-circle {
+    background-color: #FFFFFF;
+}
+
+#message-center .button-style {
+    padding:3px 10px;
+}

@@ -1,0 +1,150 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.home .event {
+  margin-bottom: 20px;
+}
+
+.home .event .col-md-2 {
+  text-align: right;
+}
+
+.home .event .logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  display: inline-block;
+}
+
+.home .event .message {
+  display: inline-block;
+  width: 100%;
+}
+
+.home .event .message .title {
+  margin-bottom: 10px;
+}
+
+.home .event .message .details {
+  margin-left: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  width: inherit;
+}
+
+.home .event .message .details:hover {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.home .event .message .details .poster {
+  border: 1px solid lightgrey;
+  width: 140px;
+  margin-left: 20px;
+}
+
+.home .event .message .details .other {
+  display: inline-block;
+  vertical-align: top;
+  color: #333;
+  width: 90%;
+  margin-left: 20px;
+}
+
+.home .event .message .details .other .action {
+  float: right;
+  vertical-align: bottom;
+  margin-top: 60px;
+  color: grey;
+}
+
+.home .event .message .details .other .action > span {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.home .event .message .details .other > label {
+  font-size: 18px;
+  text-decoration: underline;
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.home .event .message .details .other > .description {
+  color: grey;
+}
+
+.home .recommendation {
+  position: fixed;
+  width: 22%;
+}
+
+.home .recommendation .title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.home .recommendation .title > span {
+  font-size: 12px;
+  color: grey;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.home .recommendation .title > span:hover {
+  color: #1abc9c;
+}
+
+.home .recommendation .recommendation-items {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  height: 330px;
+}
+
+.home .recommendation .recommendation-item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.home .recommendation .recommendation-item:hover {
+  background: lightgrey;
+  padding: 10px 0;
+}
+
+.home .recommendation .recommendation-item > span {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.home .recommendation .recommendation-item > span:first-child {
+  width: 20px;
+  height: 20px;
+  background: #1abc9c;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  padding: 3px;
+}
+
+.home .details-more {
+  display: block;
+  text-align: center;
+  /*border: 1px solid lightgrey;*/
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.home .details-more:hover {
+  background: rgba(0, 0, 0, 0.05);
+}

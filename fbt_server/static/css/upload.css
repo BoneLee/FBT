@@ -1,0 +1,21 @@
+body{
+	font-family: Microsoft;}
+div{
+	width: 940px;
+	display: block;
+	margin-left: 15%;
+	margin-top: 50px;
+}
+h2{
+	text-align: left;
+	color: #35a0ed;
+}
+hr{
+	font-size: 20px;
+	margin-bottom: 10px;
+	border: 1px solid rgba(100,100,100,0.1)
+}
+span{
+	font-size: 13pt;
+	line-height: 26px;
+}

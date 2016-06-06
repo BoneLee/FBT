@@ -1,0 +1,142 @@
+<!-- vim: set sw=2 ts=2 : -->
+<!DOCTYPE html>
+<html lang="en" ng-app="fbtApp">
+<head>
+  <meta charset="utf-8">
+  <title>FBT 快乐源于分享 2.0</title>
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//test.friendsbt.com/static/css/reg-style.css">
+  <link rel="stylesheet" href="//test.friendsbt.com/static/css/module-selector.css">
+</head>
+<body>
+  <div class="container">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header" id="logo">
+            <img src="//test.friendsbt.com/static/images/logo.png">
+          </div>
+        </div><!-- /.container-fluid -->
+      </nav>
+
+  <div id="line"></div>
+
+  <!--iframe style="height: 0;width: 0" src="http://211.149.208.82:8000/account/signup/?login_provider=local"-->
+    <!-- TODO: when register FBT
+         1. fill askbot signup form using the same username/pwd/email
+         2. click askbot signup button
+    -->
+  <!--/iframe-->
+
+  <form class="form-horizontal"  ng-controller="RegisterController" name="myForm" novalidate>
+    {% module xsrf_form_html() %}
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">注册邮箱</label>
+      <div class="col-sm-5">
+        <input class="form-control" type="email" name="user" ng-model="user" placeholder="邮箱(必填)" required>
+        <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+        <span ng-show="myForm.user.$error.required">注册邮箱为空</span>
+        <span ng-show="myForm.user.$error.email">邮箱无效</span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">昵称</label>
+      <div class="col-sm-5">
+        <input class="form-control" type="text" name="nick" ng-model="nick" ng-maxlength=10 placeholder="最多为10个字符(必填)" required>
+        <span style="color:red" ng-show="myForm.nick.$dirty && myForm.nick.$invalid">
+        <span ng-show="myForm.nick.$error.required">昵称为空</span>
+        <span ng-show="myForm.nick.$error.maxlength">最多为10个字符</span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">性别</label>
+      <div class="col-sm-5">
+        <label class="radio-inline">
+          <input type="radio" name="gender" ng-checked=1 ng-init="gender='男'" ng-model='gender' value="男"> 我是男生
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="gender" ng-model='gender' value="女"> 我是女生
+        </label>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">密码</label>
+      <div class="col-sm-5">
+        <input class="form-control" type="password" name="passwd" ng-model="passwd" ng-minlength=6 placeholder="密码(至少6位)" required>
+        <span style="color:red" ng-show="myForm.passwd.$dirty && myForm.passwd.$invalid">
+        <span ng-show="myForm.passwd.$error.required">密码不能为空</span>
+        <span ng-show="myForm.passwd.$error.minlength">至少6位</span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">确认密码</label>
+      <div class="col-sm-5">
+        <input class="form-control" type="password" name="passwd2" ng-model="passwd2" required>
+        <span style="color:red" ng-show="(myForm.passwd.$dirty || myForm.passwd2.$dirty) && (passwd != passwd2)">两次密码应该相同</span>
+      </div>
+    </div>
+
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">学校学院</label>
+      <div class="col-sm-2">
+        <input class="form-control" type="text" ng-click="selectCollegeClickHandler()" ng-model="school" name="school" placeholder="点击选择(必选)" readOnly="true">
+      </div>
+      <div class="col-sm-3">
+        <input class="form-control" type="text" ng-click="selectCollegeClickHandler()" ng-model="college" name="college" readOnly="true">
+      </div>
+    </div>
+
+    <div class="form-group has-success">
+      <label class="col-sm-offset-2 col-sm-2 control-label">真实姓名</label>
+      <div class="col-sm-5">
+        <input class="form-control" type="text" name="real_name" ng-model="real_name" placeholder="请填写真实姓名，便于好友查找">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-3">
+          <input type="checkbox" name="agreement"  ng-model='agreement' ng-true-value=1 ng-false-value=0>
+          <a href="http://friendsbt.com/agreement.htm" target="_blank" style="font-size: 12pt;">我已阅读并接受注册协议</a>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-success form-control" ng-click="submit()"
+          ng-disabled="myForm.user.$invalid || myForm.nick.$invalid || myForm.passwd.$invalid|| (passwd != passwd2)  || !school || !college || !agreement ">提交</button>
+        <!--button type="button" class="btn btn-success form-control" ng-click="submit()">提交</button-->
+      </div>
+    </div>
+
+    <div class="col-sm-offset-4 col-sm-5">
+      <span style="font-size: 14pt; color: red;">
+        [[register_info]]
+      </span>
+    </div>
+  </form>
+  </div>
+  <selector-container></selector-container>
+
+  <footer class="footer">
+      <p>京ICP备14044088号</p>
+      <p>© 2014-2015 www.friendsbt.com all rights reserved​</p>
+      <p>友情链接：
+      <a href="http://www.ucas.ac.cn/" target="_blank">中国科学院大学</a>
+      <a href="http://www.pku.edu.cn/" target="_blank">北京大学</a>
+      <a href="http://www.tsinghua.edu.cn/publish/newthu/index.html" target="_blank">清华大学</a>
+      <a href="http://www.opencas.org/" target="_blank">中科院开源软件协会</a>
+      </p>
+  </footer>
+
+  <script src="//test.friendsbt.com/static/js/jquery-2.1.4.min.js"></script>
+  <script src="//test.friendsbt.com/static/js/bootstrap.min.js"></script>
+  <script src="//test.friendsbt.com/static/js/jquery.md5.js"></script>
+  <script src="//test.friendsbt.com/static/js/angular.min.js"></script>
+  <script src="//test.friendsbt.com/static/js/angular-touch.min.js"></script>
+  <!--script src="static/js/angular-route.min.js"></script-->
+  <script src="//test.friendsbt.com/static/js/module-scselector.js"></script>
+  <script src="//test.friendsbt.com/static/js/controllers/controllers-register.js"></script>
+  <!--script src="static/js/services.js"></script-->
+</body>
+</html>

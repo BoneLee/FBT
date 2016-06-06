@@ -1,0 +1,73 @@
+<div data-ng-controller="MyresController" id="resWrap" class="myres">
+	<style type="text/css">
+		.myres .poster{
+		  width: 100px;
+		  height: 140px;
+		  display: inline-block;
+		  vertical-align: top;
+		  margin-right: 10px;
+		  cursor: pointer;
+		}
+        .myres .info{
+            margin-top:10px;
+        }
+		.myres .info span{
+			display: block;
+		}
+		.myres .item{
+            background: rgba(0,0,0,0.6);
+            padding-top: 10px;
+            padding-left: 10px;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-bottom: 20px;
+            height: 280px;
+		}
+		.myres .download{
+			margin-top: 30px;
+            text-align: center;
+		}
+        .myres .btn {
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .myres .pagination-container {
+            text-align: center;
+        }
+        .myres .pagination-container > span {
+            background: rgba(255,255,255,0.8);
+        }
+        .myres .pagination-container:first-child {
+            padding-bottom: 10px;
+        }
+        .myres .pagination-container:last-child {
+            padding-bottom: 10px;
+        }
+
+	</style>
+    <div class="my_resource" ng-style="{'height': workspaceHeight - 50 + 'px', 'overflow-y': 'auto', 'overflow-x': 'hidden'}">
+        <pagination-container group="my_resource"></pagination-container>
+		<div class="row">
+	      <div data-ng-mouseenter="showDownload=true" data-ng-mouseleave="showDownload=false" class="col-md-2  item" style="width: 20%" data-ng-repeat="res in curRes">
+	          <img class="poster" data-ng-src="{{res.link}}">
+	          <div class="info" style="color: lightgrey">
+                  <label class="point" style="cursor: pointer; color: #1abc9c" data-ng-click="showDouban()" data-ng-if="shouldShowDouban()" title="{{ res.file_name }}">{{res.file_name}}</label>
+                  <label class="point" data-ng-if="!shouldShowDouban()" title="{{ res.file_name }}">{{res.file_name}}</label>
+	            <div ng-show="showDownload" class="download">
+	              <button class="btn default" data-ng-click="showMyFile($index)" data-ng-show="!canDownload">查看</button>
+	              <button class="btn default" data-ng-click="showDir($index)" data-ng-show="res.isDir && canDownload">下载</button>
+	              <button class="btn default" data-ng-click="download($index)" data-ng-show="!res.isDir && canDownload">下载</button>
+                  <button ng-click="viewResourceDetailClickHandler(res, isMy)" class="btn default" style="display: inline-block">详情</button>
+	            </div>
+	            <div ng-show="!showDownload" class="details">
+	              <span>类别：{{res.resType}}</span>
+	              <span>上传时间：{{res.time}}</span>
+	          	  <span>下载数目：{{res.download_num}}</span>
+	              <span style="color:#FFAD00">在线/总数：{{res.online_owners_num}}/{{res.total_owners_num}}</span>
+	            </div>
+	          </div>
+	        </div>
+	    </div>
+        <pagination-container group="my_resource"></pagination-container>
+	</div>
+</div>

@@ -1,0 +1,274 @@
+<% if (resourceList.length) { %>
+<% for(num in resourceList){ %>
+<% var fileHash=resourceList[num]['file_hash'];var fileSize=resourceList[num]['file_size']; %>
+<% var dirName=resourceList[num]['file_name'];var nameIndex=dirName.lastIndexOf('.') == -1?dirName.length:dirName.lastIndexOf('.');var name=dirName.substring(0,nameIndex) %>
+<% var isDir = false; var fileHashs=""; var fileSizes="";%>
+<% if(resourceList[num]['online_owners_num'] == 0) {%>
+    <div class="row item canhide" id="item<%= fileHash %><%= flag %><%= fileSize %>"><!--一个电影row的开始-->
+    <% }else{ %>
+    <div class="row item" id="item<%= fileHash %><%= flag %><%= fileSize %>"><!--一个电影row的开始-->
+    <% } %>
+    <div class="col-xs-2">
+        <% if ("ext_info" in resourceList[num] && 'link' in resourceList[num]['ext_info']){ %>
+            <% if (resourceList[num]['ext_info']['link'].indexOf("?") > 0){ %>
+                <img src="<%= resourceList[num]['ext_info']['link'] %>&type=<%= resourceList[num]['main_type'] %>" class="img-responsive center-block img-rounded" style="height:100px">
+            <% }else{ %>
+                <img src="<%= resourceList[num]['ext_info']['link'] %>?type=<%= resourceList[num]['main_type'] %>" class="img-responsive center-block img-rounded" style="height:100px">
+            <% } %>
+        <% }else{ %>
+            <img src="images/file_type/<%= (resourceList[num]['main_type']) %>.png" class="img-responsive center-block img-rounded" style="height:100px">
+        <% } %>
+    </div>
+    <div class="col-xs-9">
+        <% if("sticky" in resourceList[num] && resourceList[num]["sticky"] > 0) {%>
+            <a href="http://www.douban.com/search?q=<%= name %>" target="_blank" class="new_win"><h2 style="display: inherit;word-break: break-all;font-size: 16px;margin: 5px -2px;color:red">
+            <% if (resourceList[num]['main_type'] in [0, 1, 4, 6, 7] && 'ext_info' in resourceList[num] && 'resource_en_name' in resourceList[num]['ext_info']) { %>
+                 <%= dirName %><span style="padding-left:25px;word-break: break-all;font-size: 14px;margin: 5px -2px;color:gray" ><%= resourceList[num]['ext_info']['resource_en_name'] %> </span>
+            <% } else { %>
+                 <%= dirName %>
+            <% } %>
+            </h2></a>
+        <% }else{ %>
+            <a href="http://www.douban.com/search?q=<%= name %>" target="_blank" class="new_win"><h2 style="display: inherit;word-break: break-all;font-size: 16px;margin: 5px -2px;">
+            <% if (resourceList[num]['main_type'] in [0, 1, 4, 6, 7] && 'ext_info' in resourceList[num] && 'resource_en_name' in resourceList[num]['ext_info']) { %>
+                 <%= dirName %><span style="padding-left:25px;word-break: break-all;font-size: 14px;margin: 5px -2px;color:gray" ><%= resourceList[num]['ext_info']['resource_en_name'] %> </span>
+            <% } else { %>
+                 <%= dirName %>
+            <% } %>
+            </h2></a>
+        <% } %>
+        <% if("file_hashes" in resourceList[num]){ %>
+            <% isDir=true; fileHashs=resourceList[num]['file_hashes'];fileSizes= resourceList[num]['file_sizes']; %>
+            &emsp;<a style="margin-left: 10px;color: #FFAD00;cursor:pointer;font-size:13px;" onclick="showDir(<%= m_uid %>,'<%= dirName %>','<%= fileHash %>','<%= fileSize %>','<%= isPrivateDownload %>', '<%= flag %>',1)">
+              <span class="glyphicon glyphicon-folder-open"></span>
+              &nbsp;预览文件夹
+            </a>
+        <% } %>
+        <p style="margin: 0 0 5px;font-size: 14px;line-height: 1.2;">
+            <% var tag = resourceList[num]['tags'];%>
+            <strong>标签</strong>：<span title="<%= tag %>" style="color:#1abc9c;cursor:pointer;display: inline-block;max-width: 60px;white-space: nowrap;overflow-x: hidden;text-overflow: ellipsis;position: relative;top: 2px;" onclick="searchTag('<%= tag %>')"><%= tag %></span>
+            &emsp;
+            <strong>类型</strong>：<%=
+            getResourceType(resourceList[num]['main_type'],resourceList[num]['sub_type']) %>
+            &emsp;
+            <% if(isDir){ %>
+                <strong>文件夹大小</strong>：<%= fileSize %>
+            <% }else{ %>
+                <strong>文件大小</strong>：
+                <% if (fileSize<1024) { %>
+                    <%= (fileSize) %>B
+                <% } else { %>
+                    <% if (fileSize<1024*1024) { %>
+                        <%= (fileSize/1024).toFixed(0) %>KB
+                    <% } else { %>
+                        <% if (fileSize<1024*1024*1024) { %>
+                            <%= (fileSize/1024/1024).toFixed(1) %>MB
+                        <% } else { %>
+                            <%= (fileSize/1024/1024/1024).toFixed(2) %>GB
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+            &emsp;
+            <strong>上传时间</strong>：<%= toLocalTime(resourceList[num]['mtime']) %>
+            &emsp;
+            <strong>下载数</strong>：<%= resourceList[num]['download_num'] %>
+            &emsp;
+            <strong>在线/总数</strong>：<span id="online<%= fileHash %><%= flag %><%= fileSize %>" style="color:#FFAD00"><%= resourceList[num]['online_owners_num'] %>/<%=
+            resourceList[num]['total_owners_num'] %></span>
+        </p>
+
+        <% if('ext_info' in resourceList[num]) { %>
+        <p style="margin: 0 0 5px;margin-left:-12px;font-size: 14px;line-height: 1.2;">
+            <% var ext_info = resourceList[num]['ext_info']; %>
+            <% if('year' in ext_info) { %>
+                &emsp;<strong>年份</strong>：<span><%= ext_info['year'] %></span>
+            <% } %>
+            <% if('countries' in ext_info) { %>
+                <% var country = ext_info['countries'].join("/"); %>
+                &emsp;<strong>国家</strong>：<%=country %>
+            <% } %>
+            <% if('resource_album' in ext_info) { %>
+                &emsp;<strong>专辑</strong>：<%=ext_info['resource_album'] %>
+            <% } %>
+            <% if('rating' in ext_info) { %>
+                &emsp;<strong>豆瓣评分</strong>：<%=ext_info['rating'] %>
+            <% } %>
+            <% if('resource_art' in ext_info) { %>
+                &emsp;<strong>音乐家</strong>：<%=ext_info['resource_art'] %>
+            <% } %>
+            <% if('resource_school' in ext_info) { %>
+                &emsp;<strong>学校</strong>：<%=ext_info['resource_school'] %>
+            <% } %>
+            <% if('resource_academy' in ext_info) { %>
+                &emsp;<strong>院系</strong>：<%=ext_info['resource_academy'] %>
+            <% } %>
+            <% if('resource_course' in ext_info) { %>
+                &emsp;<strong>课程</strong>：<%=ext_info['resource_course'] %>
+            <% } %>
+            <% if('resource_teacher' in ext_info) { %>
+                &emsp;<strong>授课老师</strong>：<%=ext_info['resource_teacher'] %>
+            <% } %>
+            <% if('resource_platform' in ext_info) { %>
+                &emsp;<strong>平台</strong>：<%=ext_info['resource_platform'] %>
+            <% } %>
+            <% if('resource_version' in ext_info) { %>
+                &emsp;<strong>版本</strong>：<%=ext_info['resource_version'] %>
+            <% } %>
+        </p>
+        <% } %>
+
+        <div class="score" style="font-size: 14px;">
+            评分：<%= parseFloat(resourceList[num]['avg_grade']).toFixed(1) %>
+            <a class="cursors" id="text_view_comments<%= fileHash %><%= flag %><%= fileSize %>"
+               onclick="handleComment('<%= fileHash %>',1,'<%= flag %>','<%= fileSize %>')">
+            (查看<%=resourceList[num]['comments'].length %>人评论)</a>
+        </div>
+
+        <div class="pzx star container_score" id="star_rate<%= fileHash %><%= flag %><%= fileSize %>">
+            <span class="pstar" id="text_rate<%= fileHash %><%= flag %><%= fileSize %>">我来评分：</span>
+            <!--<div class="text_score_value" style="display: none">0<div>-->
+        </div>
+
+        <div class="pzx" style="width: 13%;text-align: left;font-size: 14px;">
+            <a class="cursors" onclick="handleComment('<%= fileHash %>',2,'<%= flag %>','<%= fileSize %>')">评论|</a>
+            <a class="cursors" onclick="handleComment('<%= fileHash %>',4,'<%= flag %>','<%= fileSize %>')">举报</a>
+        </div>
+        <% if (!isMyInfo) { %>
+           <div style="font-size: 14px;display: inline-block;padding: 3px;border-radius: 4px;<%if(resourceList[num]['inDownload']){%>background:#D3D3D3;<%}else{%>background:#4edec1;<%}%>">
+                <% if (!resourceList[num]['finish']) { %>
+                    <% if (resourceList[num]['isContinue']) { %>
+                        <a style="color: white;" class="cursors" data="0" id="download_file_hash<%= fileHash %><%= flag %><%= fileSize %>"
+                       onclick="downloadFile(false,'<%= dirName %>','<%= fileHashs %>','<%= fileSizes %>',
+                           '<%= fileSize %>','<%= flag %>','<%= fileHash %>','<%= isPrivateDownload %>',
+                           1,'<%= resourceList[num]['progress'] %>')">继续下载</a>
+                    <% } else { %>
+
+                            <% if (resourceList[num]['inDownload']) {%>
+                                <a style="color: white;" data="0" id="download_file_hash<%= fileHash %><%= flag %><%= fileSize %>" disabled>已经下载</a>
+                            <% } else { %>
+                                <% if(isDir){ %>
+                                    <a style="color: white;" class="cursors" data="0" id="download_file_hash<%= fileHash %><%= flag %><%= fileSize %>" onclick="showDir(<%= m_uid %>,'<%= dirName %>','<%= fileHash %>','<%= fileSize %>','<%= isPrivateDownload %>', '<%= flag %>')">我要下载</a>
+                                <% }else{ %>
+                                    <a style="color: white;" class="cursors" data="0" id="download_file_hash<%= fileHash %><%= flag %><%= fileSize %>" onclick="downloadFile(false,'<%= dirName %>','<%= fileHashs %>','<%= fileSizes %>','<%= fileSize %>',
+                           '<%= flag %>','<%= fileHash %>', '<%= isPrivateDownload %>')">我要下载</a>
+                                <%}%>
+                            <% } %>
+                    <% } %>
+                <% } else { %>
+                    <a style="color: white;text-decoration:none;cursor:pointer" onclick="openDir('<%= fileHash %>','<%= flag %>')">打开目录</a>
+                <% } %>
+            </div>
+        <% } %>
+        <div class="row" id="comment<%= fileHash %><%= flag %><%= fileSize %>" style="font-size: 13px;">
+            <div class="col-xs-12">                                 
+                <strong><%= resourceList[num]['comments'][0]['who'] %></strong>(<%= toLocalTime(resourceList[num]['comments'][0]['ctime']) %>)： <%= resourceList[num]['comments'][0]['content'] %>            
+            </div>
+        </div>
+
+        <div id="collapseAllComment<%= fileHash %><%= flag %><%= fileSize %>" class="hiden"  style="font-size: 13px;">
+            <div class="row">
+                <div style="word-break: break-all;overflow-y: auto;max-height: 200px;" class="col-xs-12" id="text_all_comments<%= fileHash %><%= flag %><%= fileSize %>">
+                    <% function viewComment(comment) { %>
+                    <strong><%= comment['who'] %></strong>(<%= toLocalTime(comment['ctime']) %>)： <%=
+                    comment['content'] %>
+                    <br/>
+                    <% } %>
+                    <% resourceList[num]['comments'].map(viewComment) %>
+                </div>
+            </div>
+        </div>
+
+        <div id="collapseMyComment<%= fileHash %><%= flag %><%= fileSize %>" class="hiden myCollapse"  style="font-size: 13px;margin-bottom: 5px;">
+            <div class="row">
+                <div class="col-xs-10">
+                    <textarea rows="2" id="editbox_comment_content<%= fileHash %><%= flag %><%= fileSize %>" class="myTextArea"
+                              placeholder="发表观后感吧(200字最多)..." style="resize: none;font-size: 13px;" data-role="none" onkeypress="commentPress(event,'<%= flag %>','<%= fileHash %>','<%= fileHash %>','<%= fileSize %>')"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2">
+                    <button style="background-color: #1abc9c;" type="button" class="btn btn-sm btn-success"
+                            id="button_comment<%= fileHash %><%= flag %><%= fileSize %>"
+                            onclick="commentResource('<%= flag %>','<%= fileHash %>','<%= fileHash %>','<%= fileSize %>')">
+                        完成评论
+                    </button>
+                </div>
+            </div>
+            <!--评论第二行-->
+
+        </div>
+        <!--collapseMyComment-->
+
+        <div id="collapseMyDownload<%= fileHash %><%= flag %><%= fileSize %>" class="hiden"  style="font-size: 13px;">
+            <br>
+
+            <div class="row downloadingRow12">
+                <div class="col-xs-5 downloadingDiv downloadCol" id="download_progress<%= fileHash %><%= flag %><%= fileSize %>">
+                    <% if (fileSize<1024) { %>
+                        0B/<%= (fileSize) %>B
+                    <% } else { %>
+                        <% if (fileSize<1024*1024) { %>
+                            0KB/<%= (fileSize).toFixed(0) %>KB
+                        <% } else { %>
+                            <% if (fileSize<1024*1024*1024) { %>
+                                0MB/<%= (fileSize/1024/1024).toFixed(1) %>MB
+                            <% } else { %>
+                                0GB/<%= (fileSize/1024/1024/1024).toFixed(2) %>GB
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    &emsp;0%
+                </div>
+                <!-- TODO FIXME substitute with real file size-->
+                <div class="col-xs-5 downloadingRow">
+
+                    <div class="progress progress-striped" style="margin-bottom: 0px;">
+                        <div id="download_progress_bar<%= fileHash %><%= flag %><%= fileSize %>" class="progress-bar progress-bar-success"
+                             role="progressbar"
+                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                            <span class="sr-only"></span><!-- aria-valuenow="40" -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-2 downloadingCancelDiv downloadCol" id="cancel<%= fileHash %><%= flag %><%= fileSize %>">
+                    <div id="paused<%= fileHash %><%= flag %><%= fileSize %>" style="display:none">0</div>
+          <span style="cursor:pointer" class="glyphicon glyphicon-pause"
+                              id="button_pause_download<%= fileHash %><%= flag %><%= fileSize %>"
+                              onclick="
+                                if($('#paused<%= fileHash %><%= flag %><%= fileSize %>').text()=='0'){
+                                    pauseFileDownload('<%= fileHash %>','<%= fileSize %>',<%= isDir %>);
+                                    $('#paused<%= fileHash %><%= flag %><%= fileSize %>').text('1');
+                                }else{
+                                   resumeFileDownload('<%= fileHash %>','<%= fileSize %>',<%= isDir %>);
+                                   $('#paused<%= fileHash %><%= flag %><%= fileSize %>').text('0');
+                                }
+                            pause(this);
+                            "
+                                ></span>
+                    &emsp;
+
+
+                    <a class="downloadingCancelA" href="javascript:void(0)"
+                       id="button_cancel_download<%= fileHash %><%= flag %><%= fileSize %>"
+                       onclick="cancelFileDownload('<%= fileHash %>','<%= flag %>','<%= fileSize %>',<%= isDir %>)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </div>
+                <div id="open<%= fileHash %><%= flag %><%= fileSize %>" style="display:none">
+                    <a style="text-decoration:none;cursor:pointer" onclick="openDir('<%= fileHash %>','<%= flag %>')">打开所在目录</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<% } %>
+<% } else { %>
+    <% if (!isHis) { %>
+        <center><h3>列表资源为空！</h3></center>
+    <% } %>
+<% } %>

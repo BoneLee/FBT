@@ -1,0 +1,75 @@
+<div class="extern top">
+  <div class="row">
+  </div>
+  <div class="row">
+    <div class="mask"></div>
+    <ul class="nav nav-tabs nav-justified">
+      <li data-ng-repeat="tab in tabs" class="cur_p">
+        <a data-ng-click="showFbRank({{$index}})" data-ng-class="{active: curIdx == $index}">{{tab}}</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" data-ng-class="{active: curIdx == 0}" ng-style="{'height': workspaceHeight}" style="overflow:hidden">
+        <iframe src="http://127.0.0.1:12345/fmall" frameborder="0" height="100%" width="100%"></iframe>
+      </div>
+      <div class="tab-pane" data-ng-class="{'active': curIdx == 1}">
+        <table class="table">
+          <tr>
+            <th>排名</th>
+            <th>用户昵称</th>
+            <th>用户积分</th>
+            <th>本周获得的积分</th>
+          </tr>
+          <tr data-ng-repeat="oneRank in allRanks[0]" data-ng-class="{cred: $index < 3}">
+            <td>
+              <img ng-src="{{oneRank['icon']}}"/>&nbsp;{{$index+1}}
+            </td>
+            <td>
+              <a class="underline" href="#/friend_res?return_url=top&public=1&uid={{oneRank.uid}}">{{oneRank["nick_name"]}}</a>
+            </td>
+            <td>{{oneRank["coin"]}}</td>
+            <td>{{oneRank["delta"]}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tab-pane" data-ng-class="{active: curIdx == 2}"}>
+        <table class="table">
+          <tr>
+            <th>排名</th>
+            <th>用户昵称</th>
+            <th>用户积分</th>
+            <th>本月获得的积分</th>
+          </tr>
+          <tr data-ng-repeat="oneRank in allRanks[1]" data-ng-class="{cred: $index < 3}">
+            <td>
+              <img ng-src="{{oneRank['icon']}}"/>&nbsp;{{$index+1}}
+            </td>
+            <td>
+              <a class="underline" href="#/friend_res?return_url=top&public=1&uid={{oneRank.uid}}">{{oneRank["nick_name"]}}</a>
+            </td>
+            <td>{{oneRank["coin"]}}</td>
+            <td>{{oneRank["delta"]}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tab-pane" data-ng-class="{active: curIdx == 3}">
+        <table class="table">
+          <tr>
+            <th>排名</th>
+            <th>用户昵称</th>
+            <th>用户积分</th>
+          </tr>
+          <tr data-ng-repeat="oneRank in allRanks[2]" data-ng-class="{cred: $index < 3}">
+              <td>
+              <img ng-src="{{oneRank['icon']}}"/>&nbsp;{{$index+1}}
+            </td>
+            <td>
+              <a class="underline" href="#/friend_res?return_url=top&public=1&uid={{oneRank.uid}}">{{oneRank["nick_name"]}}</a>
+            </td>
+            <td>{{oneRank["coin"]}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

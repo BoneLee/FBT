@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+
+
+  <link href="{{static_url('css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{static_url('css/star-rating.min.css')}}" rel="stylesheet">
+  <!-- <link href="{{static_url('css/main.css')}}" rel="stylesheet"> -->
+  <link href="{{static_url('css/uploadForm.css')}}" rel="stylesheet">
+
+
+  <script type="text/javascript" src="{{static_url('js/jquery-2.1.4.min.js')}}"></script>
+  <script type="text/javascript" src="{{static_url('js/angular.min.js')}}"></script>
+  <script type="text/javascript" src="{{static_url('js/plupload.full.min.js')}}"></script>
+  <script type="text/javascript" src="{{static_url('js/qiniu.min.js')}}"></script>
+  <script type="text/javascript" src="{{static_url('js/star-rating.min.js')}}"></script>
+  <script src="{{static_url('js/bootstrap.min.js')}}"></script>
+  
+</head>
+
+
+<!-- data-target="#myModal" -->
+<body ng-app="fbtApp">
+  <button class="btn-primary btn-lg" data-toggle="modal"  ng-controller="validateTokenController" ng-click="upLoad()">我要上传</button>
+  <a class="btn-primary btn-lg"  href="/login">登录</a>
+
+  <div >
+    <div ng-controller="uploadController">
+
+      <div class="modal fade" role="dialog" id="myModal" aria-labelledby="myModalLabel"  aria-hidden="true">
+        <div class="modal-dialog">
+          <form role="form" name="upLoadForm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                  FBT乐于分享
+                </h4>
+              </div>
+              <div class="modal-body">
+
+                <div class="container" style="width:500px;">
+                  <div class="form-group">
+                    <div class="row row-margin">
+                      <div class="col-md-4">
+                        <input type="text" name="sourceName" class="form-control" placeholder="资源名称(必填项)" ng-model="formdata.resource_name" required />
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="className" ng-model="formdata.course" class="form-control" placeholder="课程名" required/>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="teacherName" ng-model="formdata.teacher" class="form-control" placeholder="授课老师" required/>
+                      </div>
+                    </div>
+                    <div class="row row-margin">
+                      <div class="col-md-6">
+                        <input type="text" name="schoolName" ng-model="formdata.university" class="form-control" placeholder="资源所属学校名" required/>
+
+                      </div>
+
+                      <div class="col-md-6">
+                        <input type="text" name="facultyName" ng-model="formdata.college" class="form-control" placeholder="院系名" required/>
+                      </div>
+                    </div><!--第二个row结束-->
+                    <div class="row row-margin">
+                      <select class="form-control" ng-model="formdata.tag" required>
+                        <option>请选择资源分类</option>
+                        <option>课后作业和答案</option>
+                        <option>课堂笔记</option>
+                        <option>考研资料</option>
+                        <option>托福TOEFL</option>
+                        <option>雅思</option>
+                        <option>GRE</option>
+                        <option>课程资料集合</option>
+                        <option>TED</option>
+                        <option>软件教学</option>
+                        <option>电子书、视频</option>
+                      </select>
+                    </div>
+                    <div class="row row-margin">
+                      <textarea class="form-control" name="sourceDescription" rows="3" placeholder="介绍一下资源吧(200字以内) ^v^ :-)" ng-maxlength="200" ng-model="formdata.description" required>
+                      </textarea>
+                    </div>
+                    <div class="row row-margin">
+                      
+                      <!-- <div class="col-md-3">
+                        <div class="checkbox" ng-model="formdata.forprivate">
+                          <label><input type="checkbox">仅好友可见</label>
+                        </div>
+                      </div> -->
+                      <div class="col-md-9">
+                        <input id="input-rating" />
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <div type="button" id="pickfiles" class="btn btn-default">选择文件
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearTempFile()">取消</button>
+                  <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="startUpload()" ng-disabled="upLoadForm.$invalid">发布</button>
+                </div>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </div><!--modal dialog end,上传资源的表单-->
+
+
+      <div class="bottom-right">
+
+          <!--
+            <div>
+            <h3>
+            <span class="label label-info">[[0]]个正在上传</span>
+              <span class="label label-primary" style="float:right;" ng-click="switchProgress()">
+              <span class="glyphicon glyphicon-collapse-up"></span>
+            </span>
+            </h3>
+            </div>
+          -->
+          <button class="btn btn-primary" ng-click="switchProgress()">[[getAllstats()]]<span class="glyphicon glyphicon-collapse-up"></span></button>
+        </div><!--bottom-right end,始终浮动在窗口的右下角-->
+        
+        <div class="progressbar-div" ng-show="isProgressBarVisible">
+          <ul class="list-group">  
+           <li class="list-group-item" ng-repeat="file in files track by $index" style="height:40px;">
+            <span class="left">[[file.name]]&nbsp;&nbsp;</span>
+            <span class="right">
+              <div class="pgBarContainer">
+                <div  style="z-index:4;" ng-class="{'progress':true,'progress-striped active':file.status==2,'overlap':true,}">
+
+                  <div ng-class="{'progress-bar':true,'progress-bar-success':file.status==5,'progress-bar-warning':file.status==2,'progress-bar-danger':file.status==4,}" role="progressbar" aria-valuenow="100" style="width:[[file.percent]]%">
+                  </div>
+                  
+                </div>
+                <div  style="z-index:10;" class="overlap"><center><span ng-bind="getProgressbarText(file)"></span></center></div>
+              </div>
+            </span>
+          </li>
+        </ul>
+      </div><!--progressbar-div end,右下角用来放进度条的整个框-->
+
+    </div>
+  </div><!--uploadController-->
+
+  <div>
+     <ul>
+       {% for res in all_resources %}
+         <li>{{escape(res["resource_name"]) }}==> <a href="{{ res['download_link'] }}">download</a></li>
+       {% end %}
+    </ul>
+  </div>
+
+<!--   <div ng-controller="collegesController">
+
+  </div> -->
+
+    <div class="modal fade" id="login-modal" ng-controller="LoginController">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>登录</h2></div>
+        </div>
+        <div class="modal-body">
+          <form>
+              {% module xsrf_form_html() %}
+            <div class="form-group">
+              <label>用户名</label>
+              <input type="text" ng-model="username"/>
+            </div>
+            <div class="form-group">
+              <label>密码</label>
+              <input type="password" ng-model="password"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">取消</button>
+          <button class="btn default primary" ng-click="loginHandler()">登录</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--ali modal-->
+  <div aria-hidden="true" onclick="window.open('http://peixun.alibaba.com/?from=studyfriendsbt.com?','_blank')">
+    <div >
+      <div class="modal-content">
+        <div class="alipic">
+          <button type="button" class="close"
+                  data-dismiss="modal" aria-hidden="true">
+            &times;&nbsp;
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script type="text/javascript" src="{{static_url('js/home.js')}}"></script>
+  <script type="text/javascript" src="{{static_url('js/services/upload-file-list-service.js')}}"></script>
+  <script type="text/javascript" src="{{static_url('js/controllers/upload-controller.js')}}"></script>
+<script type="text/javascript" src="{{static_url('js/controllers/validate-token-controller.js')}}"></script>
+<script type="text/javascript" src="{{static_url('js/controllers/login-controller.js')}}"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,84 @@
+* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.circle {
+  margin-top: 42px;
+}
+
+.extern.circle .mask {
+  position: fixed;
+  height: 50px;
+  top: 90px;
+  left: 0;
+  right: 0px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.circle > .container > label {
+  font-size: 18px;
+  margin-right: 50px;
+}
+
+.extern.circle > .container > label + span {
+  font-size: 12px;
+  color: grey;
+}
+
+.extern.circle .poster {
+  width: 80px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid lightgrey;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/*
+.extern.circle .poster:hover {
+  border: 3px solid lightgrey;
+}
+*/
+
+.extern.circle .info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.extern.circle .info > * {
+  display: block;
+  color: grey;
+  font-size: 12px;
+}
+
+.extern.circle .info > label {
+  font-size: 18px;
+  color: inherit;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.extern.circle .info > label:hover {
+  text-decoration: underline;
+}
+
+.extern.circle .item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.extern.circle > .row {
+  margin-bottom: 20px;
+}
+
+.extern.circle .pagination-container {
+  text-align: center;
+}

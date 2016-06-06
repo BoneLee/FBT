@@ -1,0 +1,16 @@
+doctype html
+html.dk_fouc.has-js(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    title FBT
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon', href='images/user_icon/default.png')
+    script(src='js/jquery-1.11.min.js', type='text/javascript')
+    script.
+      $(function(){
+        $("#makewing").attr("height",$(document).height());
+      });
+  body(style="overflow:hidden")
+    a(href='/index',style="position: fixed;top: 20px;right: 30px;text-decoration: none;color: #1abc9c;") 返回登录
+    iframe(id="makewing",src="http://www.friendsbt.com/fmall.html",height="100%",width="100%")

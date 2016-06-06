@@ -1,0 +1,82 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.resource-college2 {
+  margin-top: 35px;
+}
+
+.extern.resource-college2 .mask {
+  position: fixed;
+  height: 50px;
+  top: 90px;
+  left: 0;
+  right: 0px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.resource-college2 .left {
+}
+
+.extern.resource-college2 .left > div {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  position: fixed;
+  width: 22%;
+  float: left;
+}
+
+.extern.resource-college2 .left .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.extern.resource-college2 .left .title > span {
+  font-size: 12px;
+  color: grey;
+  margin-left: 10px;
+}
+
+.extern.resource-college2 .left .school {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.extern.resource-college2 .left .school:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.extern.resource-college2 .right {
+}
+
+.extern.resource-college2 .right .course {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/*
+.extern.resource-college2 .right .course > img:hover {
+  width: (140-6)px;
+  border: 3px solid lightgrey;
+}
+*/
+
+.extern.resource-college2 .right .course > * {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.extern.resource-college2 .right .course > img {
+  border: 1px solid lightgrey;
+  width: 140px;
+}

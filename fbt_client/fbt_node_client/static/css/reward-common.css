@@ -1,0 +1,161 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.reward {
+  margin-top: 42px;
+}
+
+.extern.reward > .pagination-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.extern.reward .mask {
+  position: fixed;
+  height: 50px;
+  top: 120px;
+  left: 0;
+  right: 0px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.reward > .row:first-child {
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 127px;
+}
+
+.extern.reward > .row:first-child > .btn {
+  display: inline-block;
+  width: 78px;
+  padding: 5px 10px;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.extern.reward > .row:first-child > .radio {
+  padding-top: 8px;
+}
+
+.extern.reward > .row:first-child > .btn:nth-child(2) {
+  margin-right: 48px;
+}
+
+.extern.reward > .rewards {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.extern.reward > div:first-child {
+  text-align: right;
+} 
+
+.extern.reward > .row:nth-child(2) {
+  clear: both;
+  margin-top: 80px;
+}
+
+.extern.reward .time {
+  color: grey;
+  font-style: italic;
+  display: inline-block;
+}
+
+.extern.reward .logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid lightgrey;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.extern.reward .name {
+  font-size: 14px;
+}
+
+.extern.reward .message {
+  font-size: 12px;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.extern.reward .item {
+  border: 1px solid lightgrey;
+  margin-left: 1px;
+  padding: 10px 0;
+  height: 100px;
+}
+
+.extern.reward .item > div {
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.extern.reward .item .resource-name p {
+  font-size: 18px;
+  word-break: break-all;
+}
+
+.extern.reward .item .resource-name span {
+  font-size: 12px;
+  padding-right: 5px;
+}
+
+.extern.reward .item .fb {
+  font-size: 18px;
+}
+
+.extern.reward .item .addition .small-logo {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: 1px solid lightgrey;
+}
+
+.extern.reward .item .addition .fa {
+  cursor: pointer; 
+}
+
+.extern.reward .modal .addition {
+  text-align: center;
+  margin-bottom: 15px
+}
+
+.extern.reward .modal .addition .logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+}
+
+.extern.reward .modal .guifan-area {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.extern.reward .modal .tags span {
+  cursor: pointer;
+}
+
+.extern.reward .modal .tags span:hover {
+  color: lightgrey;
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+.extern.reward > .row, .reward > .rewards > .row {
+  margin-bottom: 28px;
+}

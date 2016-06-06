@@ -1,0 +1,181 @@
+
+.reward .quick-nav .pull-right div{
+    /*display:inline-block;*/
+    display:inline-block;
+}
+
+.reward .tabs{
+  text-align: right;
+  display: inline-block;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+.reward .reward-fb{
+    margin-top:50px;
+    float:left;
+    /*width:3%;*/
+    width:50px;
+}
+.reward .reward-body{
+    float:left;
+    /*width:80%;*/
+    /*margin:0 10px 10px 10px;*/
+}
+.reward .reward-head{
+    /*background-color:gainsboro;*/
+    border: 1px solid #eee;
+}
+.reward .reward-state>div{
+    margin-top:.5rem;
+}
+.reward .reward-desc{
+    margin:1rem 0 1rem 0;
+}
+.reward .rewarder{
+    /*margin:20px 10px 0 0;*/
+    margin-top:10px;
+    /*width:10%;*/
+    float:left;
+}
+.reward .rewarder .user-icon{
+    width:48px;
+    height:48px;
+    display:block;
+    border:1px solid #eee;
+}
+.reward .rewarder .fb-icon{
+    /*float:left;*/
+ background-image:url('../images/fb-icon.png');   
+ height:32px;
+ width:32px;
+ display:inline-block;
+ background-repeat:no-repeat;
+}
+.reward .fb-text{
+    /*float:left;*/
+    margin-top:10px;
+}
+.reward .reward-fb div{
+    width:32px;
+    text-align:center;
+}
+.reward .rewarder span,.reward-fb span{
+    font-size:12pt;
+}
+.reward .reward-add{
+    /*margin-right:40px;*/
+    cursor:pointer;
+    text-align:center;
+}
+.reward .rewarder-ellipse{
+    margin-top:35px;
+}
+.reward .reward-add div{
+    text-align:center;
+}
+.reward .reward-add .glyphicon{
+    font-size:32pt;
+    color:#35a0ed;
+}
+
+.reward .reward-add .glyphicon:hover{
+    color:rgb(53,107,237);
+}
+.reward .label{
+    padding:.3em .6em .3em;
+}
+.reward .reward-state{
+    text-align:center;
+    margin-top:10px;
+}
+.reward .reward-answer{
+    margin:10px -15px 10px -15px;
+}
+.reward .reward-result{
+    width:80%;
+    /*margin-left:4%;*/
+    border:none;
+    margin-left: 55px;
+}
+.reward .reward-answer-body{
+    margin-left:10px;
+    /*width:700px;*/
+    border:1px solid #eee;
+}
+.reward .collapse-button{
+    cursor:pointer;
+}
+.reward .reward-answer .label{
+    font-size:10pt;
+    margin-left:-40px;
+}
+.reward .reward-title{
+   /*margin:0 0 5px 10px;*/
+    font-weight: bold;
+}
+.resource-options{
+    margin-top:6px;}
+.resource-table{
+}
+.answer-desc{
+    
+    margin: 10px 0 10px 10px;
+}
+.answer-footer{
+    margin:10px 30px 10px 0;
+}
+.answer-adopt{
+    font-size:24pt;
+    margin:50px 0 0 5px;
+    color:#35a0ed;
+}
+.reward-state .btn{
+    width:82px;
+}
+.already-adopt{
+    margin-left:-50px;
+}
+.reward .file-operation{
+     cursor:pointer;
+     padding:5px 10px 5px 10px;
+ }
+ .file-operation:hover{
+     cursor:pointer;
+     color:white;
+     background-color:#35a0ed;
+ }
+.reward .file-icon{
+    font-size:16pt;
+    color:#35a0ed;
+    margin:5px 0 0 10px;
+}
+.reward .reward-info{
+    /*margin-right:10px;*/
+    font-weight:normal;
+    padding:0;
+    margin-bottom: 5px;
+    font-size: 9pt;
+}
+.reward .pages-nav{
+    text-align:center;
+}
+.reward .glyphicon{
+    color:#35a0ed;
+}
+.rewarder.col-md-2{
+    margin-left:1rem;
+    margin-right:5px;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+.reward-state .fb{
+    display:inline-block;
+}
+.reward .row-margin{
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+.reward .white-bg{
+    background-color:#fff;
+
+}

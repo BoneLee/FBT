@@ -1,0 +1,27 @@
+{
+	"version":11,
+	"win32": {
+		"5":{
+			"path":"/fbt-xp-installer.exe",
+			"name":"fbt-xp-installer.exe"
+		},
+		"6":{
+			"path":"/fbt-win-installer.exe",
+			"name":"fbt-win-installer.exe"
+		}
+	},
+	"linux": {
+		"32":{
+			"path":"/fbt-linux-32-installer.run",
+			"name":"fbt-linux-32-installer.run"
+		},
+		"64":{
+			"path":"/fbt-linux-64-installer.run",
+			"name":"fbt-linux-64-installer.run"
+		}
+	},
+	"darwin": {
+		"path":"/fbt-mac-installer.dmg",
+		"name":"fbt-mac-installer.dmg"
+	}
+}

@@ -1,0 +1,362 @@
+style.
+  .editA{
+  cursor: pointer;
+  }
+  .resume{padding-top: 18px; padding-bottom: 0px;}
+  .other{padding-top: 0px;padding-bottom: 12px;}
+  body{padding-top: 70px;}
+  h1,h2,h3,h4{color: #1abc9c;}
+  p{color: #7f8c8d;}
+  .order{color: #1abc9c;}
+  .divLine{height: 1px; width: 50%; border: dashed 1px;}
+  .imgDiv{padding-top: 30px;}
+  .navbar-default .navbar-brand {color: #1abc9c;}
+  .myActive{background-color: #bbbbbb;}
+  .editA{display: inline;}
+  .iWannaSay{color: #7F8C8D;}
+  /*这两行CSS模拟了flatUI典型的input样式*/
+  input{border: 2px solid #dce4ec; color: #34495e; border-radius: 6px;
+  transition: border linear .2s,box-shadow linear .2s;}
+  input:focus{border-color: #1abc9c; -webkit-box-shadow: none;
+  -moz-box-shadow: none; box-shadow: none; outline: none;}
+  input{display: block; margin-bottom: 6px;}
+  .modifyPassword{color: #da4f49;}
+  .item{
+  border-bottom: solid 1px #d8d8d8;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  }
+  .score{float: left; width: 33%; padding-bottom: 6px; color: red;}
+  .pcs{display: inline-block; width: 33%; text-align: right; padding-bottom: 6px;}
+  .doneWithComment{text-align: right;}
+  .status{float: left; width: 33%; padding-bottom: 6px; color: #1abc9c;}
+  .downloadingDiv{padding-right: 0px; height: 40px;}
+  .downloadingRow{padding-top: 10px;}
+  .downloadingCancelDiv{color: red; height: 40px;}
+  .downloadingCancelA{color: red;}
+  .col-lg-6 > span{
+  float: left;
+  font-size: 22px;
+  }
+  .msg p{
+  font-size: 22px;
+  }
+  #shuo{
+  color: #1abc9c;font-size: 40px;font-family: inherit;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 10px;
+  padding: 4px;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  }
+  .demo-content.demo-content-article p {
+  margin-bottom: 10px;
+  }
+  .demo-title{
+    font-size: 20px;
+    position: relative;
+    top: 11px;
+  }
+b#m_size(style="display:none")= result.size
+.topcontrol(title="回到顶部",style="position: fixed; bottom: 165px; right: 25px; cursor: pointer; display: none;")
+  img(src="/images/gotop.gif",onclick="window.scrollTo(0,0);return false;",style="width:31px; height:31px;")
+ul.nav.nav-tabs.navbar-fixed-top
+  .collapse.navbar-collapse
+    ul.nav.navbar-nav.friend_nav
+      li
+        a(href='/index',style="font-size: 14px;") FBT
+      li.active
+          a.clickable(href='#friendShares', data-toggle='tab',style="border-bottom: 3px solid #1abc9c")
+            span.glyphicon.glyphicon-cloud
+            | 好友分享
+      li
+        a.clickable(href='#friendInfos', data-toggle='tab')
+          span.glyphicon.glyphicon-folder-close
+          | &nbsp;好友个人档
+    ul.nav.navbar-nav.navbar-right(style="margin-right: -5px;")
+      // <li><a href="/myInfo">{{ current_user }}</a></li>
+      li
+        a(href='/mySpace',title="个人中心")
+          span.glyphicon.glyphicon-user
+      li.dropdown
+      li
+        a(href='#', data-toggle='modal', data-target='#settingModal',title="设置")
+          span.glyphicon.glyphicon-cog
+      //- li
+      //-   a(href='#', onclick='quit()',title="退出") 
+      //-     span.glyphicon.glyphicon-log-out
+b#friend_uid(style="display:none")= uid
+b#isPrivateDownload(style="display:none")= isPrivateDownload
+.tab-content
+  #friendShares.tab-pane.fade.in.active(style="padding-top:36px;")
+    //- .row.sortRow(style="text-align: center;")
+    //-   #friend_resource_type.hi(style="margin:auto;")
+    //-     label.radio-inline
+    //-       input(type='radio', name='f_radio', value='1' checked style="font-size: 14px;cursor:pointer;height: 15px;margin-top: 10px;")
+    //-       | 热度
+    //-     label.radio-inline
+    //-       input(type='radio', name='f_radio', value='0' style="font-size: 14px;cursor:pointer;height: 15px;margin-top: 10px;")
+    //-       | 最新
+    #text_friend_tips
+      center
+        h3 &#x6B63;&#x5728;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x5217;&#x8868;...
+    #friend_resources_top.get_friend_resources(style="height: 32px;")
+    #friend_resources.container
+    #pageloadingwrap2(style="text-align:center;margin-top:20px")
+      img#pageloading2.img-responsive(src='images/loading2.gif', style='display:none;margin:auto')
+    #friend_resources_bottom.get_friend_resources
+  #friendInfos.tab-pane.fade(style="padding-top:50px;")
+    #d1.jumbotron(style="background: none;padding: 0 10px;margin-bottom: 0px;margin-left:125px;margin-right:125px")
+      .row
+        .col-sm-10(style="text-align: left;")
+          h4.iWannaSay
+            | &#x6211;&#x60F3;&#x8BF4;&emsp;
+            span.glyphicon.glyphicon-bullhorn
+          #shuo= result.shuo
+        .col-sm-2
+          img(src=result.user.icon, style="width: 70px;height: 70px;margin-top: 26px;border-radius: 35px;border: 4px solid white;")
+    .container.msg
+      .resume
+        .demo-title
+          h2 &#x79C1;&#x5BC6;&#x4FE1;&#x606F;:
+        .demo-content.demo-content-article
+          .col-lg-6
+            span &#x771F;&#x540D;&#xFF1A;
+            p#realName!= "&nbsp;"+result.user.real_name
+            span &#x624B;&#x673A;&#xFF1A;
+            p#tel!= "&nbsp;"+result.user.phone
+            span QQ&#xFF1A;
+            p#qq!= "&nbsp;"+result.user.qq
+      .resume
+        .demo-title
+          h2 &#x57FA;&#x672C;&#x4FE1;&#x606F;:
+        .demo-content.demo-content-article
+          .col-lg-6
+            span &#x6027;&#x522B;&#xFF1A;
+            p#gender!= "&nbsp;"+result.user.gender
+            span &#x611F;&#x60C5;&#x72B6;&#x6001;&#xFF1A;
+            p#love!= "&nbsp;"+result.user.love_state
+            span &#x9662;&#x6821;&#xFF1A;
+            p#school!= "&nbsp;"+result.user.school
+            span &#x73B0;&#x5C45;&#xFF1A;
+            p#addr!= "&nbsp;"+result.user.address
+            span 昵称：
+            p#nickName!= "&nbsp;"+result.user.nick_name
+script(type='text/javascript').
+  var isPrivateDownload = 1;
+  function getFriendResCallback(res) {
+    $("#pageloading2").hide();
+    var type = res["type"];
+    if (type == 1) {
+        var html = res["html"];
+        var resourceList = res["resource_list"];
+        if(!resourceList){
+          $('#text_friend_tips').show();
+          $('#text_friend_tips').html("<center><h3>暂时没有资源！</h3></center>");
+          return;
+        }
+        var resourceContainer = $('#friend_resources');
+        resourceContainer.html(html);
+        resourceContainer.find('.container_score').slice(-resourceList.length).each(function (index, element) {
+            var myScore = 0;
+            var fileHash = resourceList[index]['file_hash'];
+            var grade = resourceList[index]['grades'];
+            var size = resourceList[index]['file_size'];
+            if(window.fbtUID in grade){
+                myScore=resourceList[index]['grades'][window.fbtUID]/2;
+            }
+            $(this).raty({
+                half: true,
+                //hints: ['1', '2', '3', '4', '5'],
+                path: "images",
+                starOff: 'star-off.png',
+                starOn: 'star-on.png',
+                size: 30,
+                score: myScore, //parseFloat($(this).find('.text_score_value').text()),
+                // target: '#result',
+                targetKeep: true,
+                click: function (score, evt) {
+                    //这里就能获取用户的分数
+                    //alert('u selected '+score);
+                    //var grades=[0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
+                    score=Math.round(score*2);
+                    //var score = $(this).find('input[name="score"]').val();
+                    $.post("/res", {"op":6,"fileHash":fileHash,"score": score,"size":size}, function(item, textStatus, xhr){
+                        console.log(item);
+                        console.log(item);
+                        var tmp;
+                        try{
+                          tmp = JSON.parse(item);
+                        }
+                        catch(e){
+                          tmp = item;
+                        }
+                        if(tmp["type"] == 0)
+                          showErrorToast("评分失败，请重试");
+                        else
+                          showSuccessToast("评分成功");
+                      });
+                }
+            });
+            var span = '<span class="pst">('+getJsonLength(grade)+'人)</span>';
+            $(this).append(span);
+        });
+        resourceContainer.find("a.new_win").each(function(index, el) {
+          $(el).click(function(event) {
+            /* Act on the event */
+            event.preventDefault();
+            window.open($(this).attr("href"), "_blank");
+          });
+        });
+        var MAX_RES_CNT_PER_PAGE = 20; //the server is set to 20
+        //- if (resourceList.length < MAX_RES_CNT_PER_PAGE) {
+        //-   $("#btn_get_friend_resources").hide();
+        //- } else {
+        //-   $('#btn_get_friend_resources').show();
+        //-   $("#btn_get_friend_resources").attr("disabled", false);
+        //-   $("#friend_loadingText").text("查看更多");
+        //-   $("#friend_loadingGif").hide();
+        //- }
+        if(window.parseInt($("#m_size").text()) > 20){
+          $("#friend_resources_top").show();
+          $("#friend_resources_bottom").show();
+        }
+        $('#friend_resource_type').show();
+        $('#text_friend_tips').hide();
+    } else {
+      $('#text_friend_tips').show();
+      $('#text_friend_tips').html("<center><h3>资源列表请求失败！</h3></center>");
+    }
+  }
+  function refreshFriendResourceView(shouldShowP) {
+    //var sortType = $('#friend_resource_type').find("input:checked").val();
+    //$.post("/res", {"op":8, "page": friend_currentPage,  "sort_by": sortType,"uid":window.fbtUID ,"friend":$.trim($("#friend_uid").text())}, function(item, textStatus, xhr){
+    $.post("/res", {"isPrivateDownload":isPrivateDownload,"op":8, "page": friend_currentPage,  "uid":window.fbtUID ,"friend":$.trim($("#friend_uid").text())}, function(item, textStatus, xhr){
+        var tmp;
+        try{
+          tmp = JSON.parse(item);
+        }
+        catch(e){
+          tmp = item;
+        }
+        var data = {};
+        data["type"] = tmp["type"];
+        data["resource_list"] = tmp["resource_list"];
+        data["html"] = tmp["html"];
+        getFriendResCallback(data);
+        if(shouldShowP){
+          $("#friend_resources_bottom").empty().addClass("get_friend_resources");
+          $("#friend_resources_top").empty().addClass("get_friend_resources");
+          showp(tmp["size"]);
+        }
+    });
+  }
+  function resetFriendResourcePage() {
+    friend_currentPage = 1;
+    $('#text_friend_tips').show();
+    $('#text_friend_tips').html("<center><h3>正在请求资源列表<img src='../static/images/loading3.gif'></img></h3></center>");
+    $('#friend_resource_type').hide();
+    $('#friend_resources').html("");
+    $("#friend_resources_top").hide();
+    $("#friend_resources_bottom").hide();
+  }
+  function showp(size){
+    if(size > 20){
+      totalP = size / 20;
+      var options = {
+        currentPage: 1,
+        totalPages: totalP,
+        numberOfPages:10,
+        size:'large',
+        alignment:'center',
+        tooltipTitles: function (type, page, current) {
+          switch (type) {
+            case "prev":
+                return "上一页";
+            case "next":
+                return "下一页";
+            case "page":
+                return "第 " + page + "页";
+          }
+        },
+        itemContainerClass: function (type, page, current) {
+          return (page === current) ? "active" : "cur_p";
+        },
+        shouldShowPage:function(type, page, current){
+          switch(type)
+          {
+              case "first":
+              case "last":
+                  return false;
+              default:
+                  return true;
+          }
+        },
+        onPageClicked: function(e,originalEvent,type,page){
+          var currentTarget = $(e.currentTarget);
+          var pages = currentTarget.bootstrapPaginator("getPages");
+          if(pages.current == page)
+            return;
+          $("#pageloading2").show();
+          $("#friend_resources").html("");
+          friend_currentPage = page;
+          refreshFriendResourceView();
+          if(currentTarget.attr("id") == "friend_resources_top")
+            $("#friend_resources_bottom").bootstrapPaginator("show", page);
+          else{
+            $("#friend_resources_top").bootstrapPaginator("show", page);
+            window.scrollTo(0,0);
+          }
+        }
+      }
+      $('.get_friend_resources').each(function(index, el) {
+        $(el).bootstrapPaginator(options);
+      });
+    }
+    else{
+      $("#friend_resources_bottom").hide();
+      $("#friend_resources_top").hide();
+    }
+  }
+  $(function(){
+    copyMsg("body > div.wrap_all");
+    isPrivateDownload = $.trim($("#isPrivateDownload").text())
+    friend_currentPage = 1;
+    $.post("/res", {"isPrivateDownload":isPrivateDownload,"op":8,"uid":window.fbtUID ,"friend":$.trim($("#friend_uid").text())}, function(item, textStatus, xhr){
+      var tmp;
+      try{
+        tmp = JSON.parse(item);
+      }
+      catch(e){
+        tmp = item;
+      }
+      var data = {};
+      data["type"] = tmp["type"];
+      data["resource_list"] = tmp["resource_list"];
+      data["html"] = tmp["html"];
+      getFriendResCallback(data);
+      var size = window.parseInt($("#m_size").text());
+      showp(size);
+    });
+    //- $("#btn_get_friend_resources").click(function () {
+    //-   $(this).attr("disabled", true);
+    //-   $("#friend_loadingText").text("正在获取更多...");
+    //-   $("#friend_loadingGif").show();
+    //-   friend_currentPage += 1;
+    //-   refreshFriendResourceView();
+    //- });
+    $("#friend_resource_type").find('input:radio[name="f_radio"]').change(
+      function(){
+          if ($(this).is(':checked')) {
+            resetFriendResourcePage();
+            refreshFriendResourceView(true);
+          }
+    });
+    $('.friend_nav > li > a.clickable').click(function () {
+      $(".friend_nav > li > a.clickable").css({"border-bottom": "3px solid #ecf0f1"});
+      $(this).css({"border-bottom": "3px solid #1abc9c"});
+    });
+  });

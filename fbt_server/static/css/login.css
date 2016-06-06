@@ -1,0 +1,195 @@
+#login-modal .modal-dialog {
+  /*width: 600px;*/
+}
+
+#login-modal .container-fluid .row{
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+/* forget password */
+#login-modal .login-option > a {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+}
+
+#login-modal .login-errtip {
+  color: red;
+  position: absolute;
+  left: 250px;
+}
+
+#login-modal .errtip {
+ color: red;
+ text-align: center;
+}
+
+#login-modal .remember {
+  cursor: pointer;
+}
+
+#login-modal .remember > span {
+  position: relative;
+  left: 2px;
+  top: -2px;
+}
+
+#login-modal .groups > span, #login-modal .entities > span {
+	display: inline-block;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#login-modal .groups > span {
+	width: 50px;
+}
+
+#login-modal .entities > span {
+	width: 120px;
+}
+
+#login-modal .groups > span:hover, #login-modal .entities > span:hover {
+	color: #35a0ed;
+}
+
+#login-modal .entities {
+	text-align: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100px;
+}
+
+#login-modal .title {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+#login-modal .title > span {
+  float: right;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+}
+
+#login-modal .title > span:hover {
+	color: white;
+  background-color: #35a0ed;
+}
+
+#login-modal label {
+  display: inline-block;
+}
+
+#login-modal .form-group {
+  margin-bottom: 10px;
+}
+
+#login-modal .university-box {
+  padding: 0 30px;
+}
+
+.col-sm-3, .col-sm-1, .col-sm-6, .col-sm-4, .col-sm-5, .col-sm-8,.col-sm-1 {
+  padding-left: 13px;
+  padding-right: 0px;
+}
+
+#login-modal .margin-left {
+  margin-left:17%;
+}
+
+#login-modal .margin-right {
+  margin-right: 17%;
+}
+
+#login-modal .padding-left {
+  padding-left: 45%;
+}
+
+#login-modal .title-link-size {
+  font-size: 15px;
+}
+
+#login-modal .title-link-color {
+  color: #35a0ed;
+}
+
+#login-modal .title-link-position {
+  margin-left: 30%;
+}
+
+#login-modal .title-style {
+  margin-left: 45%;
+}
+
+/** register info modal **/
+#registerModal {
+  color: #222222;
+}
+
+#registerModal .title span {
+  cursor: pointer;
+}
+
+#registerModal .title span:nth-child(2) {
+  float: right;
+}
+
+#registerModal .title span:hover {
+  color: #35a0ed;
+}
+
+#registerModal .modal-header {
+  display: block;
+  background: #35a0ed;
+  color: white;
+}
+
+#registerModal .col-md-5 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#registerModal .name, #registerModal .nick {
+  display: block;
+  margin: 10px 0 10px 0;
+  padding: 5px 10px 5px 10px;
+}
+
+#registerModal .form-group input{
+  width: 95%;
+  margin-left: 15px;
+}
+
+#registerModal .sex {
+  padding: 10px 0 30px 0;
+}
+
+#registerModal .marginTop{
+  display: block;
+  margin-top: 40px;
+  padding-top: 10px;
+}
+
+#registerModal .gray_btn {
+  color: rgb(102, 102, 102);
+  background-color: #eee;
+  width: 45%;
+  float: left;
+}
+
+#registerModal .blue_btn {
+  color: white;
+  background-color: #35a0ed;
+  float: right;
+  width: 45%;
+}
+
+#registerModal .blue_btn:hover {
+  color: white;
+  background-color: #337ab7;
+  display: block;
+  float: right;
+}
+/** end of register info modal **/

@@ -1,0 +1,172 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+.uploadModal .modal-dialog{
+	width: 850px;
+}
+.uploadModal .modal-body .container{
+	width: 800px;
+}
+.uploadModal .row-margin{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.uploadModal textarea{
+	resize:none;
+}
+
+.uploadModal .last-row .btn-pickfile{
+	/*最后一行的上传按钮与评分持平*/
+	margin-top:6px;
+	height: 34px;
+}
+.uploadModal .last-row .file-num{
+	margin-top:13px;
+}
+
+.uploadModal .anonymous-chb{
+	vertical-align: middle;
+	margin-top: 0px;
+}
+.bottom-right-div i,.star-rating{
+	cursor: pointer;
+}
+
+.bottom-right-div.upload-status-container{
+	position:fixed;
+	width:505px;
+	right: 10px;
+	bottom: 5px;
+	margin-bottom: 0px;
+}
+.bottom-right-div>div{
+	right: 0px;
+}
+
+.bottom-right-div.title{
+	position: relative;
+	background-color: #35a0ed;
+	height: 40px;
+	width: 100%;
+	color: white;
+}
+.bottom-right-div.title .glyphicon{
+	float: right;
+	color:white;
+}
+.progressbar-div-head{
+	height: 30px;
+	padding-top: 5px;
+	overflow-y:hidden;
+	overflow-y:hidden;
+}
+.progressbar-div .list-group-item{
+	height:40px;
+}
+.bottom-right-div span{
+	margin-left: 5px;
+	margin-right: 5px;
+	height: 20px;
+	overflow:hidden;
+	display: inline-block;
+}
+
+span.file-name{
+	width:170px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+span.file-size{
+	width:80px;
+}
+span.file-status{
+	width:140px;
+}
+span.file-operation{
+	width: 20px;
+	color: #35a0ed;
+}
+
+
+.progressbar-div span.file-status{
+	color: white;
+}
+
+div.overlap{
+	top:0;left:0;width:100%;position:absolute;
+}
+
+span div.pgBarContainer{
+	width:90%;position:relative;margin-left: 10px;margin-right: 10px;
+}
+.bottom-right-div.upload-status-container.minus{
+	position: fixed;
+	width:200px;
+	right: 10px;
+	bottom: 0px;
+}
+.progress-striped.active + div{
+	font-family:"Microsoft YaHei","黑体","文泉驛微米黑";
+	color:#666;
+}
+.pgBarContainer>:first-child{
+	z-index:4;
+}
+.pgBarContainer>:nth-child(2){
+	z-index: 10;
+}
+
+.uploadModal .groups > span, .uploadModal .entities > span, .uploadModal .class1 > span {
+	display: inline-block;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.uploadModal .groups > span {
+	width: 50px;
+}
+
+.uploadModal .entities > span {
+	width: 120px;
+}
+
+.uploadModal .groups > span:hover, .uploadModal .entities > span:hover {
+	color: #35a0ed;
+}
+
+.uploadModal .entities {
+	text-align: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100px;
+}
+
+.uploadModal .title {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+.uploadModal .class1{
+	text-align: left;
+}
+.uploadModal .class1 > span {
+	width: 200px;
+}
+
+.uploadModal .class1 > span:hover {
+	color: #35a0ed;
+}
+
+.uploadModal .class1_div {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 300px;
+}
+.uploadModal .form-invalid{
+color:red;
+float:left;
+}

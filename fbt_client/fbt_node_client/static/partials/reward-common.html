@@ -1,0 +1,184 @@
+<!-- vim: set sw=2 ts=2 : -->
+<!--
+<div class="banner">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      悬赏啊悬赏，悬赏啊悬赏。
+      悬赏啊悬赏，悬赏啊悬赏。
+    </div>
+    <div class="col-md-5">
+      <a class="btn" href="#/reward-my">我的悬赏</a>
+      <a class="btn" ng-click="publishRewardClickHandler()">发布悬赏</a>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+-->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs"></div>
+</div>
+<div class="extern reward">
+  <div class="row">
+    <a class="btn default" href="#/reward-my">我的悬赏</a>
+    <button ng-click="publishRewardClickHandler()" class="btn default">发布悬赏</button>
+    <div class="radio"
+      ng-class="{true: 'checked', false: ''}[sort_by == '最新']"
+      ng-init="sort_by='最新'"
+      >
+      <label>
+        <span><input type="radio" name="sort" ng-click="sort_by='最新'; changeSortbyClickHandler(sort_by);"></span>
+        最新
+      </label>
+    </div>
+    <div class="radio"
+      ng-class="{true: 'checked', false: ''}[sort_by == '最热']"
+      style="margin-right: 20px;"
+      >
+      <label>
+        <span><input type="radio" name="sort" ng-click="sort_by='最热'; changeSortbyClickHandler(sort_by);"></span>
+        最热
+      </label>
+    </div>
+  </div>
+  <empty-container ng-if="!rewards.length"></empty-container>
+  <pagination-container group="reward" ng-show="{{ rewards.length }}"></pagination-container>
+  <div class="row rewards" ng-if="rewards.length">
+    <div class="row" ng-repeat="reward in rewards">
+      <div class="col-md-2">
+        <div class="time">
+          {{ reward.ctime | date:'MM/dd HH:mm' }}
+        </div>
+        <img class="logo" src="{{ reward.icon }}"/>
+      </div>
+      <div class="col-md-10">
+        <div class="name">{{ reward.nick_name }}</div>
+        <div ng-if="reward.desc" class="message">{{ reward.desc }}</div>
+        <div class="row item">
+          <div class="col-md-2 resource-name">
+            <p>{{ reward.fileName }}</p>
+            <p><span>{{ getResTypeByIndex(reward.res_type) }}</span><span>{{ reward.res_year }}</span><span>{{ reward.res_country }}</span></p>
+          </div>
+          <div class="col-md-2 fb">{{ reward.total_fb }}F</div>
+          <div class="col-md-5 addition">
+            追加悬赏:
+            <span ng-show="!reward.append_uid.length">暂无</span>
+            <span ng-repeat="uid in reward.append_uid | limitTo:3 track by $index">
+              <img class="small-logo" src="{{ reward.append_user[$index].icon }}"/> {{ reward.append_fb[$index] }}F 
+            </span>
+            <span ng-show="reward.append_uid.length > 3" ng-click="viewAppendRewardClickHandler(reward.append_uid, reward.append_user, reward.append_fb)" class="more-addition">
+              <i class="fa fa-angle-down"></i>
+            </span>
+          </div>
+          <div class="col-md-3">
+            <div class="row">
+              <button ng-click="uploadResourceClickHandler('{{reward.fileName}}', {{reward.res_type}}, '{{reward.rid}}')" class="btn default primary" ng-class="{true: 'disabled'}[is_finish || reward.uid == fbtUID]">上传领赏</button>
+            </div>
+            <div class="row">
+              <button ng-click="appendRewardClickHandler(reward.rid)" class="btn default" ng-class="{is_finish: 'disabled'}">追加悬赏</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-container group="reward" ng-show="{{ rewards.length }}"></pagination-container>
+  <div class="mask"></div>
+
+  <!--==============================================================
+  Publish Reward Modal
+  ===============================================================-->
+  <div class="modal fade" id="publish-reward-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>发布悬赏</h2></div>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>资源类型</label>
+              <select ng-model="res_type" ng-init="res_type='电影'" ng-options="o for o in ['学习', '剧集', '电影', '音乐', '动漫', '游戏', '综艺', '体育', '软件', '其它']">
+              </select>
+            </div>
+            <div class="form-group">
+              <label>资源描述</label>
+              <input type="text" ng-model="desc" placeholder="说点啥吧, 动员小伙伴上传" ng-init="desc=''"/>
+            </div>
+            <div class="form-group">
+              <label>资源名称</label>
+              <input type="text" ng-model="fileName" ng-init="fileName=''"/>
+            </div>
+            <div class="form-group">
+              <label>悬赏F币</label>
+              <input type="text" ng-model="fb" placeholder="你还有{{ fbCoin }}F" ng-init="fb=''"/>
+            </div>
+            <div class="form-group">
+              <label>资源年份</label>
+              <input type="text" ng-model="res_year" ng-init="res_year=''"/>
+            </div>
+            <div class="form-group">
+              <label>资源区域</label>
+              <input type="text" ng-model="res_country" placeholder="是大陆, 还是港台, 还是?" ng-init="res_country=''"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">取消</button>
+          <button class="btn default primary" ng-click="publishRewardSubmitHandler()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--==============================================================
+  Append Reward Modal
+  ===============================================================-->
+  <div class="modal fade" id="append-reward-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>追加悬赏</h2></div>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>追加F币</label>
+              <input type="text" ng-model="appendFb" placeholder="你还有{{ fbCoin }}F" ng-init="appendFb=''"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">取消</button>
+          <button class="btn default primary" ng-click="appendRewardSubmitHandler()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--==============================================================
+  View Modal
+  ===============================================================-->
+  <div class="modal fade" id="view-append-reward-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title"><h2>悬赏列表</h2></div>
+        </div>
+        <div class="modal-body">
+          <div ng-repeat="row_list in append_list">
+            <div class="row addition">
+                <div class="col-md-3" ng-repeat="i in row_list"><img class="logo" src="{{ i.append_user.icon }}"/><br/>{{ i.append_user.nick_name }} {{ i.append_fb }}F</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn default" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

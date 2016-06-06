@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block login_tip %}
+    欢迎，{{ my_real_name }}同学
+{% end %}
+
+{% block content %}
+<div id="fb_over">
+    <div class="main">
+        <div class="shop">
+            <span>{{ real_name }}</span>
+        </div>
+        <div class="pay-info">
+            <div class="font20">已支付{{ how_much }}F（{{ how_much_yuan }}元）</div>
+            <br>
+            <div class="font16">{{ time }}</div>
+        </div>
+    </div>
+    <div class="shop-img">
+        <img src="img/xinghuan.png">
+        <span class="font14">ID: friendsbt</span>
+        <span class="font14">长按关注校园星空公众号送F币</span>
+    </div>
+</div>
+{% end %}

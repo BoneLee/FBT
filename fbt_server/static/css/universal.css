@@ -1,0 +1,36 @@
+html{
+    font-size:62.5%;
+}
+body{
+  font-family: "Microsoft YaHei","黑体","文泉驛微米黑";
+}
+.btn{
+    text-shadow:none;
+}
+header>.row>.col-sm-4>.input-group>.input-group-btn>.btn{
+    color:white;
+    background:rgba(26,188,150,0.7);
+}
+header>.row>.col-sm-4>.input-group>.input-group-btn>.btn:hover{
+    color:whitesmoke;
+    background:rgba(26,188,150,0.9);
+}
+.btn.default, .btn-default{
+    background-color:white;
+    color:#666;
+    border: 1px solid #eee;
+}
+.btn.default:hover, .btn-default:hover{
+    background-color:#eee;
+    color:#666;
+    border: 1px solid #eee;
+}
+a:hover{text-decoration:none;}
+.primary{
+    background-color:#35a0ed;
+    color:white;
+}
+.primary:hover{
+    background-color:#17a58a;
+    color:white;
+}

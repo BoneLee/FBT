@@ -1,0 +1,99 @@
+Index
+1. 文件下载中的数据流
+2. 连接控制
+3. 下载控制
+
+
+1. 文件下载中的数据流
+一次文件下载的数据流, 仅画出一个dataConnection
+
+initPeer()
+
+uploader_Node        uploader_DOM   (NetWork)   downloader_DOM        downloader_Node
+
+    "connect_downloader"
+    ------------------>
+                                 peerjs connect
+                              -------------------->
+
+                             rangeInfo, test=true
+                            <----------------------
+    dataNode2DOM * 10
+    ------------------->
+                                dataPeer2Peer * 10
+                               ------------> (假定这10个block都收到)
+
+                             rangeInfo, test=false
+                            <---------------------
+    dataNode2DOM * N
+    ------------------->                            (这3步实际上是并行的)
+                              dataPeer2Peer * N
+                             ------------------>
+                                                     dataDOM2Node * N
+                                                    --------------------->
+
+
+dataConnection
+    label: hash
+    peer: downloader/uploader
+
+dataNode2DOM: Node环境给DOM环境的数据包, 用于上传
+    downloader: 下载者uid
+    hash: 文件hash
+    content: 实际数据, BLOCK_SIZE
+    index: block index
+    test: true/false
+    rangeLastBlock: true/false, 是否是这个rangeInfo 的最后一个块
+
+"send_data_blocks" event msg, DOM环境给Node环境的控制信息, 用于上传
+    path: 源文件路径
+    start: 起始数据块index
+    end: 最后一个数据块index
+    lastBlockSize: 最后一个数据块大小, 大多时候是BLOCK_SIZE, 也有可能是realLastBlockSize
+    downloader: 下载者uid
+    hash: 文件hash
+    test: true/false
+
+dataPeer2Peer: 上传端发给下载端的数据包, 上传下载通用
+    content: 实际数据, BLOCK_SIZE
+    checksum: crc32校验和
+    index: block index
+    [test]: true    如果有这个域, 表明是测试可靠性的数据包
+    [rangeLastBlock]: true     有这个域, 说明part 下载完成, 因为Peerjs 能确保包得到达顺序
+
+rangeInfo: 下载端给上传端的数据包, 标示了之后要传输的数据块的范围
+    start: 起始
+    end: 最后一块, 注意是闭区间!!
+    test: true/false  true表示是之后要传输的是测试conn可用性的数据
+
+dataDOM2Node: DOM环境给Node环境的数据包, 用于下载
+    hash: 文件hash
+    content: 实际数据, BLOCK_SIZE
+    index: block index
+    test: true/false
+    checksum: cotent的crc32校验和
+
+redownloadMessage: 下载端使用, 当Node 环境块校验失败后, 从Node 环境发给DOM 环境要求重传的消息
+    hash: 文件hash
+    index: block index
+  注: 因为Node 环境不知道这个block 是哪个uploader 传过来的, 也不需要知道
+      之后只要随便找一个uploader让它重新把这个块发过来即可
+
+2. 连接控制
+每个conn单独控制, 即每个conn连过来之后, 发送测试包, 然后加入可靠uploaders, 分配任务
+这样可以完全不用setTimeout, 只要通过可靠性测试, 马上就可以通过这个conn下载
+并且这么做的话, 新上线的用户也可以作为供水者, conn重连也能够支持.
+要在每连接过来一个conn 之后都通知Node 端peer 的uid, node 端负责记录, 供水者和进度记录在同一个数据库collection里
+
+3. 下载控制
+确定了可靠 uploader 之后, 由 downloader 控制整个下载流程
+part大小是1M, 即1024个block, 某个dataConn 当前下载的 Part 序号记录在metadata.downloadingPartIndex中
+暂停的实现就是downloader不再继续发送rangeInfo 给uploader
+当某个dataConn下完了1M 之后, emit 一个part-complete事件, 这时会分配下一个part 给它, 由它生成rangeInfo 发给uploader
+(EventEmitter.js https://github.com/Wolfy87/EventEmitter/blob/master/EventEmitter.js)
+
+每个dataConn 同时记录一个状态metadata.complete, true 代表分配的part 已完成下载, false 表示正在下载
+metadata.complete用于继续下载时分配part, 遍历所有dataConn, 给那些complete=true 的新part
+那些complete=false 之后肯定会emit part-complete
+
+conn.downloadSucceed表示是否下载完成, 上传端conn断掉时检测这个变量, 如果false则发起重连

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="{{ static_url('css/style.css') }}">-->
+    <script src="{{ static_url('js/jquery-1.11.min.js') }}"></script>
+    <script src="{{ static_url('js/main.js') }}"></script>
+    <title>Register</title>
+</head>
+<body>
+    <p id="result"></p>
+    <input type="text" name="user" id="keyword" placeholder="随便输入" required/>
+    <button onclick="$.postJSON('/download',{'sid':'123','name':'bone','age':12},function(ret){$('#result').text(JSON.stringify(ret));})">下载</button>
+</body>
+</html>

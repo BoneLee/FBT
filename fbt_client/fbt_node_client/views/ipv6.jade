@@ -1,0 +1,1273 @@
+html
+  head
+    link(href='css/global.css', rel='stylesheet', type='text/css')
+    link(href='css/iptv6.2.css', rel='stylesheet', type='text/css')
+    script(type='text/javascript', src='js/jquery-1.11.min.js')
+    script(type='text/javascript', src='js/jquery.scrolltotop.js')
+    script(type='text/javascript', src='js/jquery.plugin.js')
+    script(type='text/javascript').
+      var pre = "#tab1";
+      $(function(){
+      $("ul#tabs > li").each(function(index, el) {
+      $(el).children('a').click(function(event) {
+      /* Act on the event */
+      event.preventDefault();
+      var href = $(this).attr('href');
+      if(href != pre){
+      $(pre).hide();
+      pre = href;
+      $("ul#tabs").find(".current").removeClass('current');
+      $(this).addClass('current');
+      $(href).show();
+      }
+      });
+      });
+      $("div#content").find('.iptvGuide').click(function(event) {
+        /* Act on the event */
+        if($(this)[0].hasAttribute('rel'))
+          $(this).click();
+        else{
+          event.preventDefault();
+          window.open($(this).attr("href"), "_blank");
+        }        
+      });
+      });
+  body
+    h1 IPv6&#x7F51;&#x7EDC;&#x7535;&#x89C6;&#x5728;&#x7EBF;&#x76F4;&#x64AD;
+    #iptvmain
+      ul#tabs
+        li
+          a.current(href='#tab1', title='tab1') &#x70ED;&#x95E8;&#x9891;&#x9053;
+        li
+          a(href='#tab2', title='tab2') CCTV - &#x4E2D;&#x592E;&#x7535;&#x89C6;&#x53F0;
+        li
+          a(href='#tab3', title='tab3') &#x5730;&#x65B9;&#x536B;&#x89C6;
+        li
+          a(href='#tab5', title='tab5') VLC(&#x67E5;&#x770B;&#x5E2E;&#x52A9;)
+        li
+          a(href='#tab6', title='tab7') &#x5982;&#x4F55;&#x4F7F;&#x7528;(&#x5E2E;&#x52A9;)
+      #content
+        #tab1(style='display: block;')
+          ul#sports.iptvChannelList
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-5 &#x4F53;&#x80B2;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV5') &#x8282;&#x76EE;&#x9884;&#x544A;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?p=CCTV&c=CCTV5-PLUS') CCTV5+&#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-5') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-5-HD') &#x5317;&#x90AE;(&#x9AD8;&#x6E05;)
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-5plus-HD', title='暂时先和CCTV5放一起') CCTV5+ &#x5317;&#x90AE;&#x9AD8;&#x6E05; (720P)
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv2/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv6.ustc.edu.cn/hdtv2') &#x4E2D;&#x79D1;&#x5927;(&#x9AD8;&#x6E05;)
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctvOLP', title='清晰') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv5') &#x5170;&#x5DDE;&#x5927;&#x5B66;2
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-5') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/tv2') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv5') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live5') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-1 &#x7EFC;&#x5408;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-1') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-1-HD') &#x5317;&#x90AE;(&#x9AD8;&#x6E05;720P)
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv3/', title='') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctv1', title='768 x 576') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-1') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctv1', title='清晰') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv1') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/tv3', title='384 x 288') &#x5170;&#x5DDE;&#x5927;&#x5B66;2
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv1') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live29') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6D59;&#x6C5F;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=ZJTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/ZJWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/ZJWS-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/ZJWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://video3.ipv6.scau.edu.cn/zjws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live30') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-6 &#x7535;&#x5F71;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV6') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-6') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-6-HD') &#x5317;&#x90AE;(&#x9AD8;&#x6E05;720P)
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv1') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-6') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv6') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/dltv1') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv6') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live9') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-13 &#x65B0;&#x95FB;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV13') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-news') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv49/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-news') CERNET
+                li
+                  a(rel='nofollow', href='mms://media.zju6.edu.cn/tv2') &#x6D59;&#x6C5F;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media.zju6.edu.cn/tv5') &#x6D59;&#x6C5F;&#x5927;&#x5B66;2
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live19') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6E56;&#x5357;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=HUNANTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/HNWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/HNWS-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/HNWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/hntv') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/channelv') &#x5927;&#x8FDE;&#x7406;&#x5DE5;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/hnws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media6.pdsu.edu.cn/hnws', title='转发北邮') &#x5E73;&#x9876;&#x5C71;&#x5B66;&#x9662;(&#x8F6C;&#x53D1;)
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live20') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+        #tab2(style='display: none;')
+          ul#cctvmms.iptvChannelList
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-1 &#x7EFC;&#x5408;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-1') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-1-HD') &#x5317;&#x90AE;(&#x9AD8;&#x6E05;720P)
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv3/', title='') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctv1', title='768 x 576') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-1') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctv1', title='清晰') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv1') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/tv3', title='384 x 288') &#x5170;&#x5DDE;&#x5927;&#x5B66;2
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv1') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live29') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-2 &#x8D22;&#x7ECF;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV2') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-2') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-2') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv2') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live18') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-3 &#x7EFC;&#x827A;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV3') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-3') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv47/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live1') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-3') CERNET
+                li
+                  a.listhide(rel='nofollow', href='mms://vod3.dlut.edu.cn/dfcj') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv3') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-4 &#x4E2D;&#x6587;&#x56FD;&#x9645;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV4') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-4') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv46/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-4') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv4') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv4') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live17') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-5 &#x4F53;&#x80B2;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV5') &#x8282;&#x76EE;&#x9884;&#x544A;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?p=CCTV&c=CCTV5-PLUS') CCTV5+&#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-5') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-5-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05; (720P)
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-5plus-HD', title='暂时先和CCTV5放一起') CCTV5+ &#x5317;&#x90AE;&#x9AD8;&#x6E05; (720P)
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv2/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv6.ustc.edu.cn/hdtv2') &#x4E2D;&#x79D1;&#x5927;(&#x9AD8;&#x6E05;)
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctvOLP', title='清晰') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv5') &#x5170;&#x5DDE;&#x5927;&#x5B66;2
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-5') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/tv2') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv5') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live5') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-6 &#x7535;&#x5F71;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV6') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-6') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-6-HD') &#x5317;&#x90AE;(&#x9AD8;&#x6E05;720P)
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv1') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-6') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv6') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/dltv1') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv6') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live9') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-7 &#x519B;&#x4E8B;&#x519C;&#x4E1A;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV7') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-7') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-7') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv7') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live3') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-8 &#x7535;&#x89C6;&#x5267;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV8') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-8') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-8') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv8') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live4') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-9 &#x8BB0;&#x5F55;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV9') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv48') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live5') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-10 &#x79D1;&#x6559;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV10') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-10') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv6/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-10') CERNET
+                li
+                  a.listhide(rel='nofollow', href='mms://vod3.dlut.edu.cn/cctv10') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv10') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv10') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live21') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-11 &#x620F;&#x66F2;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV11') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-11') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-11') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv11') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-12 &#x793E;&#x4F1A;&#x4E0E;&#x6CD5;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV12') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-12') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv50/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-12') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv12') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv12') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live6') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-13 &#x65B0;&#x95FB;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV13') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-news') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv49/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-news') CERNET
+                li
+                  a(rel='nofollow', href='mms://media.zju6.edu.cn/tv2') &#x6D59;&#x6C5F;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media.zju6.edu.cn/tv5') &#x6D59;&#x6C5F;&#x5927;&#x5B66;2
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live19') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-14 &#x5C11;&#x513F;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV15') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-kid') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-kid') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod2.dlut.edu.cn/cctv6') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-15 &#x97F3;&#x4E50;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV16') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-music') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-music') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod2.dlut.edu.cn/cctv3') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctvmusic') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live28') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-&#x9AD8;&#x6E05; &#x9AD8;&#x6E05;&#x9891;&#x9053;(720P)
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTVHD1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv50') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/cctv-hd') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-News&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTV19') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CCTV-9') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CCTV-9') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/cctv9') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live22') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV &#x98CE;&#x4E91;&#x8DB3;&#x7403;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTVPAYFEE1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://vod.cmc6.edu.cn/fengyun') &#x6210;&#x90FD;&#x533B;&#x5B66;&#x9662;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV &#x4E16;&#x754C;&#x5730;&#x7406;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCTVPAYFEE5') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv5/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+        #tab3(style='display: none;')
+          ul#othermms.iptvChannelList
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-1 &#x5317;&#x4EAC;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-1') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-1-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-1') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/btv1') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media6.pdsu.edu.cn/btv1', title='转发北邮') &#x5E73;&#x9876;&#x5C71;&#x5B66;&#x9662;(&#x8F6C;&#x53D1;)
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live26') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-2 &#x6587;&#x827A;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV2') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-2') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-2-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-2') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/btv2') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-3 &#x79D1;&#x6559;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV3') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-3') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-3') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/btv3') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-4 &#x5F71;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV4') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-5') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-5') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-5 &#x8D22;&#x7ECF;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV5') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-4') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-4') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-6 &#x4F53;&#x80B2;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV6') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-6') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-6-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-6') CERNET
+                li
+                  a(rel='nofollow', href='mms://media6.pdsu.edu.cn/btv6', title='转发北邮') &#x5E73;&#x9876;&#x5C71;&#x5B66;&#x9662;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-7 &#x751F;&#x6D3B;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV7') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-7') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-7') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-8 &#x9752;&#x5C11;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV8') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-8') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/BTV-8') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BTV-9 &#x516C;&#x5171; &#x6D77;&#x6DC0;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV9') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/BTV-9') &#x5317;&#x90AE;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5B89;&#x5FBD;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=AHTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/AHWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/AHWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://video3.ipv6.scau.edu.cn/ahws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/ahws') &#x5927;&#x8FDE;&#x7406;&#x5DE5;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live25') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6FB3;&#x95E8;&#x83B2;&#x82B1;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=AUMEN3') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://vod.cmc6.edu.cn/lianhua') &#x6210;&#x90FD;&#x533B;&#x5B66;&#x9662;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan BBC
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BBC1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/tv1') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CHC &#x9AD8;&#x6E05;&#x7535;&#x5F71;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CHC3') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CHC-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x91CD;&#x5E86;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=CCQTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/CQWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/CQWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live32') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x798F;&#x5EFA;&#x4E1C;&#x5357;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=FJTV2') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/FJWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/FJWS') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x51E4;&#x51F0;&#x536B;&#x89C6;&#x4E2D;&#x6587;&#x53F0;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=PHOENIX1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/FHZW') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv7/') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/FHZW') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/fhws') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/fhws', title='转发中国科技大学') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media6.pdsu.edu.cn/FHZW', title='转发北邮') &#x5E73;&#x9876;&#x5C71;&#x5B66;&#x9662;(&#x8F6C;&#x53D1;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x51E4;&#x51F0;&#x8D44;&#x8BAF;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=PHOENIX2') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li.listhide
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/FHZX') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv10/', title='转发自兰州大学') &#x4E2D;&#x56FD;&#x79D1;&#x6280;&#x5927;&#x5B66;(&#x8F6C;&#x53D1;)
+                li
+                  a(rel='nofollow', href='mms://media6.sjtu.edu.cn/espn') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+                li.listhide
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/FHZX') CERNET
+                li.listhide
+                  a(rel='nofollow', href='mms://media.zju6.edu.cn/tv6') &#x6D59;&#x6C5F;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/tv4') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::88]/tv10/') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/fhzx') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;(&#x8F6C;&#x53D1;)
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live8') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5E7F;&#x4E1C;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=GDTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://video3.ipv6.scau.edu.cn/gdws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5E7F;&#x4E1C;&#x4F53;&#x80B2;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=GDTV3') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/gd_tiyu') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6CB3;&#x5317;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=HBTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live15') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6E56;&#x5317;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=HUBEI1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/HBWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/hbws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media6.pdsu.edu.cn/hbws', title='转发北邮') &#x5E73;&#x9876;&#x5C71;&#x5B66;&#x9662;(&#x8F6C;&#x53D1;)
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live13') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6E56;&#x5357;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=HUNANTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/HNWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/HNWS-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/HNWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://tv.lzu.edu.cn/hntv') &#x5170;&#x5DDE;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/channelv') &#x5927;&#x8FDE;&#x7406;&#x5DE5;
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/hnws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://media6.pdsu.edu.cn/hnws', title='转发北邮') &#x5E73;&#x9876;&#x5C71;&#x5B66;&#x9662;(&#x8F6C;&#x53D1;)
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live20') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6C5F;&#x82CF;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=JSTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/JSWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/JSWS-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/JSWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/jsws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6C5F;&#x897F;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=JXTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/JXWS') &#x5317;&#x90AE;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5361;&#x9177;&#x52A8;&#x753B;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=BTV10') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/KKDH') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/KKDH') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x8FBD;&#x5B81;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=LNTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/LNWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/LNWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://video2.ipv6.scau.edu.cn/lnws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x8FBD;&#x5B81;&#x90FD;&#x5E02;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?p=LNTV&c=LNTV2') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/discovery') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x8FBD;&#x5B81;&#x4F53;&#x80B2;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?p=LNTV&c=LNTV-SPORT') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/lnty') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x65C5;&#x6E38;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=TCTC1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/LYWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/LYWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/lyws') &#x5927;&#x8FDE;&#x7406;&#x5DE5;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x9510;TV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live7') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5C71;&#x4E1C;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SDTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/SDWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live24') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5C71;&#x4E1C;&#x4F53;&#x80B2;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SDTV3') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live11') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5C71;&#x4E1C;&#x7535;&#x89C6;&#x53F0;&#x516C;&#x5171;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SDTV5') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live12') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x9655;&#x897F;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SHXITV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live23') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x6D77;&#x4E1C;&#x65B9;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=DONGFANG1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/SHWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/DFWS-HD') &#x5317;&#x90AE;(&#x9AD8;&#x6E05; 720P)
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live10') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/SHWS') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x6D77;&#x7535;&#x89C6;&#x53F0;&#x7EAA;&#x5B9E;&#x9891;&#x9053;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SHHAI6') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://media4.sjtu.edu.cn/wmtv2') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/ssjs') &#x5927;&#x8FDE;&#x7406;&#x5DE5;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6DF1;&#x5733;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SZTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/SZWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/SZWS') CERNET
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x56DB;&#x5DDD;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=SCTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live14') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5929;&#x6D25;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=TJTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/TJWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live2') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+                li
+                  a(rel='nofollow', href='mms://vod3.dlut.edu.cn/ygws') &#x5927;&#x8FDE;&#x7406;&#x5DE5;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x65B0;&#x89C6;&#x89C9; - &#x5267;&#x573A;(&#x9AD8;&#x6E05;)
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?p=SITV&c=SITV-MOVIES') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv47') &#x4E2D;&#x79D1;&#x5927;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x65B0;&#x89C6;&#x89C9; - &#x7EAA;&#x5B9E;(&#x9AD8;&#x6E05;)
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?p=SITV&c=SITV-DOCUMENTARY') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://[2001:da8:d800::43]/tv61') &#x4E2D;&#x79D1;&#x5927;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E91;&#x5357;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=YNTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/YNWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/YNWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://video3.ipv6.scau.edu.cn/ynws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6D59;&#x6C5F;&#x536B;&#x89C6;
+                a.iptvGuide(href='http://wap.tvmao.com/program.jsp?c=ZJTV1') &#x8282;&#x76EE;&#x9884;&#x544A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/ZJWS') &#x5317;&#x90AE;
+                li
+                  a(rel='nofollow', href='mms://officetv.bupt.edu.cn/ZJWS-HD') &#x5317;&#x90AE;&#x9AD8;&#x6E05;(720P)
+                li
+                  a(rel='nofollow', href='mms://bupt01.video.edu.cn/ZJWS') CERNET
+                li
+                  a(rel='nofollow', href='mms://video3.ipv6.scau.edu.cn/zjws') &#x534E;&#x5357;&#x519C;&#x4E1A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='mms://iptv.upc6.edu.cn/live30') &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)(&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;)
+        #tab5(style='display: none;')
+          ul#vlc.iptvChannelList
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan CCTV-&#x9AD8;&#x6E05;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3090') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5B89;&#x5FBD;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3105') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5317;&#x4EAC;&#x7535;&#x89C6;&#x53F0;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3084') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E1C;&#x65B9;&#x7535;&#x5F71;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3010') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E1C;&#x65B9;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3020') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='http://hdtv.neu6.edu.cn/vlc-tv1') &#x4E1C;&#x5317;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E1C;&#x5357;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3132') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E1C;&#x89C6;&#x620F;&#x5267;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3024') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E1C;&#x89C6;&#x5A31;&#x4E50;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3022') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x52A8;&#x6F2B;&#x79C0;&#x573A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3075') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x52A8;&#x4F5C;&#x5F71;&#x9662; - SITV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3098') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6CD5;&#x5236;&#x5929;&#x5730;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::241]:3056') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x7518;&#x8083;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3115') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5E7F;&#x4E1C;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3121') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5E7F;&#x897F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3102') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x8D35;&#x5DDE;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3136') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6D77;&#x5916;&#x5F71;&#x9662; - SITV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3096') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6CB3;&#x5317;&#x7535;&#x89C6;&#x53F0;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3087') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6CB3;&#x5357;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3134') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x9ED1;&#x9F99;&#x6C5F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3101') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6E56;&#x5317;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3129') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6E56;&#x5357;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3128') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6000;&#x65E7;&#x5F71;&#x9662; - SITV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3099') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5409;&#x6797;&#x7535;&#x89C6;&#x53F0;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3083') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x7EAA;&#x5B9E;&#x9891;&#x9053;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3026') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6C5F;&#x82CF;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3104') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6C5F;&#x897F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3131') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x8FBD;&#x5B81;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3119') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x65C5;&#x6E38;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3114') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x7F8E;&#x4E3D;&#x97F3;&#x4E50;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::241]:3064') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5185;&#x8499;&#x53E4;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3120') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5B81;&#x590F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3113') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E03;&#x5F69;&#x620F;&#x5267;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::241]:3057') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x60C5;&#x611F;&#x5F71;&#x9662; - SITV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3097') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5168;&#x7EAA;&#x5B9E; Documentary
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3077') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5C71;&#x4E1C;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3088') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5C71;&#x897F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3085') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x9655;&#x897F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3103') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x6D77;&#x7B2C;&#x4E00;&#x8D22;&#x7ECF;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3017') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x6D77;&#x6559;&#x80B2;&#x7535;&#x89C6;&#x53F0;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3032') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x6D77;&#x5916;&#x8BED;&#x9891;&#x9053;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3025') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x89C6;&#x7535;&#x89C6;&#x5267;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3018') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x89C6;&#x751F;&#x6D3B;&#x65F6;&#x5C1A;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3016') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x89C6;&#x4E94;&#x661F;&#x4F53;&#x80B2;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3019') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E0A;&#x89C6;&#x65B0;&#x95FB;&#x7EFC;&#x5408;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3009') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x56DB;&#x5DDD;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3130') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x5929;&#x6D25;&#x7535;&#x89C6;&#x53F0;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3086') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E94;&#x661F;&#x4F53;&#x80B2; - SITV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::241]:3055') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x897F;&#x85CF;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3112') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x65B0;&#x7586;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3135') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x65B0;&#x89C6;&#x89C9;&#x4F53;&#x80B2;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3082', title='720P') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66; (720P)
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x827A;&#x672F;&#x4EBA;&#x6587;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::242]:3023') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6E38;&#x620F;&#x98CE;&#x4E91;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3074') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E91;&#x5357;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3117') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x6D59;&#x6C5F;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3118') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+                li
+                  a(rel='nofollow', href='http://hdtv.neu6.edu.cn/vlc-zjtv') &#x4E1C;&#x5317;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x8D44;&#x8BAF;&#x6C14;&#x8C61; - SITV
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3089') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x4E2D;&#x56FD;&#x6559;&#x80B2;&#x7535;&#x89C6;1&#x53F0;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::243]:3071') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+            li
+              h3.iptvChannelTitle
+                span.iptvChannelTitleSpan &#x91CD;&#x5E86;&#x536B;&#x89C6;
+              ul.iptvAddressList
+                li
+                  a(rel='nofollow', href='http://[2001:da8:8000:6007::244]:3116') &#x4E0A;&#x6D77;&#x4EA4;&#x901A;&#x5927;&#x5B66;
+        #tab6(style='display: none;')
+          #howToUse
+            h2 &#x5982;&#x4F55;&#x89C2;&#x770B;ipv6&#x7F51;&#x7EDC;&#x7535;&#x89C6;&#x5728;&#x7EBF;&#x76F4;&#x64AD;&#xFF1F;
+            ol
+              li
+                | &#x9996;&#x5148;&#x8981;&#x5B89;&#x88C5;ipv6&#x534F;&#x8BAE;&#xFF08;Windows XP&#x4E0B;&#x9700;&#x8981;&#x5B89;&#x88C5;&#xFF0C;Windows Vista&#x3001;Windows 7&#x548C;Windows 8&#x9ED8;&#x8BA4;&#x5F00;&#x542F;ipv6&#x670D;&#x52A1;&#xFF09;&#xFF0C;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;
+                code
+                  ol
+                    li &ldquo;win+R&rdquo;&#x952E;&#x6253;&#x5F00;&ldquo;&#x8FD0;&#x884C;&rdquo;&#xFF1B;
+                    li &#x5728;&ldquo;&#x8FD0;&#x884C;&rdquo;&#x7A97;&#x53E3;&#x4E2D;&#x8F93;&#x5165;&ldquo;cmd&rdquo;&#xFF08;&#x4E0D;&#x5305;&#x62EC;&#x5916;&#x9762;&#x7684;&#x5F15;&#x53F7;&#xFF0C;&#x4E0B;&#x540C;&#xFF09;&#x6253;&#x5F00;&ldquo;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&rdquo;&#xFF1B;
+                    li &#x5728;&ldquo;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&rdquo;&#x4E2D;&#x8F93;&#x5165;&ldquo;ipv6 install&rdquo;&#x56DE;&#x8F66;&#xFF0C;&#x663E;&#x793A;&ldquo;Installing...&rdquo;&#xFF0C;&#x6210;&#x529F;&#x540E;&#x663E;&#x793A;&ldquo;Succeeded.&rdquo;&#xFF1B;
+                    li
+                      | &#x7136;&#x540E;&#x8F93;&#x5165;&ldquo;ipconfig&rdquo;&#x56DE;&#x8F66;&#x540E;&#x663E;&#x793A;&#x7C7B;&#x4F3C;&#x7684;&#x4EE5;&ldquo;2001&rdquo;&#x5F00;&#x5934;&#x7684;&#x5730;&#x5740;&ldquo;IP Address : 2001:0db8:85a3:08d3:1319:8a2e:0370:7344&rdquo;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;ipv6&#x4E86;&#x3002;
+                | Linux&#x7528;&#x6237;&#x5B89;&#x88C5;ipv6&#x534F;&#x8BAE; 
+                code modprobe ipv6
+              li
+                | Windows &#x5E73;&#x53F0;&#xFF1A;&#x70B9;&#x51FB;&#x94FE;&#x63A5;&#x542F;&#x7528;Windows Media Player&#x64AD;&#x653E;&#x5668;&#x5373;&#x53EF;(mms&#x6D41;&#x5A92;&#x4F53;)&#x3002;VLC&#x7684;&#x9700;&#x5B89;&#x88C5;VLC&#x8F6F;&#x4EF6;,&#x5C06;&#x94FE;&#x63A5;&#x5730;&#x5740;&#x590D;&#x5236;&#x5230;vlc&#x8F6F;&#x4EF6;&#x4E2D;&#x64AD;&#x653E;&#x3002;
+                a(href='http://www.videolan.org/vlc/#download', title='windows平台') VLC&#x4E0B;&#x8F7D;&#x5730;&#x5740;
+              li &#x53EF;&#x4EE5;&#x70B9;&#x51FB;&ldquo;&#x8282;&#x76EE;&#x9884;&#x544A;&rdquo;&#x67E5;&#x770B;&#x672C;&#x5468;&#x7684;&#x8282;&#x76EE;&#x4FE1;&#x606F;&#x3002;&#xFF08;&#x5177;&#x4F53;&#x4EE5;&#x7535;&#x89C6;&#x53F0;&#x64AD;&#x653E;&#x7684;&#x4E3A;&#x51C6;&#xFF09;&#x3002;
+              li
+                | &#x4E2D;&#x56FD;&#x77F3;&#x6CB9;&#x5927;&#x5B66;(&#x534E;&#x4E1C;)-&#x7684;&#x4FE1;&#x53F7;&#x6E90;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x89E3;&#x7801;&#x5668;&#x3002;
+                a(href='http://iptv.upc6.edu.cn/h264.exe') &#x70B9;&#x51FB;&#x4E0B;&#x8F7D;&#x89E3;&#x7801;&#x5668;
+                | &#xFF0C;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x8FC5;&#x96F7;&#x3001;QQ&#x65CB;&#x98CE;&#x4E0B;&#x8F7D;&#xFF0C;&#x4F7F;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x5E26;&#x7684;&#x4E0B;&#x8F7D;&#x5668;&#x3002;&#x56E0;&#x4E3A;&#x8FC5;&#x96F7;&#x3001;&#x65CB;&#x98CE;&#x76EE;&#x524D;&#x4E0D;&#x652F;&#x6301;ipv6

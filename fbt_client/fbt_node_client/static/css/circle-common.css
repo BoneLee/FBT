@@ -1,0 +1,161 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.circle-common {
+  margin-top: 42px;
+}
+
+.extern.circle-common .pagination-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.extern.circle-common .mask {
+  position: fixed;
+  height: 50px;
+  top: 120px;
+  left: 0;
+  right: 0px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.circle-common > .row:first-child {
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 127px;
+  text-align: right;
+}
+
+.extern.circle-common > .row:first-child > .radio {
+  padding-top: 8px;
+}
+
+.extern.circle-common .right > div {
+  position: fixed;
+  width: 22%;
+}
+
+.extern.circle-common .right .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.extern.circle-common .right .title > span {
+  font-size: 12px;
+  color: grey;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.extern.circle-common .right .title > span:hover {
+  color: #1abc9c;
+}
+
+.extern.circle-common .right .top-items {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);                                                                                                                
+  height: 330px;
+}
+
+.extern.circle-common .right .top-item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.extern.circle-common .right .top-item:hover {
+  background: lightgrey;
+  padding: 10px 0;
+}
+
+.extern.circle-common .right .top-item > span {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.extern.circle-common .right .top-item > span:first-child {
+  width: 20px;
+  height: 20px;
+  background: #1abc9c;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  padding: 3px;
+}
+
+.extern.circle-common .right .school:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.extern.circle-common .left .item {
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-left: 35px;
+  max-width: 122px;
+}
+
+/*
+.extern.circle-common .left .item > img:hover {
+  width: (140-6)px;
+  border: 3px solid lightgrey;
+}
+*/
+
+.extern.circle-common .left .item > * {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+.extern.circle-common .left .item > img {
+  border: 1px solid lightgrey;
+  height: 180px;
+  max-width: 122px;
+}
+
+.extern.circle-common .left .item > span:nth-child(3)  {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 122px;
+  text-align: center;
+}
+
+.extern.circle-common .left .item > span:nth-child(2) {
+  position: absolute;
+  top: 0px;
+  height: 180px;
+  width: 122px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  font-size: 15px;
+  padding-top: 50px;
+  /*text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;*/
+  word-break: break-all;
+}
+
+.extern.circle-common .left .item > div {
+  position: absolute;
+  bottom: 80px;
+  width: 122px;
+}
+
+.extern.circle-common .left .item > div > .btn {
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 5px 8px;
+  z-index: 1;
+}

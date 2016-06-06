@@ -1,0 +1,563 @@
+download fileID:321_9049108
+check history download.
+found history download. but the user change file path. fileID:321_9049108
+concurrent tcp socket Cnt:2
+CONNECTED TO: ::1:8885
+CONNECTED TO: 127.0.0.1:8885
+complete block:0 content len:65536
+complete block:1 content len:65536
+write content block Ok.
+next block:2
+write content block Ok.
+next block:3
+pump data len:25700
+complete block:2 content len:65536
+pump data len:25700
+complete block:3 content len:65536
+write content block Ok.
+next block:4
+write content block Ok.
+next block:5
+pump data len:25700
+complete block:4 content len:65536
+pump data len:25700
+complete block:5 content len:65536
+write content block Ok.
+next block:6
+write content block Ok.
+next block:7
+complete block:7 content len:65536
+write content block Ok.
+next block:8
+pump data len:25700
+complete block:6 content len:65536
+write content block Ok.
+next block:9
+pump data len:25700
+complete block:8 content len:65536
+write content block Ok.
+next block:10
+pump data len:25700
+complete block:9 content len:65536
+write content block Ok.
+next block:11
+pump data len:25700
+complete block:10 content len:65536
+write content block Ok.
+next block:12
+pump data len:25700
+complete block:11 content len:65536
+write content block Ok.
+next block:13
+pump data len:25700
+complete block:12 content len:65536
+write content block Ok.
+next block:14
+pump data len:25700
+complete block:13 content len:65536
+write content block Ok.
+next block:15
+pump data len:25700
+complete block:14 content len:65536
+write content block Ok.
+next block:16
+file downloaded:922644 progress:0.1079 speed:3075480
+pump data len:25700
+complete block:15 content len:65536
+write content block Ok.
+next block:17
+pump data len:25700
+complete block:16 content len:65536
+write content block Ok.
+next block:18
+pump data len:25700
+complete block:17 content len:65536
+pump data len:25700
+complete block:18 content len:65536
+write content block Ok.
+next block:19
+write content block Ok.
+next block:20
+complete block:20 content len:65536
+write content block Ok.
+next block:21
+pump data len:25700
+complete block:19 content len:65536
+write content block Ok.
+next block:22
+pump data len:25700
+complete block:21 content len:65536
+write content block Ok.
+next block:23
+pump data len:25700
+complete block:22 content len:65536
+write content block Ok.
+next block:24
+pump data len:25700
+complete block:23 content len:65536
+write content block Ok.
+next block:25
+pump data len:25700
+complete block:24 content len:65536
+write content block Ok.
+next block:26
+pump data len:25700
+complete block:25 content len:65536
+write content block Ok.
+next block:27
+pump data len:25700
+complete block:26 content len:65536
+write content block Ok.
+next block:28
+pump data len:25700
+complete block:27 content len:65536
+write content block Ok.
+next block:29
+pump data len:25700
+complete block:28 content len:65536
+write content block Ok.
+next block:30
+pump data len:25700
+complete block:29 content len:65536
+write content block Ok.
+next block:31
+pump data len:25700
+complete block:30 content len:65536
+write content block Ok.
+next block:32
+pump data len:25700
+complete block:31 content len:65536
+write content block Ok.
+next block:33
+file downloaded:2036756 progress:0.2302 speed:3713706.67
+pump data len:25700
+complete block:32 content len:65536
+write content block Ok.
+next block:34
+pump data len:25700
+complete block:33 content len:65536
+write content block Ok.
+next block:35
+pump data len:25700
+complete block:35 content len:65536
+pump data len:25700
+complete block:34 content len:65536
+write content block Ok.
+next block:36
+write content block Ok.
+next block:37
+complete block:37 content len:65536
+write content block Ok.
+next block:38
+pump data len:25700
+complete block:36 content len:65536
+write content block Ok.
+next block:39
+pump data len:25700
+complete block:38 content len:65536
+write content block Ok.
+next block:40
+pump data len:25700
+complete block:39 content len:65536
+write content block Ok.
+next block:41
+pump data len:25700
+complete block:40 content len:65536
+write content block Ok.
+next block:42
+pump data len:25700
+complete block:41 content len:65536
+write content block Ok.
+next block:43
+pump data len:25700
+complete block:42 content len:65536
+write content block Ok.
+next block:44
+pump data len:25700
+complete block:43 content len:65536
+write content block Ok.
+next block:45
+pump data len:25700
+complete block:44 content len:65536
+write content block Ok.
+next block:46
+pump data len:25700
+complete block:45 content len:65536
+write content block Ok.
+next block:47
+pump data len:25700
+complete block:46 content len:65536
+write content block Ok.
+next block:48
+file downloaded:3019796 progress:0.3381 speed:3276800
+pump data len:25700
+complete block:47 content len:65536
+pump data len:25700
+complete block:48 content len:65536
+write content block Ok.
+next block:49
+write content block Ok.
+next block:50
+complete block:50 content len:65536
+write content block Ok.
+next block:51
+pump data len:25700
+complete block:49 content len:65536
+write content block Ok.
+next block:52
+pump data len:25700
+complete block:51 content len:65536
+write content block Ok.
+next block:53
+pump data len:25700
+complete block:52 content len:65536
+write content block Ok.
+next block:54
+pump data len:25700
+complete block:53 content len:65536
+write content block Ok.
+next block:55
+pump data len:25700
+complete block:54 content len:65536
+write content block Ok.
+next block:56
+pump data len:25700
+complete block:55 content len:65536
+write content block Ok.
+next block:57
+pump data len:25700
+complete block:56 content len:65536
+write content block Ok.
+next block:58
+pump data len:25700
+complete block:57 content len:65536
+write content block Ok.
+next block:59
+pump data len:25700
+complete block:58 content len:65536
+write content block Ok.
+next block:60
+pump data len:25700
+complete block:59 content len:65536
+write content block Ok.
+next block:61
+pump data len:25700
+complete block:60 content len:65536
+write content block Ok.
+next block:62
+pump data len:25700
+complete block:61 content len:65536
+write content block Ok.
+next block:63
+file downloaded:4002836 progress:0.4460 speed:3276800
+pump data len:25700
+complete block:62 content len:65536
+write content block Ok.
+next block:64
+pump data len:25700
+complete block:63 content len:65536
+write content block Ok.
+next block:65
+pump data len:25700
+complete block:65 content len:65536
+pump data len:25700
+complete block:64 content len:65536
+write content block Ok.
+next block:66
+write content block Ok.
+next block:67
+complete block:67 content len:65536
+write content block Ok.
+next block:68
+pump data len:25700
+complete block:66 content len:65536
+write content block Ok.
+next block:69
+pump data len:25700
+complete block:68 content len:65536
+write content block Ok.
+next block:70
+pump data len:25700
+complete block:69 content len:65536
+write content block Ok.
+next block:71
+pump data len:25700
+complete block:70 content len:65536
+write content block Ok.
+next block:72
+pump data len:25700
+complete block:71 content len:65536
+write content block Ok.
+next block:73
+pump data len:25700
+complete block:72 content len:65536
+write content block Ok.
+next block:74
+pump data len:25700
+complete block:73 content len:65536
+write content block Ok.
+next block:75
+pump data len:25700
+complete block:74 content len:65536
+write content block Ok.
+next block:76
+pump data len:25700
+complete block:75 content len:65536
+write content block Ok.
+next block:77
+pump data len:25700
+complete block:76 content len:65536
+write content block Ok.
+next block:78
+pump data len:25700
+complete block:77 content len:65536
+write content block Ok.
+next block:79
+file downloaded:5051412 progress:0.5612 speed:3495253.33
+pump data len:25700
+complete block:78 content len:65536
+write content block Ok.
+next block:80
+pump data len:25700
+complete block:79 content len:65536
+write content block Ok.
+next block:81
+pump data len:25700
+complete block:80 content len:65536
+write content block Ok.
+next block:82
+pump data len:25700
+complete block:81 content len:65536
+write content block Ok.
+next block:83
+pump data len:25700
+complete block:82 content len:65536
+write content block Ok.
+next block:84
+pump data len:25700
+complete block:83 content len:65536
+write content block Ok.
+next block:85
+pump data len:25700
+complete block:84 content len:65536
+write content block Ok.
+next block:86
+pump data len:25700
+complete block:85 content len:65536
+write content block Ok.
+next block:87
+pump data len:25700
+complete block:86 content len:65536
+write content block Ok.
+next block:88
+pump data len:25700
+complete block:87 content len:65536
+write content block Ok.
+next block:89
+pump data len:25700
+complete block:88 content len:65536
+write content block Ok.
+next block:90
+pump data len:25700
+complete block:89 content len:65536
+write content block Ok.
+next block:91
+pump data len:25700
+complete block:90 content len:65536
+write content block Ok.
+next block:92
+pump data len:25700
+complete block:91 content len:65536
+write content block Ok.
+next block:93
+pump data len:25700
+complete block:92 content len:65536
+write content block Ok.
+next block:94
+file downloaded:6034452 progress:0.6691 speed:3276800
+pump data len:25700
+complete block:93 content len:65536
+write content block Ok.
+next block:95
+pump data len:25700
+complete block:94 content len:65536
+write content block Ok.
+next block:96
+pump data len:25700
+complete block:95 content len:65536
+write content block Ok.
+next block:97
+pump data len:25700
+complete block:96 content len:65536
+write content block Ok.
+next block:98
+pump data len:25700
+complete block:97 content len:65536
+write content block Ok.
+next block:99
+pump data len:25700
+complete block:98 content len:65536
+write content block Ok.
+next block:100
+pump data len:25700
+complete block:99 content len:65536
+write content block Ok.
+next block:101
+pump data len:25700
+complete block:100 content len:65536
+write content block Ok.
+next block:102
+pump data len:25700
+complete block:101 content len:65536
+write content block Ok.
+next block:103
+pump data len:25700
+complete block:102 content len:65536
+write content block Ok.
+next block:104
+pump data len:25700
+complete block:103 content len:65536
+write content block Ok.
+next block:105
+pump data len:25700
+complete block:104 content len:65536
+write content block Ok.
+next block:106
+pump data len:25700
+complete block:105 content len:65536
+write content block Ok.
+next block:107
+pump data len:25700
+complete block:106 content len:65536
+write content block Ok.
+next block:108
+pump data len:25700
+complete block:107 content len:65536
+file downloaded:6951956 progress:0.7698 speed:3058346.67
+write content block Ok.
+next block:109
+pump data len:25700
+complete block:108 content len:65536
+write content block Ok.
+next block:110
+pump data len:25700
+complete block:109 content len:65536
+write content block Ok.
+next block:111
+pump data len:25700
+complete block:110 content len:65536
+write content block Ok.
+next block:112
+pump data len:25700
+complete block:111 content len:65536
+write content block Ok.
+next block:113
+file downloaded:7279636 progress:0.8058 speed:1092266.67
+pump data len:25700
+complete block:112 content len:65536
+write content block Ok.
+next block:114
+complete block:113 content len:65536
+write content block Ok.
+next block:115
+complete block:114 content len:65536
+write content block Ok.
+next block:116
+pump data len:25700
+complete block:115 content len:65536
+write content block Ok.
+next block:117
+pump data len:25700
+complete block:116 content len:65536
+write content block Ok.
+next block:118
+pump data len:25700
+complete block:117 content len:65536
+write content block Ok.
+next block:119
+pump data len:25700
+complete block:118 content len:65536
+write content block Ok.
+next block:120
+pump data len:25700
+complete block:119 content len:65536
+write content block Ok.
+next block:121
+pump data len:25700
+complete block:120 content len:65536
+write content block Ok.
+next block:122
+pump data len:25700
+complete block:121 content len:65536
+write content block Ok.
+next block:123
+pump data len:25700
+complete block:122 content len:65536
+write content block Ok.
+next block:124
+pump data len:25700
+complete block:123 content len:65536
+write content block Ok.
+next block:125
+pump data len:25700
+complete block:124 content len:65536
+write content block Ok.
+next block:126
+pump data len:25700
+complete block:125 content len:65536
+write content block Ok.
+next block:127
+pump data len:25700
+complete block:126 content len:65536
+write content block Ok.
+next block:128
+pump data len:25700
+complete block:127 content len:65536
+write content block Ok.
+next block:129
+file downloaded:8328212 progress:0.9209 speed:3495253.33
+pump data len:25700
+complete block:128 content len:65536
+write content block Ok.
+next block:130
+pump data len:25700
+complete block:129 content len:65536
+write content block Ok.
+next block:131
+pump data len:25700
+complete block:130 content len:65536
+write content block Ok.
+next block:132
+pump data len:25700
+complete block:131 content len:65536
+write content block Ok.
+next block:133
+pump data len:25700
+complete block:132 content len:65536
+write content block Ok.
+next block:134
+pump data len:25700
+complete block:133 content len:65536
+write content block Ok.
+next block:135
+pump data len:25700
+complete block:134 content len:65536
+write content block Ok.
+next block:136
+pump data len:25700
+complete block:135 content len:65536
+write content block Ok.
+next block:137
+pump data len:25700
+complete block:136 content len:65536
+write content block Ok.
+next block:138
+pump data len:25700
+complete block:137 content len:65536
+write content block Ok.
+complete block:138 content len:5140
+write content block Ok.
+file download Ok:321_9049108
+download over callback. file:/home/bone/FBT/client/fbt_node_client/fileDownloadV6/fill2.rar hash:321 size:9049108 from:4321,1234 err:null
+Connection closed
+Connection closed

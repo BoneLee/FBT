@@ -1,0 +1,43 @@
+#selector-container > .modal-dialog {
+  width: 850px;
+}
+
+#selector-container > .modal-header span {
+  color: #505254;
+  margin-left: 20px;
+}
+
+#selector-container .groups > span {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#selector-container .groups > span:hover {
+  color: #35a0ed;
+}
+
+#selector-container .choosed {
+  color: #35a0ed;
+}
+
+#selector-container .entities {
+  text-align: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100px;
+}
+
+#selector-container .entities > span {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#selector-container .entities > span:hover {
+  color: #35a0ed;
+}

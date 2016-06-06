@@ -1,0 +1,95 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #1abc9c
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.extern.resource-college {
+  margin-top: 35px;
+}
+
+.extern.resource-college .mask {
+  position: fixed;
+  height: 90px;
+  top: 90px;
+  left: 0;
+  right: 0px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.extern.resource-college .row:first-child {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 140px;
+}
+
+.extern.resource-college .row:nth-child(2) {
+  margin-top: 70px;
+  z-index: 10;
+}
+
+.extern.resource-college .tabs {
+  text-align: right;
+}
+.extern.resource-college .tabs > div{
+  display: inline-block;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+
+.extern.resource-college .tabs > span{
+  color: lightgrey;
+  font-size: 18px;
+}
+
+/*
+.extern.resource-college > :nth-child(2) {
+  height: 500px;
+  overflow-y: auto;
+}
+*/
+
+.extern.resource-college .group {
+  border: 1px solid lightgrey;
+  padding: 10px 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.extern.resource-college .group:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.extern.resource-college .group .logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.extern.resource-college .group > .title {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.extern.resource-college .group .title > span {
+  display: inline-block;
+  font-size: 12px;
+  color: grey;
+  font-weight: normal;
+}
+
+.extern.resource-college .group .title > span:nth-of-type(2) {
+  margin-left: 10px;
+}

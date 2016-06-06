@@ -1,0 +1,40 @@
+<!-- vim: set sw=2 ts=2 : -->
+<div class="quick-nav" ng-controller="QuickNavController">
+  <div ng-bind-html-unsafe="navs"></div>
+</div>
+<div class="extern resource-recommendation">
+  <div class="col-md-2">
+    <div class="course-type">
+      <span class="selected">公开课</span>
+      <span>专业课</span>
+      <span>
+        <button class="btn default" ng-click="selectCollegeClickHandler()">{{ selectedCollege ? selectedCollege : '选择学校' }}</button>
+        <button class="btn default" ng-click="selectedMajorClickHandler()">选择专业</button>
+      </span>
+    </div>
+  </div>
+  <div class="col-md-10 pull-right">
+    <div class="row" ng-repeat="i in ['考研', '雅思', '托福']">
+      <label>{{ i }}</label><span>更多</span>
+      <div class="row">
+        <div ng-mouseenter="showDownload=true" ng-mouseleave="showDownload=false" class="col-md-3 item" ng-repeat="j in [1,2,3,4,5,6,7,8]">
+          <img class="poster" src="img/poster.jpg">
+          <div class="info">
+            <label>RRRRRRRRRRRRR</label>
+            <div ng-show="showDownload" class="download">
+              <button class="btn default">下载</button>
+              <a href="#/resource-recommendation/details/{{i}}" class="btn default">详情</a>
+            </div>
+            <div ng-show="!showDownload" class="details">
+              <span>标清：200M</span>
+              <span>上传时间：15-11</span>
+              <span>下载数目：10</span>
+              <span>在线：5/10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mask"></div>
+</div>

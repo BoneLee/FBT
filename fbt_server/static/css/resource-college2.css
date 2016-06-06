@@ -1,0 +1,162 @@
+/* vim: set sw=2 ts=2 : */
+/********************************************************
+*   Friendsbt.com
+*
+*   Author  :   zhangxiaoyang.hit[at]gmail.com
+*   Date    :   2015-03-30 23:26
+*   Color   :   #35a0ed
+*   Font    :   small(12px) normal(14px) middle(18px) large(20px)
+*   Width   :   1020px
+********************************************************/
+
+.resource-college2 .left {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+.resource-college2 .left .title {
+  border-bottom: 2px solid lightgrey;
+  font-size: 18px;
+  margin-bottom: 10px;
+
+  display: inline-block;
+  max-width:  70%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.resource-college2 .left .logo {
+  float: right;
+  width: 58px;
+}
+
+.resource-college2 .left .title > span {
+  font-size: 12px;
+  color: grey;
+  margin-left: 10px;
+}
+
+.resource-college2 .left .school {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.resource-college2 .left .school:hover {
+  background: lightgrey;
+}
+
+.resource-college2 .right {
+  height: 80%;
+  /*overflow-y: auto;*/
+}
+
+.resource-college2 .right .course {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.resource-college2 .right .course:hover {
+  border-left: 3px solid lightgrey;
+}
+
+.resource-college2 .right .course > * {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.resource-college2 .right .course > img {
+  border: 1px solid lightgrey;
+  width: 140px;
+}
+
+
+
+
+/*.myself {
+float: left;
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+
+
+
+  width: 100px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 30px;
+}*/
+.resource-college2 .info{
+    width:45%;
+}
+.resource-college2 .info > * {
+  display: block;
+  color: grey;
+  font-size: 12px;
+}
+
+.resource-college2 .info > label {
+  font-size: 1.4rem;
+  color: inherit;
+  margin-bottom: .8rem;
+  cursor: pointer;
+  max-height:3.5rem;
+  word-break:break-all;
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+
+.resource-college2 .download,
+.resource-college2 .info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.resource-college2 .item {
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+}
+
+/*.resource-college > .row {
+  margin-bottom: 20px;
+}*/
+
+.resource-college2 .poster{
+  width: 9.2rem;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid lightgrey;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.resource-college2 .info > .download > * {
+  font-size: 12px;
+  padding: 4px;
+}
+
+.resource-college2 .info > .details > * {
+  display: block;
+  color: grey;
+  font-size: 12px;
+}
+
+.resource-college2 .point{
+  max-width:  80px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+/*******mobile-adaption add********/
+.current_active{
+    background-color:#35a0ed;
+   color:white;
+   }
+.btn-uploadresource{
+    width:7.4rem;
+    display:block;
+    margin:.5rem 0 0 0;
+}

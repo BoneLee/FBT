@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>校园星空</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+    <div id="main">
+        <div id="header">
+            <h1>
+                校园星空交易记录
+            </h1>
+        </div>
+        <div id="list">
+            <p>{{ real_name }} 今日收入: {{ daily_income }}, 本月收入: {{ monthly_income }}, 累计总收入: {{ total_income }}</p>
+            <ul>
+            {% for record in transfer_list %}
+            <li>{{ record["ctime"] }} == {{ record["how_many"] }} == {{ record["extra_info"]["from"]["real_name"]}}</li>
+            {% end %}
+            </ul>
+        </div>
+
+        <div class="fixed"></div>
+        <div id="footer">
+            <a href="http://www.study.friendsbt.com" title="校园星空">校园星空，发现闪光的你！</a>
+        </div>
+    </div>
+    </body>
+</html>

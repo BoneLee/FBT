@@ -1,0 +1,22 @@
+.wrap_all{
+	text-align: center;
+}
+.modal,.container{
+	text-align: left;
+}
+.hide{
+  visibility: hidden;
+}
+.show{
+  visibility: visible;
+}
+#hint{
+  color: red;
+}
+.alert{
+	margin-right: auto;
+	margin-left: auto;
+}
+b{
+	cursor: pointer;
+}

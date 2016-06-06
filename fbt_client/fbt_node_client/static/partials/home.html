@@ -1,0 +1,53 @@
+<!-- vim: set sw=2 ts=2 expandtab : -->
+<div class="home">
+  <div class="row">
+    <!--添加首页推荐后开启此样式<div class="col-md-9 extern">-->
+    <div class="col-md-11 extern">
+      <empty-container ng-if="!resource_list.length"></empty-container>
+      <div class="event row" ng-repeat="resource in resource_list">
+        <div class="col-md-2">
+          <a href="#/friend_res?return_url=home&public=0&uid={{resource.uid}}"><img class="logo" ng-src="{{ resource.icon }}"/></a>
+        </div>
+        <!--{fid, rid, rname, uid, type, content, ctime, icon, nick_name, link, desc}-->
+        <div class="col-md-10">
+          <div class="message" ng-click="viewResourceDetailClickHandler(resource)">
+            <div class="title">{{ resource.ctime | date:'MM-dd HH:mm' }} {{ resource.nick_name }} {{ resource.type }}了资源“{{ resource.rname }}”</div>
+            <div class="details">
+              <img ng-if="resource.link" class="poster" ng-src="{{ resource.link }}&type=0">
+              <div class="other">
+                <label>{{ resource.rname }}</label>
+                <div class="star"></div>
+                <div class="description">{{ resource.desc }}</div>
+                <div class="action" ng-style="{'margin-top': {true:0, false:'inherit'}[resource.link == '']}">
+                  <!--
+                  <button class="btn round"><i class="fa fa-thumbs-o-up fa-2x"></i></button><span>888</span>
+                  <button class="btn round"><i class="fa fa-share-alt fa-2x"></i></button><span>888</span>
+                  <button class="btn round" ng-click="downloadResourceClickHandler(resource);$event.stopPropagation();"><i class="fa fa-download fa-2x"></i></button><span></span>
+                  -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" style="display:none"><!--暂时取消首页推荐-->
+      <div class="recommendation">
+        <div class="title"> <div class="title">
+          为您推荐
+          <span>tab1</span>
+          <span>tab2</span>
+        </div>
+      </div>
+      <div class="recommendation-items">
+        <div class="recommendation-item" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+          <span class="index">{{ i }}</span>
+          <span class="title">归来</span>
+          <span class="count">{{ 1000*(11-i) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-if="resource_list.length" class="details-more" ng-click="viewMoreFeed()">加载更多
+</div>

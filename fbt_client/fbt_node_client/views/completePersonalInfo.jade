@@ -1,0 +1,50 @@
+style.
+  .btn:focus {
+  outline: 5px auto #FFF;
+  }
+  body{
+  background-image:url(img/bg.png);
+  background-repeat: repeat;
+  background-attachment:fixed;
+  }
+body(youdao='bind')
+br
+br
+br
+br
+br
+br
+br
+br
+.container
+  .row
+    .span5(style='text-align: center;')
+      br
+      br
+      br
+      br
+      br
+      img.img-responsive.center-block(src='./Flat UI_files/fbtLogo.png')
+      br
+      br
+      h4
+        span(style='background-color: #1abc9c; font-size: 120%; color:white; font-weight: bold;') &emsp;FBT:&emsp;
+        span(style='text-decoration: underline;')
+          | &#x5FEB;&#x4E50;&#x6E90;&#x4E8E;&#x5206;&#x4EAB;&#xFF01;
+          span
+    .span7
+      .span7
+        h1 &#x5B8C;&#x5584;&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;:
+      .span7
+        input#email.span5(type='text', value='', placeholder='Email')
+        span#checkmarkEmail.fui-checkmark-24
+      .span7
+        input#password.span5(type='password', value='', placeholder='Password')
+        span#checkmarkPassword.fui-checkmark-24
+      .span7
+        input#confirmPassword.span5(type='password', value='', placeholder='Confirm your password')
+        span#checkmarkConfirm.fui-checkmark-24
+      .span7
+        input#nickName.span5(type='text', value='', placeholder='Nickname')
+        span#checkmarkNickname.fui-checkmark-24
+      button.btn.btn-large.btn-primary.span5(onclick='submit()') Submit

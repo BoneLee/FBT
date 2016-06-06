@@ -1,0 +1,70 @@
+#share-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#share-container > div {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 480px;
+  top: 35%;
+}
+
+#share-container > div > div {
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  padding: 10px 0;
+  background: white;
+  width: 480px;
+  display: block;
+  text-align: center;
+}
+
+#share-container .close {
+  padding-right: 10px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
+#share-container .close:hover {
+}
+
+#share-container .left,
+#share-container .right
+{
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+
+#share-container .qrcode {
+  clear: both;
+}
+
+#share-container .note {
+  margin-bottom: 10px;
+}
+
+#share-container .channel {
+  border-top: 1px dashed lightgrey;
+  padding-top: 10px;
+}
+
+#share-container .channel > i {
+  font-size: 28px;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+#share-container .channel > i:hover {
+  color: #1abc9c;
+}

@@ -1,0 +1,9 @@
+node_modules/
+fbtUtils/fbt.log
+mylog.txt
+setting/setting.json
+*/downloadState.json
+setting/history.json
+*.pyc
+fbtUtils/douban.log
+.DS_Store

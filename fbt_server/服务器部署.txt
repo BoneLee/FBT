@@ -1,0 +1,42 @@
+﻿重启时需要重启mongodb，nginx，redis
+Add a comment to this line
+1、安装mongodb
+（1） sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+（2）echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+（3）sudo apt-get update
+（4）sudo apt-get install mongodb-org
+2、启动mongo
+mongod --fork --logpath=/var/log/mongodb.log
+备份与复制
+mongodump
+mongorestore dump/
+3、sudo apt-get install python-dev python-pip build-essential
+4、sudo pip install "tornado<4.0"
+5、pip install motor
+#6、安装memcached
+#sudo apt-get install memcached
+#memcached -m 500 -p 11333
+7、安装nginx
+sudo apt-get install nginx
+启动：service nginx start
+8、安装node
+准备一些包
+sudo apt-get install g++ curl libssl-dev apache2-utils
+
+git是不可少的
+sudo apt-get install git-core
+
+用git下载node.js最新版
+git clone git://github.com/ry/node.git
+开始编译安装node.js
+cd node-v0.8.2
+./configure
+make
+sudo make install
+输入node –v 或者node –version可以查看node.js当前的版本
+9、安装redis
+sudo apt-get install redis-server
+sudo pip install redis
+启动：sudo /etc/init.d/redis-server start
+单独为搜索启动redis： sudo redis-server /etc/redis/redis-search.conf start
+10、sudo pip install requests,jieba,gevent
